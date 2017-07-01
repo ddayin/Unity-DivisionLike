@@ -2328,6 +2328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 2023876516}
+  isImortalMode: 1
 --- !u!95 &1139190137
 Animator:
   serializedVersion: 3
