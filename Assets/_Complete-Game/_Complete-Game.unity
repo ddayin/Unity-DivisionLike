@@ -143,6 +143,7 @@ MonoBehaviour:
   spawnTime: 15
   spawnPoints:
   - {fileID: 933997770}
+  isStartToSpawn: 0
 --- !u!114 &14871710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +160,7 @@ MonoBehaviour:
   spawnTime: 3
   spawnPoints:
   - {fileID: 1725468539}
+  isStartToSpawn: 0
 --- !u!114 &14871711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +177,7 @@ MonoBehaviour:
   spawnTime: 3
   spawnPoints:
   - {fileID: 345275349}
+  isStartToSpawn: 0
 --- !u!4 &14871712
 Transform:
   m_ObjectHideFlags: 0
