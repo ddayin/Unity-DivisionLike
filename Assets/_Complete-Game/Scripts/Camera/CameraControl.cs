@@ -253,7 +253,7 @@ public class CameraControl : MonoBehaviour
         if (!mainCamera)
             return;
 
-        if (isZooming)
+        if ( isZooming == true )
         {
             float newFieldOfView = Mathf.Lerp(mainCamera.fieldOfView, cameraSettings.zoomFieldOfView, Time.deltaTime * cameraSettings.zoomSpeed);
             mainCamera.fieldOfView = newFieldOfView;
