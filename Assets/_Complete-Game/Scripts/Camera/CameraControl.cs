@@ -1,5 +1,5 @@
 ﻿/*
- * https://www.youtube.com/watch?v=gN1BmP4ONSQ&list=PLfxIz_UlKk7IwrcF2zHixNtFmh0lznXow&t=4140s&index=4
+ * reference - https://www.youtube.com/watch?v=gN1BmP4ONSQ&list=PLfxIz_UlKk7IwrcF2zHixNtFmh0lznXow&t=4140s&index=4
  */
 
 using UnityEngine;
@@ -8,8 +8,8 @@ using System.Collections;
 [ExecuteInEditMode]
 public class CameraControl : MonoBehaviour
 {
-    public Transform target;
-    public bool autoTargetPlayer;
+    public Transform target = null;
+    public bool autoTargetPlayer = true;
     public LayerMask wallLayers;
 
     public enum Shoulder
@@ -32,7 +32,7 @@ public class CameraControl : MonoBehaviour
         public float minAngle = -30.0f;
         public float maxAngle = 70.0f;
         public float rotationSpeed = 5.0f;
-        public float maxCheckDist = 0.1f;
+        public float maxCheckDistance = 0.1f;
 
         [Header("-Zoom-")]
         public float fieldOfView = 70.0f;
@@ -50,11 +50,11 @@ public class CameraControl : MonoBehaviour
     {
         public string verticalAxis = "Mouse X";
         public string horizontalAxis = "Mouse Y";
-        public string aimButton = "Fire2";
-        //public string switchShoulderButton = "Fire4";
+        public string aimButton = "Fire2";              // mouse right click
+        public string switchShoulderButton = "Fire4";   // left shift button
     }
     [SerializeField]
-    public InputSettings input;
+    public InputSettings inputSettings;
 
     [System.Serializable]
     public class MovementSettings
@@ -62,7 +62,7 @@ public class CameraControl : MonoBehaviour
         public float movementLerpSpeed = 5.0f;
     }
     [SerializeField]
-    public MovementSettings movement;
+    public MovementSettings movementSettings;
 
     float newX = 0.0f;
     float newY = 0.0f;
@@ -71,36 +71,32 @@ public class CameraControl : MonoBehaviour
     public Transform pivot { get; set; }
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         mainCamera = Camera.main;
-        pivot = transform.GetChild(0);
+        pivot = transform.GetChild( 0 );
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (target)
+        if ( target == null || Application.isPlaying == false )
+            return;
+        
+        RotateCamera();
+        CheckWall();
+        CheckMeshRenderer();
+        Zoom( Input.GetButton( inputSettings.aimButton ) );
+
+        if ( Input.GetButtonDown( inputSettings.switchShoulderButton ) )
         {
-            if (Application.isPlaying)
-            {
-                RotateCamera();
-                CheckWall();
-                CheckMeshRenderer();
-                Zoom(Input.GetButton(input.aimButton));
-                /*
-                if (Input.GetButtonDown(input.switchShoulderButton))
-                {
-                    SwitchShoulders();
-                }
-                */
-            }
+            SwitchShoulders();
         }
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
-        if (!target)
+        if ( target == null )
         {
             TargetPlayer();
         }
@@ -109,27 +105,27 @@ public class CameraControl : MonoBehaviour
             Vector3 targetPostion = target.position;
             Quaternion targetRotation = target.rotation;
 
-            FollowTarget(targetPostion, targetRotation);
+            FollowTarget( targetPostion, targetRotation );
         }
     }
 
-    //Finds the plater gameObject and sets it as target
+    // Finds the player gameObject and sets it as target
     void TargetPlayer()
     {
-        if (autoTargetPlayer)
+        if ( autoTargetPlayer == true )
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            GameObject player = GameObject.FindGameObjectWithTag( "Player" );
 
-            if (player)
+            if ( player != null )
             {
-                Transform playerT = player.transform;
-                target = playerT;
+                Transform playerTransform = player.transform;
+                target = playerTransform;
             }
         }
     }
 
     //Following the target with Time.deltaTime smoothly
-    void FollowTarget(Vector3 targetPosition, Quaternion targetRotation)
+    private void FollowTarget(Vector3 targetPosition, Quaternion targetRotation)
     {
         if (!Application.isPlaying)
         {
@@ -138,19 +134,19 @@ public class CameraControl : MonoBehaviour
         }
         else
         {
-            Vector3 newPos = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * movement.movementLerpSpeed);
+            Vector3 newPos = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * movementSettings.movementLerpSpeed);
             transform.position = newPos;
         }
     }
 
     //Rotates the camera with input
-    void RotateCamera()
+    private void RotateCamera()
     {
         if (!pivot)
             return;
 
-        newX += cameraSettings.mouseXSensitivity * Input.GetAxis(input.verticalAxis);
-        newY += cameraSettings.mouseYSensitivity * Input.GetAxis(input.horizontalAxis);
+        newX += cameraSettings.mouseXSensitivity * Input.GetAxis(inputSettings.verticalAxis);
+        newY += cameraSettings.mouseYSensitivity * Input.GetAxis(inputSettings.horizontalAxis);
 
         Vector3 eulerAngleAxis = new Vector3();
         eulerAngleAxis.x = -newY;
@@ -165,7 +161,7 @@ public class CameraControl : MonoBehaviour
     }
 
     //Checks the wall and moves the camera up if we hit
-    void CheckWall()
+    private void CheckWall()
     {
         if (!pivot || !mainCamera)
             return;
@@ -181,7 +177,7 @@ public class CameraControl : MonoBehaviour
 
         float dist = Mathf.Abs(shoulder == Shoulder.Left ? cameraSettings.camPositionOffsetLeft.z : cameraSettings.camPositionOffsetRight.z);
 
-        if (Physics.SphereCast(start, cameraSettings.maxCheckDist, dir, out hit, dist, wallLayers))
+        if (Physics.SphereCast(start, cameraSettings.maxCheckDistance, dir, out hit, dist, wallLayers))
         {
             MoveCamUp(hit, pivotPos, dir, mainCamT);
         }
@@ -200,7 +196,7 @@ public class CameraControl : MonoBehaviour
     }
 
     //This moves the camera forward when we hit a wall
-    void MoveCamUp(RaycastHit hit, Vector3 pivotPos, Vector3 dir, Transform cameraT)
+    private void MoveCamUp(RaycastHit hit, Vector3 pivotPos, Vector3 dir, Transform cameraT)
     {
         float hitDist = hit.distance;
         Vector3 sphereCastCenter = pivotPos + (dir.normalized * hitDist);
@@ -208,19 +204,19 @@ public class CameraControl : MonoBehaviour
     }
 
     //Postions the cameras localPosition to a given location
-    void PostionCamera(Vector3 cameraPos)
+    private void PostionCamera(Vector3 cameraPos)
     {
         if (!mainCamera)
             return;
 
         Transform mainCamT = mainCamera.transform;
         Vector3 mainCamPos = mainCamT.localPosition;
-        Vector3 newPos = Vector3.Lerp(mainCamPos, cameraPos, Time.deltaTime * movement.movementLerpSpeed);
+        Vector3 newPos = Vector3.Lerp(mainCamPos, cameraPos, Time.deltaTime * movementSettings.movementLerpSpeed);
         mainCamT.localPosition = newPos;
     }
 
     //Hides the mesh targets mesh renderers when too close
-    void CheckMeshRenderer()
+    private void CheckMeshRenderer()
     {
         if (!mainCamera || !target)
             return;
@@ -248,7 +244,7 @@ public class CameraControl : MonoBehaviour
     }
 
     //Zooms the camera in and out
-    void Zoom(bool isZooming)
+    private void Zoom(bool isZooming)
     {
         if (!mainCamera)
             return;
@@ -276,7 +272,7 @@ public class CameraControl : MonoBehaviour
     }
 
     //Switches the cameras shoulder view
-    public void SwitchShoulders()
+    private void SwitchShoulders()
     {
         switch (shoulder)
         {
