@@ -124,25 +124,25 @@ public class CameraControl : MonoBehaviour
         }
     }
 
-    //Following the target with Time.deltaTime smoothly
-    private void FollowTarget(Vector3 targetPosition, Quaternion targetRotation)
+    // Following the target with Time.deltaTime smoothly
+    private void FollowTarget( Vector3 targetPosition, Quaternion targetRotation )
     {
-        if (!Application.isPlaying)
+        if ( Application.isPlaying == false )
         {
             transform.position = targetPosition;
             transform.rotation = targetRotation;
         }
         else
         {
-            Vector3 newPos = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * movementSettings.movementLerpSpeed);
+            Vector3 newPos = Vector3.Lerp( transform.position, targetPosition, Time.deltaTime * movementSettings.movementLerpSpeed );
             transform.position = newPos;
         }
     }
 
-    //Rotates the camera with input
+    // Rotates the camera with input
     private void RotateCamera()
     {
-        if (!pivot)
+        if ( pivot == null )
             return;
 
         newX += cameraSettings.mouseXSensitivity * Input.GetAxis(inputSettings.verticalAxis);
@@ -152,18 +152,18 @@ public class CameraControl : MonoBehaviour
         eulerAngleAxis.x = -newY;
         eulerAngleAxis.y = newX;
 
-        newX = Mathf.Repeat(newX, 360);
-        newY = Mathf.Clamp(newY, cameraSettings.minAngle, cameraSettings.maxAngle);
+        newX = Mathf.Repeat( newX, 360 );
+        newY = Mathf.Clamp( newY, cameraSettings.minAngle, cameraSettings.maxAngle );
 
-        Quaternion newRotation = Quaternion.Slerp(pivot.localRotation, Quaternion.Euler(eulerAngleAxis), Time.deltaTime * cameraSettings.rotationSpeed);
+        Quaternion newRotation = Quaternion.Slerp( pivot.localRotation, Quaternion.Euler( eulerAngleAxis ), Time.deltaTime * cameraSettings.rotationSpeed );
 
         pivot.localRotation = newRotation;
     }
 
-    //Checks the wall and moves the camera up if we hit
+    // Checks the wall and moves the camera up if we hit
     private void CheckWall()
     {
-        if (!pivot || !mainCamera)
+        if ( pivot == null || mainCamera == null )
             return;
 
         RaycastHit hit;
@@ -175,96 +175,96 @@ public class CameraControl : MonoBehaviour
         Vector3 start = pivotPos;
         Vector3 dir = mainCamPos - pivotPos;
 
-        float dist = Mathf.Abs(shoulder == Shoulder.Left ? cameraSettings.camPositionOffsetLeft.z : cameraSettings.camPositionOffsetRight.z);
+        float dist = Mathf.Abs( shoulder == Shoulder.Left ? cameraSettings.camPositionOffsetLeft.z : cameraSettings.camPositionOffsetRight.z );
 
-        if (Physics.SphereCast(start, cameraSettings.maxCheckDistance, dir, out hit, dist, wallLayers))
+        if ( Physics.SphereCast( start, cameraSettings.maxCheckDistance, dir, out hit, dist, wallLayers ) )
         {
-            MoveCamUp(hit, pivotPos, dir, mainCamT);
+            MoveCamUp( hit, pivotPos, dir, mainCamT );
         }
         else
         {
-            switch (shoulder)
+            switch ( shoulder )
             {
                 case Shoulder.Left:
-                    PostionCamera(cameraSettings.camPositionOffsetLeft);
+                    PostionCamera( cameraSettings.camPositionOffsetLeft );
                     break;
                 case Shoulder.Right:
-                    PostionCamera(cameraSettings.camPositionOffsetRight);
+                    PostionCamera( cameraSettings.camPositionOffsetRight );
                     break;
             }
         }
     }
 
-    //This moves the camera forward when we hit a wall
-    private void MoveCamUp(RaycastHit hit, Vector3 pivotPos, Vector3 dir, Transform cameraT)
+    // This moves the camera forward when we hit a wall
+    private void MoveCamUp( RaycastHit hit, Vector3 pivotPos, Vector3 dir, Transform cameraT )
     {
         float hitDist = hit.distance;
-        Vector3 sphereCastCenter = pivotPos + (dir.normalized * hitDist);
+        Vector3 sphereCastCenter = pivotPos + ( dir.normalized * hitDist );
         cameraT.position = sphereCastCenter;
     }
 
-    //Postions the cameras localPosition to a given location
-    private void PostionCamera(Vector3 cameraPos)
+    // Postions the cameras localPosition to a given location
+    private void PostionCamera( Vector3 cameraPos )
     {
-        if (!mainCamera)
+        if ( mainCamera == null )
             return;
 
         Transform mainCamT = mainCamera.transform;
         Vector3 mainCamPos = mainCamT.localPosition;
-        Vector3 newPos = Vector3.Lerp(mainCamPos, cameraPos, Time.deltaTime * movementSettings.movementLerpSpeed);
+        Vector3 newPos = Vector3.Lerp( mainCamPos, cameraPos, Time.deltaTime * movementSettings.movementLerpSpeed );
         mainCamT.localPosition = newPos;
     }
 
-    //Hides the mesh targets mesh renderers when too close
+    // Hides the mesh targets mesh renderers when too close
     private void CheckMeshRenderer()
     {
-        if (!mainCamera || !target)
+        if ( mainCamera == null || target == null )
             return;
 
         SkinnedMeshRenderer[] meshes = target.GetComponentsInChildren<SkinnedMeshRenderer>();
         Transform mainCamT = mainCamera.transform;
         Vector3 mainCamPos = mainCamT.position;
         Vector3 targetPos = target.position;
-        float dist = Vector3.Distance(mainCamPos, (targetPos + target.up));
+        float dist = Vector3.Distance( mainCamPos, ( targetPos + target.up ) );
 
-        if (meshes.Length > 0)
+        if ( meshes.Length > 0 )
         {
-            for (int i = 0; i < meshes.Length; i++)
+            for ( int i = 0; i < meshes.Length; i++ )
             {
-                if (dist <= cameraSettings.hideMeshWhenDistance)
+                if ( dist <= cameraSettings.hideMeshWhenDistance )
                 {
-                    meshes[i].enabled = false;
+                    meshes[ i ].enabled = false;
                 }
                 else
                 {
-                    meshes[i].enabled = true;
+                    meshes[ i ].enabled = true;
                 }
             }
         }
     }
 
     //Zooms the camera in and out
-    private void Zoom(bool isZooming)
+    private void Zoom( bool isZooming )
     {
-        if (!mainCamera)
+        if ( mainCamera == null )
             return;
 
         if ( isZooming == true )
         {
-            float newFieldOfView = Mathf.Lerp(mainCamera.fieldOfView, cameraSettings.zoomFieldOfView, Time.deltaTime * cameraSettings.zoomSpeed);
+            float newFieldOfView = Mathf.Lerp( mainCamera.fieldOfView, cameraSettings.zoomFieldOfView, Time.deltaTime * cameraSettings.zoomSpeed );
             mainCamera.fieldOfView = newFieldOfView;
 
-            if (cameraSettings.UICamera != null)
+            if ( cameraSettings.UICamera != null )
             {
                 cameraSettings.UICamera.fieldOfView = newFieldOfView;
             }
         }
         else
         {
-            float originalFieldOfView = Mathf.Lerp(mainCamera.fieldOfView, cameraSettings.fieldOfView, Time.deltaTime * cameraSettings.zoomSpeed);
+            float originalFieldOfView = Mathf.Lerp( mainCamera.fieldOfView, cameraSettings.fieldOfView, Time.deltaTime * cameraSettings.zoomSpeed );
             mainCamera.fieldOfView = originalFieldOfView;
 
-            if (cameraSettings.UICamera != null)
+            if ( cameraSettings.UICamera != null )
             {
                 cameraSettings.UICamera.fieldOfView = originalFieldOfView;
             }
@@ -274,7 +274,7 @@ public class CameraControl : MonoBehaviour
     //Switches the cameras shoulder view
     private void SwitchShoulders()
     {
-        switch (shoulder)
+        switch ( shoulder )
         {
             case Shoulder.Left:
                 shoulder = Shoulder.Right;
