@@ -1,12 +1,6 @@
-﻿/*
- * reference - https://www.youtube.com/watch?v=gN1BmP4ONSQ&list=PLfxIz_UlKk7IwrcF2zHixNtFmh0lznXow&t=4140s&index=4
- */ 
-
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
 
 public class UserInput : MonoBehaviour
 {
@@ -23,7 +17,7 @@ public class UserInput : MonoBehaviour
         public string aimButton = "Fire2";
         public string fireButton = "Fire1";
         public string dropWeaponButton = "DropWeapon";
-        public string switchWeaponButton = "Fire3";
+        public string switchWeaponButton = "SwitchWeapon";
     }
     [SerializeField]
     public InputSettings input;
@@ -51,8 +45,8 @@ public class UserInput : MonoBehaviour
     void Start()
     {
         characterMove = GetComponent<CharacterMovement>();
-        //weaponHandler = GetComponent<WeaponHandler>();
-        //SetupCrosshairs();
+        weaponHandler = GetComponent<WeaponHandler>();
+        SetupCrosshairs();
     }
 
     void SetupCrosshairs()
@@ -77,7 +71,7 @@ public class UserInput : MonoBehaviour
     {
         CharacterLogic();
         CameraLookLogic();
-        //WeaponLogic();
+        WeaponLogic();
     }
 
     void LateUpdate()

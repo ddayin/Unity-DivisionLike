@@ -1,8 +1,4 @@
-﻿/*
- * reference - https://www.youtube.com/watch?v=gN1BmP4ONSQ&list=PLfxIz_UlKk7IwrcF2zHixNtFmh0lznXow&t=4140s&index=4
- */
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System;
 
@@ -10,16 +6,16 @@ using System;
 [RequireComponent( typeof( CharacterController ) )]
 public class CharacterMovement : MonoBehaviour
 {
-    private Animator animator;
-    private CharacterController characterController;
+    Animator animator;
+    CharacterController characterController;
 
     [System.Serializable]
     public class AnimationSettings
     {
-        public string verticalVelocityFloat = "IsWalking";
-        public string horizontalVelocityFloat = "IsWalking";
-        public string groundedBool = "IsWalking";
-        public string jumpBool = "IsWalking";
+        public string verticalVelocityFloat = "Forward";
+        public string horizontalVelocityFloat = "Strafe";
+        public string groundedBool = "isGrounded";
+        public string jumpBool = "isJumping";
     }
     [SerializeField]
     public AnimationSettings animations;
@@ -46,13 +42,12 @@ public class CharacterMovement : MonoBehaviour
     public MovementSettings movement;
 
     Vector3 airControl;
-    bool forward;
-    bool strafe;
+    float forward;
+    float strafe;
     bool jumping;
     bool resetGravity;
     float gravity;
 
-    // we don't need this because it's The Division
     bool isGrounded()
     {
         RaycastHit hit;
@@ -82,24 +77,22 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //AirControl( forward, strafe );
+        AirControl( forward, strafe );
         ApplyGravity();
         //isGrounded = characterController.isGrounded;
     }
 
-    // Animates the character and root motion handles the movement
-    public void Animate( bool forward, bool strafe )
+    //Animates the character and root motion handles the movement
+    public void Animate( float forward, float strafe )
     {
         this.forward = forward;
         this.strafe = strafe;
-        animator.SetBool( animations.verticalVelocityFloat, forward );
-        animator.SetBool( animations.horizontalVelocityFloat, strafe );
+        animator.SetFloat( animations.verticalVelocityFloat, forward );
+        animator.SetFloat( animations.horizontalVelocityFloat, strafe );
         animator.SetBool( animations.groundedBool, isGrounded() );
         animator.SetBool( animations.jumpBool, jumping );
     }
 
-    // we don't need this because it's The Division
-    /*
     void AirControl( float forward, float strafe )
     {
         if ( isGrounded() == false )
@@ -112,10 +105,8 @@ public class CharacterMovement : MonoBehaviour
             characterController.Move( airControl * Time.deltaTime );
         }
     }
-    */
 
-    // Makes the character jump
-    // we don't need this because it's The Division
+    //Makes the character jump
     public void Jump()
     {
         if ( jumping )
@@ -128,14 +119,14 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    // Stops us from jumping
+    //Stops us from jumping
     IEnumerator StopJump()
     {
         yield return new WaitForSeconds( movement.jumpTime );
         jumping = false;
     }
 
-    // Applys downard force to the character when we aren't jumping
+    //Applys downard force to the character when we aren't jumping
     void ApplyGravity()
     {
         if ( !isGrounded() )
@@ -167,9 +158,13 @@ public class CharacterMovement : MonoBehaviour
         characterController.Move( gravityVector * Time.deltaTime );
     }
 
-    // Setup the animator with the child avatar
+    //Setup the animator with the child avatar
     void SetupAnimator()
     {
-        animator = GetComponent<Animator>();
+        Animator wantedAnim = GetComponentsInChildren<Animator>()[ 1 ];
+        Avatar wantedAvater = wantedAnim.avatar;
+
+        animator.avatar = wantedAvater;
+        Destroy( wantedAnim );
     }
 }
