@@ -444,8 +444,8 @@ MonoBehaviour:
     m_Bits: 512
   shoulder: 0
   cameraSettings:
-    camPositionOffsetLeft: {x: -0.76, y: 0, z: -1.7}
-    camPositionOffsetRight: {x: 0.76, y: 0, z: -1.7}
+    camPositionOffsetLeft: {x: -0.476, y: 0.691, z: -1.159}
+    camPositionOffsetRight: {x: 0.476, y: 0.691, z: -1.159}
     UICamera: {fileID: 0}
     mouseXSensitivity: 5
     mouseYSensitivity: 5
@@ -997,6 +997,60 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!1001 &330717104
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4394808280867622, guid: bcb1886a27a09ba4488029c87eddd0fb, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.239
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394808280867622, guid: bcb1886a27a09ba4488029c87eddd0fb, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.884
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394808280867622, guid: bcb1886a27a09ba4488029c87eddd0fb, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.0035402942
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394808280867622, guid: bcb1886a27a09ba4488029c87eddd0fb, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.01788048
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394808280867622, guid: bcb1886a27a09ba4488029c87eddd0fb, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.7485659
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394808280867622, guid: bcb1886a27a09ba4488029c87eddd0fb, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.6625111
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394808280867622, guid: bcb1886a27a09ba4488029c87eddd0fb, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.020207921
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394808280867622, guid: bcb1886a27a09ba4488029c87eddd0fb, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394808280867622, guid: bcb1886a27a09ba4488029c87eddd0fb, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -156.031
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394808280867622, guid: bcb1886a27a09ba4488029c87eddd0fb, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -82.369
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394808280867622, guid: bcb1886a27a09ba4488029c87eddd0fb, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -23.78
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: bcb1886a27a09ba4488029c87eddd0fb, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &345275348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,6 +1584,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
+--- !u!4 &606757337 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400090, guid: 6ca9fc9dc31b23041a0944a814429da4, type: 3}
+  m_PrefabInternal: {fileID: 745731422}
 --- !u!1 &636207312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1854,6 +1912,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca9fc9dc31b23041a0944a814429da4, type: 3}
   m_IsPrefabParent: 0
+--- !u!114 &758096423 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114810102423676766, guid: bcb1886a27a09ba4488029c87eddd0fb,
+    type: 2}
+  m_PrefabInternal: {fileID: 330717104}
+  m_Script: {fileID: 11500000, guid: ead9567750bdfc04691f8392c56e59f1, type: 3}
 --- !u!1 &768239535
 GameObject:
   m_ObjectHideFlags: 0
@@ -2684,14 +2748,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userSettings:
-    rightHand: {fileID: 0}
-    pistolUnequipSpot: {fileID: 0}
-    rifleUnequipSpot: {fileID: 0}
+    rightHand: {fileID: 606757337}
+    pistolUnequipSpot: {fileID: 849634264}
+    rifleUnequipSpot: {fileID: 849634264}
   animations:
     weaponTypeInt: WeaponType
     reloadingBool: isReloading
     aimingBool: Aiming
-  currentWeapon: {fileID: 0}
+  currentWeapon: {fileID: 758096423}
   weaponsList: []
   maxWeapons: 2
 --- !u!114 &1141789806
@@ -3804,7 +3868,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1851598977}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.76, y: 0, z: -1.7}
+  m_LocalPosition: {x: 0.476, y: 0.691, z: -1.159}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2095945317}
