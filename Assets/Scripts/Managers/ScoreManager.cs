@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿/*
+ * reference - https://www.assetstore.unity3d.com/kr/#!/content/40756
+ */
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
