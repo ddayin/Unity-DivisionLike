@@ -968,11 +968,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114602481244817218, guid: ed965125ff6f3a44d84d71a0e4769abb,
-        type: 2}
-      propertyPath: weaponSettings.damage
-      value: 40
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed965125ff6f3a44d84d71a0e4769abb, type: 2}
   m_IsPrefabParent: 0

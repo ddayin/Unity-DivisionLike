@@ -15,6 +15,10 @@ public class Weapon : MonoBehaviour
     Animator animator;
     SoundController sc;
 
+    public Light faceLight;
+    float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
+    float timer = 0f;
+
     public enum WeaponType
     {
         Pistol, Rifle
@@ -114,6 +118,8 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+
         if ( owner )
         {
             DisableEnableComponents( false );
@@ -144,6 +150,12 @@ public class Weapon : MonoBehaviour
             DisableEnableComponents( true );
             transform.SetParent( null );
         }
+
+        // 총알 빛 효과 일정 시간 지나면 끈다.
+        if ( timer >= effectsDisplayTime )
+        {
+            faceLight.enabled = false;
+        }
     }
 
     //This fires the weapon
@@ -151,6 +163,10 @@ public class Weapon : MonoBehaviour
     {
         if ( ammo.clipAmmo <= 0 || resettingCartridge || !weaponSettings.bulletSpawn || !equipped )
             return;
+
+        timer = 0f;
+
+        faceLight.enabled = true;
 
         RaycastHit hit;
         RaycastHit ragdollHit;
