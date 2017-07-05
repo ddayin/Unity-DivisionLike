@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 114290077164167034}
   m_Layer: 0
   m_Name: MilitaryPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2395,7 +2395,8 @@ MonoBehaviour:
     reloadingBool: isReloading
     aimingBool: Aiming
   currentWeapon: {fileID: 0}
-  weaponsList: []
+  weaponsList:
+  - {fileID: 0}
   maxWeapons: 2
 --- !u!114 &114290077164167034
 MonoBehaviour:

@@ -694,7 +694,7 @@ MonoBehaviour:
     fireRate: 0.2
     bulletLayers:
       serializedVersion: 2
-      m_Bits: 785
+      m_Bits: 769
     range: 200
     muzzleFlash: {fileID: 185808, guid: 2c3fcee418e241c45a4b2ab44f86c45e, type: 2}
     decal: {fileID: 128808, guid: e0711ea9c0e244144834a5cc1d62cbcd, type: 2}
