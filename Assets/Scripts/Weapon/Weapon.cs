@@ -4,6 +4,7 @@
 
 using UnityEngine;
 using System.Collections;
+using CompleteProject;
 
 [RequireComponent( typeof( Collider ) )]
 [RequireComponent( typeof( Rigidbody ) )]
@@ -34,7 +35,7 @@ public class Weapon : MonoBehaviour
     {
         [Header( "-Bullet Options-" )]
         public Transform bulletSpawn;
-        public float damage = 5.0f;
+        public float damage = 40.0f;
         public float bulletSpread = 5.0f;
         public float fireRate = 0.2f;
         public LayerMask bulletLayers;
@@ -152,12 +153,30 @@ public class Weapon : MonoBehaviour
             return;
 
         RaycastHit hit;
+        RaycastHit ragdollHit;
         Transform bSpawn = weaponSettings.bulletSpawn;
         Vector3 bSpawnPoint = bSpawn.position;
         Vector3 dir = ray.GetPoint( weaponSettings.range ) - bSpawnPoint;
 
         dir += (Vector3) Random.insideUnitCircle * weaponSettings.bulletSpread;
 
+        // 적 캐릭터를 맞추었을 때
+        // layer mask 13 이 Ragdoll 이고 적 캐릭터를 의미함
+        int layerMask = LayerMask.GetMask( "Ragdoll" );
+        if ( Physics.Raycast( bSpawnPoint, dir, out ragdollHit, weaponSettings.range, layerMask ) )
+        {
+            // Try and find an EnemyHealth script on the gameobject hit.
+            EnemyHealth enemyHealth = ragdollHit.collider.GetComponent<EnemyHealth>();
+
+            // If the EnemyHealth component exist...
+            if ( enemyHealth != null )
+            {
+                // ... the enemy should take damage.
+                enemyHealth.TakeDamage( (int) weaponSettings.damage, ragdollHit.point );
+            }
+        }
+        
+        // 적 캐릭터 제외
         if ( Physics.Raycast( bSpawnPoint, dir, out hit, weaponSettings.range, weaponSettings.bulletLayers ) )
         {
             HitEffects( hit );

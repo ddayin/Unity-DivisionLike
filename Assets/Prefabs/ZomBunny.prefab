@@ -34,7 +34,7 @@ GameObject:
   - component: {fileID: 11400000}
   - component: {fileID: 8200000}
   - component: {fileID: 11400006}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: ZomBunny
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ Animator:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: be66986effd141b4992d2d78be127139, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2cd6bf77cac24414c8e134b0c0e7aed3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3c8dbf75dd8f3564fab969ef848ea191, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

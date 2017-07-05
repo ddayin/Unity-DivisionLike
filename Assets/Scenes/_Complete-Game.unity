@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf862ffeb7e74943a1729f1cff11eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
+  playerHealth: {fileID: 1842435034}
   enemy: {fileID: 153412, guid: 548c56f4bcf4db24b8aa057e9846a005, type: 2}
   spawnTime: 15
   spawnPoints:
@@ -156,9 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf862ffeb7e74943a1729f1cff11eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
+  playerHealth: {fileID: 1842435034}
   enemy: {fileID: 100000, guid: ea3c2728ef33e3a4d99527a86cda6465, type: 2}
-  spawnTime: 3
+  spawnTime: 3000
   spawnPoints:
   - {fileID: 1725468539}
   isStartToSpawn: 0
@@ -173,12 +173,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf862ffeb7e74943a1729f1cff11eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
+  playerHealth: {fileID: 1842435034}
   enemy: {fileID: 100002, guid: e5171f72421770240bd7c3989fe351e3, type: 2}
-  spawnTime: 3
+  spawnTime: 30
   spawnPoints:
   - {fileID: 345275349}
-  isStartToSpawn: 0
+  isStartToSpawn: 1
 --- !u!4 &14871712
 Transform:
   m_ObjectHideFlags: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf862ffeb7e74943a1729f1cff11eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
+  playerHealth: {fileID: 1842435034}
   enemy: {fileID: 100096, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 2}
   spawnTime: 3
   spawnPoints:
@@ -967,6 +967,11 @@ Prefab:
     - target: {fileID: 4851204852203356, guid: ed965125ff6f3a44d84d71a0e4769abb, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602481244817218, guid: ed965125ff6f3a44d84d71a0e4769abb,
+        type: 2}
+      propertyPath: weaponSettings.damage
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed965125ff6f3a44d84d71a0e4769abb, type: 2}
@@ -2411,20 +2416,29 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 114107379585428848, guid: 59e8e266ec83fd34b8885035b9213f52,
+    - target: {fileID: 114290077164167034, guid: 59e8e266ec83fd34b8885035b9213f52,
         type: 2}
-      propertyPath: currentWeapon
+      propertyPath: healthSlider
       value: 
-      objectReference: {fileID: 758096423}
+      objectReference: {fileID: 1837071937}
+    - target: {fileID: 114290077164167034, guid: 59e8e266ec83fd34b8885035b9213f52,
+        type: 2}
+      propertyPath: damageImage
+      value: 
+      objectReference: {fileID: 1394906873}
     - target: {fileID: 114546955613398854, guid: 59e8e266ec83fd34b8885035b9213f52,
         type: 2}
       propertyPath: TPSCamera
       value: 
       objectReference: {fileID: 1851598981}
-    - target: {fileID: 114546955613398854, guid: 59e8e266ec83fd34b8885035b9213f52,
+    - target: {fileID: 114107379585428848, guid: 59e8e266ec83fd34b8885035b9213f52,
         type: 2}
-      propertyPath: other.aimDetectionLayers.m_Bits
-      value: 1
+      propertyPath: currentWeapon
+      value: 
+      objectReference: {fileID: 758096423}
+    - target: {fileID: 1008780008236374, guid: 59e8e266ec83fd34b8885035b9213f52, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59e8e266ec83fd34b8885035b9213f52, type: 2}
@@ -3549,6 +3563,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1842435034 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114290077164167034, guid: 59e8e266ec83fd34b8885035b9213f52,
+    type: 2}
+  m_PrefabInternal: {fileID: 1076221775}
+  m_Script: {fileID: 11500000, guid: c32067ea884548644b13cf9baddd4573, type: 3}
 --- !u!81 &1851598978 stripped
 AudioListener:
   m_PrefabParentObject: {fileID: 81237222621874018, guid: 667631648b698cd4da90347673b8a333,

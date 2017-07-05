@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114546955613398854}
   - component: {fileID: 114107379585428848}
   - component: {fileID: 82168656781489022}
+  - component: {fileID: 114290077164167034}
   m_Layer: 0
   m_Name: MilitaryPlayer
   m_TagString: Untagged
@@ -2396,6 +2397,24 @@ MonoBehaviour:
   currentWeapon: {fileID: 0}
   weaponsList: []
   maxWeapons: 2
+--- !u!114 &114290077164167034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008780008236374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c32067ea884548644b13cf9baddd4573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 0
+  healthSlider: {fileID: 0}
+  damageImage: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
+  flashSpeed: 5
+  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
 --- !u!114 &114354008394489122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2449,7 +2468,7 @@ MonoBehaviour:
     requireInputForTurn: 1
     aimDetectionLayers:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 1
   TPSCamera: {fileID: 0}
   debugAim: 0
   spine: {fileID: 4568949691163028}

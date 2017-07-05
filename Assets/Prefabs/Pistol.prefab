@@ -593,12 +593,12 @@ MonoBehaviour:
     spineRotation: {x: 3.67, y: 44.95, z: 7.45}
   weaponSettings:
     bulletSpawn: {fileID: 4907502442741636}
-    damage: 5
+    damage: 40
     bulletSpread: 5
     fireRate: 0.2
     bulletLayers:
       serializedVersion: 2
-      m_Bits: 8977
+      m_Bits: 785
     range: 200
     muzzleFlash: {fileID: 185808, guid: 2c3fcee418e241c45a4b2ab44f86c45e, type: 2}
     decal: {fileID: 128808, guid: e0711ea9c0e244144834a5cc1d62cbcd, type: 2}
