@@ -10,23 +10,23 @@ namespace CompleteProject
         Animator anim;                          // Reference to the animator component.
 
 
-        void Awake ()
+        void Awake()
         {
             // Set up the reference.
-            anim = GetComponent <Animator>();
+            anim = GetComponent<Animator>();
         }
 
 
-        void Update ()
+        void Update()
         {
             if ( isImortalMode == true )
                 return;
 
             // If the player has run out of health...
-            if(playerHealth.currentHealth <= 0)
+            if ( playerHealth.currentHealth <= 0 )
             {
                 // ... tell the animator the game is over.
-                anim.SetTrigger ("GameOver");
+                anim.SetTrigger( "GameOver" );
             }
         }
     }

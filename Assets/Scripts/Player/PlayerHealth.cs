@@ -13,7 +13,7 @@ namespace CompleteProject
         public Image damageImage;                                   // Reference to an image to flash on the screen on being hurt.
         public AudioClip deathClip;                                 // The audio clip to play when the player dies.
         public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
-        public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to, to flash.
+        public Color flashColour = new Color( 1f, 0f, 0f, 0.1f );     // The colour the damageImage is set to, to flash.
 
 
         Animator anim;                                              // Reference to the Animator component.
@@ -24,11 +24,11 @@ namespace CompleteProject
         bool damaged;                                               // True when the player gets damaged.
 
 
-        void Awake ()
+        void Awake()
         {
             // Setting up the references.
-            anim = GetComponent <Animator> ();
-            playerAudio = GetComponent <AudioSource> ();
+            anim = GetComponent<Animator>();
+            playerAudio = GetComponent<AudioSource>();
             //playerMovement = GetComponent <PlayerMovement> ();
             //playerShooting = GetComponentInChildren <PlayerShooting> ();
 
@@ -37,10 +37,10 @@ namespace CompleteProject
         }
 
 
-        void Update ()
+        void Update()
         {
             // If the player has just been damaged...
-            if(damaged)
+            if ( damaged )
             {
                 // ... set the colour of the damageImage to the flash colour.
                 damageImage.color = flashColour;
@@ -49,7 +49,7 @@ namespace CompleteProject
             else
             {
                 // ... transition the colour back to clear.
-                damageImage.color = Color.Lerp (damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+                damageImage.color = Color.Lerp( damageImage.color, Color.clear, flashSpeed * Time.deltaTime );
             }
 
             // Reset the damaged flag.
@@ -57,7 +57,7 @@ namespace CompleteProject
         }
 
 
-        public void TakeDamage (int amount)
+        public void TakeDamage( int amount )
         {
             // Set the damaged flag so the screen will flash.
             damaged = true;
@@ -69,18 +69,18 @@ namespace CompleteProject
             healthSlider.value = currentHealth;
 
             // Play the hurt sound effect.
-            playerAudio.Play ();
+            playerAudio.Play();
 
             // If the player has lost all it's health and the death flag hasn't been set yet...
-            if(currentHealth <= 0 && !isDead)
+            if ( currentHealth <= 0 && !isDead )
             {
                 // ... it should die.
-                Death ();
+                Death();
             }
         }
 
 
-        void Death ()
+        void Death()
         {
             // Set the death flag so this function won't be called again.
             isDead = true;
@@ -93,7 +93,7 @@ namespace CompleteProject
 
             // Set the audiosource to play the death clip and play it (this will stop the hurt sound from playing).
             playerAudio.clip = deathClip;
-            playerAudio.Play ();
+            playerAudio.Play();
 
             // Turn off the movement and shooting scripts.
             //playerMovement.enabled = false;
@@ -101,10 +101,10 @@ namespace CompleteProject
         }
 
 
-        public void RestartLevel ()
+        public void RestartLevel()
         {
             // Reload the level that is currently loaded.
-            SceneManager.LoadScene (0);
+            SceneManager.LoadScene( 0 );
         }
     }
 }

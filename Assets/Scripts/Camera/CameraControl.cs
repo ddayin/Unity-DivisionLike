@@ -21,11 +21,11 @@ public class CameraControl : MonoBehaviour
     [System.Serializable]
     public class CameraSettings
     {
-        [Header("-Positioning-")]
+        [Header( "-Positioning-" )]
         public Vector3 camPositionOffsetLeft;
         public Vector3 camPositionOffsetRight;
 
-        [Header("-Camera Options-")]
+        [Header( "-Camera Options-" )]
         public Camera UICamera;
         public float mouseXSensitivity = 5.0f;
         public float mouseYSensitivity = 5.0f;
@@ -34,12 +34,12 @@ public class CameraControl : MonoBehaviour
         public float rotationSpeed = 5.0f;
         public float maxCheckDistance = 0.1f;
 
-        [Header("-Zoom-")]
+        [Header( "-Zoom-" )]
         public float fieldOfView = 70.0f;
         public float zoomFieldOfView = 30.0f;
         public float zoomSpeed = 3.0f;
 
-        [Header("-Visual Options-")]
+        [Header( "-Visual Options-" )]
         public float hideMeshWhenDistance = 0.5f;
     }
     [SerializeField]
@@ -82,7 +82,7 @@ public class CameraControl : MonoBehaviour
     {
         if ( target == null || Application.isPlaying == false )
             return;
-        
+
         RotateCamera();
         CheckWall();
         CheckMeshRenderer();
@@ -145,8 +145,8 @@ public class CameraControl : MonoBehaviour
         if ( pivot == null )
             return;
 
-        newX += cameraSettings.mouseXSensitivity * Input.GetAxis(inputSettings.verticalAxis);
-        newY += cameraSettings.mouseYSensitivity * Input.GetAxis(inputSettings.horizontalAxis);
+        newX += cameraSettings.mouseXSensitivity * Input.GetAxis( inputSettings.verticalAxis );
+        newY += cameraSettings.mouseYSensitivity * Input.GetAxis( inputSettings.horizontalAxis );
 
         Vector3 eulerAngleAxis = new Vector3();
         eulerAngleAxis.x = -newY;

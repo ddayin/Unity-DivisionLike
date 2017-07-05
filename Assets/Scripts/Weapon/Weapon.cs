@@ -191,7 +191,7 @@ public class Weapon : MonoBehaviour
                 enemyHealth.TakeDamage( (int) weaponSettings.damage, ragdollHit.point );
             }
         }
-        
+
         // 적 캐릭터 제외
         if ( Physics.Raycast( bSpawnPoint, dir, out hit, weaponSettings.range, weaponSettings.bulletLayers ) )
         {
