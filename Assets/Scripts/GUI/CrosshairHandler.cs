@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class CrosshairHandler : MonoBehaviour
 {
-
     private Image image;
 
     // Use this for initialization
@@ -14,6 +13,7 @@ public class CrosshairHandler : MonoBehaviour
         image = this.GetComponent<Image>();
 
         gameObject.SetActive( false );
+        
     }
 
     public void ChangeColor( Color color )

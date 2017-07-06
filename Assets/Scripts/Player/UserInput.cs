@@ -51,6 +51,9 @@ public class UserInput : MonoBehaviour
         characterMove = GetComponent<CharacterMovement>();
         weaponHandler = GetComponent<WeaponHandler>();
         SetupCrosshairs();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void SetupCrosshairs()
