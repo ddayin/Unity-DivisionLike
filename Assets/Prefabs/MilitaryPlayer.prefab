@@ -2454,22 +2454,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a50cdeca5540c499c3544d496936b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input:
+  crosshairHandler: {fileID: 0}
+  inputSettings:
     verticalAxis: Vertical
     horizontalAxis: Horizontal
     jumpButton: Jump
     reloadButton: Reload
     aimButton: Fire2
     fireButton: Fire1
-    dropWeaponButton: DropWeapon
     switchWeaponButton: Fire3
-  other:
+  otherSettings:
     lookSpeed: 5
     lookDistance: 30
     requireInputForTurn: 1
     aimDetectionLayers:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 0
   TPSCamera: {fileID: 0}
   debugAim: 0
   spine: {fileID: 4568949691163028}

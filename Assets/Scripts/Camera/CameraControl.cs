@@ -75,6 +75,9 @@ public class CameraControl : MonoBehaviour
     {
         mainCamera = Camera.main;
         pivot = transform.GetChild( 0 );
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
     }
 
     // Update is called once per frame
