@@ -2,33 +2,36 @@
 using UnityEditor;
 using System.Collections;
 
-[CustomEditor( typeof( CameraControl ) )]
-public class CameraRigEditor : Editor
+namespace DivisionLike
 {
-
-    CameraControl cameraRig;
-
-    public override void OnInspectorGUI()
+    [CustomEditor( typeof( CameraControl ) )]
+    public class CameraRigEditor : Editor
     {
-        base.OnInspectorGUI();
 
-        cameraRig = (CameraControl) target;
+        CameraControl cameraRig;
 
-        EditorGUILayout.LabelField( "Camera Helper" );
-
-        if ( GUILayout.Button( "Save camera's position now." ) )
+        public override void OnInspectorGUI()
         {
-            Camera cam = Camera.main;
+            base.OnInspectorGUI();
 
-            if ( cam )
+            cameraRig = (CameraControl) target;
+
+            EditorGUILayout.LabelField( "Camera Helper" );
+
+            if ( GUILayout.Button( "Save camera's position now." ) )
             {
-                Transform camT = cam.transform;
-                Vector3 camPos = camT.localPosition;
-                Vector3 camRight = camPos;
-                Vector3 camLeft = camPos;
-                camLeft.x = -camPos.x;
-                cameraRig.cameraSettings.camPositionOffsetRight = camRight;
-                cameraRig.cameraSettings.camPositionOffsetLeft = camLeft;
+                Camera cam = Camera.main;
+
+                if ( cam )
+                {
+                    Transform camT = cam.transform;
+                    Vector3 camPos = camT.localPosition;
+                    Vector3 camRight = camPos;
+                    Vector3 camLeft = camPos;
+                    camLeft.x = -camPos.x;
+                    cameraRig.cameraSettings.camPositionOffsetRight = camRight;
+                    cameraRig.cameraSettings.camPositionOffsetLeft = camLeft;
+                }
             }
         }
     }

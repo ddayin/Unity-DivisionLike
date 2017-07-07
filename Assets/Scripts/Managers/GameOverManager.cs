@@ -4,7 +4,7 @@
 
 using UnityEngine;
 
-namespace CompleteProject
+namespace DivisionLike
 {
     public class GameOverManager : MonoBehaviour
     {

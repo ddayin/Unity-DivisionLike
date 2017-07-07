@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CrosshairHandler : MonoBehaviour
+namespace DivisionLike
 {
-    private Image image;
-
-    // Use this for initialization
-    void Start()
+    public class CrosshairHandler : MonoBehaviour
     {
-        image = this.GetComponent<Image>();
+        private Image image;
 
-        gameObject.SetActive( false );
-        
+        // Use this for initialization
+        void Awake()
+        {
+            image = this.GetComponent<Image>();
+
+            gameObject.SetActive( false );
+
+        }
+
+        public void ChangeColor( Color color )
+        {
+            image.color = color;
+        }
+
+
     }
-
-    public void ChangeColor( Color color )
-    {
-        image.color = color;
-    }
-
-
 }

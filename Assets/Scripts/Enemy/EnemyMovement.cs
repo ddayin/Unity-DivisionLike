@@ -5,7 +5,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace CompleteProject
+namespace DivisionLike
 {
     public class EnemyMovement : MonoBehaviour
     {

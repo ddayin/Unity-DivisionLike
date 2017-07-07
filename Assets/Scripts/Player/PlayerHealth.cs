@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-namespace CompleteProject
+namespace DivisionLike
 {
     public class PlayerHealth : MonoBehaviour
     {

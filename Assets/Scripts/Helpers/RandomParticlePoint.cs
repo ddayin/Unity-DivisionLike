@@ -5,14 +5,17 @@
 using UnityEngine;
 using System.Collections;
 
-public class RandomParticlePoint : MonoBehaviour
+namespace DivisionLike
 {
-    [Range( 0f, 1f )]
-    public float normalizedTime;
-
-
-    void OnValidate()
+    public class RandomParticlePoint : MonoBehaviour
     {
-        GetComponent<ParticleSystem>().Simulate( normalizedTime, true, true );
+        [Range( 0f, 1f )]
+        public float normalizedTime;
+
+
+        void OnValidate()
+        {
+            GetComponent<ParticleSystem>().Simulate( normalizedTime, true, true );
+        }
     }
 }

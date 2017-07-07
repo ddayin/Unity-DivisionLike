@@ -6,324 +6,337 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class UserInput : MonoBehaviour
+namespace DivisionLike
 {
-    public CharacterMovement characterMove { get; protected set; }
-    public WeaponHandler weaponHandler { get; protected set; }
-    public CrosshairHandler crosshairHandler;
-
-    [System.Serializable]
-    public class InputSettings
+    public class UserInput : MonoBehaviour
     {
-        public string verticalAxis = "Vertical";
-        public string horizontalAxis = "Horizontal";
-        public string jumpButton = "Jump";
-        public string reloadButton = "Reload";
-        public string aimButton = "Fire2";
-        public string fireButton = "Fire1";
-        public string switchWeaponButton = "Fire3";
-    }
-    [SerializeField]
-    public InputSettings inputSettings;
+        public CharacterMovement characterMove { get; protected set; }
+        public WeaponHandler weaponHandler { get; protected set; }
+        public CrosshairHandler crosshairHandler;
 
-    [System.Serializable]
-    public class OtherSettings
-    {
-        public float lookSpeed = 5.0f;
-        public float lookDistance = 30.0f;
-        public bool requireInputForTurn = true;
-        public LayerMask aimDetectionLayers;
-    }
-    [SerializeField]
-    public OtherSettings otherSettings;
-
-    public Camera TPSCamera;
-
-    public bool debugAim;
-    public Transform spine;
-    private bool aiming = false;
-
-    private Dictionary<Weapon, GameObject> crosshairPrefabMap = new Dictionary<Weapon, GameObject>();
-
-    // Use this for initialization
-    void Start()
-    {
-        characterMove = GetComponent<CharacterMovement>();
-        weaponHandler = GetComponent<WeaponHandler>();
-        SetupCrosshairs();
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
-    void SetupCrosshairs()
-    {
-        //if ( weaponHandler.weaponsList.Count > 0 )
-        //{
-        //    foreach ( Weapon wep in weaponHandler.weaponsList )
-        //    {
-        //        GameObject prefab = wep.weaponSettings.crosshairPrefab;
-        //        if ( prefab != null )
-        //        {
-        //            GameObject clone = (GameObject) Instantiate( prefab );
-        //            crosshairPrefabMap.Add( wep, clone );
-        //            ToggleCrosshair( false, wep );
-        //        }
-        //    }
-        //}
-        ToggleCrosshair( false, null );
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        CharacterLogic();
-        CameraLookLogic();
-        WeaponLogic();
-    }
-
-    void LateUpdate()
-    {
-        if ( weaponHandler )
+        [System.Serializable]
+        public class InputSettings
         {
-            if ( weaponHandler.currentWeapon )
+            public string verticalAxis = "Vertical";
+            public string horizontalAxis = "Horizontal";
+            public string jumpButton = "Jump";
+            public string reloadButton = "Reload";
+            public string aimButton = "Fire2";
+            public string fireButton = "Fire1";
+            public string switchWeaponButton = "Fire3";
+            public string runningButton = "Fire4";
+        }
+        [SerializeField]
+        public InputSettings inputSettings;
+
+        [System.Serializable]
+        public class OtherSettings
+        {
+            public float lookSpeed = 5.0f;
+            public float lookDistance = 30.0f;
+            public bool requireInputForTurn = true;
+            public LayerMask aimDetectionLayers;
+        }
+        [SerializeField]
+        public OtherSettings otherSettings;
+
+        public Camera TPSCamera;
+
+        public bool debugAim;
+        public Transform spine;
+        private bool aiming = false;
+
+        private Dictionary<Weapon, GameObject> crosshairPrefabMap = new Dictionary<Weapon, GameObject>();
+
+        // Use this for initialization
+        void Start()
+        {
+            characterMove = GetComponent<CharacterMovement>();
+            weaponHandler = GetComponent<WeaponHandler>();
+            SetupCrosshairs();
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
+        void SetupCrosshairs()
+        {
+            //if ( weaponHandler.weaponsList.Count > 0 )
+            //{
+            //    foreach ( Weapon wep in weaponHandler.weaponsList )
+            //    {
+            //        GameObject prefab = wep.weaponSettings.crosshairPrefab;
+            //        if ( prefab != null )
+            //        {
+            //            GameObject clone = (GameObject) Instantiate( prefab );
+            //            crosshairPrefabMap.Add( wep, clone );
+            //            ToggleCrosshair( false, wep );
+            //        }
+            //    }
+            //}
+            ToggleCrosshair( false, null );
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            CharacterLogic();
+            CameraLookLogic();
+            WeaponLogic();
+        }
+
+        void LateUpdate()
+        {
+            if ( weaponHandler )
             {
-                if ( aiming )
-                    PositionSpine();
+                if ( weaponHandler.currentWeapon )
+                {
+                    if ( aiming )
+                        PositionSpine();
+                }
             }
         }
-    }
 
-    //Handles character logic
-    void CharacterLogic()
-    {
-        if ( !characterMove )
-            return;
-
-        characterMove.Animate( Input.GetAxis( inputSettings.verticalAxis ), Input.GetAxis( inputSettings.horizontalAxis ) );
-
-        if ( Input.GetButtonDown( inputSettings.jumpButton ) )
-            characterMove.Jump();
-    }
-
-    //Handles camera logic
-    void CameraLookLogic()
-    {
-        if ( !TPSCamera )
-            return;
-
-        otherSettings.requireInputForTurn = !aiming;
-
-        if ( otherSettings.requireInputForTurn )
+        //Handles character logic
+        void CharacterLogic()
         {
-            if ( Input.GetAxis( inputSettings.horizontalAxis ) != 0 || Input.GetAxis( inputSettings.verticalAxis ) != 0 )
+            if ( !characterMove )
+                return;
+
+            if ( Input.GetButtonDown( inputSettings.runningButton ) )
+            {
+                characterMove.AnimateRun( true );
+            }
+            if ( Input.GetButtonUp( inputSettings.runningButton ) )
+            {
+                characterMove.AnimateRun( false );
+            }
+
+            characterMove.Animate( Input.GetAxis( inputSettings.verticalAxis ), Input.GetAxis( inputSettings.horizontalAxis ) );
+
+            //if ( Input.GetButtonDown( inputSettings.jumpButton ) )
+            //    characterMove.Jump();
+        }
+
+        //Handles camera logic
+        void CameraLookLogic()
+        {
+            if ( !TPSCamera )
+                return;
+
+            otherSettings.requireInputForTurn = !aiming;
+
+            if ( otherSettings.requireInputForTurn )
+            {
+                if ( Input.GetAxis( inputSettings.horizontalAxis ) != 0 || Input.GetAxis( inputSettings.verticalAxis ) != 0 )
+                {
+                    CharacterLook();
+                }
+            }
+            else
             {
                 CharacterLook();
             }
         }
-        else
+
+        //Handles all weapon logic
+        void WeaponLogic()
         {
-            CharacterLook();
-        }
-    }
+            if ( !weaponHandler )
+                return;
 
-    //Handles all weapon logic
-    void WeaponLogic()
-    {
-        if ( !weaponHandler )
-            return;
+            aiming = Input.GetButton( inputSettings.aimButton ) || debugAim;
+            weaponHandler.Aim( aiming );
 
-        aiming = Input.GetButton( inputSettings.aimButton ) || debugAim;
-        weaponHandler.Aim( aiming );
-
-        if ( Input.GetButtonDown( inputSettings.switchWeaponButton ) )
-        {
-            weaponHandler.SwitchWeapons();
-            UpdateCrosshairs();
-            //return;
-        }
-
-        if ( weaponHandler.currentWeapon )
-        {
-            Ray aimRay = new Ray( TPSCamera.transform.position, TPSCamera.transform.forward );
-
-            //Debug.DrawRay (aimRay.origin, aimRay.direction);
-            if ( Input.GetButton( inputSettings.fireButton ) && aiming )
-                weaponHandler.FireCurrentWeapon( aimRay );
-            if ( Input.GetButtonDown( inputSettings.reloadButton ) )
-                weaponHandler.Reload();
-          
-            if ( aiming )
+            if ( Input.GetButtonDown( inputSettings.switchWeaponButton ) )
             {
-                ToggleCrosshair( true, weaponHandler.currentWeapon );
-                //PositionCrosshair( aimRay, weaponHandler.currentWeapon );
-                HitCrosshair();
+                weaponHandler.SwitchWeapons();
+                UpdateCrosshairs();
+                //return;
+            }
+
+            if ( weaponHandler.currentWeapon )
+            {
+                Ray aimRay = new Ray( TPSCamera.transform.position, TPSCamera.transform.forward );
+
+                //Debug.DrawRay (aimRay.origin, aimRay.direction);
+                if ( Input.GetButton( inputSettings.fireButton ) && aiming )
+                    weaponHandler.FireCurrentWeapon( aimRay );
+                if ( Input.GetButtonDown( inputSettings.reloadButton ) )
+                    weaponHandler.Reload();
+
+                if ( aiming )
+                {
+                    ToggleCrosshair( true, weaponHandler.currentWeapon );
+                    //PositionCrosshair( aimRay, weaponHandler.currentWeapon );
+                    HitCrosshair();
+                }
+                else
+                {
+                    ToggleCrosshair( false, weaponHandler.currentWeapon );
+                }
             }
             else
             {
-                ToggleCrosshair( false, weaponHandler.currentWeapon );
-            }   
+                TurnOffAllCrosshairs();
+            }
+
         }
-        else
+
+        Vector3 fireDirection;
+        Vector3 firePoint;
+
+        void HitCrosshair()
         {
-            TurnOffAllCrosshairs();
-        }
-            
-    }
+            RaycastHit hit;
+            int range = 1000;
+            fireDirection = TPSCamera.transform.forward * 10;
+            firePoint = weaponHandler.currentWeapon.weaponSettings.bulletSpawn.position;
+            // Debug the ray out in the editor:
+            Debug.DrawRay( firePoint, fireDirection, Color.green );
 
-    Vector3 fireDirection;
-    Vector3 firePoint;
-
-    void HitCrosshair()
-    {
-        RaycastHit hit;
-        int range = 1000;
-        fireDirection = TPSCamera.transform.forward * 10;
-        firePoint = weaponHandler.currentWeapon.weaponSettings.bulletSpawn.position;
-        // Debug the ray out in the editor:
-        Debug.DrawRay( firePoint, fireDirection, Color.green );
-
-        if ( Physics.Raycast( firePoint, ( fireDirection ), out hit, range ) )
-        {
-            // Scale if crosshair is on something:
-
-
-            if ( hit.transform.gameObject.layer == 13 )
+            if ( Physics.Raycast( firePoint, ( fireDirection ), out hit, range ) )
             {
-                crosshairHandler.ChangeColor( Color.red );
+                // Scale if crosshair is on something:
+
+
+                if ( hit.transform.gameObject.layer == 13 )
+                {
+                    crosshairHandler.ChangeColor( Color.red );
+                }
+                else
+                {
+                    crosshairHandler.ChangeColor( Color.white );
+                }
             }
             else
             {
                 crosshairHandler.ChangeColor( Color.white );
             }
         }
-        else
+
+        void TurnOffAllCrosshairs()
         {
-            crosshairHandler.ChangeColor( Color.white );
+            //foreach ( Weapon wep in crosshairPrefabMap.Keys )
+            //{
+            //    ToggleCrosshair( false, wep );
+            //}
+            ToggleCrosshair( false, null );
         }
-    }
 
-    void TurnOffAllCrosshairs()
-    {
-        //foreach ( Weapon wep in crosshairPrefabMap.Keys )
+        //void CreateCrosshair( Weapon wep )
         //{
-        //    ToggleCrosshair( false, wep );
-        //}
-        ToggleCrosshair( false, null );
-    }
-
-    //void CreateCrosshair( Weapon wep )
-    //{
-    //    GameObject prefab = wep.weaponSettings.crosshairPrefab;
-    //    if ( prefab != null )
-    //    {
-    //        prefab = Instantiate( prefab );
-    //        ToggleCrosshair( false, wep );
-    //    }
-    //}
-
-    //void DeleteCrosshair( Weapon wep )
-    //{
-    //    if ( !crosshairPrefabMap.ContainsKey( wep ) )
-    //        return;
-
-    //    Destroy( crosshairPrefabMap[ wep ] );
-    //    crosshairPrefabMap.Remove( wep );
-    //}
-
-    // Position the crosshair to the point that we are aiming
-    //void PositionCrosshair( Ray ray, Weapon wep )
-    //{
-    //    Weapon curWeapon = weaponHandler.currentWeapon;
-    //    if ( curWeapon == null )
-    //        return;
-    //    if ( !crosshairPrefabMap.ContainsKey( wep ) )
-    //        return;
-
-    //    //GameObject crosshairPrefab = crosshairPrefabMap[ wep ];
-    //    RaycastHit hit;
-    //    Transform bSpawn = curWeapon.weaponSettings.bulletSpawn;
-    //    Vector3 bSpawnPoint = bSpawn.position;
-    //    Vector3 dir = ray.GetPoint( curWeapon.weaponSettings.range ) - bSpawnPoint;
-
-    //    //Debug.DrawRay( bSpawnPoint, dir );
-
-    //    if ( Physics.Raycast( bSpawnPoint, dir, out hit, curWeapon.weaponSettings.range,
-    //        curWeapon.weaponSettings.bulletLayers ) )
-    //    {
-    //        if ( crosshairPrefab != null )
-    //        {
-    //            ToggleCrosshair( true, curWeapon );
-    //            Vector3 newPos = hit.point;
-    //            newPos.z = 10.0f;       // maintain certain position of crosshair z
-    //            crosshairPrefab.transform.position = newPos;
-    //            crosshairPrefab.transform.LookAt( Camera.main.transform );
-    //        }
-    //    }
-    //    else
-    //    {
-    //        ToggleCrosshair( false, curWeapon );
-    //    }
-    //}
-
-    // Toggle on and off the crosshair prefab
-    void ToggleCrosshair( bool enabled, Weapon wep )
-    {
-        //if ( !crosshairPrefabMap.ContainsKey( wep ) )
-        //    return;
-
-        //crosshairPrefabMap[ wep ].SetActive( enabled );
-
-        crosshairHandler.gameObject.SetActive( enabled );
-    }
-
-    void UpdateCrosshairs()
-    {
-        if ( weaponHandler.weaponsList.Count == 0 )
-            return;
-
-        //foreach ( Weapon wep in weaponHandler.weaponsList )
-        //{
-        //    if ( wep != weaponHandler.currentWeapon )
+        //    GameObject prefab = wep.weaponSettings.crosshairPrefab;
+        //    if ( prefab != null )
         //    {
+        //        prefab = Instantiate( prefab );
         //        ToggleCrosshair( false, wep );
         //    }
         //}
 
-        ToggleCrosshair( false, null );
-    }
+        //void DeleteCrosshair( Weapon wep )
+        //{
+        //    if ( !crosshairPrefabMap.ContainsKey( wep ) )
+        //        return;
 
-    //Postions the spine when aiming
-    void PositionSpine()
-    {
-        if ( !spine || !weaponHandler.currentWeapon || !TPSCamera )
-            return;
+        //    Destroy( crosshairPrefabMap[ wep ] );
+        //    crosshairPrefabMap.Remove( wep );
+        //}
 
-        Transform mainCamT = TPSCamera.transform;
-        Vector3 mainCamPos = mainCamT.position;
-        Vector3 dir = mainCamT.forward;
-        Ray ray = new Ray( mainCamPos, dir );
+        // Position the crosshair to the point that we are aiming
+        //void PositionCrosshair( Ray ray, Weapon wep )
+        //{
+        //    Weapon curWeapon = weaponHandler.currentWeapon;
+        //    if ( curWeapon == null )
+        //        return;
+        //    if ( !crosshairPrefabMap.ContainsKey( wep ) )
+        //        return;
 
-        spine.LookAt( ray.GetPoint( 50 ) );
+        //    //GameObject crosshairPrefab = crosshairPrefabMap[ wep ];
+        //    RaycastHit hit;
+        //    Transform bSpawn = curWeapon.weaponSettings.bulletSpawn;
+        //    Vector3 bSpawnPoint = bSpawn.position;
+        //    Vector3 dir = ray.GetPoint( curWeapon.weaponSettings.range ) - bSpawnPoint;
 
-        Vector3 eulerAngleOffset = weaponHandler.currentWeapon.userSettings.spineRotation;
-        spine.Rotate( eulerAngleOffset );
-    }
+        //    //Debug.DrawRay( bSpawnPoint, dir );
 
-    //Make the character look at a forward point from the camera
-    void CharacterLook()
-    {
-        Transform mainCamT = TPSCamera.transform;
-        Transform pivotT = mainCamT.parent;
-        Vector3 pivotPos = pivotT.position;
-        Vector3 lookTarget = pivotPos + ( pivotT.forward * otherSettings.lookDistance );
-        Vector3 thisPos = transform.position;
-        Vector3 lookDir = lookTarget - thisPos;
-        Quaternion lookRot = Quaternion.LookRotation( lookDir );
-        lookRot.x = 0;
-        lookRot.z = 0;
+        //    if ( Physics.Raycast( bSpawnPoint, dir, out hit, curWeapon.weaponSettings.range,
+        //        curWeapon.weaponSettings.bulletLayers ) )
+        //    {
+        //        if ( crosshairPrefab != null )
+        //        {
+        //            ToggleCrosshair( true, curWeapon );
+        //            Vector3 newPos = hit.point;
+        //            newPos.z = 10.0f;       // maintain certain position of crosshair z
+        //            crosshairPrefab.transform.position = newPos;
+        //            crosshairPrefab.transform.LookAt( Camera.main.transform );
+        //        }
+        //    }
+        //    else
+        //    {
+        //        ToggleCrosshair( false, curWeapon );
+        //    }
+        //}
 
-        Quaternion newRotation = Quaternion.Lerp( transform.rotation, lookRot, Time.deltaTime * otherSettings.lookSpeed );
-        transform.rotation = newRotation;
+        // Toggle on and off the crosshair prefab
+        void ToggleCrosshair( bool enabled, Weapon wep )
+        {
+            //if ( !crosshairPrefabMap.ContainsKey( wep ) )
+            //    return;
+
+            //crosshairPrefabMap[ wep ].SetActive( enabled );
+
+            crosshairHandler.gameObject.SetActive( enabled );
+        }
+
+        void UpdateCrosshairs()
+        {
+            if ( weaponHandler.weaponsList.Count == 0 )
+                return;
+
+            //foreach ( Weapon wep in weaponHandler.weaponsList )
+            //{
+            //    if ( wep != weaponHandler.currentWeapon )
+            //    {
+            //        ToggleCrosshair( false, wep );
+            //    }
+            //}
+
+            ToggleCrosshair( false, null );
+        }
+
+        //Postions the spine when aiming
+        void PositionSpine()
+        {
+            if ( !spine || !weaponHandler.currentWeapon || !TPSCamera )
+                return;
+
+            Transform mainCamT = TPSCamera.transform;
+            Vector3 mainCamPos = mainCamT.position;
+            Vector3 dir = mainCamT.forward;
+            Ray ray = new Ray( mainCamPos, dir );
+
+            spine.LookAt( ray.GetPoint( 50 ) );
+
+            Vector3 eulerAngleOffset = weaponHandler.currentWeapon.userSettings.spineRotation;
+            spine.Rotate( eulerAngleOffset );
+        }
+
+        //Make the character look at a forward point from the camera
+        void CharacterLook()
+        {
+            Transform mainCamT = TPSCamera.transform;
+            Transform pivotT = mainCamT.parent;
+            Vector3 pivotPos = pivotT.position;
+            Vector3 lookTarget = pivotPos + ( pivotT.forward * otherSettings.lookDistance );
+            Vector3 thisPos = transform.position;
+            Vector3 lookDir = lookTarget - thisPos;
+            Quaternion lookRot = Quaternion.LookRotation( lookDir );
+            lookRot.x = 0;
+            lookRot.z = 0;
+
+            Quaternion newRotation = Quaternion.Lerp( transform.rotation, lookRot, Time.deltaTime * otherSettings.lookSpeed );
+            transform.rotation = newRotation;
+        }
     }
 }

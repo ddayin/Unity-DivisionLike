@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-namespace CompleteProject
+namespace DivisionLike
 {
     public class ScoreManager : MonoBehaviour
     {
