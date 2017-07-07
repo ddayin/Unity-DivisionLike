@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114107379585428848}
   - component: {fileID: 82168656781489022}
   - component: {fileID: 114290077164167034}
+  - component: {fileID: 114453495703064356}
   m_Layer: 0
   m_Name: MilitaryPlayer
   m_TagString: Player
@@ -2432,6 +2433,7 @@ MonoBehaviour:
     horizontalVelocityFloat: Strafe
     groundedBool: isGrounded
     jumpBool: isJumping
+    runBool: isRunning
   physics:
     gravityModifier: 9.81
     baseGravity: 50
@@ -2443,6 +2445,18 @@ MonoBehaviour:
   movement:
     jumpSpeed: 6
     jumpTime: 0.25
+--- !u!114 &114453495703064356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008780008236374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4f41d273df35e4d91083c9e67aa487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponHandler: {fileID: 0}
 --- !u!114 &114546955613398854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2463,6 +2477,7 @@ MonoBehaviour:
     aimButton: Fire2
     fireButton: Fire1
     switchWeaponButton: Fire3
+    runningButton: Fire4
   otherSettings:
     lookSpeed: 5
     lookDistance: 30
