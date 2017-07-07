@@ -26,6 +26,15 @@ namespace DivisionLike
         }
         public WeaponType weaponType;
 
+        public class WeaponName
+        {
+            public string makarov = "Makarov";
+            public string ModernRussianAR = "Modern Russian AR";
+            public string M4A1 = "M4A1";
+        
+        }
+        public string weaponName;
+
         [System.Serializable]
         public class UserSettings
         {
@@ -53,7 +62,7 @@ namespace DivisionLike
             public GameObject clip;
 
             [Header( "-Other-" )]
-            public GameObject crosshairPrefab;
+            //public GameObject crosshairPrefab;
             public float reloadDuration = 2.0f;
             public Transform shellEjectSpot;
             public float shellEjectSpeed = 7.5f;
@@ -157,6 +166,16 @@ namespace DivisionLike
             {
                 faceLight.enabled = false;
             }
+        }
+
+        private BoxCollider boxCollider;
+
+        // MeshRenderer의 크기에 맞게 BoxCollider의 크기도 조정한다.
+        private void FitBoxColliderSize()
+        {
+            MeshRenderer renderer = gameObject.GetComponent<MeshRenderer>();
+            boxCollider.center = renderer.bounds.center;
+            boxCollider.size = renderer.bounds.size;
         }
 
         //This fires the weapon

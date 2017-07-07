@@ -443,6 +443,11 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 0.14326912
       objectReference: {fileID: 0}
+    - target: {fileID: 114272279691959126, guid: d0bb8554e084b9145bde7ebcdc944949,
+        type: 2}
+      propertyPath: weaponName
+      value: Modern Russian AR
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0bb8554e084b9145bde7ebcdc944949, type: 2}
   m_IsPrefabParent: 0
@@ -989,10 +994,6 @@ Prefab:
     - target: {fileID: 4851204852203356, guid: ed965125ff6f3a44d84d71a0e4769abb, type: 2}
       propertyPath: m_RootOrder
       value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 4851204852203356, guid: ed965125ff6f3a44d84d71a0e4769abb, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.030978722
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed965125ff6f3a44d84d71a0e4769abb, type: 2}
@@ -2421,16 +2422,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114107379585428848, guid: 59e8e266ec83fd34b8885035b9213f52,
-        type: 2}
-      propertyPath: currentWeapon
-      value: 
-      objectReference: {fileID: 758096423}
-    - target: {fileID: 114107379585428848, guid: 59e8e266ec83fd34b8885035b9213f52,
-        type: 2}
-      propertyPath: weaponsList.Array.data[0]
-      value: 
-      objectReference: {fileID: 716854877}
     - target: {fileID: 114546955613398854, guid: 59e8e266ec83fd34b8885035b9213f52,
         type: 2}
       propertyPath: crosshairHandler
@@ -2441,6 +2432,16 @@ Prefab:
       propertyPath: TPSCamera
       value: 
       objectReference: {fileID: 1851598981}
+    - target: {fileID: 114107379585428848, guid: 59e8e266ec83fd34b8885035b9213f52,
+        type: 2}
+      propertyPath: currentWeapon
+      value: 
+      objectReference: {fileID: 758096423}
+    - target: {fileID: 114107379585428848, guid: 59e8e266ec83fd34b8885035b9213f52,
+        type: 2}
+      propertyPath: weaponsList.Array.data[0]
+      value: 
+      objectReference: {fileID: 716854877}
     - target: {fileID: 114290077164167034, guid: 59e8e266ec83fd34b8885035b9213f52,
         type: 2}
       propertyPath: healthSlider

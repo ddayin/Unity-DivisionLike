@@ -24,7 +24,7 @@ namespace DivisionLike
             public string aimButton = "Fire2";
             public string fireButton = "Fire1";
             public string switchWeaponButton = "Fire3";
-            public string runningButton = "Fire4";
+            public string sprintButton = "Sprint";
         }
         [SerializeField]
         public InputSettings inputSettings;
@@ -44,7 +44,7 @@ namespace DivisionLike
 
         public bool debugAim;
         public Transform spine;
-        private bool aiming = false;
+        public bool aiming = false;
 
         private Dictionary<Weapon, GameObject> crosshairPrefabMap = new Dictionary<Weapon, GameObject>();
 
@@ -103,17 +103,19 @@ namespace DivisionLike
             if ( !characterMove )
                 return;
 
-            if ( Input.GetButtonDown( inputSettings.runningButton ) )
+            float v = Input.GetAxis( inputSettings.verticalAxis );
+            float h = Input.GetAxis( inputSettings.horizontalAxis );
+            
+            // sprint
+            if ( Input.GetButton( inputSettings.sprintButton ) == true )
             {
-                characterMove.AnimateRun( true );
+                characterMove.Animate( v, h );
             }
-            if ( Input.GetButtonUp( inputSettings.runningButton ) )
+            // walk
+            else
             {
-                characterMove.AnimateRun( false );
+                characterMove.Animate( v * 0.5f, h * 0.5f );
             }
-
-            characterMove.Animate( Input.GetAxis( inputSettings.verticalAxis ), Input.GetAxis( inputSettings.horizontalAxis ) );
-
             //if ( Input.GetButtonDown( inputSettings.jumpButton ) )
             //    characterMove.Jump();
         }

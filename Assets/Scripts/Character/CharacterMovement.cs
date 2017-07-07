@@ -22,7 +22,6 @@ namespace DivisionLike
             public string horizontalVelocityFloat = "Strafe";
             public string groundedBool = "isGrounded";
             public string jumpBool = "isJumping";
-            public string runBool = "isRunning";
         }
         [SerializeField]
         public AnimationSettings animations;
@@ -99,12 +98,7 @@ namespace DivisionLike
             animator.SetBool( animations.groundedBool, isGrounded() );
             animator.SetBool( animations.jumpBool, jumping );
         }
-
-        public void AnimateRun( bool run )
-        {
-            animator.SetBool( animations.runBool, run );
-        }
-
+        
         void AirControl( float forward, float strafe )
         {
             if ( isGrounded() == false )

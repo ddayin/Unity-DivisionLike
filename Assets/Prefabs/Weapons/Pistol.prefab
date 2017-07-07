@@ -290,7 +290,7 @@ Transform:
   m_GameObject: {fileID: 1602718035357728}
   m_LocalRotation: {x: 0.01788048, y: -0.7485659, z: -0.6625111, w: 0.020207921}
   m_LocalPosition: {x: 0.239, y: 0.884, z: 0.0035402942}
-  m_LocalScale: {x: 0.03097873, y: 0.030978726, z: 0.03097873}
+  m_LocalScale: {x: 0.03097873, y: 0.030978722, z: 0.03097873}
   m_Children:
   - {fileID: 4020646665794472}
   - {fileID: 4691001952177640}
@@ -684,6 +684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faceLight: {fileID: 108780772912672168}
   weaponType: 0
+  weaponName: Makarov
   userSettings:
     leftHandIKTarget: {fileID: 0}
     spineRotation: {x: 3.67, y: 44.95, z: 7.45}

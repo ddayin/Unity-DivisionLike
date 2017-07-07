@@ -54,7 +54,7 @@ namespace DivisionLike
             public string verticalAxis = "Mouse X";
             public string horizontalAxis = "Mouse Y";
             public string aimButton = "Fire2";              // mouse right click
-            public string switchShoulderButton = "Fire4";   // left shift button
+            public string switchShoulderButton = "Sprint";   // left shift button
         }
         [SerializeField]
         public InputSettings inputSettings;
@@ -93,9 +93,12 @@ namespace DivisionLike
             CheckMeshRenderer();
             Zoom( Input.GetButton( inputSettings.aimButton ) );
 
-            if ( Input.GetButtonDown( inputSettings.switchShoulderButton ) )
+            if ( Player.instance.userInput.aiming == true )
             {
-                SwitchShoulders();
+                if ( Input.GetButtonDown( inputSettings.switchShoulderButton ) )
+                {
+                    SwitchShoulders();
+                }
             }
         }
 

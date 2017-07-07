@@ -8,6 +8,8 @@ namespace DivisionLike
     public class Player : MonoBehaviour
     {
         public static Player instance = null;
+
+        public UserInput userInput;
         public WeaponHandler weaponHandler;
 
         void Awake()
@@ -24,6 +26,8 @@ namespace DivisionLike
 
             DontDestroyOnLoad( gameObject );
 
+
+            userInput = transform.GetComponent<UserInput>();
             weaponHandler = transform.GetComponent<WeaponHandler>();
         }
     }
