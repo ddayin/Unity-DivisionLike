@@ -10,8 +10,8 @@ namespace DivisionLike
 {
     public class WeaponHandler : MonoBehaviour
     {
-        Animator animator;
-        SoundController sc;
+        private Animator animator;
+        private SoundController sc;
 
         [System.Serializable]
         public class UserSettings
@@ -35,11 +35,12 @@ namespace DivisionLike
 
         public Weapon currentWeapon;
         public List<Weapon> weaponsList = new List<Weapon>();
+        public Dictionary<Weapon.WeaponType, Weapon> dicWeapons = new Dictionary<Weapon.WeaponType, Weapon>();
         public int maxWeapons = 2;
         public bool aim { get; protected set; }
-        bool reload;
-        int weaponType;
-        bool settingWeapon;
+        private bool reload;
+        private int weaponType;
+        private bool settingWeapon;
 
         // Use this for initialization
         void OnEnable()
@@ -49,6 +50,9 @@ namespace DivisionLike
                 sc = check.GetComponent<SoundController>();
             animator = GetComponent<Animator>();
             SetupWeapons();
+
+            dicWeapons.Add( Weapon.WeaponType.Primary, weaponsList[ 0 ] );
+            dicWeapons.Add( Weapon.WeaponType.Secondary, weaponsList[ 1 ] );
         }
 
         void SetupWeapons()
@@ -58,7 +62,7 @@ namespace DivisionLike
                 currentWeapon.SetEquipped( true );
                 currentWeapon.SetOwner( this );
                 AddWeaponToList( currentWeapon );
-
+                
                 if ( currentWeapon.ammo.clipAmmo <= 0 )
                     Reload();
 
@@ -78,6 +82,7 @@ namespace DivisionLike
                     }
                 }
             }
+            
         }
 
         // Update is called once per frame
@@ -89,14 +94,14 @@ namespace DivisionLike
         //Animates the character
         void Animate()
         {
-            if ( !animator )
+            if ( animator == null )
                 return;
 
             animator.SetBool( animations.aimingBool, aim );
             animator.SetBool( animations.reloadingBool, reload );
             animator.SetInteger( animations.weaponTypeInt, weaponType );
 
-            if ( !currentWeapon )
+            if ( currentWeapon == null )
             {
                 weaponType = 0;
                 return;
@@ -104,22 +109,36 @@ namespace DivisionLike
 
             switch ( currentWeapon.weaponType )
             {
-                case Weapon.WeaponType.Pistol:
+                case Weapon.WeaponType.Secondary:
                     weaponType = 1;
                     break;
-                case Weapon.WeaponType.Rifle:
+                case Weapon.WeaponType.Primary:
                     weaponType = 2;
+                    break;
+                case Weapon.WeaponType.Sidearm:
+                    break;
+                default:
                     break;
             }
         }
 
         //Adds a weapon to the weaponsList
-        void AddWeaponToList( Weapon weapon )
+        private void AddWeaponToList( Weapon weapon )
         {
             if ( weaponsList.Contains( weapon ) )
                 return;
 
             weaponsList.Add( weapon );
+        }
+
+        private void AddWeaponToDic( Weapon.WeaponType type, Weapon weapon )
+        {
+            if ( dicWeapons.ContainsValue( weapon ) == true )
+            {
+                return;
+            }
+
+            dicWeapons.Add( type, weapon );
         }
 
         //Puts the finger on the trigger and asks if we pulled
@@ -145,11 +164,11 @@ namespace DivisionLike
 
             if ( sc != null )
             {
-                if ( currentWeapon.sounds.reloadSound != null )
+                if ( currentWeapon.soundSettings.reloadSound != null )
                 {
-                    if ( currentWeapon.sounds.audioS != null )
+                    if ( currentWeapon.soundSettings.audioS != null )
                     {
-                        sc.PlaySound( currentWeapon.sounds.audioS, currentWeapon.sounds.reloadSound, true, currentWeapon.sounds.pitchMin, currentWeapon.sounds.pitchMax );
+                        sc.PlaySound( currentWeapon.soundSettings.audioS, currentWeapon.soundSettings.reloadSound, true, currentWeapon.soundSettings.pitchMin, currentWeapon.soundSettings.pitchMax );
                     }
                 }
             }
@@ -181,25 +200,51 @@ namespace DivisionLike
             currentWeapon.SetEquipped( false );
             currentWeapon.SetOwner( null );
             weaponsList.Remove( currentWeapon );
+            dicWeapons.Remove( currentWeapon.weaponType );
             currentWeapon = null;
         }
 
         //Switches to the next weapon
         public void SwitchWeapons()
         {
-            if ( settingWeapon || weaponsList.Count == 0 )
+            if ( settingWeapon || weaponsList.Count == 0 || dicWeapons.Count == 0 )
                 return;
 
-            if ( currentWeapon )
+            if ( currentWeapon != null )
             {
                 int currentWeaponIndex = weaponsList.IndexOf( currentWeapon );
                 int nextWeaponIndex = ( currentWeaponIndex + 1 ) % weaponsList.Count;
 
                 currentWeapon = weaponsList[ nextWeaponIndex ];
+
+                currentWeapon = dicWeapons[ (Weapon.WeaponType) nextWeaponIndex ];
             }
             else
             {
                 currentWeapon = weaponsList[ 0 ];
+
+                currentWeapon = dicWeapons[ Weapon.WeaponType.Primary ];
+            }
+            settingWeapon = true;
+            StartCoroutine( StopSettingWeapon() );
+
+            SetupWeapons();
+        }
+
+        public void SwitchWeapons( Weapon.WeaponType type )
+        {
+            if ( settingWeapon == true || weaponsList.Count == 0 || dicWeapons.Count == 0 )
+            {
+                return;
+            }
+
+            if ( currentWeapon != null )
+            {
+                currentWeapon = dicWeapons[ type ];
+            }
+            else
+            {
+                currentWeapon = dicWeapons[ Weapon.WeaponType.Primary ];
             }
             settingWeapon = true;
             StartCoroutine( StopSettingWeapon() );
@@ -219,7 +264,8 @@ namespace DivisionLike
             if ( !animator )
                 return;
 
-            if ( currentWeapon && currentWeapon.userSettings.leftHandIKTarget && weaponType == 2 && !reload && !settingWeapon )
+            if ( currentWeapon && currentWeapon.userSettings.leftHandIKTarget && currentWeapon.weaponType == Weapon.WeaponType.Primary
+                && !reload && !settingWeapon )
             {
                 animator.SetIKPositionWeight( AvatarIKGoal.LeftHand, 1 );
                 animator.SetIKRotationWeight( AvatarIKGoal.LeftHand, 1 );

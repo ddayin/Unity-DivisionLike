@@ -266,7 +266,7 @@ MonoBehaviour:
     verticalAxis: Mouse X
     horizontalAxis: Mouse Y
     aimButton: Fire2
-    switchShoulderButton: Fire4
+    switchShoulderButton: Sprint
   movementSettings:
     movementLerpSpeed: 5
 --- !u!124 &124665779388942328

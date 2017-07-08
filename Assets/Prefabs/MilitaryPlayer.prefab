@@ -36,12 +36,12 @@ GameObject:
   - component: {fileID: 4234755952056848}
   - component: {fileID: 95754284920379658}
   - component: {fileID: 143024031835547368}
+  - component: {fileID: 114453495703064356}
   - component: {fileID: 114354008394489122}
   - component: {fileID: 114546955613398854}
   - component: {fileID: 114107379585428848}
-  - component: {fileID: 82168656781489022}
   - component: {fileID: 114290077164167034}
-  - component: {fileID: 114453495703064356}
+  - component: {fileID: 82168656781489022}
   m_Layer: 0
   m_Name: MilitaryPlayer
   m_TagString: Player
@@ -2433,7 +2433,6 @@ MonoBehaviour:
     horizontalVelocityFloat: Strafe
     groundedBool: isGrounded
     jumpBool: isJumping
-    runBool: isRunning
   physics:
     gravityModifier: 9.81
     baseGravity: 50
@@ -2456,6 +2455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4f41d273df35e4d91083c9e67aa487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  userInput: {fileID: 0}
   weaponHandler: {fileID: 0}
 --- !u!114 &114546955613398854
 MonoBehaviour:
@@ -2477,7 +2477,10 @@ MonoBehaviour:
     aimButton: Fire2
     fireButton: Fire1
     switchWeaponButton: Fire3
-    runningButton: Fire4
+    primaryWeaponButton: 1
+    secondaryWeaponButton: 2
+    sidearmButton: 3
+    sprintButton: Sprint
   otherSettings:
     lookSpeed: 5
     lookDistance: 30
@@ -2488,6 +2491,7 @@ MonoBehaviour:
   TPSCamera: {fileID: 0}
   debugAim: 0
   spine: {fileID: 4568949691163028}
+  aiming: 0
 --- !u!137 &137038422179370986
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

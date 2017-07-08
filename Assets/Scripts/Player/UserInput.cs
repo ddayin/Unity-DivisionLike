@@ -24,6 +24,9 @@ namespace DivisionLike
             public string aimButton = "Fire2";
             public string fireButton = "Fire1";
             public string switchWeaponButton = "Fire3";
+            public string primaryWeaponButton = "1";
+            public string secondaryWeaponButton = "2";
+            public string sidearmButton = "3";
             public string sprintButton = "Sprint";
         }
         [SerializeField]
@@ -105,17 +108,26 @@ namespace DivisionLike
 
             float v = Input.GetAxis( inputSettings.verticalAxis );
             float h = Input.GetAxis( inputSettings.horizontalAxis );
-            
-            // sprint
-            if ( Input.GetButton( inputSettings.sprintButton ) == true )
-            {
-                characterMove.Animate( v, h );
-            }
-            // walk
-            else
+
+            // always walk when player is aiming
+            if ( Player.instance.userInput.aiming == true )
             {
                 characterMove.Animate( v * 0.5f, h * 0.5f );
             }
+            else
+            {
+                // sprint
+                if ( Input.GetButton( inputSettings.sprintButton ) == true )
+                {
+                    characterMove.Animate( v, h );
+                }
+                // walk
+                else
+                {
+                    characterMove.Animate( v * 0.5f, h * 0.5f );
+                }
+            }
+            
             //if ( Input.GetButtonDown( inputSettings.jumpButton ) )
             //    characterMove.Jump();
         }
@@ -154,7 +166,20 @@ namespace DivisionLike
             {
                 weaponHandler.SwitchWeapons();
                 UpdateCrosshairs();
-                //return;
+            }
+
+            if ( Input.GetButtonDown( inputSettings.primaryWeaponButton ) )
+            {
+                weaponHandler.SwitchWeapons( Weapon.WeaponType.Primary );
+            }
+            else if ( Input.GetButtonDown( inputSettings.secondaryWeaponButton ) )
+            {
+                weaponHandler.SwitchWeapons( Weapon.WeaponType.Secondary );
+            }
+            else if ( Input.GetButtonDown( inputSettings.sidearmButton ) )
+            {
+                //weaponHandler.SwitchWeapons( Weapon.WeaponType.Sidearm );
+                weaponHandler.SwitchWeapons( Weapon.WeaponType.Secondary );
             }
 
             if ( weaponHandler.currentWeapon )

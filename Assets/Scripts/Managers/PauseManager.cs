@@ -23,6 +23,8 @@ namespace DivisionLike
         void Start()
         {
             canvas = GetComponent<Canvas>();
+
+            
         }
 
         void Update()
@@ -36,6 +38,9 @@ namespace DivisionLike
 
         public void Pause()
         {
+            //Cursor.lockState = CursorLockMode.None;
+            //Cursor.visible = true;
+
             Time.timeScale = Time.timeScale == 0 ? 1 : 0;
             Lowpass();
 

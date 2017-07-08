@@ -11,18 +11,20 @@ namespace DivisionLike
     [RequireComponent( typeof( Rigidbody ) )]
     public class Weapon : MonoBehaviour
     {
-        Collider col;
-        Rigidbody rigidBody;
-        Animator animator;
-        SoundController sc;
+        private Collider col;
+        private Rigidbody rigidBody;
+        private Animator animator;
+        private SoundController sc;
 
         public Light faceLight;
-        float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
-        float timer = 0f;
+        private float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
+        private float timer = 0f;
 
         public enum WeaponType
         {
-            Pistol, Rifle
+            Primary = 0,
+            Secondary,
+            Sidearm
         }
         public WeaponType weaponType;
 
@@ -86,16 +88,16 @@ namespace DivisionLike
         [System.Serializable]
         public class Ammunition
         {
-            public int carryingAmmo;
-            public int clipAmmo;
-            public int maxClipAmmo;
+            public int carryingAmmo;    // 장전되어 있는 총알의 개수
+            public int clipAmmo;        // 모든 총알의 개수
+            public int maxClipAmmo;     // 장전될 수 있는 총알의 최대 개수
         }
         [SerializeField]
         public Ammunition ammo;
 
-        WeaponHandler owner;
-        bool equipped;
-        bool resettingCartridge;
+        private WeaponHandler owner;
+        private bool isEquipped;
+        private bool resettingCartridge;
 
         [System.Serializable]
         public class SoundSettings
@@ -107,7 +109,7 @@ namespace DivisionLike
             public AudioSource audioS;
         }
         [SerializeField]
-        public SoundSettings sounds;
+        public SoundSettings soundSettings;
 
         // Use this for initialization
         void Start()
@@ -133,7 +135,7 @@ namespace DivisionLike
             if ( owner )
             {
                 DisableEnableComponents( false );
-                if ( equipped )
+                if ( isEquipped )
                 {
                     if ( owner.userSettings.rightHand )
                     {
@@ -181,7 +183,7 @@ namespace DivisionLike
         //This fires the weapon
         public void Fire( Ray ray )
         {
-            if ( ammo.clipAmmo <= 0 || resettingCartridge || !weaponSettings.bulletSpawn || !equipped )
+            if ( ammo.clipAmmo <= 0 || resettingCartridge || !weaponSettings.bulletSpawn || !isEquipped )
                 return;
 
             timer = 0f;
@@ -291,17 +293,17 @@ namespace DivisionLike
                 return;
             }
 
-            if ( sounds.audioS != null )
+            if ( soundSettings.audioS != null )
             {
-                if ( sounds.gunshotSounds.Length > 0 )
+                if ( soundSettings.gunshotSounds.Length > 0 )
                 {
                     sc.InstantiateClip(
                         weaponSettings.bulletSpawn.position, // Where we want to play the sound from
-                        sounds.gunshotSounds[ Random.Range( 0, sounds.gunshotSounds.Length ) ],  // What audio clip we will use for this sound
+                        soundSettings.gunshotSounds[ Random.Range( 0, soundSettings.gunshotSounds.Length ) ],  // What audio clip we will use for this sound
                         2, // How long before we destroy the audio
                         true, // Do we want to randomize the sound?
-                        sounds.pitchMin, // The minimum pitch that the sound will use.
-                        sounds.pitchMax ); // The maximum pitch that the sound will use.
+                        soundSettings.pitchMin, // The minimum pitch that the sound will use.
+                        soundSettings.pitchMax ); // The maximum pitch that the sound will use.
                 }
             }
         }
@@ -324,9 +326,9 @@ namespace DivisionLike
         //Equips this weapon to the hand
         void Equip()
         {
-            if ( !owner )
+            if ( owner == null )
                 return;
-            else if ( !owner.userSettings.rightHand )
+            else if ( owner.userSettings.rightHand == false )
                 return;
 
             transform.SetParent( owner.userSettings.rightHand );
@@ -338,16 +340,20 @@ namespace DivisionLike
         //Unequips the weapon and places it to the desired location
         void Unequip( WeaponType wpType )
         {
-            if ( !owner )
+            if ( owner == null )
                 return;
 
             switch ( wpType )
             {
-                case WeaponType.Pistol:
+                case WeaponType.Primary:
+                    transform.SetParent( owner.userSettings.rifleUnequipSpot );
+                    break;
+                case WeaponType.Secondary:
                     transform.SetParent( owner.userSettings.pistolUnequipSpot );
                     break;
-                case WeaponType.Rifle:
-                    transform.SetParent( owner.userSettings.rifleUnequipSpot );
+                case WeaponType.Sidearm:
+                    break;
+                default:
                     break;
             }
             transform.localPosition = weaponSettings.unequipPosition;
@@ -375,7 +381,7 @@ namespace DivisionLike
         //Sets the weapons equip state
         public void SetEquipped( bool equip )
         {
-            equipped = equip;
+            isEquipped = equip;
         }
 
         //Sets the owner of this weapon

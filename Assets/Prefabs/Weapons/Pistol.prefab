@@ -683,7 +683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faceLight: {fileID: 108780772912672168}
-  weaponType: 0
+  weaponType: 1
   weaponName: Makarov
   userSettings:
     leftHandIKTarget: {fileID: 0}
@@ -701,7 +701,6 @@ MonoBehaviour:
     decal: {fileID: 128808, guid: e0711ea9c0e244144834a5cc1d62cbcd, type: 2}
     shell: {fileID: 196100, guid: d4284630ed4e2434591827622ca2c585, type: 2}
     clip: {fileID: 0}
-    crosshairPrefab: {fileID: 136122, guid: 9478718a48183634280cb1aa21dbe054, type: 2}
     reloadDuration: 2
     shellEjectSpot: {fileID: 4222995817646962}
     shellEjectSpeed: 1.25
