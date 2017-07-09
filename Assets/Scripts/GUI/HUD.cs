@@ -17,9 +17,9 @@ namespace DivisionLike
         {
             Debug.Log( "HUD Awake()" );
 
-            clipAmmoText = transform.Find( "Ammo/ClipAmmoText" ).GetComponent<Text>();
-            carryingAmmoText = transform.Find( "Ammo/CarryingAmmoText" ).GetComponent<Text>();
-            maxClipAmmoText = transform.Find( "Ammo/MaxClipAmmoText" ).GetComponent<Text>();
+            clipAmmoText = transform.Find( "PlayerHUD/Ammo/ClipAmmoText" ).GetComponent<Text>();
+            carryingAmmoText = transform.Find( "PlayerHUD/Ammo/CarryingAmmoText" ).GetComponent<Text>();
+            maxClipAmmoText = transform.Find( "PlayerHUD/Ammo/MaxClipAmmoText" ).GetComponent<Text>();
 
             weaponHandler = Player.instance.weaponHandler;
 

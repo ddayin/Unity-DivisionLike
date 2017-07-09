@@ -20,6 +20,8 @@ namespace DivisionLike
 
         Canvas canvas;
 
+        public bool isPaused = false;
+
         void Start()
         {
             canvas = GetComponent<Canvas>();
@@ -32,32 +34,55 @@ namespace DivisionLike
             if ( Input.GetKeyDown( KeyCode.Escape ) )
             {
                 canvas.enabled = !canvas.enabled;
+                
                 Pause();
             }
         }
 
         public void Pause()
         {
-            //Cursor.lockState = CursorLockMode.None;
-            //Cursor.visible = true;
+            isPaused = !isPaused;
 
-            Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+            if ( isPaused == true )
+            {
+                Time.timeScale = 0;
+            }
+            else if ( isPaused == false )
+            {
+                Time.timeScale = 1;
+            }
+
+            ShowMouseCursor( isPaused );
+
             Lowpass();
 
         }
 
         void Lowpass()
         {
-            if ( Time.timeScale == 0 )
+            if ( isPaused == true )
             {
                 paused.TransitionTo( .01f );
             }
-
-            else
-
+            else if ( isPaused == false )
             {
                 unpaused.TransitionTo( .01f );
             }
+        }
+
+        private void ShowMouseCursor( bool isShow )
+        {
+            if ( isShow == true )
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else if ( isShow == false )
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            
         }
 
         public void Quit()
