@@ -805,7 +805,8 @@ MonoBehaviour:
     carryingAmmo: 120
     clipAmmo: 30
     maxClipAmmo: 30
-  sounds:
+    clipInfiniteAmmo: 0
+  soundSettings:
     gunshotSounds:
     - {fileID: 8300000, guid: bbbad7ab8e572094383f2b44bfafe171, type: 3}
     - {fileID: 8300000, guid: bbf9ecc1037f1114f8983a624a41c2f6, type: 3}
