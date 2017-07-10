@@ -88,9 +88,10 @@ namespace DivisionLike
         [System.Serializable]
         public class Ammunition
         {
-            public int carryingAmmo;    // 장전되어 있는 총알의 개수
-            public int clipAmmo;        // 모든 총알의 개수
+            public int carryingAmmo;    // 모든 총알의 개수
+            public int clipAmmo;        // 장전되어 있는 총알의 개수 
             public int maxClipAmmo;     // 장전될 수 있는 총알의 최대 개수
+            public bool clipInfiniteAmmo = false;    // 모든 총알의 개수가 무한개인지
         }
         [SerializeField]
         public Ammunition ammo;
@@ -125,6 +126,10 @@ namespace DivisionLike
             rigidBody = GetComponent<Rigidbody>();
             animator = GetComponent<Animator>();
 
+            if ( ammo.clipInfiniteAmmo == true )
+            {
+                ammo.carryingAmmo = int.MaxValue;
+            }
         }
 
         // Update is called once per frame

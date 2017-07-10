@@ -717,13 +717,10 @@ MonoBehaviour:
     carryingAmmo: 95
     clipAmmo: 15
     maxClipAmmo: 15
-  sounds:
-    gunshotSounds:
-    - {fileID: 8300000, guid: 6ef43428874da924781868e481a239f9, type: 3}
-    - {fileID: 8300000, guid: 92dcb3e98752cd441ad3002dd6113c39, type: 3}
-    - {fileID: 8300000, guid: a7039fd74142f864a927f3ee9f0eb9fd, type: 3}
-    - {fileID: 8300000, guid: 64d8c57d9dc36c944b0eff7329f32f08, type: 3}
-    reloadSound: {fileID: 8300000, guid: 2645cb67f01db5045bda3f74185dff24, type: 3}
+    clipInfiniteAmmo: 1
+  soundSettings:
+    gunshotSounds: []
+    reloadSound: {fileID: 0}
     pitchMin: 1
     pitchMax: 1.2
-    audioS: {fileID: 82286457254552116}
+    audioS: {fileID: 0}

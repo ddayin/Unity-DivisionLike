@@ -8,6 +8,16 @@ namespace DivisionLike
     {
         public Dictionary<string, Weapon> dicWeapons = new Dictionary<string, Weapon>();
 
+        public uint medikit;
+        public const uint medikitMax = 5;
+        public uint grenade;
+        public const uint grenadeMax = 4;
+
+        private void Awake()
+        {
+            
+        }
+
         public bool ObtainAllItems()
         {
             // TODO: v 키를 누르면 바닥에 떨어진 근처 아이템을 모두 줍는다
