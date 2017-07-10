@@ -3,6 +3,7 @@
  */
 
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace DivisionLike
 {
@@ -11,10 +12,10 @@ namespace DivisionLike
         public int startingHealth = 100;            // The amount of health the enemy starts the game with.
         public int currentHealth;                   // The current health the enemy has.
         public float sinkSpeed = 2.5f;              // The speed at which the enemy sinks through the floor when dead.
-        public int scoreValue = 10;                 // The amount added to the player's score when the enemy dies.
         public AudioClip deathClip;                 // The sound to play when the enemy dies.
 
         private EnemyStats stats;
+        private EnemyUI ui;
 
         private Animator anim;                              // Reference to the animator.
         private AudioSource enemyAudio;                     // Reference to the audio source.
@@ -22,7 +23,8 @@ namespace DivisionLike
         private CapsuleCollider capsuleCollider;            // Reference to the capsule collider.
         private bool isDead;                                // Whether the enemy is dead.
         private bool isSinking;                             // Whether the enemy has started sinking through the floor.
-
+        
+        
 
         void Awake()
         {
@@ -32,7 +34,8 @@ namespace DivisionLike
             enemyAudio = GetComponent<AudioSource>();
             hitParticles = GetComponentInChildren<ParticleSystem>();
             capsuleCollider = GetComponent<CapsuleCollider>();
-
+            ui = transform.Find( "EnemyCanvas" ).GetComponent<EnemyUI>();
+            
             // Setting the current health when the enemy first spawns.
             currentHealth = startingHealth;
         }
@@ -61,6 +64,8 @@ namespace DivisionLike
 
             // Reduce the current health by the amount of damage sustained.
             currentHealth -= amount;
+
+            ui.SetHealthSlider( currentHealth );
 
             // Set the position of the particle system to where the hit was sustained.
             hitParticles.transform.position = hitPoint;
@@ -106,10 +111,7 @@ namespace DivisionLike
 
             // The enemy should no sink.
             isSinking = true;
-
-            // Increase the score by the enemy's score value.
-            ScoreManager.score += scoreValue;
-
+            
             // After 2 seconds destory the enemy.
             Destroy( gameObject, 2f );
         }
