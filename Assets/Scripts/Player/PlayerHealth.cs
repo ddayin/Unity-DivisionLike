@@ -83,6 +83,15 @@ namespace DivisionLike
             }
         }
 
+        public void Recover()
+        {
+            currentHealth = startingHealth;
+
+            healthSlider.value = currentHealth;
+
+            PlayerHUD.instance.SetMedikitText();
+        }
+
 
         void Death()
         {

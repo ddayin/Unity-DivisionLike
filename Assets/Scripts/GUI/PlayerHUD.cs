@@ -17,6 +17,7 @@ namespace DivisionLike
 
         private WeaponHandler weaponHandler;
         private Weapon anotherWeapon = null;
+
         void Awake()
         {
             Debug.Log( "PlayerHUD Awake()" );
@@ -28,7 +29,7 @@ namespace DivisionLike
             {
                 Destroy( gameObject );
             }
-
+            
             clipAmmoText = transform.Find( "PlayerHUD/Ammo/ClipAmmoText" ).GetComponent<Text>();
             carryingAmmoText = transform.Find( "PlayerHUD/Ammo/CarryingAmmoText" ).GetComponent<Text>();
             AnotherAmmoText = transform.Find( "PlayerHUD/Ammo/AnotherAmmoText" ).GetComponent<Text>();
@@ -39,6 +40,7 @@ namespace DivisionLike
 
             SetAnotherWeapon();
             SetAmmoText();
+            SetMedikitText();
         }
 
         private void SetAmmoText()
@@ -62,6 +64,11 @@ namespace DivisionLike
             }
 
             anotherWeapon = weaponHandler.dicWeapons[ anotherType ];
+        }
+
+        public void SetMedikitText()
+        {
+            medikitNumberText.text = Player.instance.inventory.medikit.ToString();
         }
 
         // Update is called once per frame

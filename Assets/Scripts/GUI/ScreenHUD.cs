@@ -44,8 +44,8 @@ namespace DivisionLike
             Player.instance.stats.CheckLevel();
             
             float normalizedXP = (float) (Player.instance.stats.xp) / (float) (Player.instance.stats.xpRequire[ Player.instance.stats.level - 1 ]);
-            Debug.Log( "player xp = " + Player.instance.stats.xp );
-            Debug.Log( "normalized xp = " + normalizedXP );
+            //Debug.Log( "player xp = " + Player.instance.stats.xp );
+            //Debug.Log( "normalized xp = " + normalizedXP );
             expSlider.normalizedValue = normalizedXP;
         }
 

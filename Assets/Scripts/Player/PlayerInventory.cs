@@ -13,9 +13,11 @@ namespace DivisionLike
         public uint grenade;
         public const uint grenadeMax = 4;
 
+        private PlayerHealth health;
+
         private void Awake()
         {
-            
+            health = transform.GetComponent<PlayerHealth>();
         }
 
         public bool ObtainAllItems()
@@ -39,5 +41,21 @@ namespace DivisionLike
         {
             // TODO: 인벤토리 GUI 표시
         }
+
+        public void UseMedikit()
+        {
+            if ( medikit <= 0 )
+            {
+                return;
+            }
+
+            Debug.Log( "use medikit" );
+
+            medikit--;
+            
+
+            health.Recover();
+        }
+
     }
 }

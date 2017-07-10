@@ -65,7 +65,7 @@ namespace DivisionLike
                     
                     xp = 0;
 
-                    Debug.LogWarning( "level = " + level + " xp = " + xp );
+                    //Debug.LogWarning( "level = " + level + " xp = " + xp );
 
                     ScreenHUD.instance.SetLevelText();
                 }

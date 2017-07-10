@@ -12,6 +12,7 @@ namespace DivisionLike
     {
         public CharacterMovement characterMove { get; protected set; }
         public WeaponHandler weaponHandler { get; protected set; }
+        private PlayerInventory inventory;
         public CrosshairHandler crosshairHandler;
 
         [System.Serializable]
@@ -28,6 +29,7 @@ namespace DivisionLike
             public string secondaryWeaponButton = "2";
             public string sidearmButton = "3";
             public string sprintButton = "Sprint";
+            public string medikitButton = "Medikit";
         }
         [SerializeField]
         public InputSettings inputSettings;
@@ -56,6 +58,8 @@ namespace DivisionLike
         {
             characterMove = GetComponent<CharacterMovement>();
             weaponHandler = GetComponent<WeaponHandler>();
+            inventory = GetComponent<PlayerInventory>();
+
             SetupCrosshairs();
 
             Cursor.lockState = CursorLockMode.Locked;
@@ -86,6 +90,7 @@ namespace DivisionLike
             CharacterLogic();
             CameraLookLogic();
             WeaponLogic();
+            InventoryLogic();
         }
 
         void LateUpdate()
@@ -209,6 +214,14 @@ namespace DivisionLike
                 TurnOffAllCrosshairs();
             }
 
+        }
+
+        private void InventoryLogic()
+        {
+            if ( Input.GetButtonDown( inputSettings.medikitButton ) )
+            {
+                inventory.UseMedikit();
+            }
         }
 
         Vector3 fireDirection;
