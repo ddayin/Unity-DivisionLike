@@ -9,7 +9,10 @@ namespace DivisionLike
     {
         public static Player instance = null;
 
+        public PlayerStats stats;
+        public PlayerHealth health;
         public UserInput userInput;
+        public PlayerInventory inventory;
         public WeaponHandler weaponHandler;
 
         void Awake()
@@ -26,8 +29,10 @@ namespace DivisionLike
 
             DontDestroyOnLoad( gameObject );
 
-
+            stats = transform.GetComponent<PlayerStats>();
+            health = transform.GetComponent<PlayerHealth>();
             userInput = transform.GetComponent<UserInput>();
+            inventory = transform.GetComponent<PlayerInventory>();
             weaponHandler = transform.GetComponent<WeaponHandler>();
         }
     }

@@ -120,7 +120,6 @@ GameObject:
   - component: {fileID: 114252765606439260}
   - component: {fileID: 225640906213030682}
   - component: {fileID: 95479901541702448}
-  - component: {fileID: 114254720608740356}
   - component: {fileID: 114909122256230466}
   - component: {fileID: 114020314041353882}
   m_Layer: 5
@@ -158,7 +157,7 @@ GameObject:
   - component: {fileID: 222186938435289728}
   - component: {fileID: 114963184194260912}
   m_Layer: 5
-  m_Name: MaxClipAmmoText
+  m_Name: AnotherAmmoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,19 +324,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114254720608740356
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1446124120762668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a210693e63307044a858d1787aacd62c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
-  isImortalMode: 1
 --- !u!114 &114342707650891216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -516,7 +502,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 30
+  m_Text: 0
 --- !u!222 &222186938435289728
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -658,7 +644,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1642000093924188}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00001335144}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224163760050880676}
@@ -666,7 +652,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -33}
+  m_AnchoredPosition: {x: 0.0000076293945, y: -33.000008}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224585542448406350

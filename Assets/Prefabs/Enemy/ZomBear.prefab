@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 11400004}
   - component: {fileID: 11400002}
   - component: {fileID: 11400000}
+  - component: {fileID: 114248019873103270}
   - component: {fileID: 8200000}
   - component: {fileID: 11400006}
   m_Layer: 13
@@ -6822,3 +6823,17 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
+--- !u!114 &114248019873103270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56460e3b546ec5345a20982db8d7a6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
+  armor: 0
+  xpWhenDie: 1000

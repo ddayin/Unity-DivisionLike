@@ -83,6 +83,7 @@ GameObject:
   - component: {fileID: 11487314}
   - component: {fileID: 11402556}
   - component: {fileID: 11415352}
+  - component: {fileID: 114157366135936182}
   m_Layer: 13
   m_Name: Hellephant
   m_TagString: Untagged
@@ -6835,3 +6836,17 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 153412}
   m_IsPrefabParent: 1
+--- !u!114 &114157366135936182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56460e3b546ec5345a20982db8d7a6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
+  armor: 0
+  xpWhenDie: 10000

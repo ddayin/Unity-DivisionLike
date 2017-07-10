@@ -166,6 +166,7 @@ namespace DivisionLike
             {
                 weaponHandler.SwitchWeapons();
                 UpdateCrosshairs();
+                PlayerHUD.instance.SetAnotherWeapon();
             }
 
             if ( Input.GetButtonDown( inputSettings.primaryWeaponButton ) )

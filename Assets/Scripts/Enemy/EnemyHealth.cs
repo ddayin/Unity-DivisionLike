@@ -14,18 +14,20 @@ namespace DivisionLike
         public int scoreValue = 10;                 // The amount added to the player's score when the enemy dies.
         public AudioClip deathClip;                 // The sound to play when the enemy dies.
 
+        private EnemyStats stats;
 
-        Animator anim;                              // Reference to the animator.
-        AudioSource enemyAudio;                     // Reference to the audio source.
-        ParticleSystem hitParticles;                // Reference to the particle system that plays when the enemy is damaged.
-        CapsuleCollider capsuleCollider;            // Reference to the capsule collider.
-        bool isDead;                                // Whether the enemy is dead.
-        bool isSinking;                             // Whether the enemy has started sinking through the floor.
+        private Animator anim;                              // Reference to the animator.
+        private AudioSource enemyAudio;                     // Reference to the audio source.
+        private ParticleSystem hitParticles;                // Reference to the particle system that plays when the enemy is damaged.
+        private CapsuleCollider capsuleCollider;            // Reference to the capsule collider.
+        private bool isDead;                                // Whether the enemy is dead.
+        private bool isSinking;                             // Whether the enemy has started sinking through the floor.
 
 
         void Awake()
         {
             // Setting up the references.
+            stats = GetComponent<EnemyStats>();
             anim = GetComponent<Animator>();
             enemyAudio = GetComponent<AudioSource>();
             hitParticles = GetComponentInChildren<ParticleSystem>();
@@ -85,6 +87,8 @@ namespace DivisionLike
 
             // Tell the animator that the enemy is dead.
             anim.SetTrigger( "Dead" );
+
+            ScreenHUD.instance.CalculateExpSlider( stats.xpWhenDie );
 
             // Change the audio clip of the audio source to the death clip and play it (this will stop the hurt clip playing).
             enemyAudio.clip = deathClip;
