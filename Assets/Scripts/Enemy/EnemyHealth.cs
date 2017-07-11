@@ -67,6 +67,8 @@ namespace DivisionLike
 
             ui.SetHealthSlider( currentHealth );
 
+            ui.CreateDamageText( amount.ToString() );
+
             // Set the position of the particle system to where the hit was sustained.
             hitParticles.transform.position = hitPoint;
 

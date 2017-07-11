@@ -510,7 +510,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -1672014475
+  randomSeed: -1792723461
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6896,6 +6896,7 @@ GameObject:
   - component: {fileID: 114336588549590394}
   - component: {fileID: 114049570949755496}
   - component: {fileID: 114992256619130718}
+  - component: {fileID: 114728240411160008}
   m_Layer: 13
   m_Name: EnemyCanvas
   m_TagString: Untagged
@@ -7071,6 +7072,19 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114728240411160008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1747847332707334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4fe92274d36316438e4420355e370c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupText: {fileID: 114780391189135322, guid: 7a66acc00a8e1e045bd3e67dfc7297bd,
+    type: 2}
 --- !u!114 &114729425153227828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7149,7 +7163,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1747847332707334}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.6}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 224972293088411966}
@@ -7158,7 +7172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.91}
+  m_AnchoredPosition: {x: 0, y: 0.6}
   m_SizeDelta: {x: 130, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224428778003012742
@@ -7252,6 +7266,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 113}
   m_SizeDelta: {x: 130, y: 20}
   m_Pivot: {x: 0, y: 0}
