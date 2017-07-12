@@ -17,12 +17,18 @@ namespace DivisionLike
             walkSize = crosshairs[ 0 ].rectTransform.localPosition.y;
         }
 
+        private void OnEnable()
+        {
+            walkSize = 10f;
+
+        }
+
         private void Update()
         {
             UpdateCrosshair();
         }
 
-        override public void ChangeColor( Color color )
+        public override void ChangeColor( Color color )
         {
             Debug.Log( "CrosshairAR.ChangeColor() overrided" );
             for ( int i = 0; i < 4; i++ )

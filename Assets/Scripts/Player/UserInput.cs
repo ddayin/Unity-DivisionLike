@@ -250,7 +250,6 @@ namespace DivisionLike
 
             if ( Physics.Raycast( firePoint, ( fireDirection ), out hit, range ) )
             {
-                // Scale if crosshair is on something:
                 if ( hit.transform.gameObject.layer == 13 )
                 {
                     Debug.LogWarning( "crosshair Red" );
@@ -258,6 +257,7 @@ namespace DivisionLike
                 }
                 else
                 {
+                    Debug.Log( "crosshair white" );
                     crosshair.ChangeColor( Color.white );
                 }
             }

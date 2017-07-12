@@ -7,9 +7,9 @@ using UnityEngine.UI;
 
 namespace DivisionLike
 {
-    public abstract class CrosshairHandler : MonoBehaviour
+    public class CrosshairHandler : MonoBehaviour
     {
-        virtual public void ChangeColor( Color color )
+        public virtual void ChangeColor( Color color )
         {
             Debug.Log( "CrosshairHandler.ChangeColor() virtual" );
         }

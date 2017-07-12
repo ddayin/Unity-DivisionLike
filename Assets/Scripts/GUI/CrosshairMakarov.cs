@@ -11,19 +11,19 @@ namespace DivisionLike
 
         private void Awake()
         {
-            image = transform.GetComponent<Image>();
+            image = GetComponent<Image>();
         }
 
-        override public void ChangeColor( Color color )
+        public override void ChangeColor( Color _color )
         {
             Debug.Log( "CrosshairMakarov.ChangeColor() overrided" );
 
             // FIXME: this is a tricky way....:(
             if ( image == null )
             {
-                image = transform.GetComponent<Image>();
+                image = GetComponent<Image>();
             }
-            image.color = color;
+            image.CrossFadeColor( _color, 0.1f, false, false );
         }
     }
 }
