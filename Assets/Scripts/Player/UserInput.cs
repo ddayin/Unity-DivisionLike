@@ -3,6 +3,7 @@
  */
 
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -49,7 +50,8 @@ namespace DivisionLike
 
         public bool debugAim;
         public Transform spine;
-        public bool aiming = false;
+        public bool isAiming = false;
+        public bool isSprinting = false;
 
         private Dictionary<Weapon, GameObject> crosshairPrefabMap = new Dictionary<Weapon, GameObject>();
 
@@ -66,23 +68,7 @@ namespace DivisionLike
             Cursor.visible = false;
         }
 
-        void SetupCrosshairs()
-        {
-            //if ( weaponHandler.weaponsList.Count > 0 )
-            //{
-            //    foreach ( Weapon wep in weaponHandler.weaponsList )
-            //    {
-            //        GameObject prefab = wep.weaponSettings.crosshairPrefab;
-            //        if ( prefab != null )
-            //        {
-            //            GameObject clone = (GameObject) Instantiate( prefab );
-            //            crosshairPrefabMap.Add( wep, clone );
-            //            ToggleCrosshair( false, wep );
-            //        }
-            //    }
-            //}
-            ToggleCrosshair( false, null );
-        }
+        
 
         // Update is called once per frame
         void Update()
@@ -99,7 +85,7 @@ namespace DivisionLike
             {
                 if ( weaponHandler.currentWeapon )
                 {
-                    if ( aiming )
+                    if ( isAiming )
                         PositionSpine();
                 }
             }
@@ -115,7 +101,7 @@ namespace DivisionLike
             float h = Input.GetAxis( inputSettings.horizontalAxis );
 
             // always walk when player is aiming
-            if ( Player.instance.userInput.aiming == true )
+            if ( Player.instance.userInput.isAiming == true )
             {
                 characterMove.Animate( v * 0.5f, h * 0.5f );
             }
@@ -124,11 +110,13 @@ namespace DivisionLike
                 // sprint
                 if ( Input.GetButton( inputSettings.sprintButton ) == true )
                 {
+                    isSprinting = true;
                     characterMove.Animate( v, h );
                 }
                 // walk
                 else
                 {
+                    isSprinting = false;
                     characterMove.Animate( v * 0.5f, h * 0.5f );
                 }
             }
@@ -143,7 +131,7 @@ namespace DivisionLike
             if ( !TPSCamera )
                 return;
 
-            otherSettings.requireInputForTurn = !aiming;
+            otherSettings.requireInputForTurn = !isAiming;
 
             if ( otherSettings.requireInputForTurn )
             {
@@ -164,8 +152,8 @@ namespace DivisionLike
             if ( !weaponHandler )
                 return;
 
-            aiming = Input.GetButton( inputSettings.aimButton ) || debugAim;
-            weaponHandler.Aim( aiming );
+            isAiming = Input.GetButton( inputSettings.aimButton ) || debugAim;
+            weaponHandler.Aim( isAiming );
 
             if ( Input.GetButtonDown( inputSettings.switchWeaponButton ) )
             {
@@ -193,12 +181,12 @@ namespace DivisionLike
                 Ray aimRay = new Ray( TPSCamera.transform.position, TPSCamera.transform.forward );
 
                 //Debug.DrawRay (aimRay.origin, aimRay.direction);
-                if ( Input.GetButton( inputSettings.fireButton ) && aiming )
+                if ( Input.GetButton( inputSettings.fireButton ) && isAiming )
                     weaponHandler.FireCurrentWeapon( aimRay );
                 if ( Input.GetButtonDown( inputSettings.reloadButton ) )
                     weaponHandler.Reload();
 
-                if ( aiming )
+                if ( isAiming )
                 {
                     ToggleCrosshair( true, weaponHandler.currentWeapon );
                     //PositionCrosshair( aimRay, weaponHandler.currentWeapon );
@@ -224,6 +212,28 @@ namespace DivisionLike
             }
         }
 
+#region crosshair
+
+        private void SetupCrosshairs()
+        {
+            if ( weaponHandler.weaponsList.Count > 0 )
+            {
+                foreach ( Weapon wep in weaponHandler.weaponsList )
+                {
+                    GameObject prefab = wep.weaponSettings.crosshairPrefab;
+                    if ( prefab != null )
+                    {
+                        GameObject clone = (GameObject) Instantiate( prefab );
+                        clone.transform.SetParent( ScreenHUD.instance.transform );
+                        clone.transform.localPosition = Vector3.zero;
+                        
+                        crosshairPrefabMap.Add( wep, clone );
+                        ToggleCrosshair( false, wep );
+                    }
+                }
+            }
+        }
+
         Vector3 fireDirection;
         Vector3 firePoint;
 
@@ -236,56 +246,57 @@ namespace DivisionLike
             // Debug the ray out in the editor:
             Debug.DrawRay( firePoint, fireDirection, Color.green );
 
+            CrosshairHandler crosshair = weaponHandler.currentWeapon.weaponSettings.crosshairPrefab.GetComponent<CrosshairHandler>();
+
             if ( Physics.Raycast( firePoint, ( fireDirection ), out hit, range ) )
             {
                 // Scale if crosshair is on something:
-
-
                 if ( hit.transform.gameObject.layer == 13 )
                 {
-                    crosshairHandler.ChangeColor( Color.red );
+                    Debug.LogWarning( "crosshair Red" );
+                    crosshair.ChangeColor( Color.red );
                 }
                 else
                 {
-                    crosshairHandler.ChangeColor( Color.white );
+                    crosshair.ChangeColor( Color.white );
                 }
             }
             else
             {
-                crosshairHandler.ChangeColor( Color.white );
+                crosshair.ChangeColor( Color.white );
             }
         }
 
-        void TurnOffAllCrosshairs()
+        private void TurnOffAllCrosshairs()
         {
-            //foreach ( Weapon wep in crosshairPrefabMap.Keys )
-            //{
-            //    ToggleCrosshair( false, wep );
-            //}
-            ToggleCrosshair( false, null );
+            foreach ( Weapon wep in crosshairPrefabMap.Keys )
+            {
+                ToggleCrosshair( false, wep );
+            }
         }
 
-        //void CreateCrosshair( Weapon wep )
-        //{
-        //    GameObject prefab = wep.weaponSettings.crosshairPrefab;
-        //    if ( prefab != null )
-        //    {
-        //        prefab = Instantiate( prefab );
-        //        ToggleCrosshair( false, wep );
-        //    }
-        //}
+        private void CreateCrosshair( Weapon wep )
+        {
+            GameObject prefab = wep.weaponSettings.crosshairPrefab;
+            if ( prefab != null )
+            {
+                prefab = Instantiate( prefab );
+                prefab.transform.SetParent( ScreenHUD.instance.transform );
+                ToggleCrosshair( false, wep );
+            }
+        }
 
-        //void DeleteCrosshair( Weapon wep )
-        //{
-        //    if ( !crosshairPrefabMap.ContainsKey( wep ) )
-        //        return;
+        private void DeleteCrosshair( Weapon wep )
+        {
+            if ( !crosshairPrefabMap.ContainsKey( wep ) )
+                return;
 
-        //    Destroy( crosshairPrefabMap[ wep ] );
-        //    crosshairPrefabMap.Remove( wep );
-        //}
+            Destroy( crosshairPrefabMap[ wep ] );
+            crosshairPrefabMap.Remove( wep );
+        }
 
         // Position the crosshair to the point that we are aiming
-        //void PositionCrosshair( Ray ray, Weapon wep )
+        //private void PositionCrosshair( Ray ray, Weapon wep )
         //{
         //    Weapon curWeapon = weaponHandler.currentWeapon;
         //    if ( curWeapon == null )
@@ -293,7 +304,7 @@ namespace DivisionLike
         //    if ( !crosshairPrefabMap.ContainsKey( wep ) )
         //        return;
 
-        //    //GameObject crosshairPrefab = crosshairPrefabMap[ wep ];
+        //    GameObject crosshairPrefab = crosshairPrefabMap[ wep ];
         //    RaycastHit hit;
         //    Transform bSpawn = curWeapon.weaponSettings.bulletSpawn;
         //    Vector3 bSpawnPoint = bSpawn.position;
@@ -320,31 +331,29 @@ namespace DivisionLike
         //}
 
         // Toggle on and off the crosshair prefab
-        void ToggleCrosshair( bool enabled, Weapon wep )
+        private void ToggleCrosshair( bool enabled, Weapon wep )
         {
-            //if ( !crosshairPrefabMap.ContainsKey( wep ) )
-            //    return;
+            if ( !crosshairPrefabMap.ContainsKey( wep ) )
+                return;
 
-            //crosshairPrefabMap[ wep ].SetActive( enabled );
-
-            crosshairHandler.gameObject.SetActive( enabled );
+            crosshairPrefabMap[ wep ].SetActive( enabled );
         }
 
-        void UpdateCrosshairs()
+        private void UpdateCrosshairs()
         {
             if ( weaponHandler.weaponsList.Count == 0 )
                 return;
 
-            //foreach ( Weapon wep in weaponHandler.weaponsList )
-            //{
-            //    if ( wep != weaponHandler.currentWeapon )
-            //    {
-            //        ToggleCrosshair( false, wep );
-            //    }
-            //}
-
-            ToggleCrosshair( false, null );
+            foreach ( Weapon wep in weaponHandler.weaponsList )
+            {
+                if ( wep != weaponHandler.currentWeapon )
+                {
+                    ToggleCrosshair( false, wep );
+                }
+            }
         }
+#endregion
+
 
         //Postions the spine when aiming
         void PositionSpine()

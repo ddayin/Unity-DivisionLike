@@ -1,28 +1,17 @@
-﻿using System.Collections;
+﻿
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace DivisionLike
 {
-    public class CrosshairHandler : MonoBehaviour
+    public abstract class CrosshairHandler : MonoBehaviour
     {
-        private Image image;
-
-        // Use this for initialization
-        void Awake()
+        virtual public void ChangeColor( Color color )
         {
-            image = this.GetComponent<Image>();
-
-            gameObject.SetActive( false );
-
+            Debug.Log( "CrosshairHandler.ChangeColor() virtual" );
         }
-
-        public void ChangeColor( Color color )
-        {
-            image.color = color;
-        }
-
-
     }
 }

@@ -64,12 +64,13 @@ namespace DivisionLike
             public GameObject clip;
 
             [Header( "-Other-" )]
-            //public GameObject crosshairPrefab;
+            public GameObject crosshairPrefab;
             public float reloadDuration = 2.0f;
             public Transform shellEjectSpot;
             public float shellEjectSpeed = 7.5f;
             public Transform clipEjectPos;
             public GameObject clipGO;
+            public float crossHairSize;
 
             [Header( "-Positioning-" )]
             public Vector3 equipPosition;

@@ -789,11 +789,14 @@ MonoBehaviour:
     decal: {fileID: 128808, guid: e0711ea9c0e244144834a5cc1d62cbcd, type: 2}
     shell: {fileID: 196100, guid: d4284630ed4e2434591827622ca2c585, type: 2}
     clip: {fileID: 0}
+    crosshairPrefab: {fileID: 1693324646535980, guid: 5fd8bead83fc56545b745fb43650c9da,
+      type: 2}
     reloadDuration: 2
     shellEjectSpot: {fileID: 426358}
     shellEjectSpeed: 7.5
     clipEjectPos: {fileID: 0}
     clipGO: {fileID: 0}
+    crossHairSize: 4
     equipPosition: {x: -0.12, y: 0.412, z: 0.027}
     equipRotation: {x: -0.4762, y: 0.3735, z: 89.9967}
     unequipPosition: {x: 0.05295895, y: 0.2719302, z: -0.1345634}

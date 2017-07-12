@@ -93,7 +93,7 @@ namespace DivisionLike
             CheckMeshRenderer();
             Zoom( Input.GetButton( inputSettings.aimButton ) );
 
-            if ( Player.instance.userInput.aiming == true )
+            if ( Player.instance.userInput.isAiming == true )
             {
                 if ( Input.GetButtonDown( inputSettings.switchShoulderButton ) )
                 {
