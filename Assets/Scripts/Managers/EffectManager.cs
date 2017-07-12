@@ -12,6 +12,7 @@ namespace DivisionLike
         public Transform particleParent;
 
         private Dictionary<int, ParticleSystem> effectDic = new Dictionary<int, ParticleSystem>();
+        private int indexDic = 0;
 
         private void Awake()
         {
@@ -22,8 +23,10 @@ namespace DivisionLike
         {
             GameObject obj = Instantiate( particlePrefabs[ index ], position, Quaternion.identity, particleParent );
             ParticleSystem particle = obj.transform.Find( "Particle System" ).GetComponent<ParticleSystem>();
+            
+            effectDic.Add( indexDic, particle );
 
-            effectDic.Add( index, particle );
+            indexDic++;
         }
 
         public ParticleSystem GetParticle( int index )
