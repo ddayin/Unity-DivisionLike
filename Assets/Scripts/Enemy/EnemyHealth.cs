@@ -97,6 +97,8 @@ namespace DivisionLike
 
             ScreenHUD.instance.CalculateExpSlider( stats.xpWhenDie );
 
+            EffectManager.instance.CreateParticle( 2, transform.position );
+
             // Change the audio clip of the audio source to the death clip and play it (this will stop the hurt clip playing).
             enemyAudio.clip = deathClip;
             enemyAudio.Play();
