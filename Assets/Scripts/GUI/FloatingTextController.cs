@@ -5,24 +5,28 @@
 using UnityEngine;
 using System.Collections;
 
-public class FloatingTextController : MonoBehaviour
+
+namespace DivisionLike
 {
-    public FloatingText popupText;
-    private GameObject canvas;
-
-    private void Awake()
+    public class FloatingTextController : MonoBehaviour
     {
-        canvas = this.gameObject;
-    }
+        public FloatingText popupText;
+        private GameObject canvas;
 
-    public void CreateFloatingText( string text, Transform location )
-    {
-        FloatingText instance = Instantiate( popupText );
-        
-        instance.transform.SetParent( canvas.transform, false );
+        private void Awake()
+        {
+            canvas = this.gameObject;
+        }
 
-        Vector3 newPos = new Vector3( location.position.x + Random.Range( -0.3f, 0.3f ), location.position.y + Random.Range( -0.3f, 0.3f ), location.position.z  );
-        instance.transform.position = newPos;
-        instance.SetText( text );
+        public void CreateFloatingText( string text, Transform location )
+        {
+            FloatingText instance = Instantiate( popupText );
+
+            instance.transform.SetParent( canvas.transform, false );
+
+            Vector3 newPos = new Vector3( location.position.x + Random.Range( -0.3f, 0.3f ), location.position.y + Random.Range( -0.3f, 0.3f ), location.position.z );
+            instance.transform.position = newPos;
+            instance.SetText( text );
+        }
     }
 }

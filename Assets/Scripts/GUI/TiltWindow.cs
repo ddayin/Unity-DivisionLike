@@ -4,30 +4,33 @@
 
 using UnityEngine;
 
-public class TiltWindow : MonoBehaviour
+namespace DivisionLike
 {
-    public Vector2 range = new Vector2( 5f, 3f );
-
-    Transform mTrans;
-    Quaternion mStart;
-    Vector2 mRot = Vector2.zero;
-
-    void Awake()
+    public class TiltWindow : MonoBehaviour
     {
-        mTrans = transform;
-        mStart = mTrans.localRotation;
-    }
+        public Vector2 range = new Vector2( 5f, 3f );
 
-    void Update()
-    {
-        Vector3 pos = Input.mousePosition;
+        Transform mTrans;
+        Quaternion mStart;
+        Vector2 mRot = Vector2.zero;
 
-        float halfWidth = Screen.width * 0.5f;
-        float halfHeight = Screen.height * 0.5f;
-        float x = Mathf.Clamp( ( pos.x - halfWidth ) / halfWidth, -1f, 1f );
-        float y = Mathf.Clamp( ( pos.y - halfHeight ) / halfHeight, -1f, 1f );
-        mRot = Vector2.Lerp( mRot, new Vector2( x, y ), Time.deltaTime * 5f );
+        void Awake()
+        {
+            mTrans = transform;
+            mStart = mTrans.localRotation;
+        }
 
-        mTrans.localRotation = mStart * Quaternion.Euler( -mRot.y * range.y, mRot.x * range.x, 0f );
+        void Update()
+        {
+            Vector3 pos = Input.mousePosition;
+
+            float halfWidth = Screen.width * 0.5f;
+            float halfHeight = Screen.height * 0.5f;
+            float x = Mathf.Clamp( ( pos.x - halfWidth ) / halfWidth, -1f, 1f );
+            float y = Mathf.Clamp( ( pos.y - halfHeight ) / halfHeight, -1f, 1f );
+            mRot = Vector2.Lerp( mRot, new Vector2( x, y ), Time.deltaTime * 5f );
+
+            mTrans.localRotation = mStart * Quaternion.Euler( -mRot.y * range.y, mRot.x * range.x, 0f );
+        }
     }
 }

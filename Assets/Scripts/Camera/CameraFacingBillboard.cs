@@ -5,18 +5,22 @@
 using UnityEngine;
 using System.Collections;
 
-public class CameraFacingBillboard : MonoBehaviour
+
+namespace DivisionLike
 {
-    public Camera m_Camera;
-
-    private void Awake()
+    public class CameraFacingBillboard : MonoBehaviour
     {
-        m_Camera = Camera.main;
-    }
+        public Camera m_Camera;
 
-    void Update()
-    {
-        transform.LookAt( transform.position + m_Camera.transform.rotation * Vector3.forward,
-            m_Camera.transform.rotation * Vector3.up );
+        private void Awake()
+        {
+            m_Camera = Camera.main;
+        }
+
+        void Update()
+        {
+            transform.LookAt( transform.position + m_Camera.transform.rotation * Vector3.forward,
+                m_Camera.transform.rotation * Vector3.up );
+        }
     }
 }
