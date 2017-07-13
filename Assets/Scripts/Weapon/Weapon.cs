@@ -277,7 +277,10 @@ namespace DivisionLike
                 {
                     Vector3 shellEjectPos = weaponSettings.shellEjectSpot.position;
                     Quaternion shellEjectRot = weaponSettings.shellEjectSpot.rotation;
-                    GameObject shell = Instantiate( weaponSettings.shell, shellEjectPos, shellEjectRot ) as GameObject;
+                    //GameObject shell = Instantiate( weaponSettings.shell, shellEjectPos, shellEjectRot ) as GameObject;
+                    GameObject shell = Lean.LeanPool.Spawn( weaponSettings.shell, shellEjectPos, shellEjectRot ) as GameObject;
+                    shell.transform.SetParent( GameObject.FindGameObjectWithTag( "Player" ).transform );
+                    //shell.transform.localScale = this.transform.localScale;
 
                     if ( shell.GetComponent<Rigidbody>() )
                     {
@@ -285,7 +288,8 @@ namespace DivisionLike
                         rigidB.AddForce( weaponSettings.shellEjectSpot.forward * weaponSettings.shellEjectSpeed, ForceMode.Impulse );
                     }
 
-                    Destroy( shell, Random.Range( 15.0f, 20.0f ) );
+                    //Destroy( shell, Random.Range( 15.0f, 20.0f ) );
+                    Lean.LeanPool.Despawn( shell, Random.Range( 15.0f, 20.0f ) );
                 }
             }
 

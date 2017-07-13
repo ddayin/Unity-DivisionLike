@@ -41,7 +41,9 @@ namespace DivisionLike
             int spawnPointIndex = Random.Range( 0, spawnPoints.Length );
 
             // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
-            Instantiate( enemy, spawnPoints[ spawnPointIndex ].position, spawnPoints[ spawnPointIndex ].rotation );
+            //Instantiate( enemy, spawnPoints[ spawnPointIndex ].position, spawnPoints[ spawnPointIndex ].rotation );
+            GameObject newEnemy = Lean.LeanPool.Spawn( enemy, spawnPoints[ spawnPointIndex ].position, spawnPoints[ spawnPointIndex ].rotation );
+            newEnemy.transform.SetParent( this.transform );
         }
     }
 }

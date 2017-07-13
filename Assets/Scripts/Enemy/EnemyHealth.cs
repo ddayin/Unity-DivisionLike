@@ -9,7 +9,7 @@ namespace DivisionLike
 {
     public class EnemyHealth : MonoBehaviour
     {
-        public int startingHealth = 100;            // The amount of health the enemy starts the game with.
+        public const int startingHealth = 100;            // The amount of health the enemy starts the game with.
         public int currentHealth;                   // The current health the enemy has.
         public float sinkSpeed = 2.5f;              // The speed at which the enemy sinks through the floor when dead.
         public AudioClip deathClip;                 // The sound to play when the enemy dies.
@@ -38,6 +38,11 @@ namespace DivisionLike
             
             // Setting the current health when the enemy first spawns.
             currentHealth = startingHealth;
+        }
+
+        private void OnEnable()
+        {
+            
         }
 
 
@@ -115,9 +120,24 @@ namespace DivisionLike
 
             // The enemy should no sink.
             isSinking = true;
-            
+
             // After 2 seconds destory the enemy.
-            Destroy( gameObject, 2f );
+            //Destroy( gameObject, 2f );
+            Lean.LeanPool.Despawn( gameObject, 2f );
+
+            Invoke( "PrepareRebirth", 2f );
+        }
+
+        // because we have object pooling system
+        private void PrepareRebirth()
+        {
+            isSinking = false;
+            GetComponent<Rigidbody>().isKinematic = false;
+            GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+            isDead = false;
+            capsuleCollider.isTrigger = false;
+            anim.SetTrigger( "Move" );
+            currentHealth = startingHealth;
         }
     }
 }

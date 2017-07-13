@@ -21,7 +21,8 @@ namespace DivisionLike
 
         public void CreateParticle( int index, Vector3 position )
         {
-            GameObject obj = Instantiate( particlePrefabs[ index ], position, Quaternion.identity, particleParent );
+            //GameObject obj = Instantiate( particlePrefabs[ index ], position, Quaternion.identity, particleParent );
+            GameObject obj = Lean.LeanPool.Spawn( particlePrefabs[ index ], position, Quaternion.identity, particleParent );
             ParticleSystem particle = obj.transform.Find( "Particle System" ).GetComponent<ParticleSystem>();
             
             effectDic.Add( indexDic, particle );

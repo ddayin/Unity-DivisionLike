@@ -27,7 +27,8 @@ namespace DivisionLike
                 if ( Player.instance.weaponHandler.currentWeapon.weaponName.Equals( "Makarov" ) == false )
                 {
                     Player.instance.inventory.ObtainAmmo( ammo );
-                    Destroy( gameObject );
+                    //Destroy( gameObject );
+                    Lean.LeanPool.Despawn( gameObject );
                 }
                 
             }

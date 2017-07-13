@@ -17,7 +17,12 @@ namespace DivisionLike
             canvas = transform.GetComponent<Canvas>();
             floatingTextController = transform.GetComponent<FloatingTextController>();
         }
-        
+
+        private void OnEnable()
+        {
+            healthSlider.normalizedValue = 1f;
+        }
+
         public void SetHealthSlider( int health )
         {
             healthSlider.value = health;
@@ -27,12 +32,7 @@ namespace DivisionLike
         {
             floatingTextController.CreateFloatingText( amount, canvas.transform );
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        
     }
 }
 
