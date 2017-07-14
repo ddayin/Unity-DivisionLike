@@ -90,6 +90,8 @@ namespace DivisionLike
             healthSlider.value = currentHealth;
 
             PlayerHUD.instance.SetMedikitText();
+
+            Player.instance.outlineEffect.Enable( 4f );
         }
 
 

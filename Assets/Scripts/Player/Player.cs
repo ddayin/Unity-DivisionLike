@@ -14,6 +14,7 @@ namespace DivisionLike
         public UserInput userInput;
         public PlayerInventory inventory;
         public WeaponHandler weaponHandler;
+        public PlayerOutlineEffect outlineEffect;
 
         void Awake()
         {
@@ -34,6 +35,7 @@ namespace DivisionLike
             userInput = transform.GetComponent<UserInput>();
             inventory = transform.GetComponent<PlayerInventory>();
             weaponHandler = transform.GetComponent<WeaponHandler>();
+            outlineEffect = transform.GetComponent<PlayerOutlineEffect>();
         }
     }
 }

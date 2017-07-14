@@ -11,7 +11,10 @@ namespace DivisionLike
         private void Awake()
         {
             lineUp = transform.GetComponent<LineRenderer>();
+        }
 
+        private void OnEnable()
+        {
             lineUp.SetPosition( 0, transform.position );
 
             Vector3 onePosition = transform.position;

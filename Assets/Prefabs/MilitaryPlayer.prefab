@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114483291404738496}
   - component: {fileID: 114880040135842886}
   - component: {fileID: 82168656781489022}
+  - component: {fileID: 114774562876285040}
   m_Layer: 0
   m_Name: MilitaryPlayer
   m_TagString: Player
@@ -241,6 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4218975669075704}
   - component: {fileID: 137038422179370986}
+  - component: {fileID: 114932861743315236}
   m_Layer: 0
   m_Name: Bottoms
   m_TagString: Untagged
@@ -632,6 +634,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4808228251491254}
   - component: {fileID: 137970577468967312}
+  - component: {fileID: 114033657919494726}
   m_Layer: 0
   m_Name: Hair
   m_TagString: Untagged
@@ -723,6 +726,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4427790870089714}
   - component: {fileID: 137678971681340764}
+  - component: {fileID: 114806837058277936}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -754,6 +758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4555090278037680}
   - component: {fileID: 137951087546146840}
+  - component: {fileID: 114050213747971388}
   m_Layer: 0
   m_Name: Tops
   m_TagString: Untagged
@@ -1057,6 +1062,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4344376858850718}
   - component: {fileID: 137906120990907706}
+  - component: {fileID: 114665249318961136}
   m_Layer: 0
   m_Name: Shoes
   m_TagString: Untagged
@@ -2378,6 +2384,36 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114033657919494726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1532022318395456}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 1
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
+--- !u!114 &114050213747971388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1660411210087468}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 1
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!114 &114107379585428848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2462,6 +2498,7 @@ MonoBehaviour:
   userInput: {fileID: 0}
   inventory: {fileID: 0}
   weaponHandler: {fileID: 0}
+  outlineEffect: {fileID: 0}
 --- !u!114 &114483291404738496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2512,7 +2549,55 @@ MonoBehaviour:
   TPSCamera: {fileID: 0}
   debugAim: 0
   spine: {fileID: 4568949691163028}
-  aiming: 0
+  isAiming: 0
+  isSprinting: 0
+--- !u!114 &114665249318961136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1906921239838682}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 1
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
+--- !u!114 &114774562876285040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008780008236374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2465babe0e7acae42bb2eefbd70611f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlines:
+  - {fileID: 114806837058277936}
+  - {fileID: 114932861743315236}
+  - {fileID: 114033657919494726}
+  - {fileID: 114665249318961136}
+  - {fileID: 114050213747971388}
+--- !u!114 &114806837058277936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1635210317279336}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 1
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!114 &114880040135842886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2526,6 +2611,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   medikit: 4
   grenade: 0
+--- !u!114 &114932861743315236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1189370607184414}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 1
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!137 &137038422179370986
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
