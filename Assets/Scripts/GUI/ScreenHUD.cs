@@ -37,16 +37,16 @@ namespace DivisionLike
 
         public void SetLevelText()
         {
-            levelText.text = Player.instance.stats.level.ToString();
+            levelText.text = Player.instance._stats._currentLevel.ToString();
             
         }
 
         public void CalculateExpSlider( int xpToAdd )
         {
-            Player.instance.stats.xp += (ulong) xpToAdd;
-            Player.instance.stats.CheckLevel();
+            Player.instance._stats._currentXP += (ulong) xpToAdd;
+            Player.instance._stats.CheckLevel();
             
-            float normalizedXP = (float) (Player.instance.stats.xp) / (float) (Player.instance.stats.xpRequire[ Player.instance.stats.level - 1 ]);
+            float normalizedXP = (float) (Player.instance._stats._currentXP) / (float) (Player.instance._stats._xpRequire[ Player.instance._stats._currentLevel - 1 ]);
             //Debug.Log( "player xp = " + Player.instance.stats.xp );
             //Debug.Log( "normalized xp = " + normalizedXP );
             xpSlider.normalizedValue = normalizedXP;
@@ -54,7 +54,7 @@ namespace DivisionLike
 
         private void SetAmmoSlider()
         {
-            float normalizedAmmo = (float) (Player.instance.weaponHandler.currentWeapon.ammo.clipAmmo) / (float) (Player.instance.weaponHandler.currentWeapon.ammo.maxClipAmmo);
+            float normalizedAmmo = (float) (Player.instance._weaponHandler.currentWeapon.ammo.clipAmmo) / (float) (Player.instance._weaponHandler.currentWeapon.ammo.maxClipAmmo);
             ammoSlider.normalizedValue = normalizedAmmo;
         }
 

@@ -9,16 +9,26 @@ namespace DivisionLike
     {
         public static Player instance = null;
 
-        public PlayerStats stats;
-        public PlayerHealth health;
-        public UserInput userInput;
-        public PlayerInventory inventory;
-        public WeaponHandler weaponHandler;
-        public PlayerOutlineEffect outlineEffect;
+        [HideInInspector]
+        public PlayerStats _stats;
+
+        [HideInInspector]
+        public PlayerHealth _health;
+
+        [HideInInspector]
+        public UserInput _userInput;
+
+        [HideInInspector]
+        public PlayerInventory _inventory;
+
+        [HideInInspector]
+        public WeaponHandler _weaponHandler;
+
+        [HideInInspector]
+        public PlayerOutlineEffect _outlineEffect;
 
         void Awake()
         {
-            Debug.Log( "Player Awake()" );
             if ( instance == null )
             {
                 instance = this;
@@ -30,12 +40,12 @@ namespace DivisionLike
 
             DontDestroyOnLoad( gameObject );
 
-            stats = transform.GetComponent<PlayerStats>();
-            health = transform.GetComponent<PlayerHealth>();
-            userInput = transform.GetComponent<UserInput>();
-            inventory = transform.GetComponent<PlayerInventory>();
-            weaponHandler = transform.GetComponent<WeaponHandler>();
-            outlineEffect = transform.GetComponent<PlayerOutlineEffect>();
+            _stats = transform.GetComponent<PlayerStats>();
+            _health = transform.GetComponent<PlayerHealth>();
+            _userInput = transform.GetComponent<UserInput>();
+            _inventory = transform.GetComponent<PlayerInventory>();
+            _weaponHandler = transform.GetComponent<WeaponHandler>();
+            _outlineEffect = transform.GetComponent<PlayerOutlineEffect>();
         }
     }
 }

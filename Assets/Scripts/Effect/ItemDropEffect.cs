@@ -27,9 +27,9 @@ namespace DivisionLike
             if ( other.gameObject == Player.instance.gameObject )
             {
                 int ammo = Random.Range( 1, 30 );
-                if ( Player.instance.weaponHandler.currentWeapon.weaponName.Equals( "Makarov" ) == false )
+                if ( Player.instance._weaponHandler.currentWeapon.weaponName.Equals( "Makarov" ) == false )
                 {
-                    Player.instance.inventory.ObtainAmmo( ammo );
+                    Player.instance._inventory.ObtainAmmo( ammo );
                     //Destroy( gameObject );
                     Lean.LeanPool.Despawn( gameObject );
                 }

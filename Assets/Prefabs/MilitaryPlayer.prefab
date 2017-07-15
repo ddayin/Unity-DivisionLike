@@ -2337,7 +2337,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2448,13 +2448,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c32067ea884548644b13cf9baddd4573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
-  currentHealth: 0
-  healthSlider: {fileID: 0}
-  damageImage: {fileID: 0}
-  deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
-  flashSpeed: 5
-  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
+  _maxHealth: 100
+  _currentHealth: 0
+  _healthSlider: {fileID: 0}
+  _damageImage: {fileID: 0}
+  _deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
+  _flashSpeed: 5
+  _flashColour: {r: 1, g: 0, b: 0, a: 0.1}
 --- !u!114 &114354008394489122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2493,12 +2493,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4f41d273df35e4d91083c9e67aa487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
-  health: {fileID: 0}
-  userInput: {fileID: 0}
-  inventory: {fileID: 0}
-  weaponHandler: {fileID: 0}
-  outlineEffect: {fileID: 0}
+  _stats: {fileID: 0}
+  _health: {fileID: 0}
+  _userInput: {fileID: 0}
+  _inventory: {fileID: 0}
+  _weaponHandler: {fileID: 0}
+  _outlineEffect: {fileID: 0}
 --- !u!114 &114483291404738496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2510,10 +2510,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796825c2b3b17894a810ff75e2f656bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
-  xp: 0
-  xpRequire: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  armor: 0
+  _currentLevel: 1
+  _currentXP: 0
+  _xpRequire: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  _currentArmor: 0
 --- !u!114 &114546955613398854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2525,32 +2525,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a50cdeca5540c499c3544d496936b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crosshairHandler: {fileID: 0}
-  inputSettings:
-    verticalAxis: Vertical
-    horizontalAxis: Horizontal
-    jumpButton: Jump
-    reloadButton: Reload
-    aimButton: Fire2
-    fireButton: Fire1
-    switchWeaponButton: Fire3
-    primaryWeaponButton: 1
-    secondaryWeaponButton: 2
-    sidearmButton: 3
-    sprintButton: Sprint
-    medikitButton: Medikit
-  otherSettings:
-    lookSpeed: 5
-    lookDistance: 30
-    requireInputForTurn: 1
-    aimDetectionLayers:
+  _inputSettings:
+    _verticalAxis: Vertical
+    _horizontalAxis: Horizontal
+    _jumpButton: Jump
+    _reloadButton: Reload
+    _aimButton: Fire2
+    _fireButton: Fire1
+    _switchWeaponButton: Fire3
+    _primaryWeaponButton: 1
+    _secondaryWeaponButton: 2
+    _sidearmButton: 3
+    _sprintButton: Sprint
+    _medikitButton: Medikit
+  _otherSettings:
+    _lookSpeed: 5
+    _lookDistance: 30
+    _requireInputForTurn: 1
+    _aimDetectionLayers:
       serializedVersion: 2
       m_Bits: 0
-  TPSCamera: {fileID: 0}
-  debugAim: 0
-  spine: {fileID: 4568949691163028}
-  isAiming: 0
-  isSprinting: 0
+  _debugAim: 0
+  _spineTransform: {fileID: 4568949691163028}
+  _isAiming: 0
+  _isSprinting: 0
 --- !u!114 &114665249318961136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2609,8 +2607,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebf2db36b8f68043896d165e89dc090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  medikit: 4
-  grenade: 0
+  _currentMedikit: 5
+  _currentGrenade: 3
 --- !u!114 &114932861743315236
 MonoBehaviour:
   m_ObjectHideFlags: 1

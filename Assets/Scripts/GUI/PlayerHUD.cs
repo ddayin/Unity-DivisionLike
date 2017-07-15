@@ -36,7 +36,7 @@ namespace DivisionLike
 
             medikitNumberText = transform.Find( "PlayerHUD/Medikit/NumberText" ).GetComponent<Text>();
 
-            weaponHandler = Player.instance.weaponHandler;
+            weaponHandler = Player.instance._weaponHandler;
 
             SetAnotherWeapon();
             SetAmmoText();
@@ -62,13 +62,17 @@ namespace DivisionLike
             {
                 anotherType = Weapon.WeaponType.Primary;
             }
+            else if ( weaponHandler.currentWeapon.weaponType == Weapon.WeaponType.Sidearm )
+            {
+                anotherType = Weapon.WeaponType.Primary;
+            }
 
             anotherWeapon = weaponHandler.dicWeapons[ anotherType ];
         }
 
         public void SetMedikitText()
         {
-            medikitNumberText.text = Player.instance.inventory.medikit.ToString();
+            medikitNumberText.text = Player.instance._inventory._currentMedikit.ToString();
         }
 
         // Update is called once per frame

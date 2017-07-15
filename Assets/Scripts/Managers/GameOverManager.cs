@@ -27,7 +27,7 @@ namespace DivisionLike
                 return;
 
             // If the player has run out of health...
-            if ( playerHealth.currentHealth <= 0 )
+            if ( playerHealth._currentHealth <= 0 )
             {
                 // ... tell the animator the game is over.
                 anim.SetTrigger( "GameOver" );

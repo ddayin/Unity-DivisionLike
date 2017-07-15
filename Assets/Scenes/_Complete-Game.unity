@@ -1652,19 +1652,14 @@ Prefab:
       propertyPath: weaponsList.Array.data[0]
       value: 
       objectReference: {fileID: 716854877}
-    - target: {fileID: 114546955613398854, guid: 59e8e266ec83fd34b8885035b9213f52,
-        type: 2}
-      propertyPath: TPSCamera
-      value: 
-      objectReference: {fileID: 1851598981}
     - target: {fileID: 114290077164167034, guid: 59e8e266ec83fd34b8885035b9213f52,
         type: 2}
-      propertyPath: healthSlider
+      propertyPath: _healthSlider
       value: 
       objectReference: {fileID: 1837071937}
     - target: {fileID: 114290077164167034, guid: 59e8e266ec83fd34b8885035b9213f52,
         type: 2}
-      propertyPath: damageImage
+      propertyPath: _damageImage
       value: 
       objectReference: {fileID: 1394906873}
     m_RemovedComponents: []
@@ -1685,11 +1680,6 @@ MonoBehaviour:
 --- !u!81 &1851598978 stripped
 AudioListener:
   m_PrefabParentObject: {fileID: 81237222621874018, guid: 667631648b698cd4da90347673b8a333,
-    type: 2}
-  m_PrefabInternal: {fileID: 385798942}
---- !u!20 &1851598981 stripped
-Camera:
-  m_PrefabParentObject: {fileID: 20448527007917244, guid: 667631648b698cd4da90347673b8a333,
     type: 2}
   m_PrefabInternal: {fileID: 385798942}
 --- !u!1 &1959795197

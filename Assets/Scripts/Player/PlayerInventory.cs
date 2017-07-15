@@ -6,18 +6,18 @@ namespace DivisionLike
 {
     public class PlayerInventory : MonoBehaviour
     {
-        public Dictionary<string, Weapon> dicWeapons = new Dictionary<string, Weapon>();
+        public Dictionary<string, Weapon> _dicWeapons = new Dictionary<string, Weapon>();
 
-        public uint medikit;
-        public const uint medikitMax = 5;
-        public uint grenade;
-        public const uint grenadeMax = 4;
+        public uint _currentMedikit;
+        public const uint _maxMedikit = 5;
+        public uint _currentGrenade;
+        public const uint _maxGrenade = 4;
 
-        private PlayerHealth health;
+        private PlayerHealth _health;
 
         private void Awake()
         {
-            health = transform.GetComponent<PlayerHealth>();
+            _health = transform.GetComponent<PlayerHealth>();
         }
 
         public bool ObtainAllItems()
@@ -29,13 +29,13 @@ namespace DivisionLike
         public bool ObtainAmmo( int amount )
         {
             // TODO: 총알 위를 밟고 지나가면 바닥에 떨어진 총알을 줍는다
-            Player.instance.weaponHandler.currentWeapon.ammo.carryingAmmo += amount;
+            Player.instance._weaponHandler.currentWeapon.ammo.carryingAmmo += amount;
             return true;
         }
 
         public Dictionary<string, Weapon> DropItems()
         {
-            return dicWeapons;  // 임시
+            return _dicWeapons;  // 임시
         }
 
         public void ShowInventoryUI()
@@ -45,17 +45,16 @@ namespace DivisionLike
 
         public void UseMedikit()
         {
-            if ( medikit <= 0 )
+            if ( _currentMedikit <= 0 )
             {
                 return;
             }
 
-            Debug.Log( "use medikit" );
+            Debug.Log( "use 1 medikit" );
 
-            medikit--;
+            _currentMedikit--;
             
-
-            health.Recover();
+            _health.Recover();
         }
 
     }
