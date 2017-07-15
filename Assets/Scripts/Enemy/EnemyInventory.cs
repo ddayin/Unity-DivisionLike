@@ -6,11 +6,11 @@ namespace DivisionLike
 {
     public class EnemyInventory : MonoBehaviour
     {
-        public Dictionary<string, Weapon> dicWeapons = new Dictionary<string, Weapon>();
+        private Dictionary<string, Weapon> _dicWeapons = new Dictionary<string, Weapon>();
         
         public Dictionary<string, Weapon> DropItems()
         {
-            return dicWeapons;  // 임시
+            return _dicWeapons;  // 임시
         }
     }
 }

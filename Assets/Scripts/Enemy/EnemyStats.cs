@@ -7,13 +7,11 @@ namespace DivisionLike
 {
     public class EnemyStats : MonoBehaviour
     {
-        public int level;
-        public int armor;
-        public int xpWhenDie;
-
-        private Text xpText;   // show expWhenDie
-        private Text damagedText;
-
+        public int _currentLevel;
+        public int _maxLevel;
+        public int _currentArmor;
+        public int _xpWhenDie;
+        
         private void Awake()
         {
         

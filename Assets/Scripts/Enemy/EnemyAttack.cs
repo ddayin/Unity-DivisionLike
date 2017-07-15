@@ -9,35 +9,35 @@ namespace DivisionLike
 {
     public class EnemyAttack : MonoBehaviour
     {
-        public float timeBetweenAttacks = 0.5f;     // The time in seconds between each attack.
-        public int attackDamage = 10;               // The amount of health taken away per attack.
+        public float _timeBetweenAttacks = 0.5f;     // The time in seconds between each attack.
+        public int _attackDamage = 10;               // The amount of health taken away per attack.
 
 
-        Animator anim;                              // Reference to the animator component.
-        GameObject player;                          // Reference to the player GameObject.
-        PlayerHealth playerHealth;                  // Reference to the player's health.
-        EnemyHealth enemyHealth;                    // Reference to this enemy's health.
-        bool playerInRange;                         // Whether player is within the trigger collider and can be attacked.
-        float timer;                                // Timer for counting up to the next attack.
+        private Animator _anim;                              // Reference to the animator component.
+        private GameObject _player;                          // Reference to the player GameObject.
+        private PlayerHealth _playerHealth;                  // Reference to the player's health.
+        private EnemyHealth _enemyHealth;                    // Reference to this enemy's health.
+        private bool _playerInRange;                         // Whether player is within the trigger collider and can be attacked.
+        private float _timer;                                // Timer for counting up to the next attack.
 
 
         void Awake()
         {
             // Setting up the references.
-            player = GameObject.FindGameObjectWithTag( "Player" );
-            playerHealth = player.GetComponent<PlayerHealth>();
-            enemyHealth = GetComponent<EnemyHealth>();
-            anim = GetComponent<Animator>();
+            _player = GameObject.FindGameObjectWithTag( "Player" );
+            _playerHealth = _player.GetComponent<PlayerHealth>();
+            _enemyHealth = transform.GetComponent<EnemyHealth>();
+            _anim = transform.GetComponent<Animator>();
         }
 
 
         void OnTriggerEnter( Collider other )
         {
             // If the entering collider is the player...
-            if ( other.gameObject == player )
+            if ( other.gameObject == _player )
             {
                 // ... the player is in range.
-                playerInRange = true;
+                _playerInRange = true;
             }
         }
 
@@ -45,10 +45,10 @@ namespace DivisionLike
         void OnTriggerExit( Collider other )
         {
             // If the exiting collider is the player...
-            if ( other.gameObject == player )
+            if ( other.gameObject == _player )
             {
                 // ... the player is no longer in range.
-                playerInRange = false;
+                _playerInRange = false;
             }
         }
 
@@ -56,20 +56,20 @@ namespace DivisionLike
         void Update()
         {
             // Add the time since Update was last called to the timer.
-            timer += Time.deltaTime;
+            _timer += Time.deltaTime;
 
             // If the timer exceeds the time between attacks, the player is in range and this enemy is alive...
-            if ( timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0 )
+            if ( _timer >= _timeBetweenAttacks && _playerInRange == true && _enemyHealth._currentHealth > 0 )
             {
                 // ... attack.
                 Attack();
             }
 
             // If the player has zero or less health...
-            if ( playerHealth._currentHealth <= 0 )
+            if ( _playerHealth._currentHealth <= 0 )
             {
                 // ... tell the animator the player is dead.
-                anim.SetTrigger( "PlayerDead" );
+                _anim.SetTrigger( "PlayerDead" );
             }
         }
 
@@ -77,13 +77,13 @@ namespace DivisionLike
         void Attack()
         {
             // Reset the timer.
-            timer = 0f;
+            _timer = 0f;
 
             // If the player has health to lose...
-            if ( playerHealth._currentHealth > 0 )
+            if ( _playerHealth._currentHealth > 0 )
             {
                 // ... damage the player.
-                playerHealth.TakeDamage( attackDamage );
+                _playerHealth.TakeDamage( _attackDamage );
             }
         }
     }

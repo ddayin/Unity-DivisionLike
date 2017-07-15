@@ -9,35 +9,35 @@ namespace DivisionLike
 {
     public class EnemyMovement : MonoBehaviour
     {
-        Transform player;               // Reference to the player's position.
-        PlayerHealth playerHealth;      // Reference to the player's health.
-        EnemyHealth enemyHealth;        // Reference to this enemy's health.
-        UnityEngine.AI.NavMeshAgent nav;               // Reference to the nav mesh agent.
+        private Transform _player;               // Reference to the player's position.
+        private PlayerHealth _playerHealth;      // Reference to the player's health.
+        private EnemyHealth _enemyHealth;        // Reference to this enemy's health.
+        private UnityEngine.AI.NavMeshAgent _nav;               // Reference to the nav mesh agent.
 
 
         void Awake()
         {
             // Set up the references.
-            player = GameObject.FindGameObjectWithTag( "Player" ).transform;
-            playerHealth = player.GetComponent<PlayerHealth>();
-            enemyHealth = GetComponent<EnemyHealth>();
-            nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
+            _player = GameObject.FindGameObjectWithTag( "Player" ).transform;
+            _playerHealth = _player.GetComponent<PlayerHealth>();
+            _enemyHealth = transform.GetComponent<EnemyHealth>();
+            _nav = transform.GetComponent<UnityEngine.AI.NavMeshAgent>();
         }
 
 
         void Update()
         {
             // If the enemy and the player have health left...
-            if ( enemyHealth.currentHealth > 0 && playerHealth._currentHealth > 0 )
+            if ( _enemyHealth._currentHealth > 0 && _playerHealth._currentHealth > 0 )
             {
                 // ... set the destination of the nav mesh agent to the player.
-                nav.SetDestination( player.position );
+                _nav.SetDestination( _player.position );
             }
             // Otherwise...
             else
             {
                 // ... disable the nav mesh agent.
-                nav.enabled = false;
+                _nav.enabled = false;
             }
         }
     }

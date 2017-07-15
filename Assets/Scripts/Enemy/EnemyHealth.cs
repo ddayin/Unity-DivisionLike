@@ -9,35 +9,35 @@ namespace DivisionLike
 {
     public class EnemyHealth : MonoBehaviour
     {
-        public const int startingHealth = 100;            // The amount of health the enemy starts the game with.
-        public int currentHealth;                   // The current health the enemy has.
-        public float sinkSpeed = 2.5f;              // The speed at which the enemy sinks through the floor when dead.
-        public AudioClip deathClip;                 // The sound to play when the enemy dies.
+        public const int _startingHealth = 100;            // The amount of health the enemy starts the game with.
+        public int _currentHealth;                   // The current health the enemy has.
+        public float _sinkSpeed = 2.5f;              // The speed at which the enemy sinks through the floor when dead.
+        public AudioClip _deathClip;                 // The sound to play when the enemy dies.
 
-        private EnemyStats stats;
-        private EnemyUI ui;
+        private EnemyStats _stats;
+        private EnemyUI _ui;
 
-        private Animator anim;                              // Reference to the animator.
-        private AudioSource enemyAudio;                     // Reference to the audio source.
-        private ParticleSystem hitParticles;                // Reference to the particle system that plays when the enemy is damaged.
-        private CapsuleCollider capsuleCollider;            // Reference to the capsule collider.
-        private bool isDead;                                // Whether the enemy is dead.
-        private bool isSinking;                             // Whether the enemy has started sinking through the floor.
+        private Animator _anim;                              // Reference to the animator.
+        private AudioSource _enemyAudio;                     // Reference to the audio source.
+        private ParticleSystem _hitParticles;                // Reference to the particle system that plays when the enemy is damaged.
+        private CapsuleCollider _capsuleCollider;            // Reference to the capsule collider.
+        private bool _isDead;                                // Whether the enemy is dead.
+        private bool _isSinking;                             // Whether the enemy has started sinking through the floor.
         
         
 
         void Awake()
         {
             // Setting up the references.
-            stats = GetComponent<EnemyStats>();
-            anim = GetComponent<Animator>();
-            enemyAudio = GetComponent<AudioSource>();
-            hitParticles = GetComponentInChildren<ParticleSystem>();
-            capsuleCollider = GetComponent<CapsuleCollider>();
-            ui = transform.Find( "EnemyCanvas" ).GetComponent<EnemyUI>();
+            _stats = GetComponent<EnemyStats>();
+            _anim = GetComponent<Animator>();
+            _enemyAudio = GetComponent<AudioSource>();
+            _hitParticles = GetComponentInChildren<ParticleSystem>();
+            _capsuleCollider = GetComponent<CapsuleCollider>();
+            _ui = transform.Find( "EnemyCanvas" ).GetComponent<EnemyUI>();
             
             // Setting the current health when the enemy first spawns.
-            currentHealth = startingHealth;
+            _currentHealth = _startingHealth;
         }
 
         private void OnEnable()
@@ -49,10 +49,10 @@ namespace DivisionLike
         void Update()
         {
             // If the enemy should be sinking...
-            if ( isSinking )
+            if ( _isSinking == true )
             {
                 // ... move the enemy down by the sinkSpeed per second.
-                transform.Translate( -Vector3.up * sinkSpeed * Time.deltaTime );
+                transform.Translate( -Vector3.up * _sinkSpeed * Time.deltaTime );
             }
         }
 
@@ -60,28 +60,28 @@ namespace DivisionLike
         public void TakeDamage( int amount, Vector3 hitPoint )
         {
             // If the enemy is dead...
-            if ( isDead )
+            if ( _isDead == true )
                 // ... no need to take damage so exit the function.
                 return;
 
             // Play the hurt sound effect.
-            enemyAudio.Play();
+            _enemyAudio.Play();
 
             // Reduce the current health by the amount of damage sustained.
-            currentHealth -= amount;
+            _currentHealth -= amount;
 
-            ui.SetHealthSlider( currentHealth );
+            _ui.SetHealthSlider( _currentHealth );
 
-            ui.CreateDamageText( amount.ToString() );
+            _ui.CreateDamageText( amount.ToString() );
 
             // Set the position of the particle system to where the hit was sustained.
-            hitParticles.transform.position = hitPoint;
+            _hitParticles.transform.position = hitPoint;
 
             // And play the particles.
-            hitParticles.Play();
+            _hitParticles.Play();
 
             // If the current health is less than or equal to zero...
-            if ( currentHealth <= 0 )
+            if ( _currentHealth <= 0 )
             {
                 // ... the enemy is dead.
                 Death();
@@ -92,21 +92,21 @@ namespace DivisionLike
         void Death()
         {
             // The enemy is dead.
-            isDead = true;
+            _isDead = true;
 
             // Turn the collider into a trigger so shots can pass through it.
-            capsuleCollider.isTrigger = true;
+            _capsuleCollider.isTrigger = true;
 
             // Tell the animator that the enemy is dead.
-            anim.SetTrigger( "Dead" );
+            _anim.SetTrigger( "Dead" );
 
-            ScreenHUD.instance.CalculateExpSlider( stats.xpWhenDie );
+            ScreenHUD.instance.CalculateExpSlider( _stats._xpWhenDie );
 
             EffectManager.instance.CreateParticle( 2, transform.position );
 
             // Change the audio clip of the audio source to the death clip and play it (this will stop the hurt clip playing).
-            enemyAudio.clip = deathClip;
-            enemyAudio.Play();
+            _enemyAudio.clip = _deathClip;
+            _enemyAudio.Play();
         }
 
 
@@ -119,7 +119,7 @@ namespace DivisionLike
             GetComponent<Rigidbody>().isKinematic = true;
 
             // The enemy should no sink.
-            isSinking = true;
+            _isSinking = true;
 
             // After 2 seconds destory the enemy.
             //Destroy( gameObject, 2f );
@@ -131,13 +131,13 @@ namespace DivisionLike
         // because we have object pooling system
         private void PrepareRebirth()
         {
-            isSinking = false;
-            GetComponent<Rigidbody>().isKinematic = false;
-            GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
-            isDead = false;
-            capsuleCollider.isTrigger = false;
-            anim.SetTrigger( "Move" );
-            currentHealth = startingHealth;
+            _isSinking = false;
+            transform.GetComponent<Rigidbody>().isKinematic = false;
+            transform.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+            _isDead = false;
+            _capsuleCollider.isTrigger = false;
+            _anim.SetTrigger( "Move" );
+            _currentHealth = _startingHealth;
         }
     }
 }
