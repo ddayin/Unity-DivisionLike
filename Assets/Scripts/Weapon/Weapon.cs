@@ -11,14 +11,13 @@ namespace DivisionLike
     [RequireComponent( typeof( Rigidbody ) )]
     public class Weapon : MonoBehaviour
     {
-        private Collider col;
-        private Rigidbody rigidBody;
-        private Animator animator;
-        private SoundController sc;
+        private Collider _collider;
+        private Rigidbody _rigidBody;
+        private Animator _animator;
 
         public Light faceLight;
-        private float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
-        private float timer = 0f;
+        private float _effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
+        private float _timer = 0f;
 
         public enum WeaponType
         {
@@ -26,16 +25,15 @@ namespace DivisionLike
             Secondary,
             Sidearm
         }
-        public WeaponType weaponType;
+        public WeaponType _weaponType;
 
         public class WeaponName
         {
-            public string makarov = "Makarov";
-            public string ModernRussianAR = "Modern Russian AR";
-            public string M4A1 = "M4A1";
-        
+            public string _Makarov = "Makarov";
+            public string _ModernRussianAR = "Modern Russian AR";
+            public string _M4A1 = "M4A1";
         }
-        public string weaponName;
+        public string _weaponName;
 
         [System.Serializable]
         public class UserSettings
@@ -97,9 +95,9 @@ namespace DivisionLike
         [SerializeField]
         public Ammunition ammo;
 
-        private WeaponHandler owner;
-        private bool isEquipped;
-        private bool resettingCartridge;
+        private WeaponHandler _owner;
+        private bool _isEquipped;
+        private bool _resettingCartridge;
 
         [System.Serializable]
         public class SoundSettings
@@ -114,18 +112,11 @@ namespace DivisionLike
         public SoundSettings soundSettings;
 
         // Use this for initialization
-        void Start()
+        private void Start()
         {
-            GameObject check = GameObject.FindGameObjectWithTag( "Sound Controller" );
-
-            if ( check != null )
-            {
-                sc = check.GetComponent<SoundController>();
-            }
-
-            col = GetComponent<Collider>();
-            rigidBody = GetComponent<Rigidbody>();
-            animator = GetComponent<Animator>();
+            _collider = GetComponent<Collider>();
+            _rigidBody = GetComponent<Rigidbody>();
+            _animator = GetComponent<Animator>();
 
             if ( ammo.clipInfiniteAmmo == true )
             {
@@ -134,16 +125,16 @@ namespace DivisionLike
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            timer += Time.deltaTime;
+            _timer += Time.deltaTime;
 
-            if ( owner )
+            if ( _owner )
             {
                 DisableEnableComponents( false );
-                if ( isEquipped )
+                if ( _isEquipped )
                 {
-                    if ( owner.userSettings.rightHand )
+                    if ( _owner.userSettings.rightHand )
                     {
                         Equip();
                     }
@@ -160,7 +151,7 @@ namespace DivisionLike
                             }
                         }
                     }
-                    Unequip( weaponType );
+                    Unequip( _weaponType );
                 }
             }
             else
@@ -170,7 +161,7 @@ namespace DivisionLike
             }
 
             // 총알 빛 효과 일정 시간 지나면 끈다.
-            if ( timer >= effectsDisplayTime )
+            if ( _timer >= _effectsDisplayTime )
             {
                 faceLight.enabled = false;
             }
@@ -189,10 +180,10 @@ namespace DivisionLike
         //This fires the weapon
         public void Fire( Ray ray )
         {
-            if ( ammo.clipAmmo <= 0 || resettingCartridge || !weaponSettings.bulletSpawn || !isEquipped )
+            if ( ammo.clipAmmo <= 0 || _resettingCartridge || !weaponSettings.bulletSpawn || !_isEquipped )
                 return;
 
-            timer = 0f;
+            _timer = 0f;
 
             faceLight.enabled = true;
 
@@ -229,10 +220,10 @@ namespace DivisionLike
             GunEffects();
 
             if ( weaponSettings.useAnimation )
-                animator.Play( weaponSettings.fireAnimationName, weaponSettings.fireAnimationLayer );
+                _animator.Play( weaponSettings.fireAnimationName, weaponSettings.fireAnimationLayer );
 
             ammo.clipAmmo--;
-            resettingCartridge = true;
+            _resettingCartridge = true;
             StartCoroutine( LoadNextBullet() );
         }
 
@@ -240,7 +231,7 @@ namespace DivisionLike
         IEnumerator LoadNextBullet()
         {
             yield return new WaitForSeconds( weaponSettings.fireRate );
-            resettingCartridge = false;
+            _resettingCartridge = false;
         }
 
         void HitEffects( RaycastHit hit )
@@ -298,16 +289,12 @@ namespace DivisionLike
 
         void PlayGunshotSound()
         {
-            if ( sc == null )
-            {
-                return;
-            }
 
             if ( soundSettings.audioS != null )
             {
                 if ( soundSettings.gunshotSounds.Length > 0 )
                 {
-                    sc.InstantiateClip(
+                    SoundController.instance.InstantiateClip(
                         weaponSettings.bulletSpawn.position, // Where we want to play the sound from
                         soundSettings.gunshotSounds[ Random.Range( 0, soundSettings.gunshotSounds.Length ) ],  // What audio clip we will use for this sound
                         2, // How long before we destroy the audio
@@ -323,25 +310,25 @@ namespace DivisionLike
         {
             if ( !enabled )
             {
-                rigidBody.isKinematic = true;
-                col.enabled = false;
+                _rigidBody.isKinematic = true;
+                _collider.enabled = false;
             }
             else
             {
-                rigidBody.isKinematic = false;
-                col.enabled = true;
+                _rigidBody.isKinematic = false;
+                _collider.enabled = true;
             }
         }
 
         //Equips this weapon to the hand
         void Equip()
         {
-            if ( owner == null )
+            if ( _owner == null )
                 return;
-            else if ( owner.userSettings.rightHand == false )
+            else if ( _owner.userSettings.rightHand == false )
                 return;
 
-            transform.SetParent( owner.userSettings.rightHand );
+            transform.SetParent( _owner.userSettings.rightHand );
             transform.localPosition = weaponSettings.equipPosition;
             Quaternion equipRot = Quaternion.Euler( weaponSettings.equipRotation );
             transform.localRotation = equipRot;
@@ -350,16 +337,16 @@ namespace DivisionLike
         //Unequips the weapon and places it to the desired location
         void Unequip( WeaponType wpType )
         {
-            if ( owner == null )
+            if ( _owner == null )
                 return;
 
             switch ( wpType )
             {
                 case WeaponType.Primary:
-                    transform.SetParent( owner.userSettings.rifleUnequipSpot );
+                    transform.SetParent( _owner.userSettings.rifleUnequipSpot );
                     break;
                 case WeaponType.Secondary:
-                    transform.SetParent( owner.userSettings.pistolUnequipSpot );
+                    transform.SetParent( _owner.userSettings.pistolUnequipSpot );
                     break;
                 case WeaponType.Sidearm:
                     break;
@@ -391,13 +378,13 @@ namespace DivisionLike
         //Sets the weapons equip state
         public void SetEquipped( bool equip )
         {
-            isEquipped = equip;
+            _isEquipped = equip;
         }
 
         //Sets the owner of this weapon
         public void SetOwner( WeaponHandler wp )
         {
-            owner = wp;
+            _owner = wp;
         }
     }
 }

@@ -8,29 +8,28 @@ namespace DivisionLike
 {
     public class GameOverManager : MonoBehaviour
     {
-        public PlayerHealth playerHealth;       // Reference to the player's health.
-        public bool isImortalMode = false;
+        public bool _isImortalMode = false;
 
-        Animator anim;                          // Reference to the animator component.
+        private Animator _anim;                          // Reference to the animator component.
 
 
         void Awake()
         {
             // Set up the reference.
-            anim = GetComponent<Animator>();
+            _anim = GetComponent<Animator>();
         }
 
 
         void Update()
         {
-            if ( isImortalMode == true )
+            if ( _isImortalMode == true )
                 return;
 
             // If the player has run out of health...
-            if ( playerHealth._currentHealth <= 0 )
+            if ( Player.instance._health._currentHealth <= 0 )
             {
                 // ... tell the animator the game is over.
-                anim.SetTrigger( "GameOver" );
+                _anim.SetTrigger( "GameOver" );
             }
         }
     }

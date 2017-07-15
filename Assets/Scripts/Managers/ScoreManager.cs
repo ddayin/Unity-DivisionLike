@@ -10,10 +10,9 @@ namespace DivisionLike
 {
     public class ScoreManager : MonoBehaviour
     {
-        public static int score;        // The player's score.
-
-
-        Text text;                      // Reference to the Text component.
+        public static int _score;        // The player's score.
+        
+        private Text text;                      // Reference to the Text component.
 
 
         void Awake()
@@ -22,14 +21,14 @@ namespace DivisionLike
             text = GetComponent<Text>();
 
             // Reset the score.
-            score = 0;
+            _score = 0;
         }
 
 
         void Update()
         {
             // Set the displayed text to be the word "Score" followed by the score value.
-            text.text = "Score: " + score;
+            text.text = "Score: " + _score;
         }
     }
 }

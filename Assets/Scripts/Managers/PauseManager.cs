@@ -14,17 +14,16 @@ namespace DivisionLike
 {
     public class PauseManager : MonoBehaviour
     {
+        public AudioMixerSnapshot _paused;
+        public AudioMixerSnapshot _unpaused;
 
-        public AudioMixerSnapshot paused;
-        public AudioMixerSnapshot unpaused;
+        private Canvas _canvas;
 
-        Canvas canvas;
-
-        public bool isPaused = false;
+        public bool _isPaused = false;
 
         void Start()
         {
-            canvas = GetComponent<Canvas>();
+            _canvas = GetComponent<Canvas>();
 
             
         }
@@ -33,7 +32,7 @@ namespace DivisionLike
         {
             if ( Input.GetKeyDown( KeyCode.Escape ) )
             {
-                canvas.enabled = !canvas.enabled;
+                _canvas.enabled = !_canvas.enabled;
                 
                 Pause();
             }
@@ -41,18 +40,18 @@ namespace DivisionLike
 
         public void Pause()
         {
-            isPaused = !isPaused;
+            _isPaused = !_isPaused;
 
-            if ( isPaused == true )
+            if ( _isPaused == true )
             {
                 Time.timeScale = 0;
             }
-            else if ( isPaused == false )
+            else if ( _isPaused == false )
             {
                 Time.timeScale = 1;
             }
 
-            ShowMouseCursor( isPaused );
+            ShowMouseCursor( _isPaused );
 
             Lowpass();
 
@@ -60,13 +59,13 @@ namespace DivisionLike
 
         void Lowpass()
         {
-            if ( isPaused == true )
+            if ( _isPaused == true )
             {
-                paused.TransitionTo( .01f );
+                _paused.TransitionTo( .01f );
             }
-            else if ( isPaused == false )
+            else if ( _isPaused == false )
             {
-                unpaused.TransitionTo( .01f );
+                _unpaused.TransitionTo( .01f );
             }
         }
 

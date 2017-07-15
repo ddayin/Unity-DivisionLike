@@ -9,6 +9,13 @@ namespace DivisionLike
 {
     public class SoundController : MonoBehaviour
     {
+        public static SoundController instance = null;
+
+        private void Awake()
+        {
+            instance = this;
+        
+        }
 
         public void PlaySound( AudioSource audioS, AudioClip clip, bool randomizePitch = false, float randomPitchMin = 1, float randomPitchMax = 1 )
         {

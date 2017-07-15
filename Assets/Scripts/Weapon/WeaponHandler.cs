@@ -107,7 +107,7 @@ namespace DivisionLike
                 return;
             }
 
-            switch ( currentWeapon.weaponType )
+            switch ( currentWeapon._weaponType )
             {
                 case Weapon.WeaponType.Secondary:
                     weaponType = 1;
@@ -200,7 +200,7 @@ namespace DivisionLike
             currentWeapon.SetEquipped( false );
             currentWeapon.SetOwner( null );
             weaponsList.Remove( currentWeapon );
-            dicWeapons.Remove( currentWeapon.weaponType );
+            dicWeapons.Remove( currentWeapon._weaponType );
             currentWeapon = null;
         }
 
@@ -264,7 +264,7 @@ namespace DivisionLike
             if ( !animator )
                 return;
 
-            if ( currentWeapon && currentWeapon.userSettings.leftHandIKTarget && currentWeapon.weaponType == Weapon.WeaponType.Primary
+            if ( currentWeapon && currentWeapon.userSettings.leftHandIKTarget && currentWeapon._weaponType == Weapon.WeaponType.Primary
                 && !reload && !settingWeapon )
             {
                 animator.SetIKPositionWeight( AvatarIKGoal.LeftHand, 1 );

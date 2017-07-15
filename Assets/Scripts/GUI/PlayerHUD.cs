@@ -59,15 +59,15 @@ namespace DivisionLike
         public void SetAnotherWeapon()
         {
             Weapon.WeaponType anotherType = Weapon.WeaponType.Primary;
-            if ( _weaponHandler.currentWeapon.weaponType == Weapon.WeaponType.Primary )
+            if ( _weaponHandler.currentWeapon._weaponType == Weapon.WeaponType.Primary )
             {
                 anotherType = Weapon.WeaponType.Secondary;
             }
-            else if ( _weaponHandler.currentWeapon.weaponType == Weapon.WeaponType.Secondary )
+            else if ( _weaponHandler.currentWeapon._weaponType == Weapon.WeaponType.Secondary )
             {
                 anotherType = Weapon.WeaponType.Primary;
             }
-            else if ( _weaponHandler.currentWeapon.weaponType == Weapon.WeaponType.Sidearm )
+            else if ( _weaponHandler.currentWeapon._weaponType == Weapon.WeaponType.Sidearm )
             {
                 anotherType = Weapon.WeaponType.Primary;
             }
