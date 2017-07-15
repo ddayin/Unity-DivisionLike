@@ -6,20 +6,20 @@ namespace DivisionLike
 {
     public class ItemDropEffect : MonoBehaviour
     {
-        private LineRenderer lineUp;
+        private LineRenderer _lineUp;
 
         private void Awake()
         {
-            lineUp = transform.GetComponent<LineRenderer>();
+            _lineUp = transform.GetComponent<LineRenderer>();
         }
 
         private void OnEnable()
         {
-            lineUp.SetPosition( 0, transform.position );
+            _lineUp.SetPosition( 0, transform.position );
 
             Vector3 onePosition = transform.position;
             onePosition.y = 100f;
-            lineUp.SetPosition( 1, onePosition );
+            _lineUp.SetPosition( 1, onePosition );
         }
 
         void OnTriggerEnter( Collider other )

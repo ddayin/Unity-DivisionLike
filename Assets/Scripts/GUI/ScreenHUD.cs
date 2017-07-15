@@ -9,9 +9,9 @@ namespace DivisionLike
     {
         public static ScreenHUD instance = null;
 
-        private Text levelText;
-        private Slider xpSlider;
-        private Slider ammoSlider;
+        private Text _levelText;
+        private Slider _xpSlider;
+        private Slider _ammoSlider;
 
         void Awake()
         {
@@ -24,19 +24,24 @@ namespace DivisionLike
                 Destroy( gameObject );
             }
 
-            levelText = transform.Find( "LevelText" ).GetComponent<Text>();
-            xpSlider = transform.Find( "ExpSlider" ).GetComponent<Slider>();
-            ammoSlider = transform.Find( "AmmoSlider" ).GetComponent<Slider>();
+            _levelText = transform.Find( "LevelText" ).GetComponent<Text>();
+            _xpSlider = transform.Find( "ExpSlider" ).GetComponent<Slider>();
+            _ammoSlider = transform.Find( "AmmoSlider" ).GetComponent<Slider>();
             
             SetLevelText();
             CalculateExpSlider( 0 );
             SetAmmoSlider();
         }
 
+        // Update is called once per frame
+        void Update()
+        {
+            SetAmmoSlider();
+        }
+
         public void SetLevelText()
         {
-            levelText.text = Player.instance._stats._currentLevel.ToString();
-            
+            _levelText.text = Player.instance._stats._currentLevel.ToString();
         }
 
         public void CalculateExpSlider( int xpToAdd )
@@ -45,21 +50,14 @@ namespace DivisionLike
             Player.instance._stats.CheckLevel();
             
             float normalizedXP = (float) (Player.instance._stats._currentXP) / (float) (Player.instance._stats._xpRequire[ Player.instance._stats._currentLevel - 1 ]);
-            //Debug.Log( "player xp = " + Player.instance.stats.xp );
-            //Debug.Log( "normalized xp = " + normalizedXP );
-            xpSlider.normalizedValue = normalizedXP;
+
+            _xpSlider.normalizedValue = normalizedXP;
         }
 
         private void SetAmmoSlider()
         {
             float normalizedAmmo = (float) (Player.instance._weaponHandler.currentWeapon.ammo.clipAmmo) / (float) (Player.instance._weaponHandler.currentWeapon.ammo.maxClipAmmo);
-            ammoSlider.normalizedValue = normalizedAmmo;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            SetAmmoSlider();
+            _ammoSlider.normalizedValue = normalizedAmmo;
         }
     }
 }

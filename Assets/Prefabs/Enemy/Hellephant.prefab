@@ -7347,7 +7347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4fe92274d36316438e4420355e370c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popupText: {fileID: 114780391189135322, guid: 7a66acc00a8e1e045bd3e67dfc7297bd,
+  _popupText: {fileID: 114780391189135322, guid: 7a66acc00a8e1e045bd3e67dfc7297bd,
     type: 2}
 --- !u!114 &114442039494361262
 MonoBehaviour:
@@ -7360,7 +7360,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931a86d60c2957748801400ce4768a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Camera: {fileID: 0}
 --- !u!114 &114564545642520652
 MonoBehaviour:
   m_ObjectHideFlags: 1

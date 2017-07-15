@@ -7,30 +7,30 @@ namespace DivisionLike
 {
     public class EnemyUI : MonoBehaviour
     {
-        private Slider healthSlider;
-        private Canvas canvas;
-        private FloatingTextController floatingTextController;
+        private Slider _healthSlider;
+        private Canvas _canvas;
+        private FloatingTextController _floatingTextController;
 
         private void Awake()
         {
-            healthSlider = transform.Find( "HealthUI/HealthSlider" ).GetComponent<Slider>();
-            canvas = transform.GetComponent<Canvas>();
-            floatingTextController = transform.GetComponent<FloatingTextController>();
+            _healthSlider = transform.Find( "HealthUI/HealthSlider" ).GetComponent<Slider>();
+            _canvas = transform.GetComponent<Canvas>();
+            _floatingTextController = transform.GetComponent<FloatingTextController>();
         }
 
         private void OnEnable()
         {
-            healthSlider.normalizedValue = 1f;
+            _healthSlider.normalizedValue = 1f;
         }
 
         public void SetHealthSlider( int health )
         {
-            healthSlider.value = health;
+            _healthSlider.value = health;
         }
 
         public void CreateDamageText( string amount )
         {
-            floatingTextController.CreateFloatingText( amount, canvas.transform );
+            _floatingTextController.CreateFloatingText( amount, _canvas.transform );
         }
         
     }

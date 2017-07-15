@@ -1673,11 +1673,6 @@ Prefab:
       propertyPath: _damageImage
       value: 
       objectReference: {fileID: 1394906873}
-    - target: {fileID: 114354008394489122, guid: 59e8e266ec83fd34b8885035b9213f52,
-        type: 2}
-      propertyPath: _physicsSettings._groundLayers.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59e8e266ec83fd34b8885035b9213f52, type: 2}
   m_IsPrefabParent: 0
@@ -1698,29 +1693,6 @@ AudioListener:
   m_PrefabParentObject: {fileID: 81237222621874018, guid: 667631648b698cd4da90347673b8a333,
     type: 2}
   m_PrefabInternal: {fileID: 385798942}
---- !u!1 &1877492005 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1008780008236374, guid: 59e8e266ec83fd34b8885035b9213f52,
-    type: 2}
-  m_PrefabInternal: {fileID: 1834230914}
---- !u!82 &1877492007 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82168656781489022, guid: 59e8e266ec83fd34b8885035b9213f52,
-    type: 2}
-  m_PrefabInternal: {fileID: 1834230914}
---- !u!114 &1877492016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1877492005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31f7ceed8a910ca47950a2347ec4dce3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textureTypes: []
-  audioS: {fileID: 1877492007}
 --- !u!1 &1959795197
 GameObject:
   m_ObjectHideFlags: 0

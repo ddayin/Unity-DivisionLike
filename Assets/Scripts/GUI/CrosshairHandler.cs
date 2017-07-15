@@ -11,7 +11,7 @@ namespace DivisionLike
     {
         public virtual void ChangeColor( Color color )
         {
-            Debug.Log( "CrosshairHandler.ChangeColor() virtual" );
+            //Debug.Log( "CrosshairHandler.ChangeColor() virtual" );
         }
     }
 }

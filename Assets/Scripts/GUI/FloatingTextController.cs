@@ -10,19 +10,19 @@ namespace DivisionLike
 {
     public class FloatingTextController : MonoBehaviour
     {
-        public FloatingText popupText;
-        private GameObject canvas;
+        public FloatingText _popupText;
+        private GameObject _canvas;
 
         private void Awake()
         {
-            canvas = this.gameObject;
+            _canvas = this.gameObject;
         }
 
         public void CreateFloatingText( string text, Transform location )
         {
-            FloatingText instance = Instantiate( popupText );
+            FloatingText instance = Instantiate( _popupText );
 
-            instance.transform.SetParent( canvas.transform, false );
+            instance.transform.SetParent( _canvas.transform, false );
 
             Vector3 newPos = new Vector3( location.position.x + Random.Range( -0.3f, 0.3f ), location.position.y + Random.Range( -0.3f, 0.3f ), location.position.z );
             instance.transform.position = newPos;

@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 114880040135842886}
   - component: {fileID: 82168656781489022}
   - component: {fileID: 114774562876285040}
+  - component: {fileID: 114314024353467972}
   m_Layer: 0
   m_Name: MilitaryPlayer
   m_TagString: Player
@@ -2455,6 +2456,19 @@ MonoBehaviour:
   _deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
   _flashSpeed: 5
   _flashColour: {r: 1, g: 0, b: 0, a: 0.1}
+--- !u!114 &114314024353467972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008780008236374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f7ceed8a910ca47950a2347ec4dce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textureTypes: []
+  audioS: {fileID: 82168656781489022}
 --- !u!114 &114354008394489122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2466,22 +2480,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd5e0822de062148827d57517b44d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animations:
-    verticalVelocityFloat: Forward
-    horizontalVelocityFloat: Strafe
-    groundedBool: isGrounded
-    jumpBool: isJumping
-  physics:
-    gravityModifier: 9.81
-    baseGravity: 50
-    resetGravityValue: 1.2
-    groundLayers:
+  _animationSettings:
+    _verticalVelocityFloat: Forward
+    _horizontalVelocityFloat: Strafe
+    _groundedBool: isGrounded
+    _jumpBool: isJumping
+  _physicsSettings:
+    _gravityModifier: 9.81
+    _baseGravity: 50
+    _resetGravityValue: 1.2
+    _groundLayers:
       serializedVersion: 2
       m_Bits: 256
-    airSpeed: 2.5
-  movement:
-    jumpSpeed: 6
-    jumpTime: 0.25
+    _airSpeed: 2.5
+  _movementSettings:
+    _jumpSpeed: 6
+    _jumpTime: 0.25
 --- !u!114 &114453495703064356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2575,7 +2589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2465babe0e7acae42bb2eefbd70611f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlines:
+  _outlines:
   - {fileID: 114806837058277936}
   - {fileID: 114932861743315236}
   - {fileID: 114033657919494726}

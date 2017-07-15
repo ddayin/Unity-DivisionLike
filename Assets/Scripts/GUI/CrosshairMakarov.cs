@@ -7,11 +7,11 @@ namespace DivisionLike
 {
     public class CrosshairMakarov : CrosshairHandler
     {
-        private Image image;
+        private Image _image;
 
         private void Awake()
         {
-            image = GetComponent<Image>();
+            _image = transform.GetComponent<Image>();
         }
 
         public override void ChangeColor( Color _color )
@@ -19,11 +19,11 @@ namespace DivisionLike
             //Debug.Log( "CrosshairMakarov.ChangeColor() overrided" );
 
             // FIXME: this is a tricky way....:(
-            if ( image == null )
+            if ( _image == null )
             {
-                image = GetComponent<Image>();
+                _image = transform.GetComponent<Image>();
             }
-            image.CrossFadeColor( _color, 0.1f, false, false );
+            _image.CrossFadeColor( _color, 0.1f, false, false );
         }
     }
 }

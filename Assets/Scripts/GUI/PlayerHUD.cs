@@ -9,14 +9,14 @@ namespace DivisionLike
     {
         public static PlayerHUD instance = null;
 
-        private Text clipAmmoText;
-        private Text carryingAmmoText;
-        private Text AnotherAmmoText;
+        private Text _clipAmmoText;
+        private Text _carryingAmmoText;
+        private Text _anotherAmmoText;
 
-        private Text medikitNumberText;
+        private Text _medikitNumberText;
 
-        private WeaponHandler weaponHandler;
-        private Weapon anotherWeapon = null;
+        private WeaponHandler _weaponHandler;
+        private Weapon _anotherWeapon = null;
 
         void Awake()
         {
@@ -29,49 +29,17 @@ namespace DivisionLike
                 Destroy( gameObject );
             }
             
-            clipAmmoText = transform.Find( "PlayerHUD/Ammo/ClipAmmoText" ).GetComponent<Text>();
-            carryingAmmoText = transform.Find( "PlayerHUD/Ammo/CarryingAmmoText" ).GetComponent<Text>();
-            AnotherAmmoText = transform.Find( "PlayerHUD/Ammo/AnotherAmmoText" ).GetComponent<Text>();
+            _clipAmmoText = transform.Find( "PlayerHUD/Ammo/ClipAmmoText" ).GetComponent<Text>();
+            _carryingAmmoText = transform.Find( "PlayerHUD/Ammo/CarryingAmmoText" ).GetComponent<Text>();
+            _anotherAmmoText = transform.Find( "PlayerHUD/Ammo/AnotherAmmoText" ).GetComponent<Text>();
 
-            medikitNumberText = transform.Find( "PlayerHUD/Medikit/NumberText" ).GetComponent<Text>();
+            _medikitNumberText = transform.Find( "PlayerHUD/Medikit/NumberText" ).GetComponent<Text>();
 
-            weaponHandler = Player.instance._weaponHandler;
+            _weaponHandler = Player.instance._weaponHandler;
 
             SetAnotherWeapon();
             SetAmmoText();
             SetMedikitText();
-        }
-
-        private void SetAmmoText()
-        {
-            clipAmmoText.text = weaponHandler.currentWeapon.ammo.clipAmmo.ToString();
-            carryingAmmoText.text = weaponHandler.currentWeapon.ammo.carryingAmmo.ToString();
-            
-            AnotherAmmoText.text = anotherWeapon.ammo.clipAmmo.ToString();
-        }
-
-        public void SetAnotherWeapon()
-        {
-            Weapon.WeaponType anotherType = Weapon.WeaponType.Primary;
-            if ( weaponHandler.currentWeapon.weaponType == Weapon.WeaponType.Primary )
-            {
-                anotherType = Weapon.WeaponType.Secondary;
-            }
-            else if ( weaponHandler.currentWeapon.weaponType == Weapon.WeaponType.Secondary )
-            {
-                anotherType = Weapon.WeaponType.Primary;
-            }
-            else if ( weaponHandler.currentWeapon.weaponType == Weapon.WeaponType.Sidearm )
-            {
-                anotherType = Weapon.WeaponType.Primary;
-            }
-
-            anotherWeapon = weaponHandler.dicWeapons[ anotherType ];
-        }
-
-        public void SetMedikitText()
-        {
-            medikitNumberText.text = Player.instance._inventory._currentMedikit.ToString();
         }
 
         // Update is called once per frame
@@ -79,5 +47,38 @@ namespace DivisionLike
         {
             SetAmmoText();
         }
+
+        private void SetAmmoText()
+        {
+            _clipAmmoText.text = _weaponHandler.currentWeapon.ammo.clipAmmo.ToString();
+            _carryingAmmoText.text = _weaponHandler.currentWeapon.ammo.carryingAmmo.ToString();
+            
+            _anotherAmmoText.text = _anotherWeapon.ammo.clipAmmo.ToString();
+        }
+
+        public void SetAnotherWeapon()
+        {
+            Weapon.WeaponType anotherType = Weapon.WeaponType.Primary;
+            if ( _weaponHandler.currentWeapon.weaponType == Weapon.WeaponType.Primary )
+            {
+                anotherType = Weapon.WeaponType.Secondary;
+            }
+            else if ( _weaponHandler.currentWeapon.weaponType == Weapon.WeaponType.Secondary )
+            {
+                anotherType = Weapon.WeaponType.Primary;
+            }
+            else if ( _weaponHandler.currentWeapon.weaponType == Weapon.WeaponType.Sidearm )
+            {
+                anotherType = Weapon.WeaponType.Primary;
+            }
+
+            _anotherWeapon = _weaponHandler.dicWeapons[ anotherType ];
+        }
+
+        public void SetMedikitText()
+        {
+            _medikitNumberText.text = Player.instance._inventory._currentMedikit.ToString();
+        }
+        
     }
 }

@@ -7,40 +7,18 @@ namespace DivisionLike
 {
     public class PlayerOutlineEffect : MonoBehaviour
     {
-        public Outline[] outlines = new Outline[ 5 ];
+        public Outline[] _outlines = new Outline[ 5 ];
 
         private void Awake()
         {
             SetEnable( false );
         }
-
-        private void OnEnable()
-        {
-
-        }
-
-        private void OnDisable()
-        {
-
-        }
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
+        
         public void SetEnable( bool enable )
         {
             for ( int i = 0; i < 5; i++ )
             {
-                outlines[ i ].enabled = enable;
+                _outlines[ i ].enabled = enable;
             }
         }
 
