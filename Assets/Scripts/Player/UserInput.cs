@@ -258,12 +258,12 @@ namespace DivisionLike
             {
                 if ( hit.transform.gameObject.layer == LayerMask.GetMask( "Ragdoll" ) )
                 {
-                    Debug.LogWarning( "crosshair Red" );
+                    //Debug.LogWarning( "crosshair Red" );
                     crosshair.ChangeColor( Color.red );
                 }
                 else
                 {
-                    Debug.Log( "crosshair white" );
+                    //Debug.Log( "crosshair white" );
                     crosshair.ChangeColor( Color.white );
                 }
             }

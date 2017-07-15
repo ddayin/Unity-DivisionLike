@@ -29,8 +29,8 @@ namespace DivisionLike
                     Vector3 camRight = camPos;
                     Vector3 camLeft = camPos;
                     camLeft.x = -camPos.x;
-                    cameraRig.cameraSettings.camPositionOffsetRight = camRight;
-                    cameraRig.cameraSettings.camPositionOffsetLeft = camLeft;
+                    cameraRig._cameraSettings._camPositionOffsetRight = camRight;
+                    cameraRig._cameraSettings._camPositionOffsetLeft = camLeft;
                 }
             }
         }

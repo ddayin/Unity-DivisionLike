@@ -15,8 +15,6 @@ namespace DivisionLike
 
         void Awake()
         {
-            Debug.Log( "ScreenHUD Awake()" );
-
             if ( instance == null )
             {
                 instance = this;

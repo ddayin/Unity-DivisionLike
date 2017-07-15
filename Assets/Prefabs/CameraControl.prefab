@@ -245,7 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineThickness: 1
   lineIntensity: 1
-  fillAmount: 0.5
+  fillAmount: 0.3
   lineColor0: {r: 1, g: 0, b: 0, a: 1}
   lineColor1: {r: 0, g: 1, b: 0, a: 1}
   lineColor2: {r: 0, g: 0, b: 1, a: 1}
@@ -269,26 +269,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda6f40604e98aa4da0fd01bd6780190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  autoTargetPlayer: 0
-  wallLayers:
+  _target: {fileID: 0}
+  _autoTargetPlayer: 1
+  _wallLayers:
     serializedVersion: 2
     m_Bits: 512
-  shoulder: 0
-  cameraSettings:
-    camPositionOffsetLeft: {x: -0.476, y: 0.691, z: -1.159}
-    camPositionOffsetRight: {x: 0.476, y: 0.691, z: -1.159}
-    UICamera: {fileID: 0}
-    mouseXSensitivity: 5
-    mouseYSensitivity: 5
-    minAngle: -30
-    maxAngle: 70
-    rotationSpeed: 5
-    maxCheckDistance: 0.1
-    fieldOfView: 70
-    zoomFieldOfView: 30
-    zoomSpeed: 3
-    hideMeshWhenDistance: 0.5
+  _shoulder: 0
+  _cameraSettings:
+    _camPositionOffsetLeft: {x: -0.476, y: 0.691, z: -1.159}
+    _camPositionOffsetRight: {x: 0.476, y: 0.691, z: -1.159}
+    _UICamera: {fileID: 20640846701817856}
+    _mouseXSensitivity: 5
+    _mouseYSensitivity: 5
+    _minAngle: -30
+    _maxAngle: 70
+    _rotationSpeed: 5
+    _maxCheckDistance: 0.1
+    _fieldOfView: 70
+    _zoomFieldOfView: 30
+    _zoomSpeed: 3
+    _hideMeshWhenDistance: 0.5
   inputSettings:
     verticalAxis: Mouse X
     horizontalAxis: Mouse Y

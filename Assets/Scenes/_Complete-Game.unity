@@ -553,14 +553,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114936941238995890, guid: 667631648b698cd4da90347673b8a333,
         type: 2}
-      propertyPath: target
+      propertyPath: _target
       value: 
       objectReference: {fileID: 1141789810}
-    - target: {fileID: 114421066453790872, guid: 667631648b698cd4da90347673b8a333,
-        type: 2}
-      propertyPath: fillAmount
-      value: 0.3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 667631648b698cd4da90347673b8a333, type: 2}
   m_IsPrefabParent: 0
@@ -740,6 +735,22 @@ Prefab:
     - target: {fileID: 495562, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 115086, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 103286, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 143338, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 186528, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd, type: 2}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd, type: 2}
@@ -1662,6 +1673,11 @@ Prefab:
       propertyPath: _damageImage
       value: 
       objectReference: {fileID: 1394906873}
+    - target: {fileID: 114354008394489122, guid: 59e8e266ec83fd34b8885035b9213f52,
+        type: 2}
+      propertyPath: _physicsSettings._groundLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59e8e266ec83fd34b8885035b9213f52, type: 2}
   m_IsPrefabParent: 0
@@ -1682,6 +1698,29 @@ AudioListener:
   m_PrefabParentObject: {fileID: 81237222621874018, guid: 667631648b698cd4da90347673b8a333,
     type: 2}
   m_PrefabInternal: {fileID: 385798942}
+--- !u!1 &1877492005 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1008780008236374, guid: 59e8e266ec83fd34b8885035b9213f52,
+    type: 2}
+  m_PrefabInternal: {fileID: 1834230914}
+--- !u!82 &1877492007 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 82168656781489022, guid: 59e8e266ec83fd34b8885035b9213f52,
+    type: 2}
+  m_PrefabInternal: {fileID: 1834230914}
+--- !u!114 &1877492016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1877492005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f7ceed8a910ca47950a2347ec4dce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textureTypes: []
+  audioS: {fileID: 1877492007}
 --- !u!1 &1959795197
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,17 +10,16 @@ namespace DivisionLike
 {
     public class MixLevels : MonoBehaviour
     {
-
-        public AudioMixer masterMixer;
+        public AudioMixer _masterMixer;
 
         public void SetSfxLvl( float sfxLvl )
         {
-            masterMixer.SetFloat( "sfxVol", sfxLvl );
+            _masterMixer.SetFloat( "sfxVol", sfxLvl );
         }
 
         public void SetMusicLvl( float musicLvl )
         {
-            masterMixer.SetFloat( "musicVol", musicLvl );
+            _masterMixer.SetFloat( "musicVol", musicLvl );
         }
     }
 }

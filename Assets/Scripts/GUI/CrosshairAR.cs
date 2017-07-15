@@ -30,7 +30,7 @@ namespace DivisionLike
 
         public override void ChangeColor( Color color )
         {
-            Debug.Log( "CrosshairAR.ChangeColor() overrided" );
+            //Debug.Log( "CrosshairAR.ChangeColor() overrided" );
             for ( int i = 0; i < 4; i++ )
             {
                 crosshairs[ i ].color = color;

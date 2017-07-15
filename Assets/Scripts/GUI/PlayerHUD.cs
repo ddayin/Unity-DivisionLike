@@ -20,7 +20,6 @@ namespace DivisionLike
 
         void Awake()
         {
-            Debug.Log( "PlayerHUD Awake()" );
             if ( instance == null )
             {
                 instance = this;

@@ -16,7 +16,7 @@ namespace DivisionLike
 
         public override void ChangeColor( Color _color )
         {
-            Debug.Log( "CrosshairMakarov.ChangeColor() overrided" );
+            //Debug.Log( "CrosshairMakarov.ChangeColor() overrided" );
 
             // FIXME: this is a tricky way....:(
             if ( image == null )

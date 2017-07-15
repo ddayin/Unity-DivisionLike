@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace DivisionLike
 {
-    public class FootstepSounds : MonoBehaviour
+    public class FootstepSound : MonoBehaviour
     {
         public TextureType[] textureTypes;
 

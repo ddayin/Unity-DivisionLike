@@ -42,7 +42,7 @@ namespace DivisionLike
 
         private void OnEnable()
         {
-            
+            transform.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
         }
 
 
@@ -133,10 +133,9 @@ namespace DivisionLike
         {
             _isSinking = false;
             transform.GetComponent<Rigidbody>().isKinematic = false;
-            transform.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+            
             _isDead = false;
             _capsuleCollider.isTrigger = false;
-            _anim.SetTrigger( "Move" );
             _currentHealth = _startingHealth;
         }
     }
