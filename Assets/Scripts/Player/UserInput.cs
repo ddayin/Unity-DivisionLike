@@ -30,6 +30,7 @@ namespace DivisionLike
             public string _sidearmButton = "3";
             public string _sprintButton = "Sprint";
             public string _medikitButton = "Medikit";
+            public string _GrenadeButton = "Grenade";
         }
         [SerializeField]
         public InputSettings _inputSettings;
@@ -51,6 +52,7 @@ namespace DivisionLike
         public Transform _spineTransform;
         public bool _isAiming = false;
         public bool _isSprinting = false;
+        public bool _isGrenadeMode = false;
 
         private Dictionary<Weapon, GameObject> _crosshairPrefabMap = new Dictionary<Weapon, GameObject>();
 
@@ -77,6 +79,7 @@ namespace DivisionLike
             CharacterLogic();
             CameraLookLogic();
             WeaponLogic();
+            GrenadeLogic();
             InventoryLogic();
         }
 
@@ -207,6 +210,14 @@ namespace DivisionLike
             else
             {
                 TurnOffAllCrosshairs();
+            }
+        }
+
+        private void GrenadeLogic()
+        {
+            if ( Input.GetButtonDown( _inputSettings._GrenadeButton ) == true )
+            {
+
             }
         }
 
