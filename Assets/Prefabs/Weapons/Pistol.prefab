@@ -701,6 +701,7 @@ MonoBehaviour:
     decal: {fileID: 128808, guid: e0711ea9c0e244144834a5cc1d62cbcd, type: 2}
     shell: {fileID: 196100, guid: d4284630ed4e2434591827622ca2c585, type: 2}
     clip: {fileID: 0}
+    _bullet: {fileID: 178192, guid: a4571f10673d6734494ba25f01b70792, type: 2}
     crosshairPrefab: {fileID: 1597858921834034, guid: 030112716c644a94c9a5ccefdea26f60,
       type: 2}
     reloadDuration: 2

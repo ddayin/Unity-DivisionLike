@@ -60,6 +60,7 @@ namespace DivisionLike
             public GameObject decal;
             public GameObject shell;
             public GameObject clip;
+            public GameObject _bullet;
 
             [Header( "-Other-" )]
             public GameObject crosshairPrefab;
@@ -196,7 +197,6 @@ namespace DivisionLike
             dir += (Vector3) Random.insideUnitCircle * weaponSettings.bulletSpread;
 
             // 적 캐릭터를 맞추었을 때
-            // layer mask 13 이 Ragdoll 이고 적 캐릭터를 의미함
             int layerMask = LayerMask.GetMask( "Ragdoll" );
             if ( Physics.Raycast( bSpawnPoint, dir, out ragdollHit, weaponSettings.range, layerMask ) )
             {
@@ -253,6 +253,7 @@ namespace DivisionLike
 
         void GunEffects()
         {
+            // muzzle flash
             if ( weaponSettings.muzzleFlash )
             {
                 Vector3 bulletSpawnPos = weaponSettings.bulletSpawn.position;
@@ -262,6 +263,7 @@ namespace DivisionLike
                 Destroy( muzzleFlash, 2.0f );
             }
 
+            // ejecting shell
             if ( weaponSettings.shell )
             {
                 if ( weaponSettings.shellEjectSpot )
@@ -270,7 +272,7 @@ namespace DivisionLike
                     Quaternion shellEjectRot = weaponSettings.shellEjectSpot.rotation;
                     //GameObject shell = Instantiate( weaponSettings.shell, shellEjectPos, shellEjectRot ) as GameObject;
                     GameObject shell = Lean.LeanPool.Spawn( weaponSettings.shell, shellEjectPos, shellEjectRot ) as GameObject;
-                    shell.transform.SetParent( GameObject.FindGameObjectWithTag( "Player" ).transform );
+                    shell.transform.SetParent( Player.instance.transform );
                     //shell.transform.localScale = this.transform.localScale;
 
                     if ( shell.GetComponent<Rigidbody>() )
@@ -284,8 +286,23 @@ namespace DivisionLike
                 }
             }
 
+            // bullet
+            if ( weaponSettings._bullet != null )
+            {
+                GameObject bulletObj = (GameObject) Instantiate( weaponSettings._bullet, weaponSettings.bulletSpawn.transform.position, weaponSettings.bulletSpawn.rotation );
+
+                //bulletObj.transform.SetParent( weaponSettings.bulletSpawn );
+
+                //Vector3 firePos = CameraControl.instance._mainCamera.ScreenToWorldPoint( Input.mousePosition );
+
+                bulletObj.GetComponent<Rigidbody>().velocity = bulletObj.transform.forward * 10f;
+                //bulletObj.GetComponent<Rigidbody>().AddForce();
+
+            }
+
             PlayGunshotSound();
         }
+        
 
         void PlayGunshotSound()
         {
