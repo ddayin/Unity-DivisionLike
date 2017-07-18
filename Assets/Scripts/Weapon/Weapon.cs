@@ -61,6 +61,7 @@ namespace DivisionLike
             public GameObject shell;
             public GameObject clip;
             public GameObject _bullet;
+            public LineRenderer _bulletLine;
 
             [Header( "-Other-" )]
             public GameObject crosshairPrefab;
@@ -196,6 +197,11 @@ namespace DivisionLike
 
             dir += (Vector3) Random.insideUnitCircle * weaponSettings.bulletSpread;
 
+            weaponSettings._bulletLine.enabled = true;
+            weaponSettings._bulletLine.SetPosition( 0, weaponSettings.bulletSpawn.transform.position );
+
+            Invoke( "DisableBulletLine", 0.1f );
+
             // 적 캐릭터를 맞추었을 때
             int layerMask = LayerMask.GetMask( "Ragdoll" );
             if ( Physics.Raycast( bSpawnPoint, dir, out ragdollHit, weaponSettings.range, layerMask ) )
@@ -209,11 +215,16 @@ namespace DivisionLike
                     // ... the enemy should take damage.
                     enemyHealth.TakeDamage( (int) weaponSettings.damage, ragdollHit.point );
                 }
+                
+                // bullet line effect
+                weaponSettings._bulletLine.SetPosition( 1, ragdollHit.point );
             }
 
             // 적 캐릭터 제외
             if ( Physics.Raycast( bSpawnPoint, dir, out hit, weaponSettings.range, weaponSettings.bulletLayers ) )
             {
+                weaponSettings._bulletLine.SetPosition( 1, hit.point );
+
                 HitEffects( hit );
             }
 
@@ -225,6 +236,11 @@ namespace DivisionLike
             ammo.clipAmmo--;
             _resettingCartridge = true;
             StartCoroutine( LoadNextBullet() );
+        }
+
+        private void DisableBulletLine()
+        {
+            weaponSettings._bulletLine.enabled = false;
         }
 
         //Loads the next bullet into the chamber
@@ -287,19 +303,19 @@ namespace DivisionLike
             }
 
             // bullet
-            if ( weaponSettings._bullet != null )
-            {
-                GameObject bulletObj = (GameObject) Instantiate( weaponSettings._bullet, weaponSettings.bulletSpawn.transform.position, weaponSettings.bulletSpawn.rotation );
+            //if ( weaponSettings._bullet != null )
+            //{
+            //    GameObject bulletObj = (GameObject) Instantiate( weaponSettings._bullet, weaponSettings.bulletSpawn.transform.position, weaponSettings.bulletSpawn.rotation );
 
-                //bulletObj.transform.SetParent( weaponSettings.bulletSpawn );
+            //    //bulletObj.transform.SetParent( weaponSettings.bulletSpawn );
 
-                //Vector3 firePos = CameraControl.instance._mainCamera.ScreenToWorldPoint( Input.mousePosition );
+            //    //Vector3 firePos = CameraControl.instance._mainCamera.ScreenToWorldPoint( Input.mousePosition );
 
-                bulletObj.GetComponent<Rigidbody>().velocity = bulletObj.transform.forward * 10f;
-                //bulletObj.GetComponent<Rigidbody>().AddForce();
+            //    bulletObj.GetComponent<Rigidbody>().velocity = bulletObj.transform.forward * 10f;
+            //    //bulletObj.GetComponent<Rigidbody>().AddForce();
 
-            }
-
+            //}
+            
             PlayGunshotSound();
         }
         
