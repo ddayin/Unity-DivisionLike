@@ -14,6 +14,7 @@ namespace DivisionLike
         private CharacterMovement _characterMove;
         private WeaponHandler _weaponHandler;
         private PlayerInventory _inventory;
+        private GrenadeHandler _grenadeHandler;
 
         [System.Serializable]
         public class InputSettings
@@ -62,6 +63,7 @@ namespace DivisionLike
             _characterMove = transform.GetComponent<CharacterMovement>();
             _weaponHandler = transform.GetComponent<WeaponHandler>();
             _inventory = transform.GetComponent<PlayerInventory>();
+            _grenadeHandler = transform.GetComponent<GrenadeHandler>();
 
             _TPSCamera = Camera.main;
 
@@ -97,19 +99,22 @@ namespace DivisionLike
             }
         }
 
+        private float _v = 0f;
+        private float _h = 0f;
+
         //Handles character logic
         void CharacterLogic()
         {
             if ( !_characterMove )
                 return;
 
-            float v = Input.GetAxis( _inputSettings._verticalAxis );
-            float h = Input.GetAxis( _inputSettings._horizontalAxis );
+            _v = Input.GetAxis( _inputSettings._verticalAxis );
+            _h = Input.GetAxis( _inputSettings._horizontalAxis );
 
             // always walk when player is aiming
             if ( Player.instance._userInput._isAiming == true )
             {
-                _characterMove.Animate( v * 0.5f, h * 0.5f );
+                _characterMove.Animate( _v * 0.5f, _h * 0.5f );
             }
             else
             {
@@ -117,13 +122,13 @@ namespace DivisionLike
                 if ( Input.GetButton( _inputSettings._sprintButton ) == true )
                 {
                     _isSprinting = true;
-                    _characterMove.Animate( v, h );
+                    _characterMove.Animate( _v, _h );
                 }
                 // walk
                 else
                 {
                     _isSprinting = false;
-                    _characterMove.Animate( v * 0.5f, h * 0.5f );
+                    _characterMove.Animate( _v * 0.5f, _h * 0.5f );
                 }
             }
             
@@ -160,6 +165,11 @@ namespace DivisionLike
 
             _isAiming = Input.GetButton( _inputSettings._aimButton ) || _debugAim == true;
             _weaponHandler.Aim( _isAiming );
+
+            if ( _isAiming == true )
+            {
+                _isGrenadeMode = false;
+            }
 
             if ( Input.GetButtonDown( _inputSettings._switchWeaponButton ) )
             {
@@ -213,11 +223,25 @@ namespace DivisionLike
             }
         }
 
+        private Vector3 force;
+
         private void GrenadeLogic()
         {
+            if ( _isAiming == true )
+            {
+                return;
+            }
+
             if ( Input.GetButtonDown( _inputSettings._GrenadeButton ) == true )
             {
+                _isGrenadeMode = true;
+            }
+            
 
+            if ( Input.GetButtonDown( _inputSettings._fireButton ) == true && _isGrenadeMode == true )
+            {
+                //force = CameraControl.instance._mainCamera.ScreenToWorldPoint( Input.mousePosition );
+                _grenadeHandler.CreateGrenade( _weaponHandler.userSettings.rightHand.position, _weaponHandler.userSettings.rightHand.rotation );
             }
         }
 

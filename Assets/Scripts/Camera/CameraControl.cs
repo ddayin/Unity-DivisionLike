@@ -11,6 +11,8 @@ namespace DivisionLike
 
     public class CameraControl : MonoBehaviour
     {
+        public static CameraControl instance = null;
+
         public Transform _target = null;
         public bool _autoTargetPlayer = true;
         public LayerMask _wallLayers;
@@ -74,8 +76,9 @@ namespace DivisionLike
         public Transform _pivot { get; set; }
 
         // Use this for initialization
-        private void Start()
+        private void Awake()
         {
+            instance = this;
             _mainCamera = Camera.main;
             _pivot = transform.GetChild( 0 );
 

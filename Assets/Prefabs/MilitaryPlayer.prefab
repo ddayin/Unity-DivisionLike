@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 82168656781489022}
   - component: {fileID: 114774562876285040}
   - component: {fileID: 114314024353467972}
+  - component: {fileID: 114240784401299112}
   m_Layer: 0
   m_Name: MilitaryPlayer
   m_TagString: Player
@@ -2438,6 +2439,21 @@ MonoBehaviour:
   weaponsList:
   - {fileID: 0}
   maxWeapons: 2
+--- !u!114 &114240784401299112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008780008236374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d314853478227274083b219397a26f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _grenadePrefab: {fileID: 1376241201457370, guid: ab907fd364b32044eb2a628cfce6cd6d,
+    type: 2}
+  _userSettings:
+    _throwForce: 100
 --- !u!114 &114290077164167034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2552,6 +2568,7 @@ MonoBehaviour:
     _sidearmButton: 3
     _sprintButton: Sprint
     _medikitButton: Medikit
+    _GrenadeButton: Grenade
   _otherSettings:
     _lookSpeed: 5
     _lookDistance: 30
@@ -2563,6 +2580,7 @@ MonoBehaviour:
   _spineTransform: {fileID: 4568949691163028}
   _isAiming: 0
   _isSprinting: 0
+  _isGrenadeMode: 0
 --- !u!114 &114665249318961136
 MonoBehaviour:
   m_ObjectHideFlags: 1
