@@ -21,9 +21,11 @@ namespace DivisionLike
         private AudioSource _enemyAudio;                     // Reference to the audio source.
         private ParticleSystem _hitParticles;                // Reference to the particle system that plays when the enemy is damaged.
         private CapsuleCollider _capsuleCollider;            // Reference to the capsule collider.
+
         private bool _isDead;                                // Whether the enemy is dead.
         private bool _isSinking;                             // Whether the enemy has started sinking through the floor.
-        
+
+        public cakeslice.Outline _outline;
         
 
         void Awake()
@@ -43,6 +45,7 @@ namespace DivisionLike
         private void OnEnable()
         {
             transform.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+            _outline.enabled = false;
         }
 
 
@@ -63,6 +66,9 @@ namespace DivisionLike
             if ( _isDead == true )
                 // ... no need to take damage so exit the function.
                 return;
+
+            _outline.enabled = true;
+            Invoke( "DisableOutline", 1f );
 
             // Play the hurt sound effect.
             _enemyAudio.Play();
@@ -86,6 +92,11 @@ namespace DivisionLike
                 // ... the enemy is dead.
                 Death();
             }
+        }
+
+        private void DisableOutline()
+        {
+            _outline.enabled = false;
         }
 
 
