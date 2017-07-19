@@ -8,10 +8,10 @@ namespace DivisionLike
     {
         public Dictionary<string, Weapon> _dicWeapons = new Dictionary<string, Weapon>();
 
-        public uint _currentMedikit;
+        public uint _currentMedikit = 5;
         public const uint _maxMedikit = 5;
-        public uint _currentGrenade;
-        public const uint _maxGrenade = 4;
+        public uint _currentGrenade = 6;
+        public const uint _maxGrenade = 6;
 
         private PlayerHealth _health;
 

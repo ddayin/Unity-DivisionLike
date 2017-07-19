@@ -66,7 +66,7 @@ namespace DivisionLike
             }
 
             // If the player has zero or less health...
-            if ( _playerHealth._currentHealth <= 0 )
+            if ( Player.instance._stats._currentHealth <= 0 )
             {
                 // ... tell the animator the player is dead.
                 _anim.SetTrigger( "PlayerDead" );
@@ -80,7 +80,7 @@ namespace DivisionLike
             _timer = 0f;
 
             // If the player has health to lose...
-            if ( _playerHealth._currentHealth > 0 )
+            if ( Player.instance._stats._currentHealth > 0 )
             {
                 // ... damage the player.
                 _playerHealth.TakeDamage( _attackDamage );

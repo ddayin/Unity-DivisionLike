@@ -7,6 +7,8 @@ namespace DivisionLike
 {
     public class PlayerStats : MonoBehaviour
     {
+        public int _maxHealth = 1200;                            // The amount of health the player starts the game with.
+        public int _currentHealth;                                   // The current health the player has.
         public uint _currentLevel = 1;
         public const uint _maxLevel = 30;
         public ulong _currentXP = 0;
@@ -15,6 +17,8 @@ namespace DivisionLike
 
         private void Awake()
         {
+            _currentHealth = _maxHealth;
+
             SetDummyxpRequire();
         }
 

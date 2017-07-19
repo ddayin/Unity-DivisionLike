@@ -227,12 +227,12 @@ namespace DivisionLike
 
         private void GrenadeLogic()
         {
-            if ( _isAiming == true )
+            if ( _isAiming == true || Player.instance._inventory._currentGrenade <= 0 )
             {
                 return;
             }
 
-            if ( Input.GetButtonDown( _inputSettings._GrenadeButton ) == true )
+            if ( Input.GetButtonDown( _inputSettings._GrenadeButton ) == true  )
             {
                 _isGrenadeMode = true;
             }
@@ -242,6 +242,9 @@ namespace DivisionLike
             {
                 //force = CameraControl.instance._mainCamera.ScreenToWorldPoint( Input.mousePosition );
                 _grenadeHandler.CreateGrenade( _weaponHandler.userSettings.rightHand.position, _weaponHandler.userSettings.rightHand.rotation );
+
+                Player.instance._inventory._currentGrenade--;
+                PlayerHUD.instance.SetGrenadeText();
             }
         }
 

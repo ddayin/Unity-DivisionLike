@@ -11,9 +11,7 @@ namespace DivisionLike
 {
     public class PlayerHealth : MonoBehaviour
     {
-        public int _maxHealth = 100;                            // The amount of health the player starts the game with.
-        public int _currentHealth;                                   // The current health the player has.
-        public Slider _healthSlider;                                 // Reference to the UI's health bar.
+        //public Slider _healthSlider;                                 // Reference to the UI's health bar.
         public Image _damageImage;                                   // Reference to an image to flash on the screen on being hurt.
         public AudioClip _deathClip;                                 // The audio clip to play when the player dies.
         public float _flashSpeed = 5f;                               // The speed the damageImage will fade at.
@@ -35,8 +33,7 @@ namespace DivisionLike
             //playerMovement = GetComponent <PlayerMovement> ();
             //playerShooting = GetComponentInChildren <PlayerShooting> ();
 
-            // Set the initial health of the player.
-            _currentHealth = _maxHealth;
+            
         }
 
 
@@ -66,16 +63,16 @@ namespace DivisionLike
             _damaged = true;
 
             // Reduce the current health by the damage amount.
-            _currentHealth -= amount;
+            Player.instance._stats._currentHealth -= amount;
 
-            // Set the health bar's value to the current health.
-            _healthSlider.value = _currentHealth;
+            // Set the health bar's value to the current health.           
+            PlayerHUD.instance.SetHealthSlider( Player.instance._stats._currentHealth );
 
             // Play the hurt sound effect.
             _playerAudio.Play();
 
             // If the player has lost all it's health and the death flag hasn't been set yet...
-            if ( _currentHealth <= 0 && _isDead == false )
+            if ( Player.instance._stats._currentHealth <= 0 && _isDead == false )
             {
                 // ... it should die.
                 Death();
@@ -84,9 +81,9 @@ namespace DivisionLike
 
         public void Recover()
         {
-            _currentHealth = _maxHealth;
-
-            _healthSlider.value = _currentHealth;
+            Player.instance._stats._currentHealth = Player.instance._stats._maxHealth;
+            
+            PlayerHUD.instance.SetMaxHealthSlider();
 
             PlayerHUD.instance.SetMedikitText();
 

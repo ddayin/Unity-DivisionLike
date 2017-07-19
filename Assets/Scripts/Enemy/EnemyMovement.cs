@@ -28,7 +28,7 @@ namespace DivisionLike
         void Update()
         {
             // If the enemy and the player have health left...
-            if ( _enemyHealth._currentHealth > 0 && _playerHealth._currentHealth > 0 )
+            if ( _enemyHealth._currentHealth > 0 && Player.instance._stats._currentHealth > 0 )
             {
                 // ... set the destination of the nav mesh agent to the player.
                 _nav.SetDestination( _player.position );
