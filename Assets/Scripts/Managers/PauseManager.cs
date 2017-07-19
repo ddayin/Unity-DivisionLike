@@ -19,13 +19,32 @@ namespace DivisionLike
 
         private Canvas _canvas;
 
+        private Button _instructionButton;
+        private Image _instructionImage;
+        private bool _isVisibleInstruction = false;
+
         public bool _isPaused = false;
 
-        void Start()
+        private void Awake()
         {
             _canvas = GetComponent<Canvas>();
 
-            
+            _instructionButton = transform.Find( "PausePanel/InstructionButton" ).GetComponent<Button>();
+            _instructionButton.onClick.AddListener( ShowIntruction );
+            _instructionImage = transform.Find( "InstructionPanel" ).GetComponent<Image>();
+            _instructionImage.enabled = false;
+        }
+
+        private void OnEnable()
+        {
+            _instructionImage.enabled = false;
+
+
+        }
+
+        private void OnDisable()
+        {
+            _instructionImage.enabled = false;
         }
 
         void Update()
@@ -35,6 +54,14 @@ namespace DivisionLike
                 _canvas.enabled = !_canvas.enabled;
                 
                 Pause();
+            }
+
+            if ( Input.GetMouseButtonDown( 0 ) == true )
+            {
+                if ( _isVisibleInstruction == true )
+                {
+                    _instructionImage.enabled = false;
+                }
             }
         }
 
@@ -91,6 +118,15 @@ namespace DivisionLike
 #else
 		Application.Quit();
 #endif
+        }
+
+        private void ShowIntruction()
+        {
+            _isVisibleInstruction = true;
+            
+            _instructionImage.enabled = _isVisibleInstruction;
+            
+
         }
     }
 }

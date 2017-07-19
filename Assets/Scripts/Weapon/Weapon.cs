@@ -90,6 +90,7 @@ namespace DivisionLike
         public class Ammunition
         {
             public int carryingAmmo;    // 모든 총알의 개수
+            public int carryingMaxAmmo = 800;
             public int clipAmmo;        // 장전되어 있는 총알의 개수 
             public int maxClipAmmo;     // 장전될 수 있는 총알의 최대 개수
             public bool clipInfiniteAmmo = false;    // 모든 총알의 개수가 무한개인지
