@@ -79,11 +79,33 @@ namespace DivisionLike
             }
         }
 
-        public void Recover()
+        public void RecoverMax()
         {
             Player.instance._stats._currentHealth = Player.instance._stats._maxHealth;
             
             PlayerHUD.instance.SetMaxHealthSlider();
+
+            PlayerHUD.instance.SetMedikitText();
+
+            Player.instance._outlineEffect.Enable( 4f );
+        }
+
+        public void RecoverOneCell()
+        {
+            float toDivide = (float) Player.instance._stats._maxHealth / 3f;
+            float fDivided = (float) Player.instance._stats._currentHealth / toDivide;
+            int iDivided = (int) fDivided;
+            //if ( iDivided == fDivided && iDivided != 3 )
+            //{
+            //    Player.instance._stats._currentHealth = (int) toDivide * ( iDivided + 2 );
+            //}
+            //else
+            {
+                Player.instance._stats._currentHealth = (int) toDivide * ( iDivided + 1 );
+            }
+            
+
+            PlayerHUD.instance.SetHealthSlider( Player.instance._stats._currentHealth );
 
             PlayerHUD.instance.SetMedikitText();
 

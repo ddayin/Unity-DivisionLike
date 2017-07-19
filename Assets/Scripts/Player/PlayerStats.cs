@@ -22,6 +22,12 @@ namespace DivisionLike
             SetDummyxpRequire();
         }
 
+        public void RecoverMaxHealth()
+        {
+            _currentHealth = _maxHealth;
+        }
+        
+
         private void SetDummyxpRequire()
         {
             // FIXME: hard coding temporarily...

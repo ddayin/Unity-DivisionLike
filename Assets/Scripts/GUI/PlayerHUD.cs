@@ -72,6 +72,12 @@ namespace DivisionLike
 
         public void SetHealthSlider( int health )
         {
+            if ( health == Player.instance._stats._maxHealth )
+            {
+                SetMaxHealthSlider();
+                return;
+            }
+
             float toDivide = (float) Player.instance._stats._maxHealth / 3f;
             float fDivided = (float) health / toDivide;
             int iDivided = (int) fDivided;
@@ -103,6 +109,18 @@ namespace DivisionLike
             for ( int i = 0; i < 3; i++ )
             {
                 _healthSlider[ i ].normalizedValue = 1f;
+            }
+        }
+
+        public void RecoverOneCellHealth()
+        {
+            for ( int i = 0; i < 3; i++ )
+            {
+                if ( _healthSlider[ i ].normalizedValue != 1f )
+                {
+                    _healthSlider[ i ].normalizedValue = 1f;
+                    return;
+                }
             }
         }
 

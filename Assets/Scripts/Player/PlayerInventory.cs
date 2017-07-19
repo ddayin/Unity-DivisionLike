@@ -53,8 +53,9 @@ namespace DivisionLike
             Debug.Log( "use 1 medikit" );
 
             _currentMedikit--;
-            
-            _health.Recover();
+
+            //_health.RecoverMax();
+            _health.RecoverOneCell();
         }
 
     }
