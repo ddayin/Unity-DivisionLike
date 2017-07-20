@@ -12,6 +12,7 @@ namespace DivisionLike
         private Text _levelText;
         private Slider _xpSlider;
         private Slider _ammoSlider;
+        private Image _loadingCircleImage;
 
         void Awake()
         {
@@ -27,10 +28,12 @@ namespace DivisionLike
             _levelText = transform.Find( "LevelText" ).GetComponent<Text>();
             _xpSlider = transform.Find( "ExpSlider" ).GetComponent<Slider>();
             _ammoSlider = transform.Find( "AmmoSlider" ).GetComponent<Slider>();
+            _loadingCircleImage = transform.Find( "LoadingPanel/CircleImage" ).GetComponent<Image>();
             
             SetLevelText();
             CalculateExpSlider( 0 );
             SetAmmoSlider();
+            SetLoadingCircle( 0f );
         }
 
         // Update is called once per frame
@@ -58,6 +61,22 @@ namespace DivisionLike
         {
             float normalizedAmmo = (float) (Player.instance._weaponHandler.currentWeapon.ammo.clipAmmo) / (float) (Player.instance._weaponHandler.currentWeapon.ammo.maxClipAmmo);
             _ammoSlider.normalizedValue = normalizedAmmo;
+        }
+
+        public void SetLoadingCircle( float fillAmount )
+        {
+            _loadingCircleImage.fillAmount = fillAmount;
+        }
+
+        public void SetEnableLoadingCircle( bool enable )
+        {
+            _loadingCircleImage.enabled = enable;
+        }
+
+        public void InitLoadingCircle()
+        {
+            _loadingCircleImage.enabled = true;
+            _loadingCircleImage.fillAmount = 0f;
         }
     }
 }
