@@ -65,7 +65,7 @@ namespace DivisionLike
                 return;
             }
 
-            if ( Input.GetKey( KeyCode.V ) == true )
+            if ( Input.GetKey( KeyCode.F ) == true )
             {
                 _timer += Time.deltaTime;
 

@@ -292,9 +292,10 @@ namespace DivisionLike
 
             CrosshairHandler crosshair = _weaponHandler.currentWeapon.weaponSettings.crosshairPrefab.GetComponent<CrosshairHandler>();
 
-            if ( Physics.Raycast( firePoint, ( fireDirection ), out hit, range ) )
+            if ( Physics.Raycast( firePoint, ( fireDirection ), out hit, range ) == true )
             {
-                if ( hit.transform.gameObject.layer == LayerMask.GetMask( "Ragdoll" ) )
+                //if ( hit.transform.gameObject.layer == LayerMask.GetMask( "Ragdoll" ) )
+                if ( hit.transform.gameObject.layer == 13 )
                 {
                     //Debug.LogWarning( "crosshair Red" );
                     crosshair.ChangeColor( Color.red );

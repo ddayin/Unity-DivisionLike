@@ -16,14 +16,14 @@ namespace DivisionLike
 
         public override void ChangeColor( Color _color )
         {
-            //Debug.Log( "CrosshairMakarov.ChangeColor() overrided" );
+            //Debug.Log( "CrosshairMakarov.ChangeColor() overrided " + _color );
 
             // FIXME: this is a tricky way....:(
-            if ( _image == null )
-            {
-                _image = transform.GetComponent<Image>();
-            }
-            _image.CrossFadeColor( _color, 0.1f, false, false );
+            //if ( _image == null )
+            //{
+            //    _image = transform.GetComponent<Image>();
+            //}
+            _image.color = _color;
         }
     }
 }
