@@ -48,6 +48,7 @@ namespace DivisionLike
         public OtherSettings _otherSettings;
 
         private Camera _TPSCamera;
+        private Transform _centerTransform;
 
         public bool _debugAim = false;
         public Transform _spineTransform;
@@ -66,6 +67,7 @@ namespace DivisionLike
             _grenadeHandler = transform.GetComponent<GrenadeHandler>();
 
             _TPSCamera = Camera.main;
+            
 
             SetupCrosshairs();
 
@@ -194,9 +196,13 @@ namespace DivisionLike
 
             if ( _weaponHandler.currentWeapon )
             {
-                Ray aimRay = new Ray( _TPSCamera.transform.position, _TPSCamera.transform.forward );
+                //Debug.Log( _TPSCamera.transform.position );
+                //Debug.Log( "_TPSCamera.pixelWidth =  " + _TPSCamera.pixelWidth + ", _TPSCamera.pixelHeight =  " + _TPSCamera.pixelHeight );
+                Ray aimRay = _TPSCamera.ScreenPointToRay( new Vector3( _TPSCamera.pixelWidth / 2, _TPSCamera.pixelHeight / 2, 0f ) );
 
-                //Debug.DrawRay (aimRay.origin, aimRay.direction);
+                //Ray aimRay = new Ray( _TPSCamera.transform.position, _TPSCamera.transform.forward );
+
+                Debug.DrawRay (aimRay.origin, aimRay.direction);
                 if ( Input.GetButton( _inputSettings._fireButton ) == true && _isAiming == true )
                 {
                     _weaponHandler.FireCurrentWeapon( aimRay );

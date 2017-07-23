@@ -188,7 +188,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 40
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -289,13 +289,13 @@ MonoBehaviour:
     _zoomFieldOfView: 30
     _zoomSpeed: 3
     _hideMeshWhenDistance: 0.5
-  inputSettings:
-    verticalAxis: Mouse X
-    horizontalAxis: Mouse Y
-    aimButton: Fire2
-    switchShoulderButton: Sprint
-  movementSettings:
-    movementLerpSpeed: 5
+  _inputSettings:
+    _verticalAxis: Mouse X
+    _horizontalAxis: Mouse Y
+    _aimButton: Fire2
+    _switchShoulderButton: Sprint
+  _movementSettings:
+    _movementLerpSpeed: 5
 --- !u!124 &124665779388942328
 Behaviour:
   m_ObjectHideFlags: 1

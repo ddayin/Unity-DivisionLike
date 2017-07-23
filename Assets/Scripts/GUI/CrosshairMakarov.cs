@@ -13,16 +13,16 @@ namespace DivisionLike
         {
             _image = transform.GetComponent<Image>();
         }
-
+        
         public override void ChangeColor( Color _color )
         {
             //Debug.Log( "CrosshairMakarov.ChangeColor() overrided " + _color );
 
             // FIXME: this is a tricky way....:(
-            //if ( _image == null )
-            //{
-            //    _image = transform.GetComponent<Image>();
-            //}
+            if ( _image == null )
+            {
+                _image = transform.GetComponent<Image>();
+            }
             _image.color = _color;
         }
     }

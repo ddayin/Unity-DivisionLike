@@ -114,17 +114,21 @@ namespace DivisionLike
         [SerializeField]
         public SoundSettings soundSettings;
 
+        private LineRenderer _line;
+
         // Use this for initialization
         private void Start()
         {
             _collider = GetComponent<Collider>();
             _rigidBody = GetComponent<Rigidbody>();
             _animator = GetComponent<Animator>();
+            _line = GetComponent<LineRenderer>();
 
             if ( ammo.clipInfiniteAmmo == true )
             {
                 ammo.carryingAmmo = int.MaxValue;
             }
+            
         }
 
         // Update is called once per frame
@@ -168,6 +172,14 @@ namespace DivisionLike
             {
                 faceLight.enabled = false;
             }
+
+            UpdateLineRenderer();
+        }
+
+        private void UpdateLineRenderer()
+        {
+            _line.SetPosition( 0, Camera.main.transform.position );
+            _line.SetPosition( 1, _hit.point );
         }
 
         private BoxCollider boxCollider;
@@ -181,6 +193,7 @@ namespace DivisionLike
         }
 
         //This fires the weapon
+        private RaycastHit _hit;
         public void Fire( Ray ray )
         {
             if ( ammo.clipAmmo <= 0 || _resettingCartridge || !weaponSettings.bulletSpawn || !_isEquipped )
@@ -190,13 +203,14 @@ namespace DivisionLike
 
             faceLight.enabled = true;
 
-            RaycastHit hit;
+            //RaycastHit hit;
+            
             RaycastHit ragdollHit;
             Transform bSpawn = weaponSettings.bulletSpawn;
             Vector3 bSpawnPoint = bSpawn.position;
             Vector3 dir = ray.GetPoint( weaponSettings.range ) - bSpawnPoint;
 
-            dir += (Vector3) Random.insideUnitCircle * weaponSettings.bulletSpread;
+            //dir += (Vector3) Random.insideUnitCircle * weaponSettings.bulletSpread;
 
             weaponSettings._bulletLine.enabled = true;
             weaponSettings._bulletLine.SetPosition( 0, weaponSettings.bulletSpawn.transform.position );
@@ -222,11 +236,11 @@ namespace DivisionLike
             }
 
             // 적 캐릭터 제외
-            if ( Physics.Raycast( bSpawnPoint, dir, out hit, weaponSettings.range, weaponSettings.bulletLayers ) )
+            if ( Physics.Raycast( bSpawnPoint, dir, out _hit, weaponSettings.range, weaponSettings.bulletLayers ) )
             {
-                weaponSettings._bulletLine.SetPosition( 1, hit.point );
+                weaponSettings._bulletLine.SetPosition( 1, _hit.point );
 
-                HitEffects( hit );
+                HitEffects( _hit );
             }
 
             GunEffects();
