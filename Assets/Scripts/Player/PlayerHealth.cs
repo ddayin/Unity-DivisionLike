@@ -57,8 +57,10 @@ namespace DivisionLike
         }
 
 
-        public void TakeDamage( int amount )
+        public void TakeDamage( Vector3 attackDirection, int amount )
         {
+            Debug.Log( "attack direction = " + attackDirection );
+
             // Set the damaged flag so the screen will flash.
             _damaged = true;
 
@@ -67,6 +69,8 @@ namespace DivisionLike
 
             // Set the health bar's value to the current health.           
             PlayerHUD.instance.SetHealthSlider( Player.instance._stats._currentHealth );
+
+            ScreenHUD.instance.RotateCircularHit( attackDirection );
 
             // Play the hurt sound effect.
             _playerAudio.Play();

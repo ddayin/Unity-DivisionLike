@@ -83,7 +83,7 @@ namespace DivisionLike
             if ( Player.instance._stats._currentHealth > 0 )
             {
                 // ... damage the player.
-                _playerHealth.TakeDamage( _attackDamage );
+                _playerHealth.TakeDamage( transform.forward, _attackDamage );
             }
         }
     }

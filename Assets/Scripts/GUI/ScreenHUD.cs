@@ -13,6 +13,7 @@ namespace DivisionLike
         private Slider _xpSlider;
         private Slider _ammoSlider;
         private Image _loadingCircleImage;
+        private CircularHit _circularHit;
 
         void Awake()
         {
@@ -29,6 +30,7 @@ namespace DivisionLike
             _xpSlider = transform.Find( "ExpSlider" ).GetComponent<Slider>();
             _ammoSlider = transform.Find( "AmmoSlider" ).GetComponent<Slider>();
             _loadingCircleImage = transform.Find( "LoadingPanel/CircleImage" ).GetComponent<Image>();
+            _circularHit = transform.Find( "CircularHit" ).GetComponent<CircularHit>();
             
             SetLevelText();
             CalculateExpSlider( 0 );
@@ -77,6 +79,11 @@ namespace DivisionLike
         {
             _loadingCircleImage.enabled = true;
             _loadingCircleImage.fillAmount = 0f;
+        }
+
+        public void RotateCircularHit( Vector3 direction )
+        {
+            _circularHit.RotateHit( direction );
         }
     }
 }
