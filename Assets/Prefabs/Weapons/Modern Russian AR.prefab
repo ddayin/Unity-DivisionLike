@@ -781,7 +781,7 @@ MonoBehaviour:
   weaponSettings:
     bulletSpawn: {fileID: 432626}
     damage: 40
-    bulletSpread: 5
+    bulletSpread: 0.3
     fireRate: 0.2
     bulletLayers:
       serializedVersion: 2

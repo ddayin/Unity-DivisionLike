@@ -198,7 +198,8 @@ namespace DivisionLike
             {
                 //Debug.Log( _TPSCamera.transform.position );
                 //Debug.Log( "_TPSCamera.pixelWidth =  " + _TPSCamera.pixelWidth + ", _TPSCamera.pixelHeight =  " + _TPSCamera.pixelHeight );
-                Ray aimRay = _TPSCamera.ScreenPointToRay( new Vector3( _TPSCamera.pixelWidth / 2, _TPSCamera.pixelHeight / 2, 0f ) );
+                //Ray aimRay = _TPSCamera.ScreenPointToRay( new Vector3( _TPSCamera.pixelWidth / 2f, _TPSCamera.pixelHeight / 2f, 0f ) );
+                Ray aimRay = _TPSCamera.ViewportPointToRay( new Vector3( 0.5f, 0.5f, 0f ) );
 
                 //Ray aimRay = new Ray( _TPSCamera.transform.position, _TPSCamera.transform.forward );
 

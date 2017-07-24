@@ -113,17 +113,14 @@ namespace DivisionLike
         }
         [SerializeField]
         public SoundSettings soundSettings;
-
-        private LineRenderer _line;
-
+       
         // Use this for initialization
         private void Start()
         {
             _collider = GetComponent<Collider>();
             _rigidBody = GetComponent<Rigidbody>();
             _animator = GetComponent<Animator>();
-            _line = GetComponent<LineRenderer>();
-
+            
             if ( ammo.clipInfiniteAmmo == true )
             {
                 ammo.carryingAmmo = int.MaxValue;
@@ -172,16 +169,8 @@ namespace DivisionLike
             {
                 faceLight.enabled = false;
             }
-
-            UpdateLineRenderer();
         }
-
-        private void UpdateLineRenderer()
-        {
-            _line.SetPosition( 0, Camera.main.transform.position );
-            _line.SetPosition( 1, _hit.point );
-        }
-
+        
         private BoxCollider boxCollider;
 
         // MeshRenderer의 크기에 맞게 BoxCollider의 크기도 조정한다.
@@ -194,6 +183,7 @@ namespace DivisionLike
 
         //This fires the weapon
         private RaycastHit _hit;
+        private RaycastHit _ragdollHit;
         public void Fire( Ray ray )
         {
             if ( ammo.clipAmmo <= 0 || _resettingCartridge || !weaponSettings.bulletSpawn || !_isEquipped )
@@ -202,15 +192,23 @@ namespace DivisionLike
             _timer = 0f;
 
             faceLight.enabled = true;
-
-            //RaycastHit hit;
             
-            RaycastHit ragdollHit;
             Transform bSpawn = weaponSettings.bulletSpawn;
             Vector3 bSpawnPoint = bSpawn.position;
-            Vector3 dir = ray.GetPoint( weaponSettings.range ) - bSpawnPoint;
-
-            //dir += (Vector3) Random.insideUnitCircle * weaponSettings.bulletSpread;
+            
+            // weaponSettings.range가 벽이나 캐릭터보다 적으면 자동으로 거리를 재어서 dir를 계산해야 한다....
+            Vector3 dir = Vector3.zero;
+            if ( Physics.Raycast( ray, out _hit ) == true )
+            {
+                dir = _hit.point - bSpawnPoint;
+            }
+            else
+            {
+                dir = ray.GetPoint( weaponSettings.range ) - bSpawnPoint;
+            }
+            
+            // 총알이 랜덤하게 흩어진다
+            dir += (Vector3) Random.insideUnitCircle * weaponSettings.bulletSpread;
 
             weaponSettings._bulletLine.enabled = true;
             weaponSettings._bulletLine.SetPosition( 0, weaponSettings.bulletSpawn.transform.position );
@@ -219,24 +217,24 @@ namespace DivisionLike
 
             // 적 캐릭터를 맞추었을 때
             int layerMask = LayerMask.GetMask( "Ragdoll" );
-            if ( Physics.Raycast( bSpawnPoint, dir, out ragdollHit, weaponSettings.range, layerMask ) )
+            if ( Physics.Raycast( bSpawnPoint, dir, out _ragdollHit, weaponSettings.range, layerMask ) )
             {
                 // Try and find an EnemyHealth script on the gameobject hit.
-                EnemyHealth enemyHealth = ragdollHit.collider.GetComponent<EnemyHealth>();
+                EnemyHealth enemyHealth = _ragdollHit.collider.GetComponent<EnemyHealth>();
 
                 // If the EnemyHealth component exist...
                 if ( enemyHealth != null )
                 {
                     // ... the enemy should take damage.
-                    enemyHealth.TakeDamage( (int) weaponSettings.damage, ragdollHit.point );
+                    enemyHealth.TakeDamage( (int) weaponSettings.damage, _ragdollHit.point );
                 }
                 
                 // bullet line effect
-                weaponSettings._bulletLine.SetPosition( 1, ragdollHit.point );
+                weaponSettings._bulletLine.SetPosition( 1, _ragdollHit.point );
             }
 
             // 적 캐릭터 제외
-            if ( Physics.Raycast( bSpawnPoint, dir, out _hit, weaponSettings.range, weaponSettings.bulletLayers ) )
+            if ( Physics.Raycast( bSpawnPoint, dir, out _hit, Mathf.Infinity, weaponSettings.bulletLayers ) )
             {
                 weaponSettings._bulletLine.SetPosition( 1, _hit.point );
 
