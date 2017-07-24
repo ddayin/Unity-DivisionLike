@@ -11,18 +11,21 @@ namespace DivisionLike
         private GameObject _explosion;
         private cakeslice.Outline _outline;
 
-        public float _blastRadius = 6f;
-        public float _lifeTime = 5f;
-        public int _damage = 50;
+        public GameObject _explosionPrefab;
+
+        public float _blastRadius = 8f;
+        public float _lifeTime = 4f;
+        public int _damage = 70;
         
         
         // Use this for initialization
         void Awake()
         {
-            _explosion = transform.Find( "Explosion" ).gameObject;
+            //_explosion = transform.Find( "Explosion" ).gameObject;
             _outline = transform.Find( "WPN_MK2Grenade" ).GetComponent<cakeslice.Outline>();
-            _explosion.SetActive( false );
 
+            //_explosion.SetActive( false );
+            
             Invoke( "Explode", _lifeTime );
         }
 
@@ -30,12 +33,7 @@ namespace DivisionLike
         {
             
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        
 
         private void OnCollisionEnter( Collision collision )
         {
@@ -45,8 +43,11 @@ namespace DivisionLike
         private void Explode()
         {
             _outline.gameObject.SetActive( false );
-            _explosion.SetActive( true );
 
+            GameObject explosion = (GameObject) Instantiate( _explosionPrefab, transform.position, Quaternion.identity, transform );
+            //explosion.GetComponent<UnityStandardAssets.Effects.ParticleSystemMultiplier>().multiplier = 1f;
+            //_explosion.SetActive( true );
+            
             _hitColliders = Physics.OverlapSphere( transform.position, _blastRadius, LayerMask.GetMask( "Ragdoll" ) );
             
             foreach ( Collider hitCol in _hitColliders )

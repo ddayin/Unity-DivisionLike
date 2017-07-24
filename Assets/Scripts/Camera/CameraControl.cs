@@ -265,20 +265,20 @@ namespace DivisionLike
                 float newFieldOfView = Mathf.Lerp( _mainCamera.fieldOfView, _cameraSettings._zoomFieldOfView, Time.deltaTime * _cameraSettings._zoomSpeed );
                 _mainCamera.fieldOfView = newFieldOfView;
 
-                if ( _cameraSettings._UICamera != null )
-                {
-                    _cameraSettings._UICamera.fieldOfView = newFieldOfView;
-                }
+                //if ( _cameraSettings._UICamera != null )
+                //{
+                //    _cameraSettings._UICamera.fieldOfView = newFieldOfView;
+                //}
             }
             else
             {
                 float originalFieldOfView = Mathf.Lerp( _mainCamera.fieldOfView, _cameraSettings._fieldOfView, Time.deltaTime * _cameraSettings._zoomSpeed );
                 _mainCamera.fieldOfView = originalFieldOfView;
 
-                if ( _cameraSettings._UICamera != null )
-                {
-                    _cameraSettings._UICamera.fieldOfView = originalFieldOfView;
-                }
+                //if ( _cameraSettings._UICamera != null )
+                //{
+                //    _cameraSettings._UICamera.fieldOfView = originalFieldOfView;
+                //}
             }
         }
 
