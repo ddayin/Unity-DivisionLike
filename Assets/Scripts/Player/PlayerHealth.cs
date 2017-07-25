@@ -39,21 +39,34 @@ namespace DivisionLike
 
         void Update()
         {
-            // If the player has just been damaged...
-            if ( _damaged == true )
-            {
-                // ... set the colour of the damageImage to the flash colour.
-                _damageImage.color = _flashColour;
-            }
-            // Otherwise...
-            else
-            {
-                // ... transition the colour back to clear.
-                _damageImage.color = Color.Lerp( _damageImage.color, Color.clear, _flashSpeed * Time.deltaTime );
-            }
+            UpdateDamageImage();
 
             // Reset the damaged flag.
             _damaged = false;
+        }
+
+        private void UpdateDamageImage()
+        {
+            // HP가 한 칸도 남지 않았을 때에는 계속 빨간색 이미지로 전체 화면을 덮는다
+            if ( CalculateCurrentDivide() == 0 )
+            {
+                _damageImage.color = _flashColour;
+            }
+            else
+            {
+                // If the player has just been damaged...
+                if ( _damaged == true )
+                {
+                    // ... set the colour of the damageImage to the flash colour.
+                    _damageImage.color = _flashColour;
+                }
+                // Otherwise...
+                else
+                {
+                    // ... transition the colour back to clear.
+                    _damageImage.color = Color.Lerp( _damageImage.color, Color.clear, _flashSpeed * Time.deltaTime );
+                }
+            }
         }
 
 
@@ -61,6 +74,8 @@ namespace DivisionLike
         {
             // Set the damaged flag so the screen will flash.
             _damaged = true;
+
+            EZCameraShake.CameraShaker.Instance.ShakeOnce( 1f, 1f, 0.1f, 0.1f );
 
             // Reduce the current health by the damage amount.
             Player.instance._stats._currentHealth -= amount;
@@ -97,14 +112,9 @@ namespace DivisionLike
             float toDivide = (float) Player.instance._stats._maxHealth / 3f;
             float fDivided = (float) Player.instance._stats._currentHealth / toDivide;
             int iDivided = (int) fDivided;
-            //if ( iDivided == fDivided && iDivided != 3 )
-            //{
-            //    Player.instance._stats._currentHealth = (int) toDivide * ( iDivided + 2 );
-            //}
-            //else
-            {
-                Player.instance._stats._currentHealth = (int) toDivide * ( iDivided + 1 );
-            }
+
+            Player.instance._stats._currentHealth = (int) toDivide * ( iDivided + 1 );
+            
             
 
             PlayerHUD.instance.SetHealthSlider( Player.instance._stats._currentHealth );
@@ -112,6 +122,13 @@ namespace DivisionLike
             PlayerHUD.instance.SetMedikitText();
 
             Player.instance._outlineEffect.Enable( 4f );
+        }
+
+        private int CalculateCurrentDivide()
+        {
+            float toDivide = (float) Player.instance._stats._maxHealth / 3f;
+            float fDivided = (float) Player.instance._stats._currentHealth / toDivide;
+            return (int) fDivided;
         }
 
 
