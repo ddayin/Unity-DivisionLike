@@ -113,6 +113,8 @@ namespace DivisionLike
         }
         [SerializeField]
         public SoundSettings soundSettings;
+
+        private GameObject _shellParent;
        
         // Use this for initialization
         private void Start()
@@ -120,6 +122,7 @@ namespace DivisionLike
             _collider = GetComponent<Collider>();
             _rigidBody = GetComponent<Rigidbody>();
             _animator = GetComponent<Animator>();
+            _shellParent = GameObject.Find( "ShellParent" );
             
             if ( ammo.clipInfiniteAmmo == true )
             {
@@ -301,7 +304,7 @@ namespace DivisionLike
                     Quaternion shellEjectRot = weaponSettings.shellEjectSpot.rotation;
                     //GameObject shell = Instantiate( weaponSettings.shell, shellEjectPos, shellEjectRot ) as GameObject;
                     GameObject shell = Lean.LeanPool.Spawn( weaponSettings.shell, shellEjectPos, shellEjectRot ) as GameObject;
-                    shell.transform.SetParent( Player.instance.transform );
+                    shell.transform.SetParent( _shellParent.transform );
                     //shell.transform.localScale = this.transform.localScale;
 
                     if ( shell.GetComponent<Rigidbody>() )
