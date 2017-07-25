@@ -196,7 +196,7 @@ namespace DivisionLike
             Transform bSpawn = weaponSettings.bulletSpawn;
             Vector3 bSpawnPoint = bSpawn.position;
             
-            // weaponSettings.range가 벽이나 캐릭터보다 적으면 자동으로 거리를 재어서 dir를 계산해야 한다....
+            // 거리를 재어서 dir를 계산해야 한다
             Vector3 dir = Vector3.zero;
             if ( Physics.Raycast( ray, out _hit ) == true )
             {

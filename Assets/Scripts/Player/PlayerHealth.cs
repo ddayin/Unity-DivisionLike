@@ -59,8 +59,6 @@ namespace DivisionLike
 
         public void TakeDamage( Vector3 attackDirection, int amount )
         {
-            Debug.Log( "attack direction = " + attackDirection );
-
             // Set the damaged flag so the screen will flash.
             _damaged = true;
 
