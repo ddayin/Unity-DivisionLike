@@ -12,6 +12,7 @@ namespace DivisionLike
         private Text _levelText;
         private Slider _xpSlider;
         private Slider _ammoSlider;
+        private Image _ammoSliderFillImage;
         private Image _loadingCircleImage;
         private CircularHit _circularHit;
 
@@ -29,6 +30,7 @@ namespace DivisionLike
             _levelText = transform.Find( "LevelText" ).GetComponent<Text>();
             _xpSlider = transform.Find( "ExpSlider" ).GetComponent<Slider>();
             _ammoSlider = transform.Find( "AmmoSlider" ).GetComponent<Slider>();
+            _ammoSliderFillImage = _ammoSlider.transform.Find( "Fill Area/Fill" ).GetComponent<Image>();
             _loadingCircleImage = transform.Find( "LoadingPanel/CircleImage" ).GetComponent<Image>();
             _circularHit = transform.Find( "CircularHit" ).GetComponent<CircularHit>();
             
@@ -63,6 +65,15 @@ namespace DivisionLike
         {
             float normalizedAmmo = (float) (Player.instance._weaponHandler.currentWeapon.ammo.clipAmmo) / (float) (Player.instance._weaponHandler.currentWeapon.ammo.maxClipAmmo);
             _ammoSlider.normalizedValue = normalizedAmmo;
+
+            if ( normalizedAmmo < 0.2f )
+            {
+                _ammoSliderFillImage.color = Color.red;
+            }
+            else
+            {
+                _ammoSliderFillImage.color = Color.white;
+            }
         }
 
         public void SetLoadingCircle( float fillAmount )

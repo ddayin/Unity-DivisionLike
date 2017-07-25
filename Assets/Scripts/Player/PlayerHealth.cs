@@ -75,7 +75,7 @@ namespace DivisionLike
             // Set the damaged flag so the screen will flash.
             _damaged = true;
 
-            EZCameraShake.CameraShaker.Instance.ShakeOnce( 1f, 1f, 0.1f, 0.1f );
+            EZCameraShake.CameraShaker.Instance.ShakeOnce( 2f, 2f, 0.1f, 0.1f );
 
             // Reduce the current health by the damage amount.
             Player.instance._stats._currentHealth -= amount;
