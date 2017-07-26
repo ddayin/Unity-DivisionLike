@@ -13,6 +13,7 @@ namespace DivisionLike
     {
         //public Slider _healthSlider;                                 // Reference to the UI's health bar.
         public Image _damageImage;                                   // Reference to an image to flash on the screen on being hurt.
+        public Image _bloodImage;
         public AudioClip _deathClip;                                 // The audio clip to play when the player dies.
         public float _flashSpeed = 5f;                               // The speed the damageImage will fade at.
         public Color _flashColour = new Color( 1f, 0f, 0f, 0.1f );     // The colour the damageImage is set to, to flash.
@@ -33,6 +34,7 @@ namespace DivisionLike
             //playerMovement = GetComponent <PlayerMovement> ();
             //playerShooting = GetComponentInChildren <PlayerShooting> ();
 
+            _bloodImage.enabled = false;
             
         }
 
@@ -51,6 +53,7 @@ namespace DivisionLike
             if ( CalculateCurrentDivide() == 0 )
             {
                 _damageImage.color = _flashColour;
+                _bloodImage.enabled = true;
             }
             else
             {
@@ -66,6 +69,8 @@ namespace DivisionLike
                     // ... transition the colour back to clear.
                     _damageImage.color = Color.Lerp( _damageImage.color, Color.clear, _flashSpeed * Time.deltaTime );
                 }
+
+                _bloodImage.enabled = false;
             }
         }
 

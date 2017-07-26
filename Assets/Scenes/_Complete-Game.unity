@@ -142,7 +142,7 @@ MonoBehaviour:
   _spawnTime: 30
   _spawnPoints:
   - {fileID: 933997770}
-  _isStartToSpawn: 0
+  _isStartToSpawn: 1
 --- !u!114 &14871710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +158,7 @@ MonoBehaviour:
   _spawnTime: 9
   _spawnPoints:
   - {fileID: 1725468539}
-  _isStartToSpawn: 0
+  _isStartToSpawn: 1
 --- !u!114 &14871711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +174,7 @@ MonoBehaviour:
   _spawnTime: 6
   _spawnPoints:
   - {fileID: 345275349}
-  _isStartToSpawn: 0
+  _isStartToSpawn: 1
 --- !u!4 &14871712
 Transform:
   m_ObjectHideFlags: 0
@@ -1087,6 +1087,12 @@ Transform:
   m_Father: {fileID: 1591794899}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &550981560 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114483462418837732, guid: a01456497ae12fb499716fb565841fb6,
+    type: 2}
+  m_PrefabInternal: {fileID: 172669489}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &636207312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,6 +1868,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114290077164167034, guid: 59e8e266ec83fd34b8885035b9213f52,
+        type: 2}
+      propertyPath: _damageImage
+      value: 
+      objectReference: {fileID: 1394906873}
+    - target: {fileID: 114290077164167034, guid: 59e8e266ec83fd34b8885035b9213f52,
+        type: 2}
+      propertyPath: _bloodImage
+      value: 
+      objectReference: {fileID: 550981560}
     - target: {fileID: 114107379585428848, guid: 59e8e266ec83fd34b8885035b9213f52,
         type: 2}
       propertyPath: currentWeapon
@@ -1872,11 +1888,6 @@ Prefab:
       propertyPath: weaponsList.Array.data[0]
       value: 
       objectReference: {fileID: 716854877}
-    - target: {fileID: 114290077164167034, guid: 59e8e266ec83fd34b8885035b9213f52,
-        type: 2}
-      propertyPath: _damageImage
-      value: 
-      objectReference: {fileID: 1394906873}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59e8e266ec83fd34b8885035b9213f52, type: 2}
   m_IsPrefabParent: 0

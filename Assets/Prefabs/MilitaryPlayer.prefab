@@ -2466,6 +2466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageImage: {fileID: 0}
+  _bloodImage: {fileID: 0}
   _deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
   _flashSpeed: 5
   _flashColour: {r: 1, g: 0, b: 0, a: 0.1}
