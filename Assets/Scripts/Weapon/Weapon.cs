@@ -231,7 +231,7 @@ namespace DivisionLike
                 if ( enemyHealth != null )
                 {
                     // ... the enemy should take damage.
-                    enemyHealth.TakeDamage( (int) weaponSettings.damage, _ragdollHit.point );
+                    enemyHealth.TakeDamage( (int) Player.instance._stats.CalculateDamage(), _ragdollHit.point );
                 }
                 
                 // bullet line effect

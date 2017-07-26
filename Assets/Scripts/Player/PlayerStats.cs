@@ -14,6 +14,8 @@ namespace DivisionLike
         public ulong _currentXP = 0;
         public ulong[] _xpRequire = new ulong[ 30 ];
         public uint _currentArmor = 0;
+        public float _criticalHitRate = 5f;          // 치명타 확률
+        public float _criticalHitMultiply = 1.8f;   // 치명타 데미지 포인트에 곱할 숫자
 
         private void Awake()
         {
@@ -81,6 +83,17 @@ namespace DivisionLike
                 }
             }
             
+        }
+
+        public float CalculateDamage()
+        {
+            float damage = Player.instance._weaponHandler.currentWeapon.weaponSettings.damage;
+            float result = Random.Range( 0f, 100f );
+            if ( result < _criticalHitRate )
+            {
+                damage *= _criticalHitMultiply;
+            }
+            return damage;
         }
     }
 }
