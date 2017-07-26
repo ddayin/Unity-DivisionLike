@@ -53,6 +53,7 @@ namespace DivisionLike
         public bool _debugAim = false;
         public Transform _spineTransform;
         public bool _isAiming = false;
+        public bool _isFiring = false;
         public bool _isSprinting = false;
         public bool _isGrenadeMode = false;
 
@@ -196,17 +197,17 @@ namespace DivisionLike
 
             if ( _weaponHandler.currentWeapon )
             {
-                //Debug.Log( _TPSCamera.transform.position );
-                //Debug.Log( "_TPSCamera.pixelWidth =  " + _TPSCamera.pixelWidth + ", _TPSCamera.pixelHeight =  " + _TPSCamera.pixelHeight );
-                //Ray aimRay = _TPSCamera.ScreenPointToRay( new Vector3( _TPSCamera.pixelWidth / 2f, _TPSCamera.pixelHeight / 2f, 0f ) );
                 Ray aimRay = _TPSCamera.ViewportPointToRay( new Vector3( 0.5f, 0.5f, 0f ) );
-
-                //Ray aimRay = new Ray( _TPSCamera.transform.position, _TPSCamera.transform.forward );
-
+                
                 Debug.DrawRay (aimRay.origin, aimRay.direction);
                 if ( Input.GetButton( _inputSettings._fireButton ) == true && _isAiming == true )
                 {
+                    _isFiring = true;
                     _weaponHandler.FireCurrentWeapon( aimRay );
+                }
+                else
+                {
+                    _isFiring = false;
                 }
                 if ( Input.GetButtonDown( _inputSettings._reloadButton ) == true )
                 {
@@ -431,13 +432,12 @@ namespace DivisionLike
             Transform pivotT = mainCamT.parent.parent;
             Vector3 pivotPos = pivotT.position;
 
-            if ( Player.instance._weaponHandler.currentWeapon._resettingCartridge == true )
+            if ( _isFiring == true )
             {
-                //pivotT.Rotate( Vector3.left * Time.deltaTime );
-                pivotT.Rotate( -20f * Time.deltaTime, 0f, 0f );
+                pivotT.Rotate( -Player.instance._weaponHandler.currentWeapon.weaponSettings._goUpSpeed * Time.deltaTime, 0f, 0f );
 
             }
-            Debug.Log( "pivotT.rotation = " + pivotT.rotation );
+            //Debug.Log( "pivotT.rotation = " + pivotT.rotation );
 
             Vector3 lookTarget = pivotPos + ( pivotT.forward * _otherSettings._lookDistance );
             
@@ -451,6 +451,11 @@ namespace DivisionLike
             Quaternion newRotation = Quaternion.Lerp( transform.rotation, lookRot, Time.deltaTime * _otherSettings._lookSpeed );
             transform.rotation = newRotation;
         }
-        
+
+        private void OnGUI()
+        {
+            GUI.Box( new Rect( 0, 0, 140, 30 ), "_isFiring = " + _isFiring );
+        }
+
     }
 }

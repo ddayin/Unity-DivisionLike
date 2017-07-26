@@ -86,8 +86,6 @@ namespace DivisionLike
             instance = this;
             _mainCamera = Camera.main;
             _pivot = transform.GetChild( 0 );
-            
-            int a = 0;
         }
 
         
@@ -180,6 +178,11 @@ namespace DivisionLike
             if ( _pivot == null )
                 return;
 
+            if ( Player.instance._userInput._isFiring == true )
+            {
+                return;
+            }
+                 
             _newX += _cameraSettings._mouseXSensitivity * Input.GetAxis( _inputSettings._verticalAxis );
             _newY += _cameraSettings._mouseYSensitivity * Input.GetAxis( _inputSettings._horizontalAxis );
 

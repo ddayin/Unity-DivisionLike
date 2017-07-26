@@ -193,7 +193,7 @@ namespace DivisionLike
         {
             if ( ammo.clipAmmo <= 0 || _resettingCartridge || !weaponSettings.bulletSpawn || !_isEquipped )
                 return;
-            
+
             _timer = 0f;
 
             faceLight.enabled = true;
@@ -269,10 +269,7 @@ namespace DivisionLike
             _resettingCartridge = false;
         }
 
-        private void OnGUI()
-        {
-            GUI.Box( new Rect( 0, 0, 140, 30 ), "_resettingCartridge = " + _resettingCartridge );
-        }
+        
 
         void HitEffects( RaycastHit hit )
         {

@@ -800,7 +800,7 @@ MonoBehaviour:
     clipEjectPos: {fileID: 0}
     clipGO: {fileID: 0}
     crossHairSize: 4
-    _goUpSpeed: 10
+    _goUpSpeed: 2
     equipPosition: {x: -0.12, y: 0.412, z: 0.027}
     equipRotation: {x: -0.4762, y: 0.3735, z: 89.9967}
     unequipPosition: {x: 0.05295895, y: 0.2719302, z: -0.1345634}
