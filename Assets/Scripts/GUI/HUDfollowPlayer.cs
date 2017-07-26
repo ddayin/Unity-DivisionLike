@@ -5,31 +5,32 @@ using UnityEngine.UI;
 
 namespace DivisionLike
 {
-    public class HUDfollowPlayer : MonoBehaviour
+    public class HUDFollowPlayer : MonoBehaviour
     {
-        private RectTransform _transform;
+        public Vector2 _range = new Vector2( 5f, 3f );
 
-        private void Awake()
+        private Transform _transform;
+        private Quaternion _startQuaternion;
+        private Vector2 _rot = Vector2.zero;
+
+        void Start()
         {
-            _transform = (RectTransform)transform;
+            _transform = transform;
+            _startQuaternion = _transform.localRotation;
         }
-        
-        // Update is called once per frame
+
         void Update()
         {
-            FollowPlayer();
-        }
+            Vector3 pos = Input.mousePosition;
+            pos *= 10f;
 
-        private Vector3 newPos = Vector3.zero;
+            float halfWidth = Screen.width * 0.5f;
+            float halfHeight = Screen.height * 0.5f;
+            float x = Mathf.Clamp( ( pos.x - halfWidth ) / halfWidth, -1f, 1f );
+            float y = Mathf.Clamp( ( pos.y - halfHeight ) / halfHeight, -1f, 1f );
+            _rot = Vector2.Lerp( _rot, new Vector2( x, y ), Time.deltaTime * 5f );
 
-        private void FollowPlayer()
-        {
-            //newPos = _transform.position;
-            newPos.y = -50f + Player.instance.transform.localPosition.y;
-            //Debug.Log( "newPos = " + newPos );
-            //Debug.Log( "rect transform.localPosition.y = " + _transform.localPosition.y );
-            _transform.localPosition = newPos;
-            //_transform.position = newPos;
+            _transform.localRotation = _startQuaternion * Quaternion.Euler( -_rot.y * _range.y, _rot.x * _range.x, 0f );
         }
     }
 }

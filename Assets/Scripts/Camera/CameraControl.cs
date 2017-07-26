@@ -42,6 +42,7 @@ namespace DivisionLike
             [Header( "-Zoom-" )]
             public float _fieldOfView = 70.0f;
             public float _zoomFieldOfView = 30.0f;
+            public float _zoomMoreFieldOfView = 12.0f;
             public float _zoomSpeed = 3.0f;
 
             [Header( "-Visual Options-" )]
@@ -56,6 +57,7 @@ namespace DivisionLike
             public string _verticalAxis = "Mouse X";
             public string _horizontalAxis = "Mouse Y";
             public string _aimButton = "Fire2";              // mouse right click
+            public string _zoomMoreButton = "Tab";              // tab key
             public string _switchShoulderButton = "Sprint";   // left shift button
         }
         [SerializeField]
@@ -74,6 +76,9 @@ namespace DivisionLike
 
         public Camera _mainCamera { get; protected set; }
         public Transform _pivot { get; set; }
+        
+        private bool _isZooming = false;
+        private bool _isZoomingMore = false;
 
         // Use this for initialization
         private void Awake()
@@ -81,9 +86,11 @@ namespace DivisionLike
             instance = this;
             _mainCamera = Camera.main;
             _pivot = transform.GetChild( 0 );
-
-
+            
+            int a = 0;
         }
+
+        
 
         // Update is called once per frame
         private void Update()
@@ -94,8 +101,24 @@ namespace DivisionLike
             RotateCamera();
             CheckWall();
             CheckMeshRenderer();
-            Zoom( Input.GetButton( _inputSettings._aimButton ) );
 
+            if ( Input.GetButton( _inputSettings._aimButton ) == true )
+            {
+                _isZooming = true;
+
+                if ( Input.GetButtonDown( _inputSettings._zoomMoreButton ) == true )
+                {
+                    _isZoomingMore = !_isZoomingMore;
+                }
+            }
+            else
+            {
+                _isZooming = false;
+            }
+
+            Zoom();
+            ZoomMore();
+            
             if ( Player.instance._userInput._isAiming == true )
             {
                 if ( Input.GetButtonDown( _inputSettings._switchShoulderButton ) )
@@ -255,12 +278,12 @@ namespace DivisionLike
         }
 
         //Zooms the camera in and out
-        private void Zoom( bool isZooming )
+        private void Zoom()
         {
             if ( _mainCamera == null )
                 return;
 
-            if ( isZooming == true )
+            if ( _isZooming == true )
             {
                 float newFieldOfView = Mathf.Lerp( _mainCamera.fieldOfView, _cameraSettings._zoomFieldOfView, Time.deltaTime * _cameraSettings._zoomSpeed );
                 _mainCamera.fieldOfView = newFieldOfView;
@@ -280,6 +303,34 @@ namespace DivisionLike
                 //    _cameraSettings._UICamera.fieldOfView = originalFieldOfView;
                 //}
             }
+        }
+
+        
+        private void ZoomMore()
+        {
+            if ( _mainCamera == null )
+            {
+                return;
+            }
+
+            if ( _isZooming == false )
+            {
+                return;
+            }
+            
+            if ( _isZoomingMore == true )
+            {
+                float newFieldOfView = Mathf.Lerp( _mainCamera.fieldOfView, _cameraSettings._zoomMoreFieldOfView, Time.deltaTime * _cameraSettings._zoomSpeed );
+                _mainCamera.fieldOfView = newFieldOfView;
+                
+            }
+            else
+            {
+                float originalFieldOfView = Mathf.Lerp( _mainCamera.fieldOfView, _cameraSettings._zoomFieldOfView, Time.deltaTime * _cameraSettings._zoomSpeed );
+                _mainCamera.fieldOfView = originalFieldOfView;
+                
+            }
+            
         }
 
         //Switches the cameras shoulder view
