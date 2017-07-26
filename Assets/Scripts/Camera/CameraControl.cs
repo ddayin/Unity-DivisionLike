@@ -126,6 +126,7 @@ namespace DivisionLike
                     SwitchShoulders();
                 }
             }
+            
         }
 
         private void LateUpdate()
@@ -142,7 +143,7 @@ namespace DivisionLike
                 FollowTarget( targetPostion, targetRotation );
             }
         }
-
+        
         // Finds the player gameObject and sets it as target
         void TargetPlayer()
         {

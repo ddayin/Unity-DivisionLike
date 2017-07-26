@@ -61,6 +61,8 @@ namespace DivisionLike
             _xpSlider.normalizedValue = normalizedXP;
         }
 
+        private Color _fillColor = new Color( 1f, 0.74f, 0f, 1f );
+
         private void SetAmmoSlider()
         {
             float normalizedAmmo = (float) (Player.instance._weaponHandler.currentWeapon.ammo.clipAmmo) / (float) (Player.instance._weaponHandler.currentWeapon.ammo.maxClipAmmo);
@@ -72,7 +74,7 @@ namespace DivisionLike
             }
             else
             {
-                _ammoSliderFillImage.color = Color.white;
+                _ammoSliderFillImage.color = _fillColor;
             }
         }
 

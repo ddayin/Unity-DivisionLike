@@ -71,7 +71,8 @@ namespace DivisionLike
             public Transform clipEjectPos;
             public GameObject clipGO;
             public float crossHairSize;
-
+            public float _goUpSpeed = 0.1f;
+            
             [Header( "-Positioning-" )]
             public Vector3 equipPosition;
             public Vector3 equipRotation;
@@ -100,7 +101,7 @@ namespace DivisionLike
 
         private WeaponHandler _owner;
         private bool _isEquipped;
-        private bool _resettingCartridge;
+        public bool _resettingCartridge;
 
         [System.Serializable]
         public class SoundSettings
@@ -187,11 +188,12 @@ namespace DivisionLike
         //This fires the weapon
         private RaycastHit _hit;
         private RaycastHit _ragdollHit;
+
         public void Fire( Ray ray )
         {
             if ( ammo.clipAmmo <= 0 || _resettingCartridge || !weaponSettings.bulletSpawn || !_isEquipped )
                 return;
-
+            
             _timer = 0f;
 
             faceLight.enabled = true;
@@ -252,8 +254,9 @@ namespace DivisionLike
             ammo.clipAmmo--;
             _resettingCartridge = true;
             StartCoroutine( LoadNextBullet() );
+            
         }
-
+        
         private void DisableBulletLine()
         {
             weaponSettings._bulletLine.enabled = false;
@@ -264,6 +267,11 @@ namespace DivisionLike
         {
             yield return new WaitForSeconds( weaponSettings.fireRate );
             _resettingCartridge = false;
+        }
+
+        private void OnGUI()
+        {
+            GUI.Box( new Rect( 0, 0, 140, 30 ), "_resettingCartridge = " + _resettingCartridge );
         }
 
         void HitEffects( RaycastHit hit )
@@ -376,9 +384,11 @@ namespace DivisionLike
                 return;
             else if ( _owner.userSettings.rightHand == false )
                 return;
-
+            
             transform.SetParent( _owner.userSettings.rightHand );
+            
             transform.localPosition = weaponSettings.equipPosition;
+            
             Quaternion equipRot = Quaternion.Euler( weaponSettings.equipRotation );
             transform.localRotation = equipRot;
         }
@@ -435,5 +445,6 @@ namespace DivisionLike
         {
             _owner = wp;
         }
+        
     }
 }

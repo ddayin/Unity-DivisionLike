@@ -428,11 +428,22 @@ namespace DivisionLike
         void CharacterLook()
         {
             Transform mainCamT = _TPSCamera.transform;
-            Transform pivotT = mainCamT.parent;
+            Transform pivotT = mainCamT.parent.parent;
             Vector3 pivotPos = pivotT.position;
+
+            if ( Player.instance._weaponHandler.currentWeapon._resettingCartridge == true )
+            {
+                //pivotT.Rotate( Vector3.left * Time.deltaTime );
+                pivotT.Rotate( -20f * Time.deltaTime, 0f, 0f );
+
+            }
+            Debug.Log( "pivotT.rotation = " + pivotT.rotation );
+
             Vector3 lookTarget = pivotPos + ( pivotT.forward * _otherSettings._lookDistance );
+            
             Vector3 thisPos = transform.position;
             Vector3 lookDir = lookTarget - thisPos;
+            
             Quaternion lookRot = Quaternion.LookRotation( lookDir );
             lookRot.x = 0;
             lookRot.z = 0;
@@ -440,5 +451,6 @@ namespace DivisionLike
             Quaternion newRotation = Quaternion.Lerp( transform.rotation, lookRot, Time.deltaTime * _otherSettings._lookSpeed );
             transform.rotation = newRotation;
         }
+        
     }
 }
