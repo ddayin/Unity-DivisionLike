@@ -24,5 +24,14 @@ namespace DivisionLike
         {
             _damageText.text = text;
         }
+
+        public void SetColor( bool isCritical )
+        {
+            if ( isCritical == true )
+            {
+                _damageText.color = Color.red;
+            }
+            
+        }
     }
 }

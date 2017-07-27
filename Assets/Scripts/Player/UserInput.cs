@@ -122,15 +122,17 @@ namespace DivisionLike
             else
             {
                 // sprint
-                if ( Input.GetButton( _inputSettings._sprintButton ) == true )
+                if ( Input.GetButtonDown( _inputSettings._sprintButton ) == true )
                 {
-                    _isSprinting = true;
+                    _isSprinting = !_isSprinting;
+                }
+
+                if ( _isSprinting == true )
+                {
                     _characterMove.Animate( _v, _h );
                 }
-                // walk
                 else
                 {
-                    _isSprinting = false;
                     _characterMove.Animate( _v * 0.5f, _h * 0.5f );
                 }
             }
@@ -451,11 +453,7 @@ namespace DivisionLike
             Quaternion newRotation = Quaternion.Lerp( transform.rotation, lookRot, Time.deltaTime * _otherSettings._lookSpeed );
             transform.rotation = newRotation;
         }
-
-        private void OnGUI()
-        {
-            GUI.Box( new Rect( 0, 0, 140, 30 ), "_isFiring = " + _isFiring );
-        }
+        
 
     }
 }

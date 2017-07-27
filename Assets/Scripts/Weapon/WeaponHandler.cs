@@ -38,7 +38,7 @@ namespace DivisionLike
         public Dictionary<Weapon.WeaponType, Weapon> dicWeapons = new Dictionary<Weapon.WeaponType, Weapon>();
         public int maxWeapons = 2;
         public bool aim { get; protected set; }
-        private bool reload;
+        private bool _isReloading = false;
         private int weaponType;
         private bool settingWeapon;
 
@@ -66,9 +66,9 @@ namespace DivisionLike
                 if ( currentWeapon.ammo.clipAmmo <= 0 )
                     Reload();
 
-                if ( reload )
+                if ( _isReloading == true )
                     if ( settingWeapon )
-                        reload = false;
+                        _isReloading = false;
             }
 
             if ( weaponsList.Count > 0 )
@@ -98,7 +98,7 @@ namespace DivisionLike
                 return;
 
             animator.SetBool( animations.aimingBool, aim );
-            animator.SetBool( animations.reloadingBool, reload );
+            animator.SetBool( animations.reloadingBool, _isReloading );
             animator.SetInteger( animations.weaponTypeInt, weaponType );
 
             if ( currentWeapon == null )
@@ -156,7 +156,7 @@ namespace DivisionLike
         //Reloads the current weapon
         public void Reload()
         {
-            if ( reload || !currentWeapon )
+            if ( _isReloading == true || !currentWeapon )
                 return;
 
             if ( currentWeapon.ammo.carryingAmmo <= 0 || currentWeapon.ammo.clipAmmo == currentWeapon.ammo.maxClipAmmo )
@@ -173,7 +173,9 @@ namespace DivisionLike
                 }
             }
 
-            reload = true;
+            _isReloading = true;
+            ScreenHUD.instance.SetEnableReloadImage( _isReloading );
+
             StartCoroutine( StopReload() );
         }
 
@@ -181,8 +183,10 @@ namespace DivisionLike
         IEnumerator StopReload()
         {
             yield return new WaitForSeconds( currentWeapon.weaponSettings.reloadDuration );
+
             currentWeapon.LoadClip();
-            reload = false;
+            _isReloading = false;
+            ScreenHUD.instance.SetEnableReloadImage( _isReloading );
         }
 
         //Sets out aim bool to be what we pass it
@@ -265,7 +269,7 @@ namespace DivisionLike
                 return;
 
             if ( currentWeapon && currentWeapon.userSettings.leftHandIKTarget && currentWeapon._weaponType == Weapon.WeaponType.Primary
-                && !reload && !settingWeapon )
+                && !_isReloading && !settingWeapon )
             {
                 animator.SetIKPositionWeight( AvatarIKGoal.LeftHand, 1 );
                 animator.SetIKRotationWeight( AvatarIKGoal.LeftHand, 1 );

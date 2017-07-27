@@ -194,6 +194,8 @@ namespace DivisionLike
             if ( ammo.clipAmmo <= 0 || _resettingCartridge || !weaponSettings.bulletSpawn || !_isEquipped )
                 return;
 
+            EZCameraShake.CameraShaker.Instance.ShakeOnce( 0.5f, 0.5f, 0.1f, 0.1f );
+
             _timer = 0f;
 
             faceLight.enabled = true;

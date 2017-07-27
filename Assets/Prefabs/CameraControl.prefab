@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab8353b5ebd32545867da143199a814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultPosInfluence: {x: 0, y: 0.15, z: 0}
+  DefaultPosInfluence: {x: 0, y: 0.15, z: -0.3}
   DefaultRotInfluence: {x: 0, y: 0, z: 0}
 --- !u!114 &114253927538859172
 MonoBehaviour:
@@ -330,12 +330,14 @@ MonoBehaviour:
     _maxCheckDistance: 0.1
     _fieldOfView: 70
     _zoomFieldOfView: 30
+    _zoomMoreFieldOfView: 12
     _zoomSpeed: 3
     _hideMeshWhenDistance: 0.5
   _inputSettings:
     _verticalAxis: Mouse X
     _horizontalAxis: Mouse Y
     _aimButton: Fire2
+    _zoomMoreButton: Tab
     _switchShoulderButton: Sprint
   _movementSettings:
     _movementLerpSpeed: 5
