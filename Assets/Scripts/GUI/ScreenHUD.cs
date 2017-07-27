@@ -41,13 +41,7 @@ namespace DivisionLike
             SetAmmoSlider();
             SetLoadingCircle( 0f );
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-            SetAmmoSlider();
-        }
-
+        
         public void SetLevelText()
         {
             _levelText.text = Player.instance._stats._currentLevel.ToString();
@@ -65,7 +59,7 @@ namespace DivisionLike
 
         private Color _fillColor = new Color( 1f, 0.74f, 0f, 1f );
 
-        private void SetAmmoSlider()
+        public void SetAmmoSlider()
         {
             float normalizedAmmo = (float) (Player.instance._weaponHandler.currentWeapon.ammo.clipAmmo) / (float) (Player.instance._weaponHandler.currentWeapon.ammo.maxClipAmmo);
             _ammoSlider.normalizedValue = normalizedAmmo;
@@ -103,7 +97,7 @@ namespace DivisionLike
 
         public void SetEnableReloadImage( bool enable )
         {
-            _reloadImage.enabled = enable;
+            _reloadImage.gameObject.SetActive( enable );
         }
     }
 }

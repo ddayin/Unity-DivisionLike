@@ -14,12 +14,6 @@ namespace DivisionLike
         }
         
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         private void Explode()
         {
             Destroy( this.gameObject, 2f );

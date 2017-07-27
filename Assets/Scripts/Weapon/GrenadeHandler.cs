@@ -21,13 +21,7 @@ namespace DivisionLike
         {
             _grenadeParent = GameObject.Find( "GrenadeParent" );
         }
-
-        // Update is called once per frame
         
-        void Update()
-        {
-            
-        }
 
         public void CreateGrenade( Vector3 position, Quaternion rotation /*, Vector3 force */ )
         {

@@ -23,10 +23,10 @@ namespace DivisionLike
 
         }
 
-        private void Update()
-        {
-            UpdateCrosshair();
-        }
+        //private void Update()
+        //{
+        //    UpdateCrosshair();
+        //}
 
         public override void ChangeColor( Color color )
         {

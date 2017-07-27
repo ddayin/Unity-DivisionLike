@@ -254,6 +254,9 @@ namespace DivisionLike
                 _animator.Play( weaponSettings.fireAnimationName, weaponSettings.fireAnimationLayer );
 
             ammo.clipAmmo--;
+
+            ScreenHUD.instance.SetAmmoSlider();
+
             _resettingCartridge = true;
             StartCoroutine( LoadNextBullet() );
             

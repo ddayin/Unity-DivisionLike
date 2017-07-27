@@ -6,10 +6,5 @@ namespace DivisionLike
 {
     public class PlayerHandleGrenade : MonoBehaviour
     {
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }

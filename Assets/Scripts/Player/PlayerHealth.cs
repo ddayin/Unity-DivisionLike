@@ -34,7 +34,7 @@ namespace DivisionLike
             //playerMovement = GetComponent <PlayerMovement> ();
             //playerShooting = GetComponentInChildren <PlayerShooting> ();
 
-            _bloodImage.enabled = false;
+            _bloodImage.gameObject.SetActive( false );
             
         }
 
@@ -53,7 +53,7 @@ namespace DivisionLike
             if ( CalculateCurrentDivide() == 0 )
             {
                 _damageImage.color = _flashColour;
-                _bloodImage.enabled = true;
+                _bloodImage.gameObject.SetActive( true );
             }
             else
             {
@@ -70,7 +70,7 @@ namespace DivisionLike
                     _damageImage.color = Color.Lerp( _damageImage.color, Color.clear, _flashSpeed * Time.deltaTime );
                 }
 
-                _bloodImage.enabled = false;
+                _bloodImage.gameObject.SetActive( false );
             }
         }
 

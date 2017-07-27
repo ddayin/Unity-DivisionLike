@@ -26,10 +26,12 @@ namespace DivisionLike
         private bool _isSinking;                             // Whether the enemy has started sinking through the floor.
 
         public cakeslice.Outline _outline;
-        
+        private Transform _transform;
 
         void Awake()
         {
+            _transform = transform;
+
             // Setting up the references.
             _stats = GetComponent<EnemyStats>();
             _anim = GetComponent<Animator>();
@@ -40,11 +42,13 @@ namespace DivisionLike
             
             // Setting the current health when the enemy first spawns.
             _currentHealth = _startingHealth;
+
+            
         }
 
         private void OnEnable()
         {
-            transform.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+            _transform.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
             _outline.enabled = false;
         }
 
@@ -55,7 +59,7 @@ namespace DivisionLike
             if ( _isSinking == true )
             {
                 // ... move the enemy down by the sinkSpeed per second.
-                transform.Translate( -Vector3.up * _sinkSpeed * Time.deltaTime );
+                _transform.Translate( -Vector3.up * _sinkSpeed * Time.deltaTime );
             }
         }
 
@@ -143,7 +147,7 @@ namespace DivisionLike
         private void PrepareRebirth()
         {
             _isSinking = false;
-            transform.GetComponent<Rigidbody>().isKinematic = false;
+            _transform.GetComponent<Rigidbody>().isKinematic = false;
             
             _isDead = false;
             _capsuleCollider.isTrigger = false;

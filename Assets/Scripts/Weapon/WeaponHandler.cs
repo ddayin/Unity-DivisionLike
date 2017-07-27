@@ -186,6 +186,8 @@ namespace DivisionLike
 
             currentWeapon.LoadClip();
             _isReloading = false;
+
+            ScreenHUD.instance.SetAmmoSlider();
             ScreenHUD.instance.SetEnableReloadImage( _isReloading );
         }
 

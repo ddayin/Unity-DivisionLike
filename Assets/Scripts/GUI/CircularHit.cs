@@ -12,12 +12,12 @@ namespace DivisionLike
         private void Awake()
         {
             _hitImage = transform.Find("HitImage").GetComponent<Image>();
-            _hitImage.enabled = false;
+            _hitImage.gameObject.SetActive( false );
         }
 
         public void RotateHit( Vector3 direction )
         {
-            _hitImage.enabled = true;
+            _hitImage.gameObject.SetActive( true );
 
             float angle = Vector3.Angle( Camera.main.transform.forward, direction );
             
@@ -28,7 +28,7 @@ namespace DivisionLike
 
         private void DisableImage()
         {
-            _hitImage.enabled = false;
+            _hitImage.gameObject.SetActive( false );
         }
     }
 }
