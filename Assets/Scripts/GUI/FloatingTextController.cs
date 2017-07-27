@@ -27,7 +27,7 @@ namespace DivisionLike
             Vector3 newPos = new Vector3( location.position.x + Random.Range( -0.3f, 0.3f ), location.position.y + Random.Range( -0.3f, 0.3f ), location.position.z );
             instance.transform.position = newPos;
             instance.SetText( text );
-            instance.SetColor()
+            //instance.SetColor();
         }
     }
 }
