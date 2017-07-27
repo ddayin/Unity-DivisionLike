@@ -24,7 +24,9 @@ GameObject:
   - component: {fileID: 95248100566098206}
   - component: {fileID: 54914893747255154}
   - component: {fileID: 65112130985179884}
-  m_Layer: 0
+  - component: {fileID: 114005223115756168}
+  - component: {fileID: 114333074093164292}
+  m_Layer: 14
   m_Name: Barrels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,3 +129,35 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114005223115756168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1280947936998530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00c14acf2baedc24a9b108cbe1e9bde8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentHealth: 100
+  _maxHealth: 100
+  _explosionPrefab: {fileID: 1499409066011540, guid: ee7eb7873f429424f9e285faf444a9f8,
+    type: 2}
+  _blastRadius: 8
+  _damage: 70
+--- !u!114 &114333074093164292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1280947936998530}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []

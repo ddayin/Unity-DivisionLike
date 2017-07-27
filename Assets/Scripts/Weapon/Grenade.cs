@@ -42,11 +42,9 @@ namespace DivisionLike
 
         private void Explode()
         {
-            _outline.gameObject.SetActive( false );
+            _outline.enabled = false;
 
             GameObject explosion = (GameObject) Instantiate( _explosionPrefab, transform.position, Quaternion.identity, transform );
-            //explosion.GetComponent<UnityStandardAssets.Effects.ParticleSystemMultiplier>().multiplier = 1f;
-            //_explosion.SetActive( true );
             
             _hitColliders = Physics.OverlapSphere( transform.position, _blastRadius, LayerMask.GetMask( "Ragdoll" ) );
             

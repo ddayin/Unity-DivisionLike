@@ -231,6 +231,10 @@ Prefab:
       propertyPath: m_Name
       value: AmmoBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1678353465224250, guid: fa08a23349364554a9bbce04d51108d6, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa08a23349364554a9bbce04d51108d6, type: 2}
   m_IsPrefabParent: 0
@@ -771,6 +775,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 114602481244817218, guid: ed965125ff6f3a44d84d71a0e4769abb,
+        type: 2}
+      propertyPath: weaponSettings.bulletLayers.m_Bits
+      value: 769
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed965125ff6f3a44d84d71a0e4769abb, type: 2}
   m_IsPrefabParent: 0
@@ -1272,6 +1281,10 @@ Prefab:
       propertyPath: m_Name
       value: AmmoBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1678353465224250, guid: fa08a23349364554a9bbce04d51108d6, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa08a23349364554a9bbce04d51108d6, type: 2}
   m_IsPrefabParent: 0
@@ -1510,23 +1523,52 @@ Transform:
   m_Father: {fileID: 1959795198}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1538768369 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1280947936998530, guid: f7dea052c033a2e47b075b2e505f407d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1824171550}
---- !u!114 &1538768370
-MonoBehaviour:
+--- !u!1001 &1577907816
+Prefab:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1538768369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00c14acf2baedc24a9b108cbe1e9bde8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 100
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4686729540466358, guid: f7dea052c033a2e47b075b2e505f407d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686729540466358, guid: f7dea052c033a2e47b075b2e505f407d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686729540466358, guid: f7dea052c033a2e47b075b2e505f407d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686729540466358, guid: f7dea052c033a2e47b075b2e505f407d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686729540466358, guid: f7dea052c033a2e47b075b2e505f407d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686729540466358, guid: f7dea052c033a2e47b075b2e505f407d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686729540466358, guid: f7dea052c033a2e47b075b2e505f407d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686729540466358, guid: f7dea052c033a2e47b075b2e505f407d, type: 2}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280947936998530, guid: f7dea052c033a2e47b075b2e505f407d, type: 2}
+      propertyPath: m_Name
+      value: Barrels (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f7dea052c033a2e47b075b2e505f407d, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1591794898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1596,6 +1638,10 @@ Prefab:
     - target: {fileID: 4096713884697142, guid: fa08a23349364554a9bbce04d51108d6, type: 2}
       propertyPath: m_RootOrder
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678353465224250, guid: fa08a23349364554a9bbce04d51108d6, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa08a23349364554a9bbce04d51108d6, type: 2}
@@ -1786,6 +1832,10 @@ Prefab:
       propertyPath: m_Name
       value: AmmoBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1678353465224250, guid: fa08a23349364554a9bbce04d51108d6, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa08a23349364554a9bbce04d51108d6, type: 2}
   m_IsPrefabParent: 0
@@ -1974,6 +2024,11 @@ Prefab:
       propertyPath: _target
       value: 
       objectReference: {fileID: 1141789810}
+    - target: {fileID: 114229688080712366, guid: 667631648b698cd4da90347673b8a333,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 667631648b698cd4da90347673b8a333, type: 2}
   m_IsPrefabParent: 0

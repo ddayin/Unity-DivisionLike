@@ -248,6 +248,21 @@ namespace DivisionLike
                 HitEffects( _hit );
             }
 
+            // 기름 통
+            layerMask = LayerMask.GetMask( "Explodable" );
+            if ( Physics.Raycast( bSpawnPoint, dir, out _hit, Mathf.Infinity, layerMask ) )
+            {
+                weaponSettings._bulletLine.SetPosition( 1, _hit.point );
+
+                HitEffects( _hit );
+
+                OilBarrel barrel = _hit.collider.GetComponent<OilBarrel>();
+                if ( barrel != null )
+                {
+                    barrel.TakeDamage( (int) Player.instance._stats.CalculateDamage() );
+                }
+            }
+
             GunEffects();
 
             if ( weaponSettings.useAnimation )
