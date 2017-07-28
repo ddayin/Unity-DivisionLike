@@ -10,17 +10,26 @@ namespace DivisionLike
         private Slider _healthSlider;
         private Canvas _canvas;
         private FloatingTextController _floatingTextController;
+        private RectTransform _transform;
+        private Transform _parent;
 
         private void Awake()
         {
             _healthSlider = transform.Find( "HealthUI/HealthSlider" ).GetComponent<Slider>();
             _canvas = transform.GetComponent<Canvas>();
             _floatingTextController = transform.GetComponent<FloatingTextController>();
+            _transform = transform.GetComponent<RectTransform>();
+            _parent = transform.parent;
         }
 
         private void OnEnable()
         {
             _healthSlider.normalizedValue = 1f;
+        }
+
+        private void Update()
+        {
+            //ScaleIfClosed();
         }
 
         public void SetHealthSlider( int health )
@@ -31,6 +40,22 @@ namespace DivisionLike
         public void CreateDamageText( string amount )
         {
             _floatingTextController.CreateFloatingText( amount, _canvas.transform );
+        }
+
+        private void ScaleIfClosed()
+        {
+            float distance = Vector3.Distance( Player.instance.transform.position, _parent.transform.position );
+            Debug.Log( "distance = " + distance );
+            if ( distance > 10f )
+            {
+                _transform.localScale = Vector3.one * 0.01f;
+            }
+            else
+            {
+                _transform.localScale = Vector3.one * 0.01f * distance * 0.001f;
+            }
+            
+            Debug.Log( "scale.x = " + _transform.localScale.x );
         }
         
     }
