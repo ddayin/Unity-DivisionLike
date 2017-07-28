@@ -573,22 +573,22 @@ Prefab:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1141789810}
-    - target: {fileID: 224142470481264318, guid: a01456497ae12fb499716fb565841fb6,
+    - target: {fileID: 224198296701886612, guid: a01456497ae12fb499716fb565841fb6,
         type: 2}
       propertyPath: m_AnchorMax.x
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 224142470481264318, guid: a01456497ae12fb499716fb565841fb6,
+    - target: {fileID: 224198296701886612, guid: a01456497ae12fb499716fb565841fb6,
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 224198296701886612, guid: a01456497ae12fb499716fb565841fb6,
+    - target: {fileID: 224142470481264318, guid: a01456497ae12fb499716fb565841fb6,
         type: 2}
       propertyPath: m_AnchorMax.x
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 224198296701886612, guid: a01456497ae12fb499716fb565841fb6,
+    - target: {fileID: 224142470481264318, guid: a01456497ae12fb499716fb565841fb6,
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 1

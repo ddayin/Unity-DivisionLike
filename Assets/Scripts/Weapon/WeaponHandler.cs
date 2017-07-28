@@ -38,7 +38,7 @@ namespace DivisionLike
         public Dictionary<Weapon.WeaponType, Weapon> dicWeapons = new Dictionary<Weapon.WeaponType, Weapon>();
         public int maxWeapons = 2;
         public bool aim { get; protected set; }
-        private bool _isReloading = false;
+        public bool _isReloading = false;
         private int weaponType;
         private bool settingWeapon;
 

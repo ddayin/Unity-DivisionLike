@@ -58,7 +58,7 @@ namespace DivisionLike
                 return;
             }
 
-            _rigidbody.AddExplosionForce( 400f, transform.position, _blastRadius, 300f );
+            _rigidbody.AddExplosionForce( 600f, transform.position, _blastRadius, 300f );
 
             _outline.enabled = false;
 

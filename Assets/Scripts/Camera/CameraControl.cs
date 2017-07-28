@@ -178,23 +178,30 @@ namespace DivisionLike
             if ( _pivot == null )
                 return;
 
-            if ( Player.instance._userInput._isFiring == true )
+            if ( Player.instance._weaponHandler._isReloading == true )
             {
                 return;
             }
-                 
+            
             _newX += _cameraSettings._mouseXSensitivity * Input.GetAxis( _inputSettings._verticalAxis );
             _newY += _cameraSettings._mouseYSensitivity * Input.GetAxis( _inputSettings._horizontalAxis );
 
+            if ( Player.instance._userInput._isFiring == true )
+            {
+                _newY = _newY + Player.instance._weaponHandler.currentWeapon.weaponSettings._goUpSpeed * Time.deltaTime;
+            }
+
             Vector3 eulerAngleAxis = new Vector3();
             eulerAngleAxis.x = -_newY;
+            
             eulerAngleAxis.y = _newX;
+            
 
             _newX = Mathf.Repeat( _newX, 360 );
             _newY = Mathf.Clamp( _newY, _cameraSettings._minAngle, _cameraSettings._maxAngle );
 
             Quaternion newRotation = Quaternion.Slerp( _pivot.localRotation, Quaternion.Euler( eulerAngleAxis ), Time.deltaTime * _cameraSettings._rotationSpeed );
-
+            
             _pivot.localRotation = newRotation;
         }
 

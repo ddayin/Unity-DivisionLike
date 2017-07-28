@@ -220,7 +220,15 @@ namespace DivisionLike
                 {
                     ToggleCrosshair( true, _weaponHandler.currentWeapon );
                     //PositionCrosshair( aimRay, weaponHandler.currentWeapon );
-                    HitCrosshair();
+
+                    if ( Player.instance._weaponHandler._isReloading == false )
+                    {
+                        HitCrosshair();
+                    }
+                    else
+                    {
+                        ToggleCrosshair( false, _weaponHandler.currentWeapon );
+                    }
                 }
                 else
                 {
