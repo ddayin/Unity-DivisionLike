@@ -29,7 +29,7 @@ namespace DivisionLike
 
         private void Update()
         {
-            //ScaleIfClosed();
+            ScaleIfClosed();
         }
 
         public void SetHealthSlider( int health )
@@ -46,13 +46,17 @@ namespace DivisionLike
         {
             float distance = Vector3.Distance( Player.instance.transform.position, _parent.transform.position );
             Debug.Log( "distance = " + distance );
-            if ( distance > 10f )
+            if ( distance > 5f )
             {
                 _transform.localScale = Vector3.one * 0.01f;
             }
             else
             {
-                _transform.localScale = Vector3.one * 0.01f * distance * 0.001f;
+                //_transform.localScale = Vector3.one * 0.01f * distance * 0.001f * Time.deltaTime;
+                Vector3 newScale = Vector3.one * 0.01f;
+                newScale.x = distance * 0.001f;
+                newScale.y = distance * 0.001f;
+                _transform.localScale = newScale;
             }
             
             Debug.Log( "scale.x = " + _transform.localScale.x );
