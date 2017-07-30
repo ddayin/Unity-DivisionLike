@@ -193,6 +193,26 @@ namespace DivisionLike
         {
             if ( ammo.clipAmmo <= 0 || _resettingCartridge || !weaponSettings.bulletSpawn || !_isEquipped )
                 return;
+            
+            // 적 캐릭터 안에 총알 구멍이 들어있을 때 예외 처리
+            int layerMask = LayerMask.GetMask( "Ragdoll" );
+
+            Collider[] colliders = Physics.OverlapSphere( weaponSettings.bulletSpawn.transform.position, 0.1f, layerMask );
+            if ( colliders.Length > 0)
+            {
+                // Try and find an EnemyHealth script on the gameobject hit.
+                EnemyHealth enemyHealth = colliders[0].GetComponent<EnemyHealth>();
+
+                // If the EnemyHealth component exist...
+                if ( enemyHealth != null )
+                {
+                    // ... the enemy should take damage.
+                    enemyHealth.TakeDamage( (int) Player.instance._stats.CalculateDamage(), colliders[0].transform.position );
+                }
+
+                // bullet line effect
+                weaponSettings._bulletLine.SetPosition( 1, colliders[ 0 ].transform.position );
+            }
 
             EZCameraShake.CameraShaker.Instance.ShakeOnce( 0.5f, 0.5f, 0.1f, 0.1f );
 
@@ -223,21 +243,9 @@ namespace DivisionLike
             Invoke( "DisableBulletLine", 0.1f );
 
             // 적 캐릭터를 맞추었을 때
-            int layerMask = LayerMask.GetMask( "Ragdoll" );
             if ( Physics.Raycast( bSpawnPoint, dir, out _ragdollHit, weaponSettings.range, layerMask ) )
             {
-                // Try and find an EnemyHealth script on the gameobject hit.
-                EnemyHealth enemyHealth = _ragdollHit.collider.GetComponent<EnemyHealth>();
-
-                // If the EnemyHealth component exist...
-                if ( enemyHealth != null )
-                {
-                    // ... the enemy should take damage.
-                    enemyHealth.TakeDamage( (int) Player.instance._stats.CalculateDamage(), _ragdollHit.point );
-                }
-                
-                // bullet line effect
-                weaponSettings._bulletLine.SetPosition( 1, _ragdollHit.point );
+                OnEnemyHit();
             }
 
             // 적 캐릭터 제외
@@ -275,6 +283,22 @@ namespace DivisionLike
             _resettingCartridge = true;
             StartCoroutine( LoadNextBullet() );
             
+        }
+
+        private void OnEnemyHit()
+        {
+            // Try and find an EnemyHealth script on the gameobject hit.
+            EnemyHealth enemyHealth = _ragdollHit.collider.GetComponent<EnemyHealth>();
+
+            // If the EnemyHealth component exist...
+            if ( enemyHealth != null )
+            {
+                // ... the enemy should take damage.
+                enemyHealth.TakeDamage( (int) Player.instance._stats.CalculateDamage(), _ragdollHit.point );
+            }
+
+            // bullet line effect
+            weaponSettings._bulletLine.SetPosition( 1, _ragdollHit.point );
         }
         
         private void DisableBulletLine()
