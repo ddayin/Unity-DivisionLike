@@ -9,49 +9,49 @@ namespace DivisionLike
 {
     public class EnemyMovement : MonoBehaviour
     {
-        private Transform _player;               // Reference to the player's position.
-        private PlayerHealth _playerHealth;      // Reference to the player's health.
-        private EnemyHealth _enemyHealth;        // Reference to this enemy's health.
-        private UnityEngine.AI.NavMeshAgent _nav;               // Reference to the nav mesh agent.
-        private float navTimer = 0f;
+        private Transform m_Player;               // Reference to the player's position.
+        private PlayerHealth m_PlayerHealth;      // Reference to the player's health.
+        private EnemyHealth m_EnemyHealth;        // Reference to this enemy's health.
+        private UnityEngine.AI.NavMeshAgent m_Nav;               // Reference to the nav mesh agent.
+        private float m_NavTimer = 0f;
 
         void Awake()
         {
             // Set up the references.
-            _player = GameObject.FindGameObjectWithTag( "Player" ).transform;
-            _playerHealth = _player.GetComponent<PlayerHealth>();
-            _enemyHealth = transform.GetComponent<EnemyHealth>();
-            _nav = transform.GetComponent<UnityEngine.AI.NavMeshAgent>();
+            m_Player = GameObject.FindGameObjectWithTag( "Player" ).transform;
+            m_PlayerHealth = m_Player.GetComponent<PlayerHealth>();
+            m_EnemyHealth = transform.GetComponent<EnemyHealth>();
+            m_Nav = transform.GetComponent<UnityEngine.AI.NavMeshAgent>();
 
             
         }
 
         private void OnEnable()
         {
-            _nav.SetDestination( _player.position );
+            m_Nav.SetDestination( m_Player.position );
         }
 
 
         void Update()
         {
             // If the enemy and the player have health left...
-            if ( _enemyHealth._currentHealth > 0 && Player.instance._stats._currentHealth > 0 )
+            if ( m_EnemyHealth.m_CurrentHealth > 0 && Player.instance.m_Stats.m_CurrentHealth > 0 )
             {
-                navTimer += Time.deltaTime;
+                m_NavTimer += Time.deltaTime;
 
-                if ( navTimer > 0.3f )
+                if ( m_NavTimer > 0.3f )
                 {
-                    navTimer = 0f;
+                    m_NavTimer = 0f;
 
                     // ... set the destination of the nav mesh agent to the player.
-                    _nav.SetDestination( _player.position );
+                    m_Nav.SetDestination( m_Player.position );
                 }
             }
             // Otherwise...
             else
             {
                 // ... disable the nav mesh agent.
-                _nav.enabled = false;
+                m_Nav.enabled = false;
             }
         }
     }

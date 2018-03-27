@@ -10,12 +10,12 @@ namespace DivisionLike
     public class RandomParticlePoint : MonoBehaviour
     {
         [Range( 0f, 1f )]
-        public float normalizedTime;
+        public float m_NormalizedTime;
 
 
         void OnValidate()
         {
-            GetComponent<ParticleSystem>().Simulate( normalizedTime, true, true );
+            GetComponent<ParticleSystem>().Simulate( m_NormalizedTime, true, true );
         }
     }
 }

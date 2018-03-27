@@ -10,19 +10,19 @@ namespace DivisionLike
 {
     public class CameraFacingBillboard : MonoBehaviour
     {
-        private Camera _camera;
-        private Transform _transform;
+        private Camera m_Camera;
+        private Transform m_Transform;
 
         private void Awake()
         {
-            _camera = Camera.main;
-            _transform = transform;
+            m_Camera = Camera.main;
+            m_Transform = transform;
         }
 
         void Update()
         {
-            _transform.LookAt( transform.position + _camera.transform.rotation * Vector3.forward,
-                _camera.transform.rotation * Vector3.up );
+            m_Transform.LookAt( transform.position + m_Camera.transform.rotation * Vector3.forward,
+                m_Camera.transform.rotation * Vector3.up );
         }
     }
 }

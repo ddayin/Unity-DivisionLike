@@ -6,22 +6,25 @@ namespace DivisionLike
 {
     public class GrenadeCircleEffect : MonoBehaviour
     {
-        public int _segments;
-        public float _xRadius;
-        public float _yRadius;
-        LineRenderer _line;
+        public int m_Segments;
+        public float m_xRadius;
+        public float m_yRadius;
+        LineRenderer m_Line;
 
         void Awake()
         {
-            _line = gameObject.GetComponent<LineRenderer>();
+            m_Line = gameObject.GetComponent<LineRenderer>();
 
-            _line.SetVertexCount( _segments + 1 );
-            _line.useWorldSpace = false;
+            m_Line.positionCount = m_Segments + 1;
+            m_Line.useWorldSpace = false;
 
             CreatePoints();
         }
 
 
+        /// <summary>
+        /// 슈류탄의 동그란 원을 만들기 위한 점을 위치시킨다.
+        /// </summary>
         private void CreatePoints()
         {
             float x;
@@ -30,14 +33,14 @@ namespace DivisionLike
 
             float angle = 20f;
 
-            for ( int i = 0; i < ( _segments + 1 ); i++ )
+            for ( int i = 0; i < ( m_Segments + 1 ); i++ )
             {
-                x = Mathf.Sin( Mathf.Deg2Rad * angle ) * _xRadius;
-                y = Mathf.Cos( Mathf.Deg2Rad * angle ) * _yRadius;
+                x = Mathf.Sin( Mathf.Deg2Rad * angle ) * m_xRadius;
+                y = Mathf.Cos( Mathf.Deg2Rad * angle ) * m_yRadius;
 
-                _line.SetPosition( i, new Vector3( x, y, z ) );
+                m_Line.SetPosition( i, new Vector3( x, y, z ) );
 
-                angle += ( 360f / _segments );
+                angle += ( 360f / m_Segments );
             }
         }
     }

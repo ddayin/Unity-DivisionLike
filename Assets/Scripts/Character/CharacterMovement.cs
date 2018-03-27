@@ -12,76 +12,80 @@ namespace DivisionLike
     [RequireComponent( typeof( CharacterController ) )]
     public class CharacterMovement : MonoBehaviour
     {
-        private Animator _animator;
-        private CharacterController _characterController;
+        private Animator m_Animator;
+        private CharacterController m_CharacterController;
 
         [System.Serializable]
         public class AnimationSettings
         {
-            public string _verticalVelocityFloat = "Forward";
-            public string _horizontalVelocityFloat = "Strafe";
-            public string _groundedBool = "isGrounded";
-            public string _jumpBool = "isJumping";
+            public string m_VerticalVelocityFloat = "Forward";
+            public string m_HorizontalVelocityFloat = "Strafe";
+            public string m_GroundedBool = "isGrounded";
+            public string m_JumpBool = "isJumping";
         }
         [SerializeField]
-        public AnimationSettings _animationSettings;
+        public AnimationSettings m_AnimationSettings;
 
         [System.Serializable]
         public class PhysicsSettings
         {
-            public float _gravityModifier = 9.81f;
-            public float _baseGravity = 50.0f;
-            public float _resetGravityValue = 1.2f;
-            public LayerMask _groundLayers;
-            public float _airSpeed = 2.5f;
+            public float m_GravityModifier = 9.81f;
+            public float m_BaseGravity = 50.0f;
+            public float m_ResetGravityValue = 1.2f;
+            public LayerMask m_GroundLayers;
+            public float m_AirSpeed = 2.5f;
         }
         [SerializeField]
-        public PhysicsSettings _physicsSettings;
+        public PhysicsSettings m_PhysicsSettings;
 
         [System.Serializable]
         public class MovementSettings
         {
-            public float _jumpSpeed = 6;
-            public float _jumpTime = 0.25f;
+            public float m_JumpSpeed = 6;
+            public float m_JumpTime = 0.25f;
         }
         [SerializeField]
-        public MovementSettings _movementSettings;
+        public MovementSettings m_MovementSettings;
 
-        private Vector3 _airControl;
-        private float _forward;
-        private float _strafe;
-        private bool _isJumping;
-        private bool _isResetGravity;
-        private float _gravity;
+        private Vector3 m_AirControl;
+        private float m_Forward;
+        private float m_Strafe;
+        private bool m_IsJumping;
+        private bool m_IsResetGravity;
+        private float m_Gravity;
 
 
         void Awake()
         {
-            _animator = GetComponent<Animator>();
+            m_Animator = GetComponent<Animator>();
             SetupAnimator();
         }
 
         // Use this for initialization
         void Start()
         {
-            _characterController = GetComponent<CharacterController>();
+            m_CharacterController = GetComponent<CharacterController>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            AirControl( _forward, _strafe );
+            AirControl( m_Forward, m_Strafe );
             ApplyGravity();
             //isGrounded = characterController.isGrounded;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private bool isGrounded()
         {
             RaycastHit hit;
             Vector3 start = transform.position + transform.up;
             Vector3 dir = Vector3.down;
-            float radius = _characterController.radius;
-            if ( Physics.SphereCast( start, radius, dir, out hit, _characterController.height / 2, _physicsSettings._groundLayers ) == true )
+            float radius = m_CharacterController.radius;
+            if ( Physics.SphereCast( start, radius, dir, out hit, m_CharacterController.height / 2, m_PhysicsSettings.m_GroundLayers ) == true )
             {
                 return true;
             }
@@ -89,89 +93,112 @@ namespace DivisionLike
             return false;
         }
 
-        //Animates the character and root motion handles the movement
+
+        /// <summary>
+        /// Animates the character and root motion handles the movement
+        /// </summary>
+        /// <param name="forward"></param>
+        /// <param name="strafe"></param>
         public void Animate( float forward, float strafe )
         {
-            this._forward = forward;
-            this._strafe = strafe;
-            _animator.SetFloat( _animationSettings._verticalVelocityFloat, forward );
-            _animator.SetFloat( _animationSettings._horizontalVelocityFloat, strafe );
-            _animator.SetBool( _animationSettings._groundedBool, isGrounded() );
-            _animator.SetBool( _animationSettings._jumpBool, _isJumping );
+            this.m_Forward = forward;
+            this.m_Strafe = strafe;
+            m_Animator.SetFloat( m_AnimationSettings.m_VerticalVelocityFloat, forward );
+            m_Animator.SetFloat( m_AnimationSettings.m_HorizontalVelocityFloat, strafe );
+            m_Animator.SetBool( m_AnimationSettings.m_GroundedBool, isGrounded() );
+            m_Animator.SetBool( m_AnimationSettings.m_JumpBool, m_IsJumping );
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="forward"></param>
+        /// <param name="strafe"></param>
         void AirControl( float forward, float strafe )
         {
             if ( isGrounded() == false )
             {
-                _airControl.x = strafe;
-                _airControl.z = forward;
-                _airControl = transform.TransformDirection( _airControl );
-                _airControl *= _physicsSettings._airSpeed;
+                m_AirControl.x = strafe;
+                m_AirControl.z = forward;
+                m_AirControl = transform.TransformDirection( m_AirControl );
+                m_AirControl *= m_PhysicsSettings.m_AirSpeed;
 
-                _characterController.Move( _airControl * Time.deltaTime );
+                m_CharacterController.Move( m_AirControl * Time.deltaTime );
             }
         }
 
-        //Makes the character jump
+
+        /// <summary>
+        /// Makes the character jump
+        /// </summary>
         public void Jump()
         {
-            if ( _isJumping == true )
+            if ( m_IsJumping == true )
                 return;
 
             if ( isGrounded() == true )
             {
-                _isJumping = true;
+                m_IsJumping = true;
                 StartCoroutine( StopJump() );
             }
         }
 
-        //Stops us from jumping
+
+        /// <summary>
+        /// Stops us from jumping
+        /// </summary>
+        /// <returns></returns>
         IEnumerator StopJump()
         {
-            yield return new WaitForSeconds( _movementSettings._jumpTime );
-            _isJumping = false;
+            yield return new WaitForSeconds( m_MovementSettings.m_JumpTime );
+            m_IsJumping = false;
         }
 
-        //Applys downard force to the character when we aren't jumping
+
+        /// <summary>
+        /// Applys downard force to the character when we aren't jumping
+        /// </summary>
         private void ApplyGravity()
         {
             if ( isGrounded() == false )
             {
-                if ( _isResetGravity == false )
+                if ( m_IsResetGravity == false )
                 {
-                    _gravity = _physicsSettings._resetGravityValue;
-                    _isResetGravity = true;
+                    m_Gravity = m_PhysicsSettings.m_ResetGravityValue;
+                    m_IsResetGravity = true;
                 }
-                _gravity += Time.deltaTime * _physicsSettings._gravityModifier;
+                m_Gravity += Time.deltaTime * m_PhysicsSettings.m_GravityModifier;
             }
             else
             {
-                _gravity = _physicsSettings._baseGravity;
-                _isResetGravity = false;
+                m_Gravity = m_PhysicsSettings.m_BaseGravity;
+                m_IsResetGravity = false;
             }
 
             Vector3 gravityVector = new Vector3();
 
-            if ( _isJumping == false )
+            if ( m_IsJumping == false )
             {
-                gravityVector.y -= _gravity;
+                gravityVector.y -= m_Gravity;
             }
             else
             {
-                gravityVector.y = _movementSettings._jumpSpeed;
+                gravityVector.y = m_MovementSettings.m_JumpSpeed;
             }
 
-            _characterController.Move( gravityVector * Time.deltaTime );
+            m_CharacterController.Move( gravityVector * Time.deltaTime );
         }
 
-        //Setup the animator with the child avatar
+
+        /// <summary>
+        /// Setup the animator with the child avatar
+        /// </summary>
         void SetupAnimator()
         {
             Animator wantedAnim = GetComponentsInChildren<Animator>()[ 1 ];
             Avatar wantedAvater = wantedAnim.avatar;
 
-            _animator.avatar = wantedAvater;
+            m_Animator.avatar = wantedAvater;
             Destroy( wantedAnim );
         }
     }

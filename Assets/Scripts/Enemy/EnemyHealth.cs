@@ -9,122 +9,133 @@ namespace DivisionLike
 {
     public class EnemyHealth : MonoBehaviour
     {
-        public const int _startingHealth = 100;            // The amount of health the enemy starts the game with.
-        public int _currentHealth;                   // The current health the enemy has.
-        public float _sinkSpeed = 2.5f;              // The speed at which the enemy sinks through the floor when dead.
-        public AudioClip _deathClip;                 // The sound to play when the enemy dies.
+        public const int m_StartingHealth = 100;            // The amount of health the enemy starts the game with.
+        public int m_CurrentHealth;                   // The current health the enemy has.
+        public float m_SinkSpeed = 2.5f;              // The speed at which the enemy sinks through the floor when dead.
+        public AudioClip m_DeathClip;                 // The sound to play when the enemy dies.
 
-        private EnemyStats _stats;
-        private EnemyUI _ui;
+        private EnemyStats m_Stats;
+        private EnemyUI m_ui;
 
-        private Animator _anim;                              // Reference to the animator.
-        private AudioSource _enemyAudio;                     // Reference to the audio source.
-        private ParticleSystem _hitParticles;                // Reference to the particle system that plays when the enemy is damaged.
-        private CapsuleCollider _capsuleCollider;            // Reference to the capsule collider.
+        private Animator m_Animator;                              // Reference to the animator.
+        private AudioSource m_EnemyAudio;                     // Reference to the audio source.
+        private ParticleSystem m_HitParticles;                // Reference to the particle system that plays when the enemy is damaged.
+        private CapsuleCollider m_CapsuleCollider;            // Reference to the capsule collider.
 
-        private bool _isDead;                                // Whether the enemy is dead.
-        private bool _isSinking;                             // Whether the enemy has started sinking through the floor.
+        private bool m_IsDead;                                // Whether the enemy is dead.
+        private bool m_IsSinking;                             // Whether the enemy has started sinking through the floor.
 
-        public cakeslice.Outline _outline;
-        private Transform _transform;
+        public cakeslice.Outline m_Outline;
+        private Transform m_Transform;
 
         void Awake()
         {
-            _transform = transform;
+            m_Transform = transform;
 
             // Setting up the references.
-            _stats = GetComponent<EnemyStats>();
-            _anim = GetComponent<Animator>();
-            _enemyAudio = GetComponent<AudioSource>();
-            _hitParticles = GetComponentInChildren<ParticleSystem>();
-            _capsuleCollider = GetComponent<CapsuleCollider>();
-            _ui = transform.Find( "EnemyCanvas" ).GetComponent<EnemyUI>();
+            m_Stats = GetComponent<EnemyStats>();
+            m_Animator = GetComponent<Animator>();
+            m_EnemyAudio = GetComponent<AudioSource>();
+            m_HitParticles = GetComponentInChildren<ParticleSystem>();
+            m_CapsuleCollider = GetComponent<CapsuleCollider>();
+            m_ui = transform.Find( "EnemyCanvas" ).GetComponent<EnemyUI>();
             
             // Setting the current health when the enemy first spawns.
-            _currentHealth = _startingHealth;
+            m_CurrentHealth = m_StartingHealth;
 
             
         }
 
         private void OnEnable()
         {
-            _transform.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
-            _outline.enabled = false;
+            m_Transform.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+            m_Outline.enabled = false;
         }
 
 
         void Update()
         {
             // If the enemy should be sinking...
-            if ( _isSinking == true )
+            if ( m_IsSinking == true )
             {
                 // ... move the enemy down by the sinkSpeed per second.
-                _transform.Translate( -Vector3.up * _sinkSpeed * Time.deltaTime );
+                m_Transform.Translate( -Vector3.up * m_SinkSpeed * Time.deltaTime );
             }
         }
 
-
+        /// <summary>
+        /// 일정량의 데미지를 받는다.
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="hitPoint"></param>
         public void TakeDamage( int amount, Vector3 hitPoint )
         {
             // If the enemy is dead...
-            if ( _isDead == true )
+            if ( m_IsDead == true )
                 // ... no need to take damage so exit the function.
                 return;
 
-            _outline.enabled = true;
+            m_Outline.enabled = true;
             Invoke( "DisableOutline", 1f );
 
             // Play the hurt sound effect.
-            _enemyAudio.Play();
+            m_EnemyAudio.Play();
 
             // Reduce the current health by the amount of damage sustained.
-            _currentHealth -= amount;
+            m_CurrentHealth -= amount;
 
-            _ui.SetHealthSlider( _currentHealth );
+            m_ui.SetHealthSlider( m_CurrentHealth );
 
-            _ui.CreateDamageText( amount.ToString() );
+            m_ui.CreateDamageText( amount.ToString() );
 
             // Set the position of the particle system to where the hit was sustained.
-            _hitParticles.transform.position = hitPoint;
+            m_HitParticles.transform.position = hitPoint;
 
             // And play the particles.
-            _hitParticles.Play();
+            m_HitParticles.Play();
 
             // If the current health is less than or equal to zero...
-            if ( _currentHealth <= 0 )
+            if ( m_CurrentHealth <= 0 )
             {
                 // ... the enemy is dead.
                 Death();
             }
         }
 
+        /// <summary>
+        /// 아웃라인을 비활성화 시킨다.
+        /// </summary>
         private void DisableOutline()
         {
-            _outline.enabled = false;
+            m_Outline.enabled = false;
         }
 
-
+        /// <summary>
+        /// 죽는다.
+        /// </summary>
         void Death()
         {
             // The enemy is dead.
-            _isDead = true;
+            m_IsDead = true;
 
             // Turn the collider into a trigger so shots can pass through it.
-            _capsuleCollider.isTrigger = true;
+            m_CapsuleCollider.isTrigger = true;
 
             // Tell the animator that the enemy is dead.
-            _anim.SetTrigger( "Dead" );
+            m_Animator.SetTrigger( "Dead" );
 
-            ScreenHUD.instance.CalculateExpSlider( _stats._xpWhenDie );
+            ScreenHUD.instance.CalculateExpSlider( m_Stats.m_XpWhenDie );
 
             EffectManager.instance.CreateParticle( 2, transform.position );
 
             // Change the audio clip of the audio source to the death clip and play it (this will stop the hurt clip playing).
-            _enemyAudio.clip = _deathClip;
-            _enemyAudio.Play();
+            m_EnemyAudio.clip = m_DeathClip;
+            m_EnemyAudio.Play();
         }
 
-
+        /// <summary>
+        /// 아래로 가라앉는다.
+        /// </summary>
         public void StartSinking()
         {
             // Find and disable the Nav Mesh Agent.
@@ -134,7 +145,7 @@ namespace DivisionLike
             GetComponent<Rigidbody>().isKinematic = true;
 
             // The enemy should no sink.
-            _isSinking = true;
+            m_IsSinking = true;
 
             // After 2 seconds destory the enemy.
             //Destroy( gameObject, 2f );
@@ -143,15 +154,18 @@ namespace DivisionLike
             Invoke( "PrepareRebirth", 2f );
         }
 
-        // because we have object pooling system
+
+        /// <summary>
+        /// because we have object pooling system 
+        /// </summary>
         private void PrepareRebirth()
         {
-            _isSinking = false;
-            _transform.GetComponent<Rigidbody>().isKinematic = false;
+            m_IsSinking = false;
+            m_Transform.GetComponent<Rigidbody>().isKinematic = false;
             
-            _isDead = false;
-            _capsuleCollider.isTrigger = false;
-            _currentHealth = _startingHealth;
+            m_IsDead = false;
+            m_CapsuleCollider.isTrigger = false;
+            m_CurrentHealth = m_StartingHealth;
         }
     }
 }

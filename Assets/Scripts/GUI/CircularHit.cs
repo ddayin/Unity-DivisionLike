@@ -5,30 +5,40 @@ using UnityEngine.UI;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CircularHit : MonoBehaviour
     {
-        private Image _hitImage;
+        private Image m_HitImage;
 
         private void Awake()
         {
-            _hitImage = transform.Find("HitImage").GetComponent<Image>();
-            _hitImage.gameObject.SetActive( false );
+            m_HitImage = transform.Find("HitImage").GetComponent<Image>();
+            m_HitImage.gameObject.SetActive( false );
         }
 
+        /// <summary>
+        /// 이미지를 회전한다.
+        /// </summary>
+        /// <param name="direction"></param>
         public void RotateHit( Vector3 direction )
         {
-            _hitImage.gameObject.SetActive( true );
+            m_HitImage.gameObject.SetActive( true );
 
             float angle = Vector3.Angle( Camera.main.transform.forward, direction );
             
-            _hitImage.transform.rotation = Quaternion.Euler( 0, 0, -angle );
+            m_HitImage.transform.rotation = Quaternion.Euler( 0, 0, -angle );
 
             Invoke( "DisableImage", 1f );
         }
 
+        /// <summary>
+        /// 이미지를 비활성화한다.
+        /// </summary>
         private void DisableImage()
         {
-            _hitImage.gameObject.SetActive( false );
+            m_HitImage.gameObject.SetActive( false );
         }
     }
 }

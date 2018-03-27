@@ -18,6 +18,10 @@ namespace DivisionLike
                 GameObject.Find( "EffectsSlider" ).GetComponent<Slider>().onValueChanged.AddListener( SetVolume );
         }
 
+        /// <summary>
+        /// 지정된 볼륨으로 설정한다.
+        /// </summary>
+        /// <param name="volume"></param>
         void SetVolume( float volume )
         {
             GetComponent<AudioSource>().volume = volume;

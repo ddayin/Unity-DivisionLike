@@ -195,11 +195,11 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
-  m_StereoMirrorMode: 0
 --- !u!20 &20640846701817856
 Camera:
   m_ObjectHideFlags: 1
@@ -231,11 +231,11 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
-  m_StereoMirrorMode: 0
 --- !u!81 &81237222621874018
 AudioListener:
   m_ObjectHideFlags: 1
@@ -312,22 +312,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda6f40604e98aa4da0fd01bd6780190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  _autoTargetPlayer: 1
-  _wallLayers:
+  m_Target: {fileID: 0}
+  m_IsAutoTargetPlayer: 1
+  m_WallLayers:
     serializedVersion: 2
     m_Bits: 512
-  _shoulder: 0
+  m_Shoulder: 0
   _cameraSettings:
-    _camPositionOffsetLeft: {x: -0.476, y: 0.691, z: -1.159}
-    _camPositionOffsetRight: {x: 0.476, y: 0.691, z: -1.159}
-    _UICamera: {fileID: 20640846701817856}
-    _mouseXSensitivity: 5
-    _mouseYSensitivity: 5
-    _minAngle: -30
-    _maxAngle: 70
-    _rotationSpeed: 5
-    _maxCheckDistance: 0.1
+    m_CamPositionOffsetLeft: {x: -0.476, y: 0.691, z: -1.159}
+    m_CamPositionOffsetRight: {x: 0.476, y: 0.691, z: -1.159}
+    m_UICamera: {fileID: 20640846701817856}
+    m_MouseXSensitivity: 5
+    m_MouseYSensitivity: 5
+    m_MinAngle: -30
+    m_MaxAngle: 70
+    m_RotationSpeed: 5
+    m_MaxCheckDistance: 0.1
     _fieldOfView: 70
     _zoomFieldOfView: 30
     _zoomMoreFieldOfView: 12

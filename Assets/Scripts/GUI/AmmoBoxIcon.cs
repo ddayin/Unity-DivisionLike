@@ -6,15 +6,18 @@ using UnityEngine.UI;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 탄약 상자 아이콘
+    /// </summary>
     public class AmmoBoxIcon : MonoBehaviour
     {
-        private AmmoBox _ammoBox;
-        private Image _iconImage;
+        private AmmoBox m_AmmoBox;
+        private Image m_IconImage;
 
         private void Awake()
         {
-            _ammoBox = transform.GetComponent<AmmoBox>();
-            _iconImage = transform.Find( "Canvas/IconImage" ).GetComponent<Image>();
+            m_AmmoBox = transform.GetComponent<AmmoBox>();
+            m_IconImage = transform.Find( "Canvas/IconImage" ).GetComponent<Image>();
         }
 
 
@@ -24,11 +27,14 @@ namespace DivisionLike
             CheckIfEmpty();
         }
 
+        /// <summary>
+        /// 비어있으면 아이콘 이미지를 비활성화한다.
+        /// </summary>
         private void CheckIfEmpty()
         {
-            if ( _ammoBox._state == AmmoBox.AmmoBoxState.Emtpy )
+            if ( m_AmmoBox.m_State == AmmoBox.AmmoBoxState.Emtpy )
             {
-                _iconImage.gameObject.SetActive( false );
+                m_IconImage.gameObject.SetActive( false );
             }
         }
     }

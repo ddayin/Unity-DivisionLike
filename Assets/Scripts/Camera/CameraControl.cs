@@ -13,79 +13,79 @@ namespace DivisionLike
     {
         public static CameraControl instance = null;
 
-        public Transform _target = null;
-        public bool _autoTargetPlayer = true;
-        public LayerMask _wallLayers;
+        public Transform m_Target = null;
+        public bool m_IsAutoTargetPlayer = true;
+        public LayerMask m_WallLayers;
 
         public enum Shoulder
         {
             Right, Left
         }
-        public Shoulder _shoulder;
+        public Shoulder m_Shoulder;
 
         [System.Serializable]
         public class CameraSettings
         {
             [Header( "-Positioning-" )]
-            public Vector3 _camPositionOffsetLeft;
-            public Vector3 _camPositionOffsetRight;
+            public Vector3 m_CamPositionOffsetLeft;
+            public Vector3 m_CamPositionOffsetRight;
 
             [Header( "-Camera Options-" )]
-            public Camera _UICamera;
-            public float _mouseXSensitivity = 5.0f;
-            public float _mouseYSensitivity = 5.0f;
-            public float _minAngle = -30.0f;
-            public float _maxAngle = 70.0f;
-            public float _rotationSpeed = 5.0f;
-            public float _maxCheckDistance = 0.1f;
+            public Camera m_UICamera;
+            public float m_MouseXSensitivity = 5.0f;
+            public float m_MouseYSensitivity = 5.0f;
+            public float m_MinAngle = -30.0f;
+            public float m_MaxAngle = 70.0f;
+            public float m_RotationSpeed = 5.0f;
+            public float m_MaxCheckDistance = 0.1f;
 
             [Header( "-Zoom-" )]
-            public float _fieldOfView = 70.0f;
-            public float _zoomFieldOfView = 30.0f;
-            public float _zoomMoreFieldOfView = 12.0f;
-            public float _zoomSpeed = 3.0f;
+            public float m_FieldOfView = 70.0f;
+            public float m_ZoomFieldOfView = 30.0f;
+            public float m_ZoomMoreFieldOfView = 12.0f;
+            public float m_ZoomSpeed = 3.0f;
 
             [Header( "-Visual Options-" )]
-            public float _hideMeshWhenDistance = 0.5f;
+            public float m_HideMeshWhenDistance = 0.5f;
         }
         [SerializeField]
-        public CameraSettings _cameraSettings;
+        public CameraSettings m_CameraSettings;
 
         [System.Serializable]
         public class InputSettings
         {
-            public string _verticalAxis = "Mouse X";
-            public string _horizontalAxis = "Mouse Y";
-            public string _aimButton = "Fire2";              // mouse right click
-            public string _zoomMoreButton = "Tab";              // tab key
-            public string _switchShoulderButton = "Sprint";   // left shift button
+            public string m_VerticalAxis = "Mouse X";
+            public string m_HorizontalAxis = "Mouse Y";
+            public string m_AimButton = "Fire2";              // mouse right click
+            public string m_ZoomMoreButton = "Tab";              // tab key
+            public string m_SwitchShoulderButton = "Sprint";   // left shift button
         }
         [SerializeField]
-        public InputSettings _inputSettings;
+        public InputSettings m_InputSettings;
 
         [System.Serializable]
         public class MovementSettings
         {
-            public float _movementLerpSpeed = 5.0f;
+            public float m_MovementLerpSpeed = 5.0f;
         }
         [SerializeField]
-        public MovementSettings _movementSettings;
+        public MovementSettings m_MovementSettings;
 
-        private float _newX = 0.0f;
-        private float _newY = 0.0f;
+        private float m_NewX = 0.0f;
+        private float m_NewY = 0.0f;
 
-        public Camera _mainCamera { get; protected set; }
-        public Transform _pivot { get; set; }
+        public Camera m_MainCamera { get; protected set; }
+        public Transform m_Pivot { get; set; }
         
-        private bool _isZooming = false;
-        private bool _isZoomingMore = false;
+        private bool m_IsZooming = false;
+        private bool m_IsZoomingMore = false;
 
         // Use this for initialization
         private void Awake()
         {
             instance = this;
-            _mainCamera = Camera.main;
-            _pivot = transform.GetChild( 0 );
+            m_MainCamera = Camera.main;
+            m_Pivot = transform.GetChild( 0 );
         }
 
         
@@ -93,33 +93,33 @@ namespace DivisionLike
         // Update is called once per frame
         private void Update()
         {
-            if ( _target == null || Application.isPlaying == false )
+            if ( m_Target == null || Application.isPlaying == false )
                 return;
 
             RotateCamera();
             CheckWall();
             CheckMeshRenderer();
 
-            if ( Input.GetButton( _inputSettings._aimButton ) == true )
+            if ( Input.GetButton( m_InputSettings.m_AimButton ) == true )
             {
-                _isZooming = true;
+                m_IsZooming = true;
 
-                if ( Input.GetButtonDown( _inputSettings._zoomMoreButton ) == true )
+                if ( Input.GetButtonDown( m_InputSettings.m_ZoomMoreButton ) == true )
                 {
-                    _isZoomingMore = !_isZoomingMore;
+                    m_IsZoomingMore = !m_IsZoomingMore;
                 }
             }
             else
             {
-                _isZooming = false;
+                m_IsZooming = false;
             }
 
             Zoom();
             ZoomMore();
             
-            if ( Player.instance._userInput._isAiming == true )
+            if ( Player.instance.m_UserInput.m_IsAiming == true )
             {
-                if ( Input.GetButtonDown( _inputSettings._switchShoulderButton ) )
+                if ( Input.GetButtonDown( m_InputSettings.m_SwitchShoulderButton ) )
                 {
                     SwitchShoulders();
                 }
@@ -129,35 +129,43 @@ namespace DivisionLike
 
         private void LateUpdate()
         {
-            if ( _target == null )
+            if ( m_Target == null )
             {
                 TargetPlayer();
             }
             else
             {
-                Vector3 targetPostion = _target.position;
-                Quaternion targetRotation = _target.rotation;
+                Vector3 targetPostion = m_Target.position;
+                Quaternion targetRotation = m_Target.rotation;
 
                 FollowTarget( targetPostion, targetRotation );
             }
         }
-        
-        // Finds the player gameObject and sets it as target
+
+
+        /// <summary>
+        /// Finds the player gameObject and sets it as target
+        /// </summary>
         void TargetPlayer()
         {
-            if ( _autoTargetPlayer == true )
+            if ( m_IsAutoTargetPlayer == true )
             {
                 GameObject player = GameObject.FindGameObjectWithTag( "Player" );
 
                 if ( player != null )
                 {
                     Transform playerTransform = player.transform;
-                    _target = playerTransform;
+                    m_Target = playerTransform;
                 }
             }
         }
 
-        // Following the target with Time.deltaTime smoothly
+
+        /// <summary>
+        /// Following the target with Time.deltaTime smoothly
+        /// </summary>
+        /// <param name="targetPosition"></param>
+        /// <param name="targetRotation"></param>
         private void FollowTarget( Vector3 targetPosition, Quaternion targetRotation )
         {
             if ( Application.isPlaying == false )
@@ -167,80 +175,93 @@ namespace DivisionLike
             }
             else
             {
-                Vector3 newPos = Vector3.Lerp( transform.position, targetPosition, Time.deltaTime * _movementSettings._movementLerpSpeed );
+                Vector3 newPos = Vector3.Lerp( transform.position, targetPosition, Time.deltaTime * m_MovementSettings.m_MovementLerpSpeed );
                 transform.position = newPos;
             }
         }
 
-        // Rotates the camera with input
+
+        /// <summary>
+        /// Rotates the camera with input
+        /// </summary>
         private void RotateCamera()
         {
-            if ( _pivot == null )
+            if ( m_Pivot == null )
                 return;
 
-            if ( Player.instance._weaponHandler._isReloading == true )
+            if ( Player.instance.m_WeaponHandler.m_isReloading == true )
             {
                 return;
             }
             
-            _newX += _cameraSettings._mouseXSensitivity * Input.GetAxis( _inputSettings._verticalAxis );
-            _newY += _cameraSettings._mouseYSensitivity * Input.GetAxis( _inputSettings._horizontalAxis );
+            m_NewX += m_CameraSettings.m_MouseXSensitivity * Input.GetAxis( m_InputSettings.m_VerticalAxis );
+            m_NewY += m_CameraSettings.m_MouseYSensitivity * Input.GetAxis( m_InputSettings.m_HorizontalAxis );
 
-            if ( Player.instance._userInput._isFiring == true )
+            if ( Player.instance.m_UserInput.m_IsFiring == true )
             {
-                _newY = _newY + Player.instance._weaponHandler.currentWeapon.weaponSettings._goUpSpeed * Time.deltaTime;
+                m_NewY = m_NewY + Player.instance.m_WeaponHandler.m_CurrentWeapon.m_WeaponSettings._goUpSpeed * Time.deltaTime;
             }
 
             Vector3 eulerAngleAxis = new Vector3();
-            eulerAngleAxis.x = -_newY;
+            eulerAngleAxis.x = -m_NewY;
             
-            eulerAngleAxis.y = _newX;
+            eulerAngleAxis.y = m_NewX;
             
 
-            _newX = Mathf.Repeat( _newX, 360 );
-            _newY = Mathf.Clamp( _newY, _cameraSettings._minAngle, _cameraSettings._maxAngle );
+            m_NewX = Mathf.Repeat( m_NewX, 360 );
+            m_NewY = Mathf.Clamp( m_NewY, m_CameraSettings.m_MinAngle, m_CameraSettings.m_MaxAngle );
 
-            Quaternion newRotation = Quaternion.Slerp( _pivot.localRotation, Quaternion.Euler( eulerAngleAxis ), Time.deltaTime * _cameraSettings._rotationSpeed );
+            Quaternion newRotation = Quaternion.Slerp( m_Pivot.localRotation, Quaternion.Euler( eulerAngleAxis ), Time.deltaTime * m_CameraSettings.m_RotationSpeed );
             
-            _pivot.localRotation = newRotation;
+            m_Pivot.localRotation = newRotation;
         }
 
-        // Checks the wall and moves the camera up if we hit
+
+        /// <summary>
+        /// Checks the wall and moves the camera up if we hit
+        /// </summary>
         private void CheckWall()
         {
-            if ( _pivot == null || _mainCamera == null )
+            if ( m_Pivot == null || m_MainCamera == null )
                 return;
 
             RaycastHit hit;
 
-            Transform mainCamT = _mainCamera.transform;
+            Transform mainCamT = m_MainCamera.transform;
             Vector3 mainCamPos = mainCamT.position;
-            Vector3 pivotPos = _pivot.position;
+            Vector3 pivotPos = m_Pivot.position;
 
             Vector3 start = pivotPos;
             Vector3 dir = mainCamPos - pivotPos;
 
-            float dist = Mathf.Abs( _shoulder == Shoulder.Left ? _cameraSettings._camPositionOffsetLeft.z : _cameraSettings._camPositionOffsetRight.z );
+            float dist = Mathf.Abs( m_Shoulder == Shoulder.Left ? m_CameraSettings.m_CamPositionOffsetLeft.z : m_CameraSettings.m_CamPositionOffsetRight.z );
 
-            if ( Physics.SphereCast( start, _cameraSettings._maxCheckDistance, dir, out hit, dist, _wallLayers ) )
+            if ( Physics.SphereCast( start, m_CameraSettings.m_MaxCheckDistance, dir, out hit, dist, m_WallLayers ) )
             {
                 MoveCameraUp( hit, pivotPos, dir, mainCamT );
             }
             else
             {
-                switch ( _shoulder )
+                switch ( m_Shoulder )
                 {
                     case Shoulder.Left:
-                        PostionCamera( _cameraSettings._camPositionOffsetLeft );
+                        PostionCamera( m_CameraSettings.m_CamPositionOffsetLeft );
                         break;
                     case Shoulder.Right:
-                        PostionCamera( _cameraSettings._camPositionOffsetRight );
+                        PostionCamera( m_CameraSettings.m_CamPositionOffsetRight );
                         break;
                 }
             }
         }
 
-        // This moves the camera forward when we hit a wall
+
+        /// <summary>
+        /// This moves the camera forward when we hit a wall
+        /// </summary>
+        /// <param name="hit"></param>
+        /// <param name="pivotPos"></param>
+        /// <param name="dir"></param>
+        /// <param name="cameraT"></param>
         private void MoveCameraUp( RaycastHit hit, Vector3 pivotPos, Vector3 dir, Transform cameraT )
         {
             float hitDist = hit.distance;
@@ -248,35 +269,42 @@ namespace DivisionLike
             cameraT.position = sphereCastCenter;
         }
 
-        // Postions the cameras localPosition to a given location
+
+        /// <summary>
+        /// Postions the cameras localPosition to a given location
+        /// </summary>
+        /// <param name="cameraPos"></param>
         private void PostionCamera( Vector3 cameraPos )
         {
-            if ( _mainCamera == null )
+            if ( m_MainCamera == null )
                 return;
 
-            Transform mainCamT = _mainCamera.transform;
+            Transform mainCamT = m_MainCamera.transform;
             Vector3 mainCamPos = mainCamT.localPosition;
-            Vector3 newPos = Vector3.Lerp( mainCamPos, cameraPos, Time.deltaTime * _movementSettings._movementLerpSpeed );
+            Vector3 newPos = Vector3.Lerp( mainCamPos, cameraPos, Time.deltaTime * m_MovementSettings.m_MovementLerpSpeed );
             mainCamT.localPosition = newPos;
         }
 
-        // Hides the mesh targets mesh renderers when too close
+
+        /// <summary>
+        /// Hides the mesh targets mesh renderers when too close
+        /// </summary>
         private void CheckMeshRenderer()
         {
-            if ( _mainCamera == null || _target == null )
+            if ( m_MainCamera == null || m_Target == null )
                 return;
 
-            SkinnedMeshRenderer[] meshes = _target.GetComponentsInChildren<SkinnedMeshRenderer>();
-            Transform mainCamT = _mainCamera.transform;
+            SkinnedMeshRenderer[] meshes = m_Target.GetComponentsInChildren<SkinnedMeshRenderer>();
+            Transform mainCamT = m_MainCamera.transform;
             Vector3 mainCamPos = mainCamT.position;
-            Vector3 targetPos = _target.position;
-            float dist = Vector3.Distance( mainCamPos, ( targetPos + _target.up ) );
+            Vector3 targetPos = m_Target.position;
+            float dist = Vector3.Distance( mainCamPos, ( targetPos + m_Target.up ) );
 
             if ( meshes.Length > 0 )
             {
                 for ( int i = 0; i < meshes.Length; i++ )
                 {
-                    if ( dist <= _cameraSettings._hideMeshWhenDistance )
+                    if ( dist <= m_CameraSettings.m_HideMeshWhenDistance )
                     {
                         meshes[ i ].enabled = false;
                     }
@@ -288,16 +316,19 @@ namespace DivisionLike
             }
         }
 
-        //Zooms the camera in and out
+
+        /// <summary>
+        /// Zooms the camera in and out
+        /// </summary>
         private void Zoom()
         {
-            if ( _mainCamera == null )
+            if ( m_MainCamera == null )
                 return;
 
-            if ( _isZooming == true )
+            if ( m_IsZooming == true )
             {
-                float newFieldOfView = Mathf.Lerp( _mainCamera.fieldOfView, _cameraSettings._zoomFieldOfView, Time.deltaTime * _cameraSettings._zoomSpeed );
-                _mainCamera.fieldOfView = newFieldOfView;
+                float newFieldOfView = Mathf.Lerp( m_MainCamera.fieldOfView, m_CameraSettings.m_ZoomFieldOfView, Time.deltaTime * m_CameraSettings.m_ZoomSpeed );
+                m_MainCamera.fieldOfView = newFieldOfView;
 
                 //if ( _cameraSettings._UICamera != null )
                 //{
@@ -306,8 +337,8 @@ namespace DivisionLike
             }
             else
             {
-                float originalFieldOfView = Mathf.Lerp( _mainCamera.fieldOfView, _cameraSettings._fieldOfView, Time.deltaTime * _cameraSettings._zoomSpeed );
-                _mainCamera.fieldOfView = originalFieldOfView;
+                float originalFieldOfView = Mathf.Lerp( m_MainCamera.fieldOfView, m_CameraSettings.m_FieldOfView, Time.deltaTime * m_CameraSettings.m_ZoomSpeed );
+                m_MainCamera.fieldOfView = originalFieldOfView;
 
                 //if ( _cameraSettings._UICamera != null )
                 //{
@@ -316,44 +347,49 @@ namespace DivisionLike
             }
         }
 
-        
+        /// <summary>
+        /// 
+        /// </summary>
         private void ZoomMore()
         {
-            if ( _mainCamera == null )
+            if ( m_MainCamera == null )
             {
                 return;
             }
 
-            if ( _isZooming == false )
+            if ( m_IsZooming == false )
             {
                 return;
             }
             
-            if ( _isZoomingMore == true )
+            if ( m_IsZoomingMore == true )
             {
-                float newFieldOfView = Mathf.Lerp( _mainCamera.fieldOfView, _cameraSettings._zoomMoreFieldOfView, Time.deltaTime * _cameraSettings._zoomSpeed );
-                _mainCamera.fieldOfView = newFieldOfView;
+                float newFieldOfView = Mathf.Lerp( m_MainCamera.fieldOfView, m_CameraSettings.m_ZoomMoreFieldOfView, Time.deltaTime * m_CameraSettings.m_ZoomSpeed );
+                m_MainCamera.fieldOfView = newFieldOfView;
                 
             }
             else
             {
-                float originalFieldOfView = Mathf.Lerp( _mainCamera.fieldOfView, _cameraSettings._zoomFieldOfView, Time.deltaTime * _cameraSettings._zoomSpeed );
-                _mainCamera.fieldOfView = originalFieldOfView;
+                float originalFieldOfView = Mathf.Lerp( m_MainCamera.fieldOfView, m_CameraSettings.m_ZoomFieldOfView, Time.deltaTime * m_CameraSettings.m_ZoomSpeed );
+                m_MainCamera.fieldOfView = originalFieldOfView;
                 
             }
             
         }
 
-        //Switches the cameras shoulder view
+
+        /// <summary>
+        /// Switches the cameras shoulder view
+        /// </summary>
         private void SwitchShoulders()
         {
-            switch ( _shoulder )
+            switch ( m_Shoulder )
             {
                 case Shoulder.Left:
-                    _shoulder = Shoulder.Right;
+                    m_Shoulder = Shoulder.Right;
                     break;
                 case Shoulder.Right:
-                    _shoulder = Shoulder.Left;
+                    m_Shoulder = Shoulder.Left;
                     break;
             }
         }

@@ -14,88 +14,95 @@ namespace DivisionLike
 {
     public class PauseManager : MonoBehaviour
     {
-        public AudioMixerSnapshot _paused;
-        public AudioMixerSnapshot _unpaused;
+        public AudioMixerSnapshot m_Paused;
+        public AudioMixerSnapshot m_Unpaused;
 
-        private Canvas _canvas;
+        private Canvas m_Canvas;
+        private Button m_InstructionButton;
+        private Image m_InstructionImage;
+        private bool m_IsVisibleInstruction = false;
 
-        private Button _instructionButton;
-        private Image _instructionImage;
-        private bool _isVisibleInstruction = false;
-
-        public bool _isPaused = false;
+        public bool m_IsPaused = false;
 
         private void Awake()
         {
-            _canvas = GetComponent<Canvas>();
+            m_Canvas = GetComponent<Canvas>();
 
-            _instructionButton = transform.Find( "PausePanel/InstructionButton" ).GetComponent<Button>();
-            _instructionButton.onClick.AddListener( ShowIntruction );
-            _instructionImage = transform.Find( "InstructionPanel" ).GetComponent<Image>();
-            _instructionImage.enabled = false;
+            m_InstructionButton = transform.Find( "PausePanel/InstructionButton" ).GetComponent<Button>();
+            m_InstructionButton.onClick.AddListener( ShowIntruction );
+            m_InstructionImage = transform.Find( "InstructionPanel" ).GetComponent<Image>();
+            m_InstructionImage.enabled = false;
         }
 
         private void OnEnable()
         {
-            _instructionImage.enabled = false;
-
-
+            m_InstructionImage.enabled = false;
         }
 
         private void OnDisable()
         {
-            _instructionImage.enabled = false;
+            m_InstructionImage.enabled = false;
         }
 
         void Update()
         {
             if ( Input.GetKeyDown( KeyCode.Escape ) )
             {
-                _canvas.enabled = !_canvas.enabled;
+                m_Canvas.enabled = !m_Canvas.enabled;
                 
                 Pause();
             }
 
             if ( Input.GetMouseButtonDown( 0 ) == true )
             {
-                if ( _isVisibleInstruction == true )
+                if ( m_IsVisibleInstruction == true )
                 {
-                    _instructionImage.enabled = false;
+                    m_InstructionImage.enabled = false;
                 }
             }
         }
 
+        /// <summary>
+        /// 일시 정지
+        /// </summary>
         public void Pause()
         {
-            _isPaused = !_isPaused;
+            m_IsPaused = !m_IsPaused;
 
-            if ( _isPaused == true )
+            if ( m_IsPaused == true )
             {
                 Time.timeScale = 0;
             }
-            else if ( _isPaused == false )
+            else if ( m_IsPaused == false )
             {
                 Time.timeScale = 1;
             }
 
-            ShowMouseCursor( _isPaused );
+            ShowMouseCursor( m_IsPaused );
 
             Lowpass();
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         void Lowpass()
         {
-            if ( _isPaused == true )
+            if ( m_IsPaused == true )
             {
-                _paused.TransitionTo( .01f );
+                m_Paused.TransitionTo( .01f );
             }
-            else if ( _isPaused == false )
+            else if ( m_IsPaused == false )
             {
-                _unpaused.TransitionTo( .01f );
+                m_Unpaused.TransitionTo( .01f );
             }
         }
 
+        /// <summary>
+        /// 마우스 커서를 보일 것인지
+        /// </summary>
+        /// <param name="isShow"></param>
         private void ShowMouseCursor( bool isShow )
         {
             if ( isShow == true )
@@ -111,20 +118,26 @@ namespace DivisionLike
             
         }
 
+        /// <summary>
+        /// 어플리케이션 종료
+        /// </summary>
         public void Quit()
         {
 #if UNITY_EDITOR
             EditorApplication.isPlaying = false;
 #else
-		Application.Quit();
+		    Application.Quit();
 #endif
         }
 
+        /// <summary>
+        /// 안내 이미지 표시
+        /// </summary>
         private void ShowIntruction()
         {
-            _isVisibleInstruction = true;
+            m_IsVisibleInstruction = true;
             
-            _instructionImage.enabled = _isVisibleInstruction;
+            m_InstructionImage.enabled = m_IsVisibleInstruction;
             
 
         }

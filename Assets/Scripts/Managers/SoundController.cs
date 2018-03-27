@@ -17,6 +17,14 @@ namespace DivisionLike
         
         }
 
+        /// <summary>
+        /// 해당 사운드를 재생한다.
+        /// </summary>
+        /// <param name="audioS"></param>
+        /// <param name="clip"></param>
+        /// <param name="randomizePitch"></param>
+        /// <param name="randomPitchMin"></param>
+        /// <param name="randomPitchMax"></param>
         public void PlaySound( AudioSource audioS, AudioClip clip, bool randomizePitch = false, float randomPitchMin = 1, float randomPitchMax = 1 )
         {
 
@@ -30,6 +38,15 @@ namespace DivisionLike
             audioS.Play();
         }
 
+        /// <summary>
+        /// 해당 오디오 클립을 생성하여 재생한다.
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="clip"></param>
+        /// <param name="time"></param>
+        /// <param name="randomizePitch"></param>
+        /// <param name="randomPitchMin"></param>
+        /// <param name="randomPitchMax"></param>
         public void InstantiateClip( Vector3 pos, AudioClip clip, float time = 2f, bool randomizePitch = false, float randomPitchMin = 1, float randomPitchMax = 1 )
         {
             GameObject clone = new GameObject( "one shot audio" );

@@ -4,32 +4,36 @@ using UnityEngine;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 아이템을 떨어뜨린 지점에 라인을 그린다.
+    /// </summary>
     public class ItemDropEffect : MonoBehaviour
     {
-        private LineRenderer _lineUp;
+        private LineRenderer m_LineUp;
 
         private void Awake()
         {
-            _lineUp = transform.GetComponent<LineRenderer>();
+            m_LineUp = transform.GetComponent<LineRenderer>();
         }
 
         private void OnEnable()
         {
-            _lineUp.SetPosition( 0, transform.position );
+            m_LineUp.SetPosition( 0, transform.position );
 
             Vector3 onePosition = transform.position;
             onePosition.y = 100f;
-            _lineUp.SetPosition( 1, onePosition );
+            m_LineUp.SetPosition( 1, onePosition );
         }
 
         void OnTriggerEnter( Collider other )
         {
+            // 플레이어가 총알을 획득한다.
             if ( other.gameObject == Player.instance.gameObject )
             {
                 int ammo = Random.Range( 1, 30 );
-                if ( Player.instance._weaponHandler.currentWeapon._weaponName.Equals( "Makarov" ) == false )
+                if ( Player.instance.m_WeaponHandler.m_CurrentWeapon.m_WeaponName.Equals( "Makarov" ) == false )
                 {
-                    Player.instance._inventory.ObtainAmmo( ammo );
+                    Player.instance.m_Inventory.ObtainAmmo( ammo );
                     //Destroy( gameObject );
                     Lean.LeanPool.Despawn( gameObject );
                 }

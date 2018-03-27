@@ -11,63 +11,63 @@ namespace DivisionLike
 {
     public class UserInput : MonoBehaviour
     {
-        private CharacterMovement _characterMove;
-        private WeaponHandler _weaponHandler;
-        private PlayerInventory _inventory;
-        private GrenadeHandler _grenadeHandler;
+        private CharacterMovement m_CharacterMove;
+        private WeaponHandler m_WeaponHandler;
+        private PlayerInventory m_Inventory;
+        private GrenadeHandler m_GrenadeHandler;
 
         [System.Serializable]
         public class InputSettings
         {
-            public string _verticalAxis = "Vertical";
-            public string _horizontalAxis = "Horizontal";
-            public string _jumpButton = "Jump";
-            public string _reloadButton = "Reload";
-            public string _aimButton = "Fire2";
-            public string _fireButton = "Fire1";
-            public string _switchWeaponButton = "Fire3";
-            public string _primaryWeaponButton = "1";
-            public string _secondaryWeaponButton = "2";
-            public string _sidearmButton = "3";
-            public string _sprintButton = "Sprint";
-            public string _medikitButton = "Medikit";
-            public string _GrenadeButton = "Grenade";
+            public string m_VerticalAxis = "Vertical";
+            public string m_HorizontalAxis = "Horizontal";
+            public string m_JumpButton = "Jump";
+            public string m_ReloadButton = "Reload";
+            public string m_AimButton = "Fire2";
+            public string m_FireButton = "Fire1";
+            public string m_SwitchWeaponButton = "Fire3";
+            public string m_PrimaryWeaponButton = "1";
+            public string m_SecondaryWeaponButton = "2";
+            public string m_SidearmButton = "3";
+            public string m_SprintButton = "Sprint";
+            public string m_MedikitButton = "Medikit";
+            public string m_GrenadeButton = "Grenade";
         }
         [SerializeField]
-        public InputSettings _inputSettings;
+        public InputSettings m_InputSettings;
 
         [System.Serializable]
         public class OtherSettings
         {
-            public float _lookSpeed = 5.0f;
-            public float _lookDistance = 30.0f;
-            public bool _requireInputForTurn = true;
-            public LayerMask _aimDetectionLayers;
+            public float m_LookSpeed = 5.0f;
+            public float m_LookDistance = 30.0f;
+            public bool m_RequireInputForTurn = true;
+            public LayerMask m_AimDetectionLayers;
         }
         [SerializeField]
-        public OtherSettings _otherSettings;
+        public OtherSettings m_OtherSettings;
 
-        private Camera _TPSCamera;
-        private Transform _centerTransform;
+        private Camera m_TPSCamera;
+        private Transform m_CenterTransform;
 
-        public bool _debugAim = false;
-        public Transform _spineTransform;
-        public bool _isAiming = false;
-        public bool _isFiring = false;
-        public bool _isSprinting = false;
-        public bool _isGrenadeMode = false;
+        public bool m_DebugAim = false;
+        public Transform m_SpineTransform;
+        public bool m_IsAiming = false;
+        public bool m_IsFiring = false;
+        public bool m_IsSprinting = false;
+        public bool m_IsGrenadeMode = false;
 
-        private Dictionary<Weapon, GameObject> _crosshairPrefabMap = new Dictionary<Weapon, GameObject>();
+        private Dictionary<Weapon, GameObject> m_CrosshairPrefabMap = new Dictionary<Weapon, GameObject>();
 
         // Use this for initialization
         void Start()
         {
-            _characterMove = transform.GetComponent<CharacterMovement>();
-            _weaponHandler = transform.GetComponent<WeaponHandler>();
-            _inventory = transform.GetComponent<PlayerInventory>();
-            _grenadeHandler = transform.GetComponent<GrenadeHandler>();
+            m_CharacterMove = transform.GetComponent<CharacterMovement>();
+            m_WeaponHandler = transform.GetComponent<WeaponHandler>();
+            m_Inventory = transform.GetComponent<PlayerInventory>();
+            m_GrenadeHandler = transform.GetComponent<GrenadeHandler>();
 
-            _TPSCamera = Camera.main;
+            m_TPSCamera = Camera.main;
             
 
             SetupCrosshairs();
@@ -90,11 +90,11 @@ namespace DivisionLike
 
         void LateUpdate()
         {
-            if ( _weaponHandler )
+            if ( m_WeaponHandler )
             {
-                if ( _weaponHandler.currentWeapon )
+                if ( m_WeaponHandler.m_CurrentWeapon )
                 {
-                    if ( _isAiming == true )
+                    if ( m_IsAiming == true )
                     {
                         PositionSpine();
                     }   
@@ -102,38 +102,40 @@ namespace DivisionLike
             }
         }
 
-        private float _v = 0f;
-        private float _h = 0f;
+        private float m_v = 0f;
+        private float m_h = 0f;
 
-        //Handles character logic
+        /// <summary>
+        /// Handles character logic
+        /// </summary>
         void CharacterLogic()
         {
-            if ( !_characterMove )
+            if ( !m_CharacterMove )
                 return;
 
-            _v = Input.GetAxis( _inputSettings._verticalAxis );
-            _h = Input.GetAxis( _inputSettings._horizontalAxis );
+            m_v = Input.GetAxis( m_InputSettings.m_VerticalAxis );
+            m_h = Input.GetAxis( m_InputSettings.m_HorizontalAxis );
 
             // always walk when player is aiming
-            if ( Player.instance._userInput._isAiming == true )
+            if ( Player.instance.m_UserInput.m_IsAiming == true )
             {
-                _characterMove.Animate( _v * 0.5f, _h * 0.5f );
+                m_CharacterMove.Animate( m_v * 0.5f, m_h * 0.5f );
             }
             else
             {
                 // sprint
-                if ( Input.GetButtonDown( _inputSettings._sprintButton ) == true )
+                if ( Input.GetButtonDown( m_InputSettings.m_SprintButton ) == true )
                 {
-                    _isSprinting = !_isSprinting;
+                    m_IsSprinting = !m_IsSprinting;
                 }
 
-                if ( _isSprinting == true )
+                if ( m_IsSprinting == true )
                 {
-                    _characterMove.Animate( _v, _h );
+                    m_CharacterMove.Animate( m_v, m_h );
                 }
                 else
                 {
-                    _characterMove.Animate( _v * 0.5f, _h * 0.5f );
+                    m_CharacterMove.Animate( m_v * 0.5f, m_h * 0.5f );
                 }
             }
             
@@ -141,17 +143,19 @@ namespace DivisionLike
             //    characterMove.Jump();
         }
 
-        //Handles camera logic
+        /// <summary>
+        /// Handles camera logic
+        /// </summary>
         void CameraLookLogic()
         {
-            if ( !_TPSCamera )
+            if ( !m_TPSCamera )
                 return;
 
-            _otherSettings._requireInputForTurn = !_isAiming;
+            m_OtherSettings.m_RequireInputForTurn = !m_IsAiming;
 
-            if ( _otherSettings._requireInputForTurn == true )
+            if ( m_OtherSettings.m_RequireInputForTurn == true )
             {
-                if ( Input.GetAxis( _inputSettings._horizontalAxis ) != 0 || Input.GetAxis( _inputSettings._verticalAxis ) != 0 )
+                if ( Input.GetAxis( m_InputSettings.m_HorizontalAxis ) != 0 || Input.GetAxis( m_InputSettings.m_VerticalAxis ) != 0 )
                 {
                     CharacterLook();
                 }
@@ -162,77 +166,79 @@ namespace DivisionLike
             }
         }
 
-        //Handles all weapon logic
+        /// <summary>
+        /// Handles all weapon logic
+        /// </summary>
         void WeaponLogic()
         {
-            if ( !_weaponHandler )
+            if ( !m_WeaponHandler )
                 return;
 
-            _isAiming = Input.GetButton( _inputSettings._aimButton ) || _debugAim == true;
-            _weaponHandler.Aim( _isAiming );
+            m_IsAiming = Input.GetButton( m_InputSettings.m_AimButton ) || m_DebugAim == true;
+            m_WeaponHandler.Aim( m_IsAiming );
 
-            if ( _isAiming == true )
+            if ( m_IsAiming == true )
             {
-                _isGrenadeMode = false;
+                m_IsGrenadeMode = false;
             }
 
-            if ( Input.GetButtonDown( _inputSettings._switchWeaponButton ) )
+            if ( Input.GetButtonDown( m_InputSettings.m_SwitchWeaponButton ) )
             {
-                _weaponHandler.SwitchWeapons();
+                m_WeaponHandler.SwitchWeapons();
                 UpdateCrosshairs();
                 PlayerHUD.instance.SetAnotherWeapon();
             }
 
-            if ( Input.GetButtonDown( _inputSettings._primaryWeaponButton ) )
+            if ( Input.GetButtonDown( m_InputSettings.m_PrimaryWeaponButton ) )
             {
-                _weaponHandler.SwitchWeapons( Weapon.WeaponType.Primary );
+                m_WeaponHandler.SwitchWeapons( Weapon.WeaponType.Primary );
             }
-            else if ( Input.GetButtonDown( _inputSettings._secondaryWeaponButton ) )
+            else if ( Input.GetButtonDown( m_InputSettings.m_SecondaryWeaponButton ) )
             {
-                _weaponHandler.SwitchWeapons( Weapon.WeaponType.Secondary );
+                m_WeaponHandler.SwitchWeapons( Weapon.WeaponType.Secondary );
             }
-            else if ( Input.GetButtonDown( _inputSettings._sidearmButton ) )
+            else if ( Input.GetButtonDown( m_InputSettings.m_SidearmButton ) )
             {
                 //weaponHandler.SwitchWeapons( Weapon.WeaponType.Sidearm );
-                _weaponHandler.SwitchWeapons( Weapon.WeaponType.Secondary );
+                m_WeaponHandler.SwitchWeapons( Weapon.WeaponType.Secondary );
             }
 
-            if ( _weaponHandler.currentWeapon )
+            if ( m_WeaponHandler.m_CurrentWeapon )
             {
-                Ray aimRay = _TPSCamera.ViewportPointToRay( new Vector3( 0.5f, 0.5f, 0f ) );
+                Ray aimRay = m_TPSCamera.ViewportPointToRay( new Vector3( 0.5f, 0.5f, 0f ) );
                 
                 Debug.DrawRay (aimRay.origin, aimRay.direction);
-                if ( Input.GetButton( _inputSettings._fireButton ) == true && _isAiming == true )
+                if ( Input.GetButton( m_InputSettings.m_FireButton ) == true && m_IsAiming == true )
                 {
-                    _isFiring = true;
-                    _weaponHandler.FireCurrentWeapon( aimRay );
+                    m_IsFiring = true;
+                    m_WeaponHandler.FireCurrentWeapon( aimRay );
                 }
                 else
                 {
-                    _isFiring = false;
+                    m_IsFiring = false;
                 }
-                if ( Input.GetButtonDown( _inputSettings._reloadButton ) == true )
+                if ( Input.GetButtonDown( m_InputSettings.m_ReloadButton ) == true )
                 {
-                    _weaponHandler.Reload();
+                    m_WeaponHandler.Reload();
                 }   
 
-                if ( _isAiming == true )
+                if ( m_IsAiming == true )
                 {
-                    ToggleCrosshair( true, _weaponHandler.currentWeapon );
+                    ToggleCrosshair( true, m_WeaponHandler.m_CurrentWeapon );
                     //PositionCrosshair( aimRay, weaponHandler.currentWeapon );
 
-                    if ( Player.instance._weaponHandler._isReloading == false )
+                    if ( Player.instance.m_WeaponHandler.m_isReloading == false )
                     {
                         HitCrosshair();
                     }
                     else
                     {
-                        ToggleCrosshair( false, _weaponHandler.currentWeapon );
+                        ToggleCrosshair( false, m_WeaponHandler.m_CurrentWeapon );
                     }
                 }
                 else
                 {
-                    ToggleCrosshair( false, _weaponHandler.currentWeapon );
+                    ToggleCrosshair( false, m_WeaponHandler.m_CurrentWeapon );
                 }
             }
             else
@@ -241,76 +247,88 @@ namespace DivisionLike
             }
         }
 
-        private Vector3 force;
+        private Vector3 m_Force;
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void GrenadeLogic()
         {
-            if ( _isAiming == true || Player.instance._inventory._currentGrenade <= 0 )
+            if ( m_IsAiming == true || Player.instance.m_Inventory.m_CurrentGrenade <= 0 )
             {
                 return;
             }
 
-            if ( Input.GetButtonDown( _inputSettings._GrenadeButton ) == true  )
+            if ( Input.GetButtonDown( m_InputSettings.m_GrenadeButton ) == true  )
             {
-                _isGrenadeMode = true;
+                m_IsGrenadeMode = true;
             }
             
 
-            if ( Input.GetButtonDown( _inputSettings._fireButton ) == true && _isGrenadeMode == true )
+            if ( Input.GetButtonDown( m_InputSettings.m_FireButton ) == true && m_IsGrenadeMode == true )
             {
                 //force = CameraControl.instance._mainCamera.ScreenToWorldPoint( Input.mousePosition );
-                _grenadeHandler.CreateGrenade( _weaponHandler.userSettings.rightHand.position, _weaponHandler.userSettings.rightHand.rotation );
+                m_GrenadeHandler.CreateGrenade( m_WeaponHandler.m_UserSettings.m_RightHand.position, m_WeaponHandler.m_UserSettings.m_RightHand.rotation );
 
-                Player.instance._inventory._currentGrenade--;
+                Player.instance.m_Inventory.m_CurrentGrenade--;
                 PlayerHUD.instance.SetGrenadeText();
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void InventoryLogic()
         {
-            if ( Input.GetButtonDown( _inputSettings._medikitButton ) )
+            if ( Input.GetButtonDown( m_InputSettings.m_MedikitButton ) )
             {
-                _inventory.UseMedikit();
+                m_Inventory.UseMedikit();
             }
         }
 
 #region crosshair
 
+        /// <summary>
+        /// crosshair 설정
+        /// </summary>
         private void SetupCrosshairs()
         {
-            if ( _weaponHandler.weaponsList.Count > 0 )
+            if ( m_WeaponHandler.m_WeaponsList.Count > 0 )
             {
-                foreach ( Weapon wep in _weaponHandler.weaponsList )
+                foreach ( Weapon wep in m_WeaponHandler.m_WeaponsList )
                 {
-                    GameObject prefab = wep.weaponSettings.crosshairPrefab;
+                    GameObject prefab = wep.m_WeaponSettings.crosshairPrefab;
                     if ( prefab != null )
                     {
                         GameObject clone = (GameObject) Instantiate( prefab );
                         clone.transform.SetParent( ScreenHUD.instance.transform );
                         clone.transform.localPosition = Vector3.zero;
                         
-                        _crosshairPrefabMap.Add( wep, clone );
+                        m_CrosshairPrefabMap.Add( wep, clone );
                         ToggleCrosshair( false, wep );
                     }
                 }
             }
         }
 
-        Vector3 fireDirection;
-        Vector3 firePoint;
+        Vector3 m_FireDirection;
+        Vector3 m_FirePoint;
 
+        /// <summary>
+        /// 
+        /// </summary>
         void HitCrosshair()
         {
             RaycastHit hit;
             int range = 1000;
-            fireDirection = _TPSCamera.transform.forward * 10;
-            firePoint = _weaponHandler.currentWeapon.weaponSettings.bulletSpawn.position;
+            m_FireDirection = m_TPSCamera.transform.forward * 10;
+            m_FirePoint = m_WeaponHandler.m_CurrentWeapon.m_WeaponSettings.bulletSpawn.position;
             // Debug the ray out in the editor:
-            Debug.DrawRay( firePoint, fireDirection, Color.green );
+            Debug.DrawRay( m_FirePoint, m_FireDirection, Color.green );
 
-            CrosshairHandler crosshair = _weaponHandler.currentWeapon.weaponSettings.crosshairPrefab.GetComponent<CrosshairHandler>();
+            CrosshairHandler crosshair = m_WeaponHandler.m_CurrentWeapon.m_WeaponSettings.crosshairPrefab.GetComponent<CrosshairHandler>();
 
-            if ( Physics.Raycast( firePoint, ( fireDirection ), out hit, range ) == true )
+            if ( Physics.Raycast( m_FirePoint, ( m_FireDirection ), out hit, range ) == true )
             {
                 //if ( hit.transform.gameObject.layer == LayerMask.GetMask( "Ragdoll" ) )
                 if ( hit.transform.gameObject.layer == 13 )
@@ -330,17 +348,24 @@ namespace DivisionLike
             }
         }
 
+        /// <summary>
+        /// 모든 crosshair들을 끈다.
+        /// </summary>
         private void TurnOffAllCrosshairs()
         {
-            foreach ( Weapon wep in _crosshairPrefabMap.Keys )
+            foreach ( Weapon wep in m_CrosshairPrefabMap.Keys )
             {
                 ToggleCrosshair( false, wep );
             }
         }
 
+        /// <summary>
+        /// 해당 무기의 crosshair를 생성한다.
+        /// </summary>
+        /// <param name="wep"></param>
         private void CreateCrosshair( Weapon wep )
         {
-            GameObject prefab = wep.weaponSettings.crosshairPrefab;
+            GameObject prefab = wep.m_WeaponSettings.crosshairPrefab;
             if ( prefab != null )
             {
                 prefab = Instantiate( prefab );
@@ -349,13 +374,17 @@ namespace DivisionLike
             }
         }
 
+        /// <summary>
+        /// 해당 무기의 crosshair를 삭제한다.
+        /// </summary>
+        /// <param name="wep"></param>
         private void DeleteCrosshair( Weapon wep )
         {
-            if ( !_crosshairPrefabMap.ContainsKey( wep ) )
+            if ( !m_CrosshairPrefabMap.ContainsKey( wep ) )
                 return;
 
-            Destroy( _crosshairPrefabMap[ wep ] );
-            _crosshairPrefabMap.Remove( wep );
+            Destroy( m_CrosshairPrefabMap[ wep ] );
+            m_CrosshairPrefabMap.Remove( wep );
         }
 
         // Position the crosshair to the point that we are aiming
@@ -393,63 +422,75 @@ namespace DivisionLike
         //    }
         //}
 
-        // Toggle on and off the crosshair prefab
+
+        /// <summary>
+        /// Toggle on and off the crosshair prefab
+        /// </summary>
+        /// <param name="enabled"></param>
+        /// <param name="wep"></param>
         private void ToggleCrosshair( bool enabled, Weapon wep )
         {
-            if ( !_crosshairPrefabMap.ContainsKey( wep ) )
+            if ( !m_CrosshairPrefabMap.ContainsKey( wep ) )
                 return;
 
-            _crosshairPrefabMap[ wep ].SetActive( enabled );
+            m_CrosshairPrefabMap[ wep ].SetActive( enabled );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void UpdateCrosshairs()
         {
-            if ( _weaponHandler.weaponsList.Count == 0 )
+            if ( m_WeaponHandler.m_WeaponsList.Count == 0 )
                 return;
 
-            foreach ( Weapon wep in _weaponHandler.weaponsList )
+            foreach ( Weapon wep in m_WeaponHandler.m_WeaponsList )
             {
-                if ( wep != _weaponHandler.currentWeapon )
+                if ( wep != m_WeaponHandler.m_CurrentWeapon )
                 {
                     ToggleCrosshair( false, wep );
                 }
             }
         }
-#endregion
+        #endregion
 
 
-        //Postions the spine when aiming
+        /// <summary>
+        /// Postions the spine when aiming
+        /// </summary>
         void PositionSpine()
         {
-            if ( !_spineTransform || !_weaponHandler.currentWeapon || !_TPSCamera )
+            if ( !m_SpineTransform || !m_WeaponHandler.m_CurrentWeapon || !m_TPSCamera )
                 return;
 
-            Transform mainCamT = _TPSCamera.transform;
+            Transform mainCamT = m_TPSCamera.transform;
             Vector3 mainCamPos = mainCamT.position;
             Vector3 dir = mainCamT.forward;
             Ray ray = new Ray( mainCamPos, dir );
 
-            _spineTransform.LookAt( ray.GetPoint( 50f ) );
+            m_SpineTransform.LookAt( ray.GetPoint( 50f ) );
 
-            Vector3 eulerAngleOffset = _weaponHandler.currentWeapon.userSettings.spineRotation;
-            _spineTransform.Rotate( eulerAngleOffset );
+            Vector3 eulerAngleOffset = m_WeaponHandler.m_CurrentWeapon.m_UserSettings.spineRotation;
+            m_SpineTransform.Rotate( eulerAngleOffset );
         }
 
-        //Make the character look at a forward point from the camera
+        /// <summary>
+        /// Make the character look at a forward point from the camera
+        /// </summary>
         void CharacterLook()
         {
-            Transform mainCamT = _TPSCamera.transform;
+            Transform mainCamT = m_TPSCamera.transform;
             Transform pivotT = mainCamT.parent.parent;
             Vector3 pivotPos = pivotT.position;
 
-            if ( _isFiring == true )
+            if ( m_IsFiring == true )
             {
-                pivotT.Rotate( -Player.instance._weaponHandler.currentWeapon.weaponSettings._goUpSpeed * Time.deltaTime, 0f, 0f );
+                pivotT.Rotate( -Player.instance.m_WeaponHandler.m_CurrentWeapon.m_WeaponSettings._goUpSpeed * Time.deltaTime, 0f, 0f );
 
             }
             //Debug.Log( "pivotT.rotation = " + pivotT.rotation );
 
-            Vector3 lookTarget = pivotPos + ( pivotT.forward * _otherSettings._lookDistance );
+            Vector3 lookTarget = pivotPos + ( pivotT.forward * m_OtherSettings.m_LookDistance );
             
             Vector3 thisPos = transform.position;
             Vector3 lookDir = lookTarget - thisPos;
@@ -458,7 +499,7 @@ namespace DivisionLike
             lookRot.x = 0;
             lookRot.z = 0;
 
-            Quaternion newRotation = Quaternion.Lerp( transform.rotation, lookRot, Time.deltaTime * _otherSettings._lookSpeed );
+            Quaternion newRotation = Quaternion.Lerp( transform.rotation, lookRot, Time.deltaTime * m_OtherSettings.m_LookSpeed );
             transform.rotation = newRotation;
         }
         

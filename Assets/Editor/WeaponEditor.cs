@@ -22,8 +22,8 @@ namespace DivisionLike
                 Transform weaponT = weapon.transform;
                 Vector3 weaponPos = weaponT.localPosition;
                 Vector3 weaponRot = weaponT.localEulerAngles;
-                weapon.weaponSettings.equipPosition = weaponPos;
-                weapon.weaponSettings.equipRotation = weaponRot;
+                weapon.m_WeaponSettings.equipPosition = weaponPos;
+                weapon.m_WeaponSettings.equipRotation = weaponRot;
             }
 
             if ( GUILayout.Button( "Save gun unequip location." ) )
@@ -31,8 +31,8 @@ namespace DivisionLike
                 Transform weaponT = weapon.transform;
                 Vector3 weaponPos = weaponT.localPosition;
                 Vector3 weaponRot = weaponT.localEulerAngles;
-                weapon.weaponSettings.unequipPosition = weaponPos;
-                weapon.weaponSettings.unequipRotation = weaponRot;
+                weapon.m_WeaponSettings.unequipPosition = weaponPos;
+                weapon.m_WeaponSettings.unequipRotation = weaponRot;
             }
 
             EditorGUILayout.LabelField( "Debug Positioning" );
@@ -40,16 +40,16 @@ namespace DivisionLike
             if ( GUILayout.Button( "Move gun to equip location" ) )
             {
                 Transform weaponT = weapon.transform;
-                weaponT.localPosition = weapon.weaponSettings.equipPosition;
-                Quaternion eulerAngles = Quaternion.Euler( weapon.weaponSettings.equipRotation );
+                weaponT.localPosition = weapon.m_WeaponSettings.equipPosition;
+                Quaternion eulerAngles = Quaternion.Euler( weapon.m_WeaponSettings.equipRotation );
                 weaponT.localRotation = eulerAngles;
             }
 
             if ( GUILayout.Button( "Move gun to unequip location" ) )
             {
                 Transform weaponT = weapon.transform;
-                weaponT.localPosition = weapon.weaponSettings.unequipPosition;
-                Quaternion eulerAngles = Quaternion.Euler( weapon.weaponSettings.unequipRotation );
+                weaponT.localPosition = weapon.m_WeaponSettings.unequipPosition;
+                Quaternion eulerAngles = Quaternion.Euler( weapon.m_WeaponSettings.unequipRotation );
                 weaponT.localRotation = eulerAngles;
             }
         }

@@ -9,23 +9,12 @@ namespace DivisionLike
     {
         public static Player instance = null;
 
-        [HideInInspector]
-        public PlayerStats _stats;
-
-        [HideInInspector]
-        public PlayerHealth _health;
-
-        [HideInInspector]
-        public UserInput _userInput;
-
-        [HideInInspector]
-        public PlayerInventory _inventory;
-
-        [HideInInspector]
-        public WeaponHandler _weaponHandler;
-
-        [HideInInspector]
-        public PlayerOutlineEffect _outlineEffect;
+        [HideInInspector] public PlayerStats m_Stats;
+        [HideInInspector] public PlayerHealth m_Health;
+        [HideInInspector] public UserInput m_UserInput;
+        [HideInInspector] public PlayerInventory m_Inventory;
+        [HideInInspector] public WeaponHandler m_WeaponHandler;
+        [HideInInspector] public PlayerOutlineEffect m_OutlineEffect;
 
         void Awake()
         {
@@ -40,12 +29,12 @@ namespace DivisionLike
 
             DontDestroyOnLoad( gameObject );
 
-            _stats = transform.GetComponent<PlayerStats>();
-            _health = transform.GetComponent<PlayerHealth>();
-            _userInput = transform.GetComponent<UserInput>();
-            _inventory = transform.GetComponent<PlayerInventory>();
-            _weaponHandler = transform.GetComponent<WeaponHandler>();
-            _outlineEffect = transform.GetComponent<PlayerOutlineEffect>();
+            m_Stats = transform.GetComponent<PlayerStats>();
+            m_Health = transform.GetComponent<PlayerHealth>();
+            m_UserInput = transform.GetComponent<UserInput>();
+            m_Inventory = transform.GetComponent<PlayerInventory>();
+            m_WeaponHandler = transform.GetComponent<WeaponHandler>();
+            m_OutlineEffect = transform.GetComponent<PlayerOutlineEffect>();
         }
     }
 }

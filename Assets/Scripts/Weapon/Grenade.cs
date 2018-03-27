@@ -7,26 +7,26 @@ namespace DivisionLike
 {
     public class Grenade : MonoBehaviour
     {
-        private Collider[] _hitColliders;
-        private GameObject _explosion;
-        private cakeslice.Outline _outline;
+        private Collider[] m_HitColliders;
+        private GameObject m_Explosion;
+        private cakeslice.Outline m_Outline;
 
-        public GameObject _explosionPrefab;
+        public GameObject m_ExplosionPrefab;
 
-        public float _blastRadius = 8f;
-        public float _lifeTime = 4f;
-        public int _damage = 70;
+        public float m_BlastRadius = 8f;
+        public float m_LifeTime = 4f;
+        public int m_Damage = 70;
         
         
         // Use this for initialization
         void Awake()
         {
             //_explosion = transform.Find( "Explosion" ).gameObject;
-            _outline = transform.Find( "WPN_MK2Grenade" ).GetComponent<cakeslice.Outline>();
+            m_Outline = transform.Find( "WPN_MK2Grenade" ).GetComponent<cakeslice.Outline>();
 
             //_explosion.SetActive( false );
             
-            Invoke( "Explode", _lifeTime );
+            Invoke( "Explode", m_LifeTime );
         }
 
         private void OnEnable()
@@ -40,22 +40,25 @@ namespace DivisionLike
             // as soon as grenade lands on, draw explosion sphere so that player can know how big explosion of grenade is
         }
 
+        /// <summary>
+        /// 폭파시킨다.
+        /// </summary>
         private void Explode()
         {
-            _outline.enabled = false;
+            m_Outline.enabled = false;
 
-            GameObject explosion = (GameObject) Instantiate( _explosionPrefab, transform.position, Quaternion.identity, transform );
+            GameObject explosion = (GameObject) Instantiate( m_ExplosionPrefab, transform.position, Quaternion.identity, transform );
             
-            _hitColliders = Physics.OverlapSphere( transform.position, _blastRadius, LayerMask.GetMask( "Ragdoll" ) );
+            m_HitColliders = Physics.OverlapSphere( transform.position, m_BlastRadius, LayerMask.GetMask( "Ragdoll" ) );
             
-            foreach ( Collider hitCol in _hitColliders )
+            foreach ( Collider hitCol in m_HitColliders )
             {
                 EnemyHealth enemy = hitCol.GetComponent<EnemyHealth>();
                 
                 if ( enemy != null )
                 {
-                    Debug.Log( "enemy name " + hitCol.gameObject.name + " got damage " + _damage + " by grenade" );
-                    enemy.TakeDamage( _damage, hitCol.ClosestPoint( transform.position ) );
+                    Debug.Log( "enemy name " + hitCol.gameObject.name + " got damage " + m_Damage + " by grenade" );
+                    enemy.TakeDamage( m_Damage, hitCol.ClosestPoint( transform.position ) );
                 }
             }
 

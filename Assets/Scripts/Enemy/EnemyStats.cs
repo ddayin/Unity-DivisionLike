@@ -7,16 +7,12 @@ namespace DivisionLike
 {
     public class EnemyStats : MonoBehaviour
     {
-        public int _currentLevel;
-        public int _maxLevel;
-        public int _currentArmor;
-        public int _xpWhenDie;
+        public int m_CurrentLevel;  // 현재 레벨
+        public int m_MaxLevel;      // 최고 레벨
+        public int m_CurrentArmor;  // 현재 방어력
+        public int m_XpWhenDie;     // 죽었을 때 경험치
+
         
-        private void Awake()
-        {
-        
-        
-        }
     }
 }
 

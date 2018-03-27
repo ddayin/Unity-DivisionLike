@@ -6,21 +6,21 @@ namespace DivisionLike
 {
     public class OilBarrel : MonoBehaviour
     {
-        public int _currentHealth = 100;
-        public int _maxHealth = 100;
-        public GameObject _explosionPrefab;
-        public float _blastRadius = 8f;
-        public int _damage = 70;
+        public int m_CurrentHealth = 100;
+        public int m_MaxHealth = 100;
+        public GameObject m_ExplosionPrefab;
+        public float m_BlastRadius = 8f;
+        public int m_Damage = 70;
 
-        private cakeslice.Outline _outline;
-        private Collider[] _hitColliders;
-        private bool _isExploded = false;
-        private Rigidbody _rigidbody;
+        private cakeslice.Outline m_Outline;
+        private Collider[] m_HitColliders;
+        private bool m_IsExploded = false;
+        private Rigidbody m_Rigidbody;
 
         private void Awake()
         {
-            _outline = transform.GetComponent<cakeslice.Outline>();
-            _rigidbody = transform.GetComponent<Rigidbody>();
+            m_Outline = transform.GetComponent<cakeslice.Outline>();
+            m_Rigidbody = transform.GetComponent<Rigidbody>();
         }
 
         private void OnCollisionEnter( Collision collision )
@@ -28,64 +28,73 @@ namespace DivisionLike
             
         }
 
+        /// <summary>
+        /// 데미지를 받는다.
+        /// </summary>
+        /// <param name="amount"></param>
         public void TakeDamage( int amount )
         {
-            if ( _isExploded == true )
+            if ( m_IsExploded == true )
             {
                 return;
             }
-            _outline.enabled = true;
+            m_Outline.enabled = true;
             Invoke( "DisableOutline", 1f );
 
-            _currentHealth -= amount;
+            m_CurrentHealth -= amount;
 
-            if ( _currentHealth <= 0 )
+            if ( m_CurrentHealth <= 0 )
             {
                 Explode();
             }
         }
 
+        /// <summary>
+        /// 아웃라인을 비활성화 시킨다.
+        /// </summary>
         private void DisableOutline()
         {
-            _outline.enabled = false;
+            m_Outline.enabled = false;
         }
 
-
+        /// <summary>
+        /// 폭파시킨다.
+        /// </summary>
         private void Explode()
         {
-            if ( _isExploded == true )
+            if ( m_IsExploded == true )
             {
                 return;
             }
 
-            _rigidbody.AddExplosionForce( 600f, transform.position, _blastRadius, 300f );
+            m_Rigidbody.AddExplosionForce( 600f, transform.position, m_BlastRadius, 300f );
 
-            _outline.enabled = false;
+            m_Outline.enabled = false;
 
-            GameObject explosion = (GameObject) Instantiate( _explosionPrefab, transform.position, Quaternion.identity, transform );
+            GameObject explosion = (GameObject) Instantiate( m_ExplosionPrefab, transform.position, Quaternion.identity, transform );
 
-            _hitColliders = Physics.OverlapSphere( transform.position, _blastRadius, LayerMask.GetMask( "Ragdoll" ) );
+            m_HitColliders = Physics.OverlapSphere( transform.position, m_BlastRadius, LayerMask.GetMask( "Ragdoll" ) );
 
-            foreach ( Collider hitCol in _hitColliders )
+            foreach ( Collider hitCol in m_HitColliders )
             {
                 EnemyHealth enemy = hitCol.GetComponent<EnemyHealth>();
 
                 if ( enemy != null )
                 {
-                    Debug.Log( "enemy name " + hitCol.gameObject.name + " got damage " + _damage + " by grenade" );
-                    enemy.TakeDamage( _damage, hitCol.ClosestPoint( transform.position ) );
+                    Debug.Log( "enemy name " + hitCol.gameObject.name + " got damage " + m_Damage + " by grenade" );
+                    enemy.TakeDamage( m_Damage, hitCol.ClosestPoint( transform.position ) );
                 }
 
                 Rigidbody rig = hitCol.GetComponent<Rigidbody>();
                 if ( rig != null )
                 {
-                    rig.AddExplosionForce( 200f, transform.position, _blastRadius );
+                    rig.AddExplosionForce( 200f, transform.position, m_BlastRadius );
                 }
             }
 
             Destroy( this.gameObject, 5f );
 
-            _isExploded = true;
+            m_IsExploded = true;
         }
     }
 }

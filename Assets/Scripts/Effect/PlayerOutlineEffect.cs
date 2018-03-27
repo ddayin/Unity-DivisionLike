@@ -5,9 +5,12 @@ using cakeslice;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class PlayerOutlineEffect : MonoBehaviour
     {
-        public Outline[] _outlines = new Outline[ 5 ];
+        public Outline[] m_Outlines = new Outline[ 5 ];
 
         private void Awake()
         {
@@ -18,7 +21,7 @@ namespace DivisionLike
         {
             for ( int i = 0; i < 5; i++ )
             {
-                _outlines[ i ].enabled = enable;
+                m_Outlines[ i ].enabled = enable;
             }
         }
 
