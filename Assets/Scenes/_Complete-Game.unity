@@ -820,16 +820,6 @@ Prefab:
       propertyPath: m_WeaponSettings.shellEjectSpot
       value: 
       objectReference: {fileID: 168170066}
-    - target: {fileID: 114602481244817218, guid: ed965125ff6f3a44d84d71a0e4769abb,
-        type: 2}
-      propertyPath: m_WeaponSettings.useAnimation
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114602481244817218, guid: ed965125ff6f3a44d84d71a0e4769abb,
-        type: 2}
-      propertyPath: m_WeaponSettings.fireAnimationName
-      value: Pistol_Fire
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed965125ff6f3a44d84d71a0e4769abb, type: 2}
   m_IsPrefabParent: 0
@@ -1325,6 +1315,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4096713884697142, guid: fa08a23349364554a9bbce04d51108d6,
     type: 2}
   m_PrefabInternal: {fileID: 1823984592}
+--- !u!4 &862405323 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4568949691163028, guid: 59e8e266ec83fd34b8885035b9213f52,
+    type: 2}
+  m_PrefabInternal: {fileID: 1834230914}
 --- !u!4 &891515656 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4096713884697142, guid: fa08a23349364554a9bbce04d51108d6,
@@ -2104,6 +2099,11 @@ Prefab:
       propertyPath: m_WeaponsList.Array.data[0]
       value: 
       objectReference: {fileID: 716854877}
+    - target: {fileID: 114546955613398854, guid: 59e8e266ec83fd34b8885035b9213f52,
+        type: 2}
+      propertyPath: m_SpineTransform
+      value: 
+      objectReference: {fileID: 862405323}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59e8e266ec83fd34b8885035b9213f52, type: 2}
   m_IsPrefabParent: 0

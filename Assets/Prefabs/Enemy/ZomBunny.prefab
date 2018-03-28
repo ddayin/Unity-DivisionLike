@@ -7656,7 +7656,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4fe92274d36316438e4420355e370c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PopupText: {fileID: 0}
+  m_PopupText: {fileID: 114780391189135322, guid: 7a66acc00a8e1e045bd3e67dfc7297bd,
+    type: 2}
 --- !u!114 &114729425153227828
 MonoBehaviour:
   m_ObjectHideFlags: 1
