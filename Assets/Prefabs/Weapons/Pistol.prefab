@@ -290,8 +290,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1602718035357728}
   m_LocalRotation: {x: 0.01788048, y: -0.7485659, z: -0.6625111, w: 0.020207921}
-  m_LocalPosition: {x: 0.239, y: 0.884, z: 0.0035402942}
-  m_LocalScale: {x: 0.03097873, y: 0.030978722, z: 0.03097873}
+  m_LocalPosition: {x: 0.7790009, y: 0.39200002, z: 3.7585394}
+  m_LocalScale: {x: 0.03097873, y: 0.030978711, z: 0.03097873}
   m_Children:
   - {fileID: 4020646665794472}
   - {fileID: 4691001952177640}
@@ -326,6 +326,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -341,6 +342,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -358,6 +360,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -373,6 +376,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -390,6 +394,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -405,6 +410,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -422,6 +428,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -437,6 +444,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -454,6 +462,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -469,6 +478,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -683,16 +693,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead9567750bdfc04691f8392c56e59f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  faceLight: {fileID: 108780772912672168}
-  _weaponType: 1
-  _weaponName: Makarov
-  userSettings:
+  m_FaceLight: {fileID: 108780772912672168}
+  m_WeaponType: 1
+  m_WeaponName: Makarov
+  m_UserSettings:
     leftHandIKTarget: {fileID: 0}
     spineRotation: {x: 3.67, y: 44.95, z: 7.45}
-  weaponSettings:
-    bulletSpawn: {fileID: 4907502442741636}
+  m_WeaponSettings:
+    bulletSpawn: {fileID: 0}
     damage: 40
-    bulletSpread: 0.2
+    bulletSpread: 5
     fireRate: 0.2
     bulletLayers:
       serializedVersion: 2
@@ -703,11 +713,11 @@ MonoBehaviour:
     shell: {fileID: 196100, guid: d4284630ed4e2434591827622ca2c585, type: 2}
     clip: {fileID: 0}
     _bullet: {fileID: 178192, guid: a4571f10673d6734494ba25f01b70792, type: 2}
-    _bulletLine: {fileID: 120506058577573124}
+    _bulletLine: {fileID: 0}
     crosshairPrefab: {fileID: 1597858921834034, guid: 030112716c644a94c9a5ccefdea26f60,
       type: 2}
     reloadDuration: 2
-    shellEjectSpot: {fileID: 4222995817646962}
+    shellEjectSpot: {fileID: 0}
     shellEjectSpeed: 1.25
     clipEjectPos: {fileID: 0}
     clipGO: {fileID: 0}
@@ -717,26 +727,22 @@ MonoBehaviour:
     equipRotation: {x: 84.2903, y: -307.8189, z: -217.4441}
     unequipPosition: {x: 0.203, y: -0.199, z: -0.025}
     unequipRotation: {x: -86.9066, y: -90.0001, z: -89.9999}
-    useAnimation: 1
+    useAnimation: 0
     fireAnimationLayer: 0
-    fireAnimationName: Pistol_Fire
-  ammo:
-    carryingAmmo: 95
+    fireAnimationName: Fire
+  m_Ammo:
+    carryingAmmo: 0
     carryingMaxAmmo: 800
-    clipAmmo: 15
-    maxClipAmmo: 15
-    clipInfiniteAmmo: 1
-  _resettingCartridge: 0
-  soundSettings:
-    gunshotSounds:
-    - {fileID: 8300000, guid: 6ef43428874da924781868e481a239f9, type: 3}
-    - {fileID: 8300000, guid: 92dcb3e98752cd441ad3002dd6113c39, type: 3}
-    - {fileID: 8300000, guid: a7039fd74142f864a927f3ee9f0eb9fd, type: 3}
-    - {fileID: 8300000, guid: 64d8c57d9dc36c944b0eff7329f32f08, type: 3}
-    reloadSound: {fileID: 8300000, guid: 2645cb67f01db5045bda3f74185dff24, type: 3}
+    clipAmmo: 0
+    maxClipAmmo: 0
+    clipInfiniteAmmo: 0
+  m_ResettingCartridge: 0
+  m_SoundSettings:
+    gunshotSounds: []
+    reloadSound: {fileID: 0}
     pitchMin: 1
     pitchMax: 1.2
-    audioS: {fileID: 82286457254552116}
+    audioS: {fileID: 0}
 --- !u!120 &120506058577573124
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -746,6 +752,7 @@ LineRenderer:
   m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
@@ -761,6 +768,7 @@ LineRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -820,5 +828,6 @@ LineRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 0
+    generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0

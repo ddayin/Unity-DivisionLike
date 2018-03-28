@@ -2427,18 +2427,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cc181167231df74da89b901b6745ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userSettings:
-    rightHand: {fileID: 4079273993816624}
-    pistolUnequipSpot: {fileID: 4568949691163028}
-    rifleUnequipSpot: {fileID: 4568949691163028}
-  animations:
-    weaponTypeInt: WeaponType
-    reloadingBool: isReloading
-    aimingBool: Aiming
-  currentWeapon: {fileID: 0}
-  weaponsList:
+  m_UserSettings:
+    m_RightHand: {fileID: 4079273993816624}
+    m_PistolUnequipSpot: {fileID: 4568949691163028}
+    m_RifleUnequipSpot: {fileID: 4568949691163028}
+  m_Animations:
+    m_WeaponTypeInt: WeaponType
+    m_ReloadingBool: isReloading
+    m_AimingBool: Aiming
+  m_CurrentWeapon: {fileID: 0}
+  m_WeaponsList:
   - {fileID: 0}
-  maxWeapons: 2
+  m_MaxWeapons: 2
+  m_isReloading: 0
 --- !u!114 &114240784401299112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2450,10 +2451,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d314853478227274083b219397a26f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _grenadePrefab: {fileID: 1376241201457370, guid: ab907fd364b32044eb2a628cfce6cd6d,
+  m_GrenadePrefab: {fileID: 1376241201457370, guid: ab907fd364b32044eb2a628cfce6cd6d,
     type: 2}
-  _userSettings:
-    _throwForce: 100
+  m_UserSettings:
+    m_ThrowForce: 100
 --- !u!114 &114290077164167034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2465,11 +2466,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c32067ea884548644b13cf9baddd4573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageImage: {fileID: 0}
-  _bloodImage: {fileID: 0}
-  _deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
-  _flashSpeed: 5
-  _flashColour: {r: 1, g: 0, b: 0, a: 0.1}
+  m_DamageImage: {fileID: 0}
+  m_BloodImage: {fileID: 0}
+  m_DeathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
+  m_FlashSpeed: 5
+  m_FlashColour: {r: 1, g: 0, b: 0, a: 0.1}
 --- !u!114 &114314024353467972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2481,8 +2482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f7ceed8a910ca47950a2347ec4dce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textureTypes: []
-  audioS: {fileID: 82168656781489022}
+  m_TextureTypes: []
+  m_AudioS: {fileID: 82168656781489022}
 --- !u!114 &114354008394489122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2494,22 +2495,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd5e0822de062148827d57517b44d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationSettings:
-    _verticalVelocityFloat: Forward
-    _horizontalVelocityFloat: Strafe
-    _groundedBool: isGrounded
-    _jumpBool: isJumping
-  _physicsSettings:
-    _gravityModifier: 9.81
-    _baseGravity: 50
-    _resetGravityValue: 1.2
-    _groundLayers:
+  m_AnimationSettings:
+    m_VerticalVelocityFloat: Forward
+    m_HorizontalVelocityFloat: Strafe
+    m_GroundedBool: isGrounded
+    m_JumpBool: isJumping
+  m_PhysicsSettings:
+    m_GravityModifier: 9.81
+    m_BaseGravity: 50
+    m_ResetGravityValue: 1.2
+    m_GroundLayers:
       serializedVersion: 2
       m_Bits: 256
-    _airSpeed: 2.5
-  _movementSettings:
-    _jumpSpeed: 6
-    _jumpTime: 0.25
+    m_AirSpeed: 2.5
+  m_MovementSettings:
+    m_JumpSpeed: 6
+    m_JumpTime: 0.25
 --- !u!114 &114453495703064356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2521,12 +2522,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4f41d273df35e4d91083c9e67aa487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stats: {fileID: 0}
-  _health: {fileID: 0}
-  _userInput: {fileID: 0}
-  _inventory: {fileID: 0}
-  _weaponHandler: {fileID: 0}
-  _outlineEffect: {fileID: 0}
+  m_Stats: {fileID: 0}
+  m_Health: {fileID: 0}
+  m_UserInput: {fileID: 0}
+  m_Inventory: {fileID: 0}
+  m_WeaponHandler: {fileID: 0}
+  m_OutlineEffect: {fileID: 0}
 --- !u!114 &114483291404738496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2538,14 +2539,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796825c2b3b17894a810ff75e2f656bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 1200
-  _currentHealth: 0
-  _currentLevel: 1
-  _currentXP: 0
-  _xpRequire: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  _currentArmor: 0
-  _criticalHitRate: 10
-  _criticalHitMultiply: 1.8
+  m_MaxHealth: 1200
+  m_CurrentHealth: 0
+  m_CurrentLevel: 1
+  m_CurrentXP: 0
+  m_XpRequire: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_CurrentArmor: 0
+  m_CriticalHitRate: 10
+  m_CriticalHitMultiply: 1.8
 --- !u!114 &114546955613398854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2557,33 +2558,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a50cdeca5540c499c3544d496936b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputSettings:
-    _verticalAxis: Vertical
-    _horizontalAxis: Horizontal
-    _jumpButton: Jump
-    _reloadButton: Reload
-    _aimButton: Fire2
-    _fireButton: Fire1
-    _switchWeaponButton: Fire3
-    _primaryWeaponButton: 1
-    _secondaryWeaponButton: 2
-    _sidearmButton: 3
-    _sprintButton: Sprint
-    _medikitButton: Medikit
-    _GrenadeButton: Grenade
-  _otherSettings:
-    _lookSpeed: 5
-    _lookDistance: 30
-    _requireInputForTurn: 1
-    _aimDetectionLayers:
+  m_InputSettings:
+    m_VerticalAxis: Vertical
+    m_HorizontalAxis: Horizontal
+    m_JumpButton: Jump
+    m_ReloadButton: Reload
+    m_AimButton: Fire2
+    m_FireButton: Fire1
+    m_SwitchWeaponButton: Fire3
+    m_PrimaryWeaponButton: 1
+    m_SecondaryWeaponButton: 2
+    m_SidearmButton: 3
+    m_SprintButton: Sprint
+    m_MedikitButton: Medikit
+    m_GrenadeButton: Grenade
+  m_OtherSettings:
+    m_LookSpeed: 5
+    m_LookDistance: 30
+    m_RequireInputForTurn: 1
+    m_AimDetectionLayers:
       serializedVersion: 2
       m_Bits: 0
-  _debugAim: 0
-  _spineTransform: {fileID: 4568949691163028}
-  _isAiming: 0
-  _isFiring: 0
-  _isSprinting: 0
-  _isGrenadeMode: 0
+  m_DebugAim: 0
+  m_SpineTransform: {fileID: 0}
+  m_IsAiming: 0
+  m_IsFiring: 0
+  m_IsSprinting: 0
+  m_IsGrenadeMode: 0
 --- !u!114 &114665249318961136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2610,7 +2611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2465babe0e7acae42bb2eefbd70611f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _outlines:
+  m_Outlines:
   - {fileID: 114806837058277936}
   - {fileID: 114932861743315236}
   - {fileID: 114033657919494726}
@@ -2642,8 +2643,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebf2db36b8f68043896d165e89dc090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentMedikit: 5
-  _currentGrenade: 6
+  m_CurrentMedikit: 5
+  m_CurrentGrenade: 6
 --- !u!114 &114932861743315236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2668,6 +2669,7 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2683,6 +2685,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -2722,6 +2725,7 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2737,6 +2741,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -2769,6 +2774,7 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2784,6 +2790,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -2816,6 +2823,7 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2831,6 +2839,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -2861,6 +2870,7 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2876,6 +2886,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -2951,6 +2962,7 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2966,6 +2978,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -3003,6 +3016,7 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -3018,6 +3032,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -3061,6 +3076,7 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -3076,6 +3092,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
