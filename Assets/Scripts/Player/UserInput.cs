@@ -387,42 +387,6 @@ namespace DivisionLike
             m_CrosshairPrefabMap.Remove( wep );
         }
 
-        // Position the crosshair to the point that we are aiming
-        //private void PositionCrosshair( Ray ray, Weapon wep )
-        //{
-        //    Weapon curWeapon = weaponHandler.currentWeapon;
-        //    if ( curWeapon == null )
-        //        return;
-        //    if ( !crosshairPrefabMap.ContainsKey( wep ) )
-        //        return;
-
-        //    GameObject crosshairPrefab = crosshairPrefabMap[ wep ];
-        //    RaycastHit hit;
-        //    Transform bSpawn = curWeapon.weaponSettings.bulletSpawn;
-        //    Vector3 bSpawnPoint = bSpawn.position;
-        //    Vector3 dir = ray.GetPoint( curWeapon.weaponSettings.range ) - bSpawnPoint;
-
-        //    //Debug.DrawRay( bSpawnPoint, dir );
-
-        //    if ( Physics.Raycast( bSpawnPoint, dir, out hit, curWeapon.weaponSettings.range,
-        //        curWeapon.weaponSettings.bulletLayers ) )
-        //    {
-        //        if ( crosshairPrefab != null )
-        //        {
-        //            ToggleCrosshair( true, curWeapon );
-        //            Vector3 newPos = hit.point;
-        //            newPos.z = 10.0f;       // maintain certain position of crosshair z
-        //            crosshairPrefab.transform.position = newPos;
-        //            crosshairPrefab.transform.LookAt( Camera.main.transform );
-        //        }
-        //    }
-        //    else
-        //    {
-        //        ToggleCrosshair( false, curWeapon );
-        //    }
-        //}
-
-
         /// <summary>
         /// Toggle on and off the crosshair prefab
         /// </summary>

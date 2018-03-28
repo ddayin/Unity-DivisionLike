@@ -11,7 +11,6 @@ namespace DivisionLike
 {
     public class PlayerHealth : MonoBehaviour
     {
-        //public Slider _healthSlider;                                 // Reference to the UI's health bar.
         public Image m_DamageImage;                                   // Reference to an image to flash on the screen on being hurt.
         public Image m_BloodImage;
         public AudioClip m_DeathClip;                                 // The audio clip to play when the player dies.
@@ -20,8 +19,6 @@ namespace DivisionLike
         
         private Animator m_Animator;                                              // Reference to the Animator component.
         private AudioSource m_PlayerAudio;                                    // Reference to the AudioSource component.
-        //PlayerMovement playerMovement;                              // Reference to the player's movement.
-        //PlayerShooting playerShooting;                              // Reference to the PlayerShooting script.
         private bool m_IsDead = false;                                                // Whether the player is dead.
         private bool m_Damaged = false;                                               // True when the player gets damaged
 
@@ -31,8 +28,6 @@ namespace DivisionLike
             // Setting up the references.
             m_Animator = transform.GetComponent<Animator>();
             m_PlayerAudio = transform.GetComponent<AudioSource>();
-            //playerMovement = GetComponent <PlayerMovement> ();
-            //playerShooting = GetComponentInChildren <PlayerShooting> ();
 
             m_BloodImage.gameObject.SetActive( false );
             

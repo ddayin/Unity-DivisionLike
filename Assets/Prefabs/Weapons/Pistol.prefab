@@ -700,7 +700,7 @@ MonoBehaviour:
     leftHandIKTarget: {fileID: 0}
     spineRotation: {x: 3.67, y: 44.95, z: 7.45}
   m_WeaponSettings:
-    bulletSpawn: {fileID: 0}
+    bulletSpawn: {fileID: 4907502442741636}
     damage: 40
     bulletSpread: 5
     fireRate: 0.2
@@ -717,7 +717,7 @@ MonoBehaviour:
     crosshairPrefab: {fileID: 1597858921834034, guid: 030112716c644a94c9a5ccefdea26f60,
       type: 2}
     reloadDuration: 2
-    shellEjectSpot: {fileID: 0}
+    shellEjectSpot: {fileID: 4222995817646962}
     shellEjectSpeed: 1.25
     clipEjectPos: {fileID: 0}
     clipGO: {fileID: 0}
@@ -739,10 +739,10 @@ MonoBehaviour:
   m_ResettingCartridge: 0
   m_SoundSettings:
     gunshotSounds: []
-    reloadSound: {fileID: 0}
+    reloadSound: {fileID: 8300000, guid: 2645cb67f01db5045bda3f74185dff24, type: 3}
     pitchMin: 1
     pitchMax: 1.2
-    audioS: {fileID: 0}
+    audioS: {fileID: 82286457254552116}
 --- !u!120 &120506058577573124
 LineRenderer:
   m_ObjectHideFlags: 1
