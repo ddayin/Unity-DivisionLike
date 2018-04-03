@@ -4,28 +4,26 @@ using UnityEngine;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 기름이 담긴 통, 폭파될 수 있다.
+    /// </summary>
     public class OilBarrel : MonoBehaviour
     {
-        public int m_CurrentHealth = 100;
-        public int m_MaxHealth = 100;
-        public GameObject m_ExplosionPrefab;
-        public float m_BlastRadius = 8f;
-        public int m_Damage = 70;
+        public int m_CurrentHealth = 100;       // 현재 HP
+        public int m_MaxHealth = 100;           // 최대 HP
+        public GameObject m_ExplosionPrefab;    // 폭파 이펙트 프리팹
+        public float m_BlastRadius = 8f;        // 폭파되는 범위
+        public int m_Damage = 70;               // 폭파시키면서 다른 오브젝트에 입히는 데미지
 
-        private cakeslice.Outline m_Outline;
-        private Collider[] m_HitColliders;
-        private bool m_IsExploded = false;
-        private Rigidbody m_Rigidbody;
+        private cakeslice.Outline m_Outline;    // 아웃라인
+        private Collider[] m_HitColliders;      // 폭파하면서 충돌된 충돌체들
+        private bool m_IsExploded = false;      // 폭파되었는지
+        private Rigidbody m_Rigidbody;          // Rigidbody
 
         private void Awake()
         {
             m_Outline = transform.GetComponent<cakeslice.Outline>();
             m_Rigidbody = transform.GetComponent<Rigidbody>();
-        }
-
-        private void OnCollisionEnter( Collision collision )
-        {
-            
         }
 
         /// <summary>
