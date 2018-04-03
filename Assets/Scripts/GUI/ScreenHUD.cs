@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using WanzyeeStudio;
 
 namespace DivisionLike
 {
     public class ScreenHUD : MonoBehaviour
     {
-        public static ScreenHUD instance = null;
+        public static ScreenHUD instance
+        {
+            get { return Singleton<ScreenHUD>.instance; }
+        }
 
         private Text m_LevelText;
         private Slider m_XpSlider;
@@ -19,15 +23,6 @@ namespace DivisionLike
 
         void Awake()
         {
-            if ( instance == null )
-            {
-                instance = this;
-            }
-            else if ( instance != null )
-            {
-                Destroy( gameObject );
-            }
-
             m_LevelText = transform.Find( "LevelText" ).GetComponent<Text>();
             m_XpSlider = transform.Find( "ExpSlider" ).GetComponent<Slider>();
             m_AmmoSlider = transform.Find( "AmmoSlider" ).GetComponent<Slider>();

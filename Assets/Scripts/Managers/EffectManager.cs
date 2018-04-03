@@ -1,13 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using WanzyeeStudio;
 
 
 namespace DivisionLike
 {
     public class EffectManager : MonoBehaviour
     {
-        public static EffectManager instance = null;
+        public static EffectManager instance
+        {
+            get { return Singleton<EffectManager>.instance; }
+        }
+
         public GameObject[] m_ParticlePrefabs = new GameObject[ 8 ];
         private Transform m_ParticleParent;
 
@@ -16,8 +21,6 @@ namespace DivisionLike
 
         private void Awake()
         {
-            instance = this;
-
             m_ParticleParent = transform.Find( "ParticleParent" );
         }
 

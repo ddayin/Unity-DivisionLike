@@ -29,8 +29,10 @@ namespace DivisionLike
             m_Animator = transform.GetComponent<Animator>();
             m_PlayerAudio = transform.GetComponent<AudioSource>();
 
-            m_BloodImage.gameObject.SetActive( false );
-            
+            if ( m_BloodImage != null )
+            {
+                m_BloodImage.gameObject.SetActive( false );
+            }
         }
 
 
@@ -47,6 +49,9 @@ namespace DivisionLike
         /// </summary>
         private void UpdateDamageImage()
         {
+            if ( m_DamageImage == null ) return;
+            if ( m_BloodImage == null ) return;
+
             // HP가 한 칸도 남지 않았을 때에는 계속 빨간색 이미지로 전체 화면을 덮는다
             if ( CalculateCurrentDivide() == 0 )
             {

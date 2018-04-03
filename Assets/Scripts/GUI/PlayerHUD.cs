@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using WanzyeeStudio;
 
 namespace DivisionLike
 {
     public class PlayerHUD : MonoBehaviour
     {
-        public static PlayerHUD instance = null;
+        public static PlayerHUD instance
+        {
+            get { return Singleton<PlayerHUD>.instance; }
+        }
 
         private Slider[] m_HealthSlider = new Slider[ 3 ];
 
@@ -23,15 +27,6 @@ namespace DivisionLike
 
         void Awake()
         {
-            if ( instance == null )
-            {
-                instance = this;
-            }
-            else if ( instance != null )
-            {
-                Destroy( gameObject );
-            }
-
             m_HealthSlider[ 0 ] = transform.Find( "PlayerHUD/HealthUI/HealthSlider_0" ).GetComponent<Slider>();
             m_HealthSlider[ 1 ] = transform.Find( "PlayerHUD/HealthUI/HealthSlider_1" ).GetComponent<Slider>();
             m_HealthSlider[ 2 ] = transform.Find( "PlayerHUD/HealthUI/HealthSlider_2" ).GetComponent<Slider>();

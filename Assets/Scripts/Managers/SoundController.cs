@@ -4,18 +4,17 @@
 
 using UnityEngine;
 using System.Collections;
+using WanzyeeStudio;
 
 namespace DivisionLike
 {
     public class SoundController : MonoBehaviour
     {
-        public static SoundController instance = null;
-
-        private void Awake()
+        public static SoundController instance
         {
-            instance = this;
-        
+            get { return Singleton<SoundController>.instance; }
         }
+
 
         /// <summary>
         /// 해당 사운드를 재생한다.

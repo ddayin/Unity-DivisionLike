@@ -59,6 +59,8 @@ namespace DivisionLike
 
         private Dictionary<Weapon, GameObject> m_CrosshairPrefabMap = new Dictionary<Weapon, GameObject>();
 
+        public bool m_EnableInput = true;       // 입력이 가능한지
+
         // Use this for initialization
         void Start()
         {
@@ -76,11 +78,11 @@ namespace DivisionLike
             Cursor.visible = false;
         }
 
-        
-
         // Update is called once per frame
         void Update()
         {
+            if ( m_EnableInput == false ) return;
+
             CharacterLogic();
             CameraLookLogic();
             WeaponLogic();
@@ -100,6 +102,16 @@ namespace DivisionLike
                     }   
                 }
             }
+        }
+
+        
+        /// <summary>
+        /// 입력을 받을지 안 받을지
+        /// </summary>
+        /// <param name="enable"></param>
+        public void EnableInput( bool enable )
+        {
+            m_EnableInput = enable;
         }
 
         private float m_v = 0f;
@@ -301,11 +313,14 @@ namespace DivisionLike
                     if ( prefab != null )
                     {
                         GameObject clone = (GameObject) Instantiate( prefab );
-                        clone.transform.SetParent( ScreenHUD.instance.transform );
-                        clone.transform.localPosition = Vector3.zero;
-                        
-                        m_CrosshairPrefabMap.Add( wep, clone );
-                        ToggleCrosshair( false, wep );
+                        if ( ScreenHUD.instance.transform != null )
+                        {
+                            clone.transform.SetParent( ScreenHUD.instance.transform );
+                            clone.transform.localPosition = Vector3.zero;
+
+                            m_CrosshairPrefabMap.Add( wep, clone );
+                            ToggleCrosshair( false, wep );
+                        }
                     }
                 }
             }

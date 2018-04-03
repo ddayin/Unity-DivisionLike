@@ -55,17 +55,12 @@ namespace DivisionLike
         /// </summary>
         private void ApplyGravity()
         {
-            {
-                m_Gravity = m_PhysicsSettings.m_BaseGravity;
-                m_IsResetGravity = false;
-            }
+            m_Gravity = m_PhysicsSettings.m_BaseGravity;
+            m_IsResetGravity = false;
 
             Vector3 gravityVector = new Vector3();
 
-            
-            {
-                gravityVector.y -= m_Gravity;
-            }
+            gravityVector.y -= m_Gravity;
             
             m_CharacterController.Move( gravityVector * Time.deltaTime );
         }
