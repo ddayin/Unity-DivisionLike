@@ -2104,7 +2104,18 @@ Prefab:
       propertyPath: m_SpineTransform
       value: 
       objectReference: {fileID: 862405323}
-    m_RemovedComponents: []
+    - target: {fileID: 95754284920379658, guid: 59e8e266ec83fd34b8885035b9213f52,
+        type: 2}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 6ca9fc9dc31b23041a0944a814429da4, type: 3}
+    - target: {fileID: 95291194875871730, guid: 59e8e266ec83fd34b8885035b9213f52,
+        type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 95291194875871730, guid: 59e8e266ec83fd34b8885035b9213f52, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 59e8e266ec83fd34b8885035b9213f52, type: 2}
   m_IsPrefabParent: 0
 --- !u!81 &1851598978 stripped

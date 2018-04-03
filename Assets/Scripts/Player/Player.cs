@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using WanzyeeStudio;
 
 
 namespace DivisionLike
 {
     public class Player : MonoBehaviour
     {
-        public static Player instance = null;
+        public static Player instance
+        {
+            get { return Singleton<Player>.instance; }
+        }
 
         [HideInInspector] public PlayerStats m_Stats;
         [HideInInspector] public PlayerHealth m_Health;
@@ -18,17 +22,6 @@ namespace DivisionLike
 
         void Awake()
         {
-            if ( instance == null )
-            {
-                instance = this;
-            }
-            else if ( instance != null )
-            {
-                Destroy( gameObject );
-            }
-
-            DontDestroyOnLoad( gameObject );
-
             m_Stats = transform.GetComponent<PlayerStats>();
             m_Health = transform.GetComponent<PlayerHealth>();
             m_UserInput = transform.GetComponent<UserInput>();

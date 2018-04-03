@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DivisonLike
+namespace DivisionLike
 {
     public class EnemyDropItem : MonoBehaviour
     {

@@ -4,24 +4,29 @@
 
 using UnityEngine;
 using System.Collections;
+using WanzyeeStudio;
 
 namespace DivisionLike
 {
-    [ExecuteInEditMode]
+    [ExecuteInEditMode]     // 스크립트가 에디터모드에서 동작하도록 설정
 
     public class CameraControl : MonoBehaviour
     {
-        public static CameraControl instance = null;
+        public static CameraControl instance
+        {
+            get { return Singleton<CameraControl>.instance; }
+        }
 
-        public Transform m_Target = null;
-        public bool m_IsAutoTargetPlayer = true;
-        public LayerMask m_WallLayers;
+        public Transform m_Target = null;               // 카메라가 쳐다볼 타겟
+        public bool m_IsAutoTargetPlayer = true;        // 카메라가 플레이어를 자동으로 쳐다볼 타겟
+        public LayerMask m_WallLayers;                  // 벽의 레이어 이름
 
         public enum Shoulder
         {
-            Right, Left
+            Right,
+            Left
         }
-        public Shoulder m_Shoulder;
+        public Shoulder m_Shoulder;                     // 왼쪽 어깨로 볼지, 아니면 오른쪽 어깨로 볼지 설정한다.
 
         [System.Serializable]
         public class CameraSettings
@@ -31,59 +36,58 @@ namespace DivisionLike
             public Vector3 m_CamPositionOffsetRight;
 
             [Header( "-Camera Options-" )]
-            public Camera m_UICamera;
-            public float m_MouseXSensitivity = 5.0f;
-            public float m_MouseYSensitivity = 5.0f;
+            public Camera m_UICamera;                   // UI 용 카메라
+            public float m_MouseXSensitivity = 5.0f;    // 마우스 감도
+            public float m_MouseYSensitivity = 5.0f;    // 마우스 감도
             public float m_MinAngle = -30.0f;
             public float m_MaxAngle = 70.0f;
-            public float m_RotationSpeed = 5.0f;
-            public float m_MaxCheckDistance = 0.1f;
+            public float m_RotationSpeed = 5.0f;        // 회전 속도
+            public float m_MaxCheckDistance = 0.1f;     // 
 
             [Header( "-Zoom-" )]
-            public float m_FieldOfView = 70.0f;
-            public float m_ZoomFieldOfView = 30.0f;
-            public float m_ZoomMoreFieldOfView = 12.0f;
-            public float m_ZoomSpeed = 3.0f;
+            public float m_FieldOfView = 70.0f;         // field of view
+            public float m_ZoomFieldOfView = 30.0f;     // 확대했을 때의 field of view
+            public float m_ZoomMoreFieldOfView = 12.0f; // 좀 더 확대했을 때의 field of view
+            public float m_ZoomSpeed = 3.0f;            // 확대 속도
 
             [Header( "-Visual Options-" )]
-            public float m_HideMeshWhenDistance = 0.5f;
+            public float m_HideMeshWhenDistance = 0.5f; // 타겟의 메쉬를 숨길 때의 거리
         }
         [SerializeField]
-        public CameraSettings m_CameraSettings;
+        public CameraSettings m_CameraSettings;         // 카메라 세팅 값들
 
         [System.Serializable]
         public class InputSettings
         {
-            public string m_VerticalAxis = "Mouse X";
-            public string m_HorizontalAxis = "Mouse Y";
-            public string m_AimButton = "Fire2";              // mouse right click
-            public string m_ZoomMoreButton = "Tab";              // tab key
-            public string m_SwitchShoulderButton = "Sprint";   // left shift button
+            public string m_VerticalAxis = "Mouse X";           // 마우스 위치
+            public string m_HorizontalAxis = "Mouse Y";         // 마우스 위치
+            public string m_AimButton = "Fire2";                // mouse right click
+            public string m_ZoomMoreButton = "Tab";             // tab key
+            public string m_SwitchShoulderButton = "Sprint";    // left shift button
         }
         [SerializeField]
-        public InputSettings m_InputSettings;
+        public InputSettings m_InputSettings;           // 입력 값들
 
         [System.Serializable]
         public class MovementSettings
         {
-            public float m_MovementLerpSpeed = 5.0f;
+            public float m_MovementLerpSpeed = 5.0f;    // 카메라 이동 속도
         }
         [SerializeField]
-        public MovementSettings m_MovementSettings;
+        public MovementSettings m_MovementSettings;     // 이동 관련 세팅 값들
 
         private float m_NewX = 0.0f;
         private float m_NewY = 0.0f;
 
-        public Camera m_MainCamera { get; protected set; }
-        public Transform m_Pivot { get; set; }
+        public Camera m_MainCamera { get; protected set; }  // main 카메라
+        public Transform m_Pivot { get; set; }              // main 카메라 아래에 있는 피봇
         
-        private bool m_IsZooming = false;
-        private bool m_IsZoomingMore = false;
+        private bool m_IsZooming = false;                   // 확대를 하고 있는지
+        private bool m_IsZoomingMore = false;               // 더 확대를 하고 있는지
 
         // Use this for initialization
         private void Awake()
         {
-            instance = this;
             m_MainCamera = Camera.main;
             m_Pivot = transform.GetChild( 0 );
         }
@@ -245,10 +249,10 @@ namespace DivisionLike
                 switch ( m_Shoulder )
                 {
                     case Shoulder.Left:
-                        PostionCamera( m_CameraSettings.m_CamPositionOffsetLeft );
+                        PositionCamera( m_CameraSettings.m_CamPositionOffsetLeft );
                         break;
                     case Shoulder.Right:
-                        PostionCamera( m_CameraSettings.m_CamPositionOffsetRight );
+                        PositionCamera( m_CameraSettings.m_CamPositionOffsetRight );
                         break;
                 }
             }
@@ -274,7 +278,7 @@ namespace DivisionLike
         /// Postions the cameras localPosition to a given location
         /// </summary>
         /// <param name="cameraPos"></param>
-        private void PostionCamera( Vector3 cameraPos )
+        private void PositionCamera( Vector3 cameraPos )
         {
             if ( m_MainCamera == null )
                 return;
