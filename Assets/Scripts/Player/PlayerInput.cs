@@ -9,9 +9,9 @@ using System.Collections.Generic;
 
 namespace DivisionLike
 {
-    public class UserInput : MonoBehaviour
+    public class PlayerInput : MonoBehaviour
     {
-        private CharacterMovement m_CharacterMove;
+        private PlayerMovement m_CharacterMove;
         private WeaponHandler m_WeaponHandler;
         private PlayerInventory m_Inventory;
         private GrenadeHandler m_GrenadeHandler;
@@ -62,7 +62,7 @@ namespace DivisionLike
         // Use this for initialization
         void Start()
         {
-            m_CharacterMove = transform.GetComponent<CharacterMovement>();
+            m_CharacterMove = transform.GetComponent<PlayerMovement>();
             m_WeaponHandler = transform.GetComponent<WeaponHandler>();
             m_Inventory = transform.GetComponent<PlayerInventory>();
             m_GrenadeHandler = transform.GetComponent<GrenadeHandler>();

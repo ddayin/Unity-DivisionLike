@@ -9,7 +9,7 @@ using System.Collections;
 
 namespace DivisionLike
 {
-    public class FootstepSound : MonoBehaviour
+    public class PlayerFootstepSound : MonoBehaviour
     {
         public TextureType[] m_TextureTypes;
 

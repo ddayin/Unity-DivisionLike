@@ -10,7 +10,7 @@ namespace DivisionLike
 {
     [RequireComponent( typeof( Animator ) )]
     [RequireComponent( typeof( CharacterController ) )]
-    public class CharacterMovement : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour
     {
         private Animator m_Animator;
         private CharacterController m_CharacterController;
