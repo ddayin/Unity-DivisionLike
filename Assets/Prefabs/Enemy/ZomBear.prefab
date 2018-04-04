@@ -20,7 +20,6 @@ GameObject:
   - component: {fileID: 8200000}
   - component: {fileID: 11400006}
   - component: {fileID: 114855837956967108}
-  - component: {fileID: 114569420986490198}
   m_Layer: 13
   m_Name: ZomBear
   m_TagString: Untagged
@@ -7549,23 +7548,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec238c6a89a2974a94d16854e4bbdd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114569420986490198
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71692e16664c84a4fb8b726ce52c53c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Attack: {fileID: 0}
-  m_DropItem: {fileID: 0}
-  m_Health: {fileID: 0}
-  m_Inventory: {fileID: 0}
-  m_Movement: {fileID: 0}
-  m_Stats: {fileID: 0}
 --- !u!114 &114577681495671792
 MonoBehaviour:
   m_ObjectHideFlags: 1
