@@ -61,9 +61,12 @@ namespace DivisionLike
 
         public bool m_EnableInput = true;       // 입력이 가능한지
 
-        // Use this for initialization
-        void Start()
+        #region MonoBehaviour
+        void Awake()
         {
+            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
+
+
             m_CharacterMove = transform.GetComponent<PlayerMovement>();
             m_WeaponHandler = transform.GetComponent<WeaponHandler>();
             m_Inventory = transform.GetComponent<PlayerInventory>();
@@ -81,6 +84,7 @@ namespace DivisionLike
         // Update is called once per frame
         void Update()
         {
+            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
             if ( m_EnableInput == false ) return;
 
             CharacterLogic();
@@ -92,6 +96,9 @@ namespace DivisionLike
 
         void LateUpdate()
         {
+            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
+            if ( m_EnableInput == false ) return;
+
             if ( m_WeaponHandler )
             {
                 if ( m_WeaponHandler.m_CurrentWeapon )
@@ -103,8 +110,8 @@ namespace DivisionLike
                 }
             }
         }
+        #endregion
 
-        
         /// <summary>
         /// 입력을 받을지 안 받을지
         /// </summary>

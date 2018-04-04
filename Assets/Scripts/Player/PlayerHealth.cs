@@ -22,9 +22,11 @@ namespace DivisionLike
         private bool m_IsDead = false;                                                // Whether the player is dead.
         private bool m_Damaged = false;                                               // True when the player gets damaged
 
-
+        #region MonoBeviour
         void Awake()
         {
+            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
+
             // Setting up the references.
             m_Animator = transform.GetComponent<Animator>();
             m_PlayerAudio = transform.GetComponent<AudioSource>();
@@ -35,14 +37,16 @@ namespace DivisionLike
             }
         }
 
-
         void Update()
         {
+            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
+
             UpdateDamageImage();
 
             // Reset the damaged flag.
             m_Damaged = false;
         }
+        #endregion
 
         /// <summary>
         /// 

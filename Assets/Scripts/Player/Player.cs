@@ -22,12 +22,27 @@ namespace DivisionLike
 
         void Awake()
         {
-            m_Stats = transform.GetComponent<PlayerStats>();
-            m_Health = transform.GetComponent<PlayerHealth>();
-            m_UserInput = transform.GetComponent<PlayerInput>();
-            m_Inventory = transform.GetComponent<PlayerInventory>();
-            m_WeaponHandler = transform.GetComponent<WeaponHandler>();
-            m_OutlineEffect = transform.GetComponent<PlayerOutlineEffect>();
+            switch ( SceneController.instance.m_CurrentScene )
+            {
+                case eSceneName.Intro:
+                    {
+                        m_Stats = transform.GetComponent<PlayerStats>();                        
+                        m_Inventory = transform.GetComponent<PlayerInventory>();
+                    }
+                    break;
+                case eSceneName.Play:
+                    {
+                        m_Stats = transform.GetComponent<PlayerStats>();
+                        m_Health = transform.GetComponent<PlayerHealth>();
+                        m_UserInput = transform.GetComponent<PlayerInput>();
+                        m_Inventory = transform.GetComponent<PlayerInventory>();
+                        m_WeaponHandler = transform.GetComponent<WeaponHandler>();
+                        m_OutlineEffect = transform.GetComponent<PlayerOutlineEffect>();
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

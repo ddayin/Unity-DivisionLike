@@ -38,8 +38,11 @@ namespace DivisionLike
         private bool m_IsResetGravity;
         private float m_Gravity;
 
+        #region MonoBehaviour
         void Awake()
         {
+            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
+
             m_Animator = GetComponent<Animator>();
             m_CharacterController = GetComponent<CharacterController>();
         }
@@ -47,8 +50,11 @@ namespace DivisionLike
         // Update is called once per frame
         void Update()
         {
+            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
+
             ApplyGravity();
         }
+        #endregion
 
         /// <summary>
         /// Applys downard force to the character when we aren't jumping

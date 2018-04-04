@@ -16,6 +16,8 @@ namespace DivisionLike
 
         private void Awake()
         {
+            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
+
             m_Health = transform.GetComponent<PlayerHealth>();
         }
 

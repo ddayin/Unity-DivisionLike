@@ -42,8 +42,8 @@ namespace DivisionLike
         private int m_WeaponType;
         private bool m_SettingWeapon;
 
-        // Use this for initialization
-        void OnEnable()
+        #region MonoBehaviour
+        void Awake()
         {
             GameObject check = GameObject.FindGameObjectWithTag( "Sound Controller" );
             if ( check != null )
@@ -54,6 +54,13 @@ namespace DivisionLike
             m_DicWeapons.Add( Weapon.WeaponType.Primary, m_WeaponsList[ 0 ] );
             m_DicWeapons.Add( Weapon.WeaponType.Secondary, m_WeaponsList[ 1 ] );
         }
+
+        // Update is called once per frame
+        void Update()
+        {
+            Animate();
+        }
+        #endregion
 
         /// <summary>
         /// 무기 설정
@@ -87,13 +94,6 @@ namespace DivisionLike
             }
             
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-            Animate();
-        }
-
 
         /// <summary>
         /// Animates the character

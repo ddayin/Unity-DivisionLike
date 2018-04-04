@@ -9,6 +9,14 @@ using System.Collections;
 
 namespace DivisionLike
 {
+    [System.Serializable]
+    public class TextureType
+    {
+        public string name;
+        public Texture[] textures;
+        public AudioClip[] footstepSounds;
+    }
+
     public class PlayerFootstepSound : MonoBehaviour
     {
         public TextureType[] m_TextureTypes;
@@ -17,9 +25,10 @@ namespace DivisionLike
 
         SoundController m_SC;
 
-        // Use this for initialization
-        void Start()
+        void Awake()
         {
+            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
+
             GameObject check = GameObject.FindGameObjectWithTag( "Sound Controller" );
 
             if ( check != null )
@@ -89,55 +98,6 @@ namespace DivisionLike
                 }
             }
         }
-
-        /*
-        void PlayTerrainSound( Terrain t, Vector3 hitPoint )
-        {
-            if ( audioS == null )
-            {
-                Debug.LogError( "PlayTerrainSound -- We have no audio source to play the sound from." );
-                return;
-            }
-
-            if ( sc == null )
-            {
-                Debug.LogError( "PlayTerrainSound -- No sound manager!!!" );
-                return;
-            }
-
-            if ( textureTypes.Length > 0 )
-            {
-
-                int textureIndex = TerrainSurface.GetMainTexture( hitPoint );
-
-                foreach ( TextureType type in textureTypes )
-                {
-
-                    if ( type.footstepSounds.Length == 0 )
-                    {
-                        return;
-                    }
-
-                    foreach ( Texture tex in type.textures )
-                    {
-                        if ( t.terrainData.splatPrototypes[ textureIndex ].texture == tex )
-                        {
-                            sc.PlaySound( audioS, type.footstepSounds[ Random.Range( 0, type.footstepSounds.Length ) ], true, 1, 1.2f );
-                        }
-                    }
-                }
-            }
-        }
-        */
-        
-    }
-
-    [System.Serializable]
-    public class TextureType
-    {
-        public string name;
-        public Texture[] textures;
-        public AudioClip[] footstepSounds;
     }
 }
 
