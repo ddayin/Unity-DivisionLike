@@ -6,6 +6,9 @@ using WanzyeeStudio;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 미니맵, 현재 경험치, 현재 레벨, 현재 장전된 총알 등을 포함한 UI 표시
+    /// </summary>
     public class ScreenHUD : MonoBehaviour
     {
         public static ScreenHUD instance
@@ -13,14 +16,14 @@ namespace DivisionLike
             get { return Singleton<ScreenHUD>.instance; }
         }
 
-        private Text m_LevelText;
-        private Slider m_XpSlider;
-        private Slider m_AmmoSlider;
+        private Text m_LevelText;               // 현재 레벨
+        private Slider m_XpSlider;              // 현재 경험치
+        private Slider m_AmmoSlider;            // 현재 장전되어 있는 총알 슬라이더
         private Image m_AmmoSliderFillImage;
         private Image m_LoadingCircleImage;
-        private CircularHit m_CircularHit;
-        private Image m_ReloadImage;
-
+        private CircularHit m_CircularHit;      // 
+        private Image m_ReloadImage;            // 재장전 아이콘
+        
         void Awake()
         {
             if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
@@ -61,7 +64,7 @@ namespace DivisionLike
             m_XpSlider.normalizedValue = normalizedXP;
         }
 
-        private Color _fillColor = new Color( 1f, 0.74f, 0f, 1f );
+        private Color m_FillColor = new Color( 1f, 0.74f, 0f, 1f );
 
         /// <summary>
         /// 총알 슬라이더를 설정한다.
@@ -77,7 +80,7 @@ namespace DivisionLike
             }
             else
             {
-                m_AmmoSliderFillImage.color = _fillColor;
+                m_AmmoSliderFillImage.color = m_FillColor;
             }
         }
 

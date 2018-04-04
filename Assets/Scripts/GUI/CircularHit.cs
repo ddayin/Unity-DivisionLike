@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace DivisionLike
 {
     /// <summary>
-    /// 
+    /// 플레이어를 기준으로 상대에게 맞은 방향으로 이미지 회전해서 표시
     /// </summary>
     public class CircularHit : MonoBehaviour
     {

@@ -193,7 +193,7 @@ namespace DivisionLike
             if ( m_Pivot == null )
                 return;
 
-            if ( Player.instance.m_WeaponHandler.m_isReloading == true )
+            if ( Player.instance.m_WeaponHandler.m_IsReloading == true )
             {
                 return;
             }

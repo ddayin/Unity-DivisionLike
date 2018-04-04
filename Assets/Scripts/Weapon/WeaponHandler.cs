@@ -8,10 +8,12 @@ using System.Collections.Generic;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class WeaponHandler : MonoBehaviour
     {
         private Animator m_Animator;
-        private SoundController m_SoundController;
 
         [System.Serializable]
         public class UserSettings
@@ -33,23 +35,20 @@ namespace DivisionLike
         [SerializeField]
         public Animations m_Animations;
 
-        public Weapon m_CurrentWeapon;
-        public List<Weapon> m_WeaponsList = new List<Weapon>();
-        public Dictionary<Weapon.WeaponType, Weapon> m_DicWeapons = new Dictionary<Weapon.WeaponType, Weapon>();
+        public Weapon m_CurrentWeapon;      // 현재 사용하는 무기
+        public List<Weapon> m_WeaponsList = new List<Weapon>();     // 보유하고 있는 무기들
+        public Dictionary<Weapon.WeaponType, Weapon> m_DicWeapons = new Dictionary<Weapon.WeaponType, Weapon>();    // 중복..
         public int m_MaxWeapons = 2;
         public bool m_Aim { get; protected set; }
-        public bool m_isReloading = false;
+        public bool m_IsReloading = false;      // 재장전 중인지
         private int m_WeaponType;
-        private bool m_SettingWeapon;
+        private bool m_IsSettingWeapon;
 
         #region MonoBehaviour
         void Awake()
         {
             if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
 
-            GameObject check = GameObject.FindGameObjectWithTag( "Sound Controller" );
-            if ( check != null )
-                m_SoundController = check.GetComponent<SoundController>();
             m_Animator = GetComponent<Animator>();
             SetupWeapons();
 
@@ -69,9 +68,9 @@ namespace DivisionLike
         /// <summary>
         /// 무기 설정
         /// </summary>
-        void SetupWeapons()
+        private void SetupWeapons()
         {
-            if ( m_CurrentWeapon )
+            if ( m_CurrentWeapon != null )
             {
                 m_CurrentWeapon.SetEquipped( true );
                 m_CurrentWeapon.SetOwner( this );
@@ -80,9 +79,9 @@ namespace DivisionLike
                 if ( m_CurrentWeapon.m_Ammo.clipAmmo <= 0 )
                     Reload();
 
-                if ( m_isReloading == true )
-                    if ( m_SettingWeapon )
-                        m_isReloading = false;
+                if ( m_IsReloading == true )
+                    if ( m_IsSettingWeapon == true )
+                        m_IsReloading = false;
             }
 
             if ( m_WeaponsList.Count > 0 )
@@ -102,13 +101,13 @@ namespace DivisionLike
         /// <summary>
         /// Animates the character
         /// </summary>
-        void Animate()
+        private void Animate()
         {
-            if ( m_Animator == null )
-                return;
+            if ( m_Animator == null ) return;
+
 
             m_Animator.SetBool( m_Animations.m_AimingBool, m_Aim );
-            m_Animator.SetBool( m_Animations.m_ReloadingBool, m_isReloading );
+            m_Animator.SetBool( m_Animations.m_ReloadingBool, m_IsReloading );
             m_Animator.SetInteger( m_Animations.m_WeaponTypeInt, m_WeaponType );
 
             if ( m_CurrentWeapon == null )
@@ -180,25 +179,22 @@ namespace DivisionLike
         /// </summary>
         public void Reload()
         {
-            if ( m_isReloading == true || !m_CurrentWeapon )
+            if ( m_IsReloading == true || !m_CurrentWeapon )
                 return;
 
             if ( m_CurrentWeapon.m_Ammo.carryingAmmo <= 0 || m_CurrentWeapon.m_Ammo.clipAmmo == m_CurrentWeapon.m_Ammo.maxClipAmmo )
                 return;
 
-            if ( m_SoundController != null )
+            if ( m_CurrentWeapon.m_SoundSettings.reloadSound != null )
             {
-                if ( m_CurrentWeapon.m_SoundSettings.reloadSound != null )
+                if ( m_CurrentWeapon.m_SoundSettings.audioS != null )
                 {
-                    if ( m_CurrentWeapon.m_SoundSettings.audioS != null )
-                    {
-                        m_SoundController.PlaySound( m_CurrentWeapon.m_SoundSettings.audioS, m_CurrentWeapon.m_SoundSettings.reloadSound, true, m_CurrentWeapon.m_SoundSettings.pitchMin, m_CurrentWeapon.m_SoundSettings.pitchMax );
-                    }
+                    SoundController.instance.PlaySound( m_CurrentWeapon.m_SoundSettings.audioS, m_CurrentWeapon.m_SoundSettings.reloadSound, true, m_CurrentWeapon.m_SoundSettings.pitchMin, m_CurrentWeapon.m_SoundSettings.pitchMax );
                 }
             }
-
-            m_isReloading = true;
-            ScreenHUD.instance.SetEnableReloadImage( m_isReloading );
+            
+            m_IsReloading = true;
+            ScreenHUD.instance.SetEnableReloadImage( m_IsReloading );
 
             StartCoroutine( StopReload() );
         }
@@ -212,10 +208,10 @@ namespace DivisionLike
             yield return new WaitForSeconds( m_CurrentWeapon.m_WeaponSettings.reloadDuration );
 
             m_CurrentWeapon.LoadClip();
-            m_isReloading = false;
+            m_IsReloading = false;
 
             ScreenHUD.instance.SetAmmoSlider();
-            ScreenHUD.instance.SetEnableReloadImage( m_isReloading );
+            ScreenHUD.instance.SetEnableReloadImage( m_IsReloading );
         }
 
         /// <summary>
@@ -247,7 +243,7 @@ namespace DivisionLike
         /// </summary>
         public void SwitchWeapons()
         {
-            if ( m_SettingWeapon || m_WeaponsList.Count == 0 || m_DicWeapons.Count == 0 )
+            if ( m_IsSettingWeapon || m_WeaponsList.Count == 0 || m_DicWeapons.Count == 0 )
                 return;
 
             if ( m_CurrentWeapon != null )
@@ -265,7 +261,7 @@ namespace DivisionLike
 
                 m_CurrentWeapon = m_DicWeapons[ Weapon.WeaponType.Primary ];
             }
-            m_SettingWeapon = true;
+            m_IsSettingWeapon = true;
             StartCoroutine( StopSettingWeapon() );
 
             SetupWeapons();
@@ -277,7 +273,7 @@ namespace DivisionLike
         /// <param name="type"></param>
         public void SwitchWeapons( Weapon.WeaponType type )
         {
-            if ( m_SettingWeapon == true || m_WeaponsList.Count == 0 || m_DicWeapons.Count == 0 )
+            if ( m_IsSettingWeapon == true || m_WeaponsList.Count == 0 || m_DicWeapons.Count == 0 )
             {
                 return;
             }
@@ -290,7 +286,7 @@ namespace DivisionLike
             {
                 m_CurrentWeapon = m_DicWeapons[ Weapon.WeaponType.Primary ];
             }
-            m_SettingWeapon = true;
+            m_IsSettingWeapon = true;
             StartCoroutine( StopSettingWeapon() );
 
             SetupWeapons();
@@ -303,19 +299,19 @@ namespace DivisionLike
         IEnumerator StopSettingWeapon()
         {
             yield return new WaitForSeconds( 0.7f );
-            m_SettingWeapon = false;
+            m_IsSettingWeapon = false;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        void OnAnimatorIK()
+        private void OnAnimatorIK()
         {
             if ( !m_Animator )
                 return;
 
             if ( m_CurrentWeapon && m_CurrentWeapon.m_UserSettings.leftHandIKTarget && m_CurrentWeapon.m_WeaponType == Weapon.WeaponType.Primary
-                && !m_isReloading && !m_SettingWeapon )
+                && !m_IsReloading && !m_IsSettingWeapon )
             {
                 m_Animator.SetIKPositionWeight( AvatarIKGoal.LeftHand, 1 );
                 m_Animator.SetIKRotationWeight( AvatarIKGoal.LeftHand, 1 );

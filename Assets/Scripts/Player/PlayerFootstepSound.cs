@@ -20,21 +20,12 @@ namespace DivisionLike
     public class PlayerFootstepSound : MonoBehaviour
     {
         public TextureType[] m_TextureTypes;
-
         public AudioSource m_AudioS;
-
-        SoundController m_SC;
 
         void Awake()
         {
             if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
 
-            GameObject check = GameObject.FindGameObjectWithTag( "Sound Controller" );
-
-            if ( check != null )
-            {
-                m_SC = check.GetComponent<SoundController>();
-            }
         }
 
         /// <summary>
@@ -65,19 +56,12 @@ namespace DivisionLike
         /// <param name="renderer"></param>
         void PlayMeshSound( MeshRenderer renderer )
         {
-
             if ( m_AudioS == null )
             {
                 Debug.LogError( "PlayMeshSound -- We have no audio source to play the sound from." );
                 return;
             }
-
-            if ( m_SC == null )
-            {
-                Debug.LogError( "PlayMeshSound -- No sound manager!!!" );
-                return;
-            }
-
+            
             if ( m_TextureTypes.Length > 0 )
             {
                 foreach ( TextureType type in m_TextureTypes )
@@ -92,7 +76,7 @@ namespace DivisionLike
                     {
                         if ( renderer.material.mainTexture == tex )
                         {
-                            m_SC.PlaySound( m_AudioS, type.footstepSounds[ Random.Range( 0, type.footstepSounds.Length ) ], true, 1, 1.2f );
+                            SoundController.instance.PlaySound( m_AudioS, type.footstepSounds[ Random.Range( 0, type.footstepSounds.Length ) ], true, 1, 1.2f );
                         }
                     }
                 }

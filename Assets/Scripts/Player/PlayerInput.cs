@@ -246,7 +246,7 @@ namespace DivisionLike
                     ToggleCrosshair( true, m_WeaponHandler.m_CurrentWeapon );
                     //PositionCrosshair( aimRay, weaponHandler.currentWeapon );
 
-                    if ( Player.instance.m_WeaponHandler.m_isReloading == false )
+                    if ( Player.instance.m_WeaponHandler.m_IsReloading == false )
                     {
                         HitCrosshair();
                     }
