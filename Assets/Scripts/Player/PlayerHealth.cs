@@ -186,7 +186,7 @@ namespace DivisionLike
         public void RestartLevel()
         {
             // Reload the level that is currently loaded.
-            SceneManager.LoadScene( 0 );
+            SceneController.instance.LoadScene( eSceneName.Play );
         }
     }
 }

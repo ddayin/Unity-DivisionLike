@@ -972,7 +972,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4589306311941982}
-  - component: {fileID: 95291194875871730}
   m_Layer: 0
   m_Name: Milirtary_01
   m_TagString: Untagged
@@ -1489,14 +1488,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1008780008236374}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4589306311941982}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4254213861947878
 Transform:
   m_ObjectHideFlags: 1
@@ -2352,23 +2351,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!95 &95291194875871730
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1861705784608492}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 6ca9fc9dc31b23041a0944a814429da4, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95754284920379658
 Animator:
   serializedVersion: 3
@@ -2377,7 +2359,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1008780008236374}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 6ca9fc9dc31b23041a0944a814429da4, type: 3}
   m_Controller: {fileID: 9100000, guid: 768d44f34a11a434eacaabca2186bf45, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -2435,9 +2417,10 @@ MonoBehaviour:
     m_WeaponTypeInt: WeaponType
     m_ReloadingBool: isReloading
     m_AimingBool: Aiming
-  m_CurrentWeapon: {fileID: 0}
+  m_CurrentWeapon: {fileID: 114602481244817218, guid: ed965125ff6f3a44d84d71a0e4769abb,
+    type: 2}
   m_WeaponsList:
-  - {fileID: 0}
+  - {fileID: 114272279691959126, guid: d0bb8554e084b9145bde7ebcdc944949, type: 2}
   m_MaxWeapons: 2
   m_isReloading: 0
 --- !u!114 &114240784401299112
@@ -2498,19 +2481,9 @@ MonoBehaviour:
   m_AnimationSettings:
     m_VerticalVelocityFloat: Forward
     m_HorizontalVelocityFloat: Strafe
-    m_GroundedBool: isGrounded
-    m_JumpBool: isJumping
   m_PhysicsSettings:
-    m_GravityModifier: 9.81
     m_BaseGravity: 50
     m_ResetGravityValue: 1.2
-    m_GroundLayers:
-      serializedVersion: 2
-      m_Bits: 256
-    m_AirSpeed: 2.5
-  m_MovementSettings:
-    m_JumpSpeed: 6
-    m_JumpTime: 0.25
 --- !u!114 &114453495703064356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2522,6 +2495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4f41d273df35e4d91083c9e67aa487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Animation: {fileID: 0}
   m_Stats: {fileID: 0}
   m_Health: {fileID: 0}
   m_UserInput: {fileID: 0}
@@ -2585,6 +2559,7 @@ MonoBehaviour:
   m_IsFiring: 0
   m_IsSprinting: 0
   m_IsGrenadeMode: 0
+  m_EnableInput: 0
 --- !u!114 &114665249318961136
 MonoBehaviour:
   m_ObjectHideFlags: 1

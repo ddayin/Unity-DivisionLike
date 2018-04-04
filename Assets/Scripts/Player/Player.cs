@@ -13,6 +13,7 @@ namespace DivisionLike
             get { return Singleton<Player>.instance; }
         }
 
+        [HideInInspector] public PlayerAnimation m_Animation;
         [HideInInspector] public PlayerStats m_Stats;
         [HideInInspector] public PlayerHealth m_Health;
         [HideInInspector] public PlayerInput m_UserInput;
@@ -26,12 +27,14 @@ namespace DivisionLike
             {
                 case eSceneName.Intro:
                     {
+                        m_Animation = transform.GetComponent<PlayerAnimation>();
                         m_Stats = transform.GetComponent<PlayerStats>();                        
                         m_Inventory = transform.GetComponent<PlayerInventory>();
                     }
                     break;
                 case eSceneName.Play:
                     {
+                        m_Animation = transform.GetComponent<PlayerAnimation>();
                         m_Stats = transform.GetComponent<PlayerStats>();
                         m_Health = transform.GetComponent<PlayerHealth>();
                         m_UserInput = transform.GetComponent<PlayerInput>();

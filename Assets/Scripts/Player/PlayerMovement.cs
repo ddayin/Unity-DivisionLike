@@ -78,8 +78,9 @@ namespace DivisionLike
         /// <param name="strafe"></param>
         public void Animate( float forward, float strafe )
         {
-            this.m_Forward = forward;
-            this.m_Strafe = strafe;
+            m_Forward = forward;
+            m_Strafe = strafe;
+
             m_Animator.SetFloat( m_AnimationSettings.m_VerticalVelocityFloat, forward );
             m_Animator.SetFloat( m_AnimationSettings.m_HorizontalVelocityFloat, strafe );
         }

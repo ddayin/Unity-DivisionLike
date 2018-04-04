@@ -45,6 +45,8 @@ namespace DivisionLike
         #region MonoBehaviour
         void Awake()
         {
+            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
+
             GameObject check = GameObject.FindGameObjectWithTag( "Sound Controller" );
             if ( check != null )
                 m_SoundController = check.GetComponent<SoundController>();
@@ -58,6 +60,8 @@ namespace DivisionLike
         // Update is called once per frame
         void Update()
         {
+            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
+
             Animate();
         }
         #endregion
