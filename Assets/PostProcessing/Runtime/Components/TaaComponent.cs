@@ -29,8 +29,8 @@ namespace UnityEngine.PostProcessing
             {
                 return model.enabled
                        && model.settings.method == AntialiasingModel.Method.Taa
-                       && SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.ARGBHalf)
                        && SystemInfo.supportsMotionVectors
+                       && SystemInfo.supportedRenderTargetCount >= 2
                        && !context.interrupted;
             }
         }
@@ -39,6 +39,8 @@ namespace UnityEngine.PostProcessing
         {
             return DepthTextureMode.Depth | DepthTextureMode.MotionVectors;
         }
+
+        public Vector2 jitterVector { get; private set; }
 
         public void ResetHistory()
         {
@@ -74,6 +76,8 @@ namespace UnityEngine.PostProcessing
 
             var material = context.materialFactory.Get(k_ShaderString);
             material.SetVector(Uniforms._Jitter, jitter);
+
+            jitterVector = jitter;
         }
 
         public void Render(RenderTexture source, RenderTexture destination)
