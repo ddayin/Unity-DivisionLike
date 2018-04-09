@@ -28,16 +28,13 @@ namespace DivisionLike
         void OnTriggerEnter( Collider other )
         {
             // 플레이어가 총알을 획득한다.
-            if ( other.gameObject == Player.instance.gameObject )
+            if ( other.gameObject.tag.Equals( "Player" ) == true )
             {
                 int ammo = Random.Range( 1, 30 );
-                if ( Player.instance.m_WeaponHandler.m_CurrentWeapon.m_WeaponName.Equals( "Makarov" ) == false )
-                {
-                    Player.instance.m_Inventory.ObtainAmmo( ammo );
-                    //Destroy( gameObject );
-                    Lean.LeanPool.Despawn( gameObject );
-                }
                 
+                Player.instance.m_Inventory.ObtainAmmo( ammo );
+                //Destroy( gameObject );
+                Lean.LeanPool.Despawn( gameObject );                
             }
         }
 
