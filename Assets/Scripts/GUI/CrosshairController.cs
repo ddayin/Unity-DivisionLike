@@ -12,7 +12,7 @@ namespace DivisionLike
 
         private void Awake()
         {
-            
+            SetupCrosshairs();
         }
 
         /// <summary>
@@ -38,13 +38,13 @@ namespace DivisionLike
             }
         }
 
-        Vector3 m_FireDirection;
-        Vector3 m_FirePoint;
+        private Vector3 m_FireDirection;
+        private Vector3 m_FirePoint;
 
         /// <summary>
         /// crosshair가 캐릭터를 맞추었을 때 색상 처리
         /// </summary>
-        void HitCrosshair()
+        private void HitCrosshair()
         {
             RaycastHit hit;
             int range = 1000;
@@ -112,42 +112,6 @@ namespace DivisionLike
             Destroy( m_CrosshairPrefabMap[ wep ] );
             m_CrosshairPrefabMap.Remove( wep );
         }
-
-        // Position the crosshair to the point that we are aiming
-        //private void PositionCrosshair( Ray ray, Weapon wep )
-        //{
-        //    Weapon curWeapon = weaponHandler.currentWeapon;
-        //    if ( curWeapon == null )
-        //        return;
-        //    if ( !crosshairPrefabMap.ContainsKey( wep ) )
-        //        return;
-
-        //    GameObject crosshairPrefab = crosshairPrefabMap[ wep ];
-        //    RaycastHit hit;
-        //    Transform bSpawn = curWeapon.weaponSettings.bulletSpawn;
-        //    Vector3 bSpawnPoint = bSpawn.position;
-        //    Vector3 dir = ray.GetPoint( curWeapon.weaponSettings.range ) - bSpawnPoint;
-
-        //    //Debug.DrawRay( bSpawnPoint, dir );
-
-        //    if ( Physics.Raycast( bSpawnPoint, dir, out hit, curWeapon.weaponSettings.range,
-        //        curWeapon.weaponSettings.bulletLayers ) )
-        //    {
-        //        if ( crosshairPrefab != null )
-        //        {
-        //            ToggleCrosshair( true, curWeapon );
-        //            Vector3 newPos = hit.point;
-        //            newPos.z = 10.0f;       // maintain certain position of crosshair z
-        //            crosshairPrefab.transform.position = newPos;
-        //            crosshairPrefab.transform.LookAt( Camera.main.transform );
-        //        }
-        //    }
-        //    else
-        //    {
-        //        ToggleCrosshair( false, curWeapon );
-        //    }
-        //}
-
 
         /// <summary>
         /// Toggle on and off the crosshair prefab
