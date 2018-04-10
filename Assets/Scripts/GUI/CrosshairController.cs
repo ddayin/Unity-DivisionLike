@@ -12,6 +12,9 @@ namespace DivisionLike
 
         private void Awake()
         {
+            m_WeaponHandler = GetComponent<WeaponHandler>();
+            m_TPSCamera = Camera.main;
+
             SetupCrosshairs();
         }
 
@@ -123,6 +126,7 @@ namespace DivisionLike
             if ( !m_CrosshairPrefabMap.ContainsKey( wep ) )
                 return;
 
+            m_CrosshairPrefabMap[ wep ].transform.localPosition = Vector3.zero;
             m_CrosshairPrefabMap[ wep ].SetActive( enabled );
         }
 
