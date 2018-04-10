@@ -838,7 +838,11 @@ MonoBehaviour:
     clipInfiniteAmmo: 0
   m_ResettingCartridge: 0
   m_SoundSettings:
-    gunshotSounds: []
+    gunshotSounds:
+    - {fileID: 8300000, guid: bbbad7ab8e572094383f2b44bfafe171, type: 3}
+    - {fileID: 8300000, guid: bbf9ecc1037f1114f8983a624a41c2f6, type: 3}
+    - {fileID: 8300000, guid: 7ca9b1bc8beeac7408c43a50b28c17ee, type: 3}
+    - {fileID: 8300000, guid: 9946dc5036a6b3347a2403bbe53b2467, type: 3}
     reloadSound: {fileID: 8300000, guid: 5c8b38e1e37d20345ab56e0c5c6759f1, type: 3}
     pitchMin: 1
     pitchMax: 1.2
