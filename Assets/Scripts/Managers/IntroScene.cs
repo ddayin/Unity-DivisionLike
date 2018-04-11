@@ -6,6 +6,11 @@ namespace DivisionLike
 {
     public class IntroScene : MonoBehaviour
     {
+        private void Awake()
+        {
+            SceneController.instance.m_CurrentScene = eSceneName.Intro;
+        }
+
         private void Update()
         {
             ProcessKeyInput();

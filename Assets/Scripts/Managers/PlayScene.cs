@@ -6,9 +6,9 @@ namespace DivisionLike
 {
     public class PlayScene : MonoBehaviour
     {
-        //private void Update()
-        //{
-            
-        //}
+        private void Awake()
+        {
+            SceneController.instance.m_CurrentScene = eSceneName.Play;
+        }
     }
 }
