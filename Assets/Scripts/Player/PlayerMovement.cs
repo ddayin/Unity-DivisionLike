@@ -68,7 +68,7 @@ namespace DivisionLike
 
             gravityVector.y -= m_Gravity;
             
-            m_CharacterController.Move( gravityVector * Time.deltaTime );.
+            m_CharacterController.Move( gravityVector * Time.deltaTime );
         }
 
         /// <summary>
