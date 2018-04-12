@@ -12,6 +12,7 @@ namespace DivisionLike
     public enum eSceneName
     {
         Intro = 0,
+        Loading,
         Play
     }
 
@@ -29,7 +30,7 @@ namespace DivisionLike
         
         private void Awake()
         {
-            m_CurrentScene = eSceneName.Play;
+            m_CurrentScene = eSceneName.Intro;
 
             DontDestroyOnLoad( this.gameObject );
         }

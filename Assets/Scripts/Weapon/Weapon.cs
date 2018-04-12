@@ -371,10 +371,10 @@ namespace DivisionLike
                 {
                     Vector3 shellEjectPos = m_WeaponSettings.shellEjectSpot.position;
                     Quaternion shellEjectRot = m_WeaponSettings.shellEjectSpot.rotation;
-                    //GameObject shell = Instantiate( weaponSettings.shell, shellEjectPos, shellEjectRot ) as GameObject;
+                    
                     GameObject shell = Lean.LeanPool.Spawn( m_WeaponSettings.shell, shellEjectPos, shellEjectRot ) as GameObject;
                     shell.transform.SetParent( m_ShellParent.transform );
-                    //shell.transform.localScale = this.transform.localScale;
+                    
 
                     if ( shell.GetComponent<Rigidbody>() )
                     {
@@ -382,25 +382,10 @@ namespace DivisionLike
                         rigidB.AddForce( m_WeaponSettings.shellEjectSpot.forward * m_WeaponSettings.shellEjectSpeed, ForceMode.Impulse );
                     }
 
-                    //Destroy( shell, Random.Range( 15.0f, 20.0f ) );
                     Lean.LeanPool.Despawn( shell, Random.Range( 15.0f, 20.0f ) );
                 }
             }
 
-            // bullet
-            //if ( weaponSettings._bullet != null )
-            //{
-            //    GameObject bulletObj = (GameObject) Instantiate( weaponSettings._bullet, weaponSettings.bulletSpawn.transform.position, weaponSettings.bulletSpawn.rotation );
-
-            //    //bulletObj.transform.SetParent( weaponSettings.bulletSpawn );
-
-            //    //Vector3 firePos = CameraControl.instance._mainCamera.ScreenToWorldPoint( Input.mousePosition );
-
-            //    bulletObj.GetComponent<Rigidbody>().velocity = bulletObj.transform.forward * 10f;
-            //    //bulletObj.GetComponent<Rigidbody>().AddForce();
-
-            //}
-            
             PlayGunshotSound();
         }
         

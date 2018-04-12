@@ -29,7 +29,7 @@ namespace DivisionLike
 
             if ( Input.GetKeyDown( KeyCode.Space ) == true || Input.GetKeyDown( KeyCode.Return ) == true )
             {
-                SceneController.instance.LoadScene( eSceneName.Play );
+                SceneController.instance.LoadScene( eSceneName.Loading );
             }
         }
     }

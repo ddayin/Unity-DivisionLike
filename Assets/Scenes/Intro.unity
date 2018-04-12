@@ -162,6 +162,21 @@ Prefab:
       propertyPath: InitialModule.maxNumParticles
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 198554520258542654, guid: 7168c0190d7d71f49ac1cd677d6c5883,
+        type: 2}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199361527191781004, guid: 7168c0190d7d71f49ac1cd677d6c5883,
+        type: 2}
+      propertyPath: m_MaxParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198554520258542654, guid: 7168c0190d7d71f49ac1cd677d6c5883,
+        type: 2}
+      propertyPath: ShapeModule.type
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7168c0190d7d71f49ac1cd677d6c5883, type: 2}
   m_IsPrefabParent: 0
