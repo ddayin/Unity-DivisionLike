@@ -2309,7 +2309,7 @@ Prefab:
     - target: {fileID: 20448527007917244, guid: 667631648b698cd4da90347673b8a333,
         type: 2}
       propertyPath: m_ClearFlags
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 20448527007917244, guid: 667631648b698cd4da90347673b8a333,
         type: 2}
