@@ -6,58 +6,64 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadingSceneManager : MonoBehaviour
+namespace DivisionLike
 {
-    public Loading m_LoadingAni;
-    private AsyncOperation m_AO;
-    private float m_Progress = 0f;
-
-    private void Awake()
+    public class LoadingSceneManager : MonoBehaviour
     {
-        if ( m_LoadingAni == null ) return;
-        
-        StartCoroutine( LoadScene() );
+        public Loading m_LoadingAni;
+        private AsyncOperation m_AO;
+        private float m_Progress = 0f;
 
-        Invoke( "Test", 5f );
-    }
+        private void Awake()
+        {
+            if ( m_LoadingAni == null ) return;
 
-    //private void Test()
-    //{
-    //    m_AO.allowSceneActivation = true;
-    //}
+            StartCoroutine( LoadScene() );
 
-    
+            Invoke( "Test", 5f );
+        }
 
-    IEnumerator LoadScene()
-    {
-        yield return null;
+        //private void Test()
+        //{
+        //    m_AO.allowSceneActivation = true;
+        //}
 
-        m_AO = SceneManager.LoadSceneAsync( "Play" );
-        m_AO.allowSceneActivation = false;
 
-        
-        while ( m_AO.isDone == false )
+
+        IEnumerator LoadScene()
         {
             yield return null;
 
-            if ( m_AO.progress < 0.9f )
+            m_AO = SceneManager.LoadSceneAsync( "Play" );
+            m_AO.allowSceneActivation = false;
+
+
+            while ( m_AO.isDone == false )
             {
-                m_Progress = Mathf.Lerp( 0f, 360f, m_AO.progress );
-                
-                m_LoadingAni.RotateDegreeZ( m_Progress );
-            }
-            else
-            {
-                m_AO.allowSceneActivation = true;
+                yield return null;
+
+                if ( m_AO.progress < 0.9f )
+                {
+                    m_Progress = Mathf.Lerp( 0f, 360f, m_AO.progress );
+
+                    m_LoadingAni.RotateDegreeZ( m_Progress );
+                }
+                else
+                {
+                    m_AO.allowSceneActivation = true;
+                    SceneController.instance.m_CurrentScene = eSceneName.Play;
+                }
             }
         }
-    }
 
-    private void OnGUI()
-    {
-        if ( m_AO == null ) return;
+        private void OnGUI()
+        {
+            if ( m_AO == null ) return;
 
-        GUI.Label( new Rect( 0, 0, 100, 100 ), m_AO.progress.ToString() );
-        GUI.Label( new Rect( 0, 100, 100, 100 ), m_Progress.ToString() );
+            GUI.Label( new Rect( 0, 0, 100, 100 ), m_AO.progress.ToString() );
+            GUI.Label( new Rect( 0, 100, 100, 100 ), m_Progress.ToString() );
+        }
     }
 }
+
+
