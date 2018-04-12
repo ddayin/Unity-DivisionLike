@@ -19,38 +19,14 @@ public class Loading : MonoBehaviour
         m_IsUp = true;
     }
 
-    //private void Update()
-    //{
-    //    m_RectComponent.Rotate(0f, 0f, m_RotateSpeed * Time.deltaTime);
-    //    changeSize();
-    //}
-
-    public void RotateZ( float value )
+    public void RotateDegreeZ( float degree )
     {
-        //m_RectComponent.Rotate( 0f, 0f, m_RotateSpeed * Time.deltaTime );
-        m_RectComponent.Rotate( 0f, 0f, value );
+        m_RectComponent.Rotate( 0f, 0f, degree );
     }
 
-    //private void changeSize()
-    //{
-    //    float currentSize = m_ImageComp.fillAmount;
-
-    //    if (currentSize < .30f && m_IsUp)
-    //    {
-    //        m_ImageComp.fillAmount += m_OpenSpeed;
-    //    }
-    //    else if (currentSize >= .30f && m_IsUp)
-    //    {
-    //        m_IsUp = false;
-    //    }
-    //    else if (currentSize >= .02f && !m_IsUp)
-    //    {
-    //        m_ImageComp.fillAmount -= m_CloseSpeed;
-    //    }
-    //    else if (currentSize < .02f && !m_IsUp)
-    //    {
-    //        m_IsUp = true;
-    //    }
-    //}
-
+    public void RotateZ( float value = 1f )
+    {
+        float degree = Mathf.Lerp( 0f, 360f, value );
+        m_RectComponent.Rotate( 0f, 0f, degree );
+    }
 }

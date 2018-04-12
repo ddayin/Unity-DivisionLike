@@ -9,51 +9,55 @@ using UnityEngine.SceneManagement;
 public class LoadingSceneManager : MonoBehaviour
 {
     public Loading m_LoadingAni;
+    private AsyncOperation m_AO;
+    private float m_Progress = 0f;
 
     private void Awake()
     {
         if ( m_LoadingAni == null ) return;
         
         StartCoroutine( LoadScene() );
+
+        Invoke( "Test", 5f );
     }
+
+    //private void Test()
+    //{
+    //    m_AO.allowSceneActivation = true;
+    //}
+
+    
 
     IEnumerator LoadScene()
     {
         yield return null;
 
-        AsyncOperation op = SceneManager.LoadSceneAsync( "Play" );
-        op.allowSceneActivation = false;
+        m_AO = SceneManager.LoadSceneAsync( "Play" );
+        m_AO.allowSceneActivation = false;
 
-        float timer = 0.0f;
-        while ( op.isDone == false )
+        
+        while ( m_AO.isDone == false )
         {
             yield return null;
 
-            timer += Time.deltaTime;
-
-            if ( op.progress >= 0.9f )
+            if ( m_AO.progress < 0.9f )
             {
-                float progress = Mathf.Lerp( op.progress, 1f, timer );
-                float progressDegree = Mathf.Lerp( 0f, 360f, progress );
-                m_LoadingAni.RotateZ( progressDegree );
-
-                if ( progress == 1.0f )
-                {
-                    op.allowSceneActivation = true;
-                }
-
+                m_Progress = Mathf.Lerp( 0f, 360f, m_AO.progress );
+                
+                m_LoadingAni.RotateDegreeZ( m_Progress );
             }
             else
             {
-                float progress = Mathf.Lerp( op.progress, op.progress, timer );
-                float progressDegree = Mathf.Lerp( 0f, 360f, progress );
-                m_LoadingAni.RotateZ( progressDegree );
+                m_AO.allowSceneActivation = true;
             }
-
-
-            
-
-            
         }
+    }
+
+    private void OnGUI()
+    {
+        if ( m_AO == null ) return;
+
+        GUI.Label( new Rect( 0, 0, 100, 100 ), m_AO.progress.ToString() );
+        GUI.Label( new Rect( 0, 100, 100, 100 ), m_Progress.ToString() );
     }
 }
