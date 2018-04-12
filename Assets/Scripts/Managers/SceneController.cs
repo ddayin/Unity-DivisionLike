@@ -30,7 +30,7 @@ namespace DivisionLike
         
         private void Awake()
         {
-            m_CurrentScene = eSceneName.Intro;
+            m_CurrentScene = eSceneName.Play;
 
             DontDestroyOnLoad( this.gameObject );
         }
