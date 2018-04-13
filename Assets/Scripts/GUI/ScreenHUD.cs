@@ -20,10 +20,12 @@ namespace DivisionLike
         private Slider m_XpSlider;              // 현재 경험치
         private Slider m_AmmoSlider;            // 현재 장전되어 있는 총알 슬라이더
         private Image m_AmmoSliderFillImage;
-        private Image m_LoadingCircleImage;
-        private CircularHit m_CircularHit;      // 
+        private Image m_LoadingCircleImage;        
         private Image m_ReloadImage;            // 재장전 아이콘
-        
+
+        private MinimapHit m_MinimapHit;
+        private CircularHit m_CircularHit;
+
         void Awake()
         {
             if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
@@ -34,6 +36,7 @@ namespace DivisionLike
             m_AmmoSliderFillImage = m_AmmoSlider.transform.Find( "Fill Area/Fill" ).GetComponent<Image>();
             m_LoadingCircleImage = transform.Find( "LoadingPanel/CircleImage" ).GetComponent<Image>();
             m_CircularHit = transform.Find( "CircularHit" ).GetComponent<CircularHit>();
+            m_MinimapHit = transform.Find( "MiniMap/MapInner/Hit" ).GetComponent<MinimapHit>();
             m_ReloadImage = transform.Find( "ReloadImage" ).GetComponent<Image>();
             
             SetLevelText();
@@ -118,6 +121,15 @@ namespace DivisionLike
         public void RotateCircularHit( Vector3 direction )
         {
             m_CircularHit.RotateHit( direction );
+        }
+
+        /// <summary>
+        /// 해당 방향으로 맞은 것을 미니맵에 표시한다.
+        /// </summary>
+        /// <param name="direction"></param>
+        public void RotateMinimapHit( Vector3 direction )
+        {
+            m_MinimapHit.RotateHit( direction );
         }
 
         /// <summary>

@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 using System.Collections;
 
+/// <summary>
+/// 맵 상에 표시되는 마커
+/// </summary>
 [AddComponentMenu("MiniMap/Map marker")]
 public class MapMarker : MonoBehaviour
 {

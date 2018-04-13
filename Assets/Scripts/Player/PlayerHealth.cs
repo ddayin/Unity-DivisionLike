@@ -100,6 +100,7 @@ namespace DivisionLike
             PlayerHUD.instance.SetHealthSlider( Player.instance.m_Stats.m_CurrentHealth );
 
             ScreenHUD.instance.RotateCircularHit( attackDirection );
+            ScreenHUD.instance.RotateMinimapHit( attackDirection );
 
             // Play the hurt sound effect.
             m_PlayerAudio.Play();
