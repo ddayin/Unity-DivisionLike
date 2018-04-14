@@ -9500,6 +9500,11 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 223023322448240126, guid: 4861f530971a8324eb83a17d565e7e6e,
+        type: 2}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4861f530971a8324eb83a17d565e7e6e, type: 2}
   m_IsPrefabParent: 0
@@ -19538,6 +19543,11 @@ Prefab:
         type: 2}
       propertyPath: m_BackGroundColor.g
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20448527007917244, guid: 667631648b698cd4da90347673b8a333,
+        type: 2}
+      propertyPath: far clip plane
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 667631648b698cd4da90347673b8a333, type: 2}
