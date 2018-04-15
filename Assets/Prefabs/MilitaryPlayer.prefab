@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 114774562876285040}
   - component: {fileID: 114314024353467972}
   - component: {fileID: 114240784401299112}
+  - component: {fileID: 114068460151117526}
   m_Layer: 0
   m_Name: MilitaryPlayer
   m_TagString: Player
@@ -1488,7 +1489,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1008780008236374}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2300,54 +2301,69 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
@@ -2368,6 +2384,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114033657919494726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2398,6 +2415,30 @@ MonoBehaviour:
   eraseRenderer: 0
   originalLayer: 0
   originalMaterials: []
+--- !u!114 &114068460151117526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008780008236374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc181167231df74da89b901b6745ff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UserSettings:
+    m_RightHand: {fileID: 4079273993816624}
+    m_PistolUnequipSpot: {fileID: 4568949691163028}
+    m_RifleUnequipSpot: {fileID: 4568949691163028}
+  m_Animations:
+    m_WeaponTypeInt: WeaponType
+    m_ReloadingBool: isReloading
+    m_AimingBool: Aiming
+  m_CurrentWeapon: {fileID: 0}
+  m_WeaponsList:
+  - {fileID: 0}
+  m_MaxWeapons: 2
+  m_IsReloading: 0
 --- !u!114 &114107379585428848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2417,12 +2458,12 @@ MonoBehaviour:
     m_WeaponTypeInt: WeaponType
     m_ReloadingBool: isReloading
     m_AimingBool: Aiming
-  m_CurrentWeapon: {fileID: 114602481244817218, guid: ed965125ff6f3a44d84d71a0e4769abb,
-    type: 2}
+  m_CurrentWeapon: {fileID: 0}
   m_WeaponsList:
-  - {fileID: 114272279691959126, guid: d0bb8554e084b9145bde7ebcdc944949, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   m_MaxWeapons: 2
-  m_isReloading: 0
+  m_IsReloading: 0
 --- !u!114 &114240784401299112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2554,12 +2595,12 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 0
   m_DebugAim: 0
-  m_SpineTransform: {fileID: 0}
+  m_SpineTransform: {fileID: 4568949691163028}
   m_IsAiming: 0
   m_IsFiring: 0
   m_IsSprinting: 0
   m_IsGrenadeMode: 0
-  m_EnableInput: 0
+  m_EnableInput: 1
 --- !u!114 &114665249318961136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2648,6 +2689,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 9cf53fa31eb277a448231ef2cc26a810, type: 2}
   m_StaticBatchInfo:
@@ -2704,6 +2746,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 9720da4edbe420046939ddd7818b4559, type: 2}
   m_StaticBatchInfo:
@@ -2753,6 +2796,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 39b38bc68883b844a871d4f5d05f6a77, type: 2}
   m_StaticBatchInfo:
@@ -2802,6 +2846,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 9720da4edbe420046939ddd7818b4559, type: 2}
   m_StaticBatchInfo:
@@ -2849,6 +2894,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 9720da4edbe420046939ddd7818b4559, type: 2}
   m_StaticBatchInfo:
@@ -2941,6 +2987,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: b67f055c9d0f172498cbd033f4a84405, type: 2}
   m_StaticBatchInfo:
@@ -2995,6 +3042,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 0f3a82a581ac38c47aab2b9a7626bcf0, type: 2}
   m_StaticBatchInfo:
@@ -3055,6 +3103,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 68f7ad8dd82b9f848ac09c5776353f9f, type: 2}
   m_StaticBatchInfo:

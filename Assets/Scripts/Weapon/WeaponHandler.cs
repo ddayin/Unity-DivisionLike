@@ -37,7 +37,7 @@ namespace DivisionLike
 
         public Weapon m_CurrentWeapon;      // 현재 사용하는 무기
         public List<Weapon> m_WeaponsList = new List<Weapon>();     // 보유하고 있는 무기들
-        public Dictionary<Weapon.WeaponType, Weapon> m_DicWeapons = new Dictionary<Weapon.WeaponType, Weapon>();    // 중복..
+        
         public int m_MaxWeapons = 2;
         public bool m_Aim { get; protected set; }
         public bool m_IsReloading = false;      // 재장전 중인지
@@ -51,9 +51,6 @@ namespace DivisionLike
 
             m_Animator = GetComponent<Animator>();
             SetupWeapons();
-
-            m_DicWeapons.Add( Weapon.WeaponType.Primary, m_WeaponsList[ 0 ] );
-            m_DicWeapons.Add( Weapon.WeaponType.Secondary, m_WeaponsList[ 1 ] );
         }
 
         // Update is called once per frame
@@ -145,21 +142,6 @@ namespace DivisionLike
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="weapon"></param>
-        private void AddWeaponToDic( Weapon.WeaponType type, Weapon weapon )
-        {
-            if ( m_DicWeapons.ContainsValue( weapon ) == true )
-            {
-                return;
-            }
-
-            m_DicWeapons.Add( type, weapon );
-        }
-
-        /// <summary>
         /// Puts the finger on the trigger and asks if we pulled
         /// </summary>
         /// <param name="aimRay"></param>
@@ -233,8 +215,7 @@ namespace DivisionLike
 
             m_CurrentWeapon.SetEquipped( false );
             m_CurrentWeapon.SetOwner( null );
-            m_WeaponsList.Remove( m_CurrentWeapon );
-            m_DicWeapons.Remove( m_CurrentWeapon.m_WeaponType );
+            m_WeaponsList.Remove( m_CurrentWeapon );            
             m_CurrentWeapon = null;
         }
 
@@ -243,7 +224,7 @@ namespace DivisionLike
         /// </summary>
         public void SwitchWeapons()
         {
-            if ( m_IsSettingWeapon || m_WeaponsList.Count == 0 || m_DicWeapons.Count == 0 )
+            if ( m_IsSettingWeapon || m_WeaponsList.Count == 0 )
                 return;
 
             if ( m_CurrentWeapon != null )
@@ -252,14 +233,10 @@ namespace DivisionLike
                 int nextWeaponIndex = ( currentWeaponIndex + 1 ) % m_WeaponsList.Count;
 
                 m_CurrentWeapon = m_WeaponsList[ nextWeaponIndex ];
-
-                m_CurrentWeapon = m_DicWeapons[ (Weapon.WeaponType) nextWeaponIndex ];
             }
             else
             {
                 m_CurrentWeapon = m_WeaponsList[ 0 ];
-
-                m_CurrentWeapon = m_DicWeapons[ Weapon.WeaponType.Primary ];
             }
             m_IsSettingWeapon = true;
             StartCoroutine( StopSettingWeapon() );
@@ -273,19 +250,11 @@ namespace DivisionLike
         /// <param name="type"></param>
         public void SwitchWeapons( Weapon.WeaponType type )
         {
-            if ( m_IsSettingWeapon == true || m_WeaponsList.Count == 0 || m_DicWeapons.Count == 0 )
+            if ( m_IsSettingWeapon == true || m_WeaponsList.Count == 0 )
             {
                 return;
             }
 
-            if ( m_CurrentWeapon != null )
-            {
-                m_CurrentWeapon = m_DicWeapons[ type ];
-            }
-            else
-            {
-                m_CurrentWeapon = m_DicWeapons[ Weapon.WeaponType.Primary ];
-            }
             m_IsSettingWeapon = true;
             StartCoroutine( StopSettingWeapon() );
 

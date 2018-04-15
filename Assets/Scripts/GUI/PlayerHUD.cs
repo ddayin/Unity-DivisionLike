@@ -146,7 +146,7 @@ namespace DivisionLike
             m_ClipAmmoText.text = m_WeaponHandler.m_CurrentWeapon.m_Ammo.clipAmmo.ToString();
             m_CarryingAmmoText.text = m_WeaponHandler.m_CurrentWeapon.m_Ammo.carryingAmmo.ToString();
             
-            m_AnotherAmmoText.text = m_AnotherWeapon.m_Ammo.clipAmmo.ToString();
+            //m_AnotherAmmoText.text = m_AnotherWeapon.m_Ammo.clipAmmo.ToString();
         }
 
         /// <summary>
@@ -167,8 +167,6 @@ namespace DivisionLike
             {
                 anotherType = Weapon.WeaponType.Primary;
             }
-
-            m_AnotherWeapon = m_WeaponHandler.m_DicWeapons[ anotherType ];
         }
 
         /// <summary>
