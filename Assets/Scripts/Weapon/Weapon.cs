@@ -137,12 +137,12 @@ namespace DivisionLike
         {
             m_Timer += Time.deltaTime;
 
-            if ( m_Owner )
+            if ( m_Owner != null )
             {
                 DisableEnableComponents( false );
                 if ( m_IsEquipped )
                 {
-                    if ( m_Owner.m_UserSettings.m_RightHand )
+                    if ( m_Owner.m_UserSettings.m_RightHand != null )
                     {
                         Equip();
                     }
@@ -434,11 +434,9 @@ namespace DivisionLike
         /// </summary>
         void Equip()
         {
-            if ( m_Owner == null )
-                return;
-            else if ( m_Owner.m_UserSettings.m_RightHand == false )
-                return;
-            
+            if ( m_Owner == null ) return;
+            else if ( m_Owner.m_UserSettings.m_RightHand == null ) return;
+
             transform.SetParent( m_Owner.m_UserSettings.m_RightHand );
             
             transform.localPosition = m_WeaponSettings.equipPosition;
