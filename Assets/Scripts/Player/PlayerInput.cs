@@ -190,8 +190,7 @@ namespace DivisionLike
         /// </summary>
         void WeaponLogic()
         {
-            if ( !m_WeaponHandler )
-                return;
+            if ( m_WeaponHandler == null ) return;
 
             m_IsAiming = Input.GetButton( m_InputSettings.m_AimButton ) || m_DebugAim == true;
             m_WeaponHandler.Aim( m_IsAiming );
@@ -201,6 +200,7 @@ namespace DivisionLike
                 m_IsGrenadeMode = false;
             }
 
+            // 무기 변경
             if ( Input.GetButtonDown( m_InputSettings.m_SwitchWeaponButton ) )
             {
                 m_WeaponHandler.SwitchWeapons();
@@ -222,7 +222,8 @@ namespace DivisionLike
                 m_WeaponHandler.SwitchWeapons( Weapon.WeaponType.Secondary );
             }
 
-            if ( m_WeaponHandler.m_CurrentWeapon )
+            // 총알 발사
+            if ( m_WeaponHandler.m_CurrentWeapon != null )
             {
                 Ray aimRay = m_TPSCamera.ViewportPointToRay( new Vector3( 0.5f, 0.5f, 0f ) );
                 

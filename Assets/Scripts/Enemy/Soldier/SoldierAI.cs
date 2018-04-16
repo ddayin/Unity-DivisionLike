@@ -23,14 +23,21 @@ namespace DivisionLike
     public class SoldierAI : MonoBehaviour
     {
         private NavMeshAgent m_NavMeshAgent;
+        private WeaponHandler m_WeaponHandler;
+        private Camera m_TPSCamera;
+        private Transform m_TargetToFire;
+
         public SoldierState m_State = SoldierState.Idle;
 
         #region MonoBehaviour
         private void Awake()
         {
             m_NavMeshAgent = GetComponent<NavMeshAgent>();
+            m_WeaponHandler = GetComponent<WeaponHandler>();
+            m_TPSCamera = Camera.main;
 
-            m_State = SoldierState.Idle;
+            //m_State = SoldierState.Idle;
+            m_State = SoldierState.Fire;
             InitNavMeshAgent();
         }
 
@@ -89,10 +96,33 @@ namespace DivisionLike
             m_NavMeshAgent.destination = Player.instance.transform.position;
         }
 
+        #region 총 발사
         private void Fire()
         {
+            if ( m_WeaponHandler.m_CurrentWeapon == null ) return;
 
+            float fireRate = m_WeaponHandler.m_CurrentWeapon.m_WeaponSettings.fireRate;
+
+            InvokeRepeating( "FireWeapon", 0f, fireRate );
         }
+
+        private void FindTargetToFire()
+        {
+            m_TargetToFire = Player.instance.gameObject.transform;
+        }
+
+        private void FireWeapon()
+        {
+            FindTargetToFire();
+
+            //Ray aimRay = m_TPSCamera.ViewportPointToRay( new Vector3( 0.5f, 0.5f, 0f ) );
+            Ray aimRay = new Ray( transform.position, transform.forward );
+
+            Debug.DrawRay( aimRay.origin, aimRay.direction );
+
+            m_WeaponHandler.FireCurrentWeapon( aimRay );
+        }
+        #endregion
     }
 }
 
