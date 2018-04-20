@@ -26,6 +26,7 @@ namespace DivisionLike
         private WeaponHandler m_WeaponHandler;
         private Camera m_TPSCamera;
         private Transform m_TargetToFire;
+        private Animator m_Animator;
 
         public SoldierState m_State = SoldierState.Idle;
 
@@ -35,9 +36,10 @@ namespace DivisionLike
             m_NavMeshAgent = GetComponent<NavMeshAgent>();
             m_WeaponHandler = GetComponent<WeaponHandler>();
             m_TPSCamera = Camera.main;
+            m_Animator = GetComponent<Animator>();
 
-            //m_State = SoldierState.Idle;
-            m_State = SoldierState.Fire;
+            m_State = SoldierState.Idle;
+            //m_State = SoldierState.Fire;
             InitNavMeshAgent();
         }
 
@@ -58,7 +60,9 @@ namespace DivisionLike
             switch ( m_State )
             {
                 case SoldierState.Idle:
+                    Idle();
                     break;
+
                 case SoldierState.Patrol:
                     Patrol();
                     break;
@@ -83,6 +87,11 @@ namespace DivisionLike
             }
         }
         #endregion
+
+        private void Idle()
+        {
+
+        }
 
         private void Patrol()
         {
