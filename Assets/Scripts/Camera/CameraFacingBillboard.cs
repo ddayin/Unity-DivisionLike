@@ -32,6 +32,9 @@ using System.Collections;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// billboard
+    /// </summary>
     public class CameraFacingBillboard : MonoBehaviour
     {
         private Camera m_Camera;

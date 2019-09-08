@@ -28,6 +28,9 @@ using UnityEngine;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 폭파 범위 이펙트
+    /// </summary>
     public class GrenadeCircleEffect : MonoBehaviour
     {
         public int m_Segments;

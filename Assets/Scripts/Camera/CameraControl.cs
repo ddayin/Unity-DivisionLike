@@ -32,8 +32,10 @@ using WanzyeeStudio;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 카메라 조작
+    /// </summary>
     [ExecuteInEditMode]     // 스크립트가 에디터모드에서 동작하도록 설정
-
     public class CameraControl : MonoBehaviour
     {
         public static CameraControl instance
@@ -109,16 +111,13 @@ namespace DivisionLike
         private bool m_IsZooming = false;                   // 확대를 하고 있는지
         private bool m_IsZoomingMore = false;               // 더 확대를 하고 있는지
 
-        // Use this for initialization
+        #region MonoBehaviour
         private void Awake()
         {
             m_MainCamera = Camera.main;
             m_Pivot = transform.GetChild( 0 );
         }
 
-        
-
-        // Update is called once per frame
         private void Update()
         {
             if ( m_Target == null || Application.isPlaying == false )
@@ -169,7 +168,7 @@ namespace DivisionLike
                 FollowTarget( targetPostion, targetRotation );
             }
         }
-
+        #endregion
 
         /// <summary>
         /// Finds the player gameObject and sets it as target
