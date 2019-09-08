@@ -11,13 +11,13 @@ namespace DivisionLike
     /// </summary>
     public enum eSceneName
     {
-        Intro = 0,
-        Loading,
-        Play
+        Intro = 0,  // 인트로
+        Loading,    // 로딩
+        Play        // 플레이
     }
 
     /// <summary>
-    /// 씬 전환 매니저 매니저
+    /// 씬 전환 매니저
     /// </summary>
     public class SceneController : MonoBehaviour
     {
