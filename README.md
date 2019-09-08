@@ -1,3 +1,18 @@
 # DivisionLike
-develop a game like Tom Clancy's The Division by using Unity. 
 유니티 엔진을 사용해 Tom Clancy's The Division과 같은 게임을 개발합니다.
+
+
+# 목표
+1. 평소 좋아하는 TPS 장르의 게임을 개발합니다.
+2. 포트폴리오로 만들어서 게임회사에 이직을 합니다.
+
+# 개발 환경
+- OS : Windows 10
+- Engine : Unity 2019.2.4f1
+- Language : C#
+- IDE : Microsoft Visual Studio 2019
+- Target Platform : PC
+- CPU : AMD Ryzen 5 2600 Six-Core Processor
+- RAM : 16GB
+- GPU : NVIDIA GeForce GTX 1060 3GB
+
