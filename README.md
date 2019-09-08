@@ -1,7 +1,6 @@
 # DivisionLike
 유니티 엔진을 사용해 Tom Clancy's The Division과 같은 게임을 개발합니다.
 
-![Alt text] (https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiD-tfkycDkAhUOGaYKHc7aBEcQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.kinguin.net%2Fcategory%2F24885%2Ftom-clancy-s-the-division-uplay-cd-key%2F&psig=AOvVaw3AJ2KcNbjW3rZMOddekmOc&ust=1568009776590339)
 
 # 목표
 1. 평소 좋아하는 TPS 장르의 게임을 개발합니다.
