@@ -30,6 +30,9 @@ using WanzyeeStudio;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 이펙트 관리자
+    /// </summary>
     public class EffectManager : MonoBehaviour
     {
         public static EffectManager instance

@@ -33,7 +33,7 @@ using System.Collections.Generic;
 namespace DivisionLike
 {
     /// <summary>
-    /// 
+    /// 무기 처리
     /// </summary>
     public class WeaponHandler : MonoBehaviour
     {

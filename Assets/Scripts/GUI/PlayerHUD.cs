@@ -30,6 +30,9 @@ using WanzyeeStudio;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 플레이어의 HUD
+    /// </summary>
     public class PlayerHUD : MonoBehaviour
     {
         public static PlayerHUD instance

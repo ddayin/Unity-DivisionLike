@@ -29,6 +29,9 @@ using UnityEngine;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 총알
+    /// </summary>
     public class Bullet : MonoBehaviour
     {
         private void OnCollisionEnter( Collision collision )

@@ -31,6 +31,9 @@ using System.Collections;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 적 캐릭터의 이동
+    /// </summary>
     public class EnemyMovement : MonoBehaviour
     {
         private Transform m_Player;               // Reference to the player's position.

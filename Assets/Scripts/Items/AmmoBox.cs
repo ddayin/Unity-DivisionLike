@@ -28,6 +28,9 @@ using UnityEngine;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 탄약 상자
+    /// </summary>
     public class AmmoBox : MonoBehaviour
     {
         private cakeslice.Outline m_Outline;

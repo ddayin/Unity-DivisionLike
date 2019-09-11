@@ -41,7 +41,7 @@ namespace DivisionLike
     }
 
     /// <summary>
-    /// 
+    /// 적 캐릭터의 인공지능
     /// </summary>
     [RequireComponent( typeof( Animator ) )]
     public class SoldierAI : MonoBehaviour

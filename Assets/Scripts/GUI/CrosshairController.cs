@@ -28,6 +28,9 @@ using UnityEngine;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// crosshair 처리
+    /// </summary>
     public class CrosshairController : MonoBehaviour
     {
         private WeaponHandler m_WeaponHandler;

@@ -33,6 +33,9 @@ using UnityEngine.SceneManagement;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 로딩 씬 관리자
+    /// </summary>
     public class LoadingSceneManager : MonoBehaviour
     {
         public Loading m_LoadingAni;

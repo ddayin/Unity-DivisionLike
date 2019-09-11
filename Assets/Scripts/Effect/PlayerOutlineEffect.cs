@@ -30,7 +30,7 @@ using cakeslice;
 namespace DivisionLike
 {
     /// <summary>
-    /// 
+    /// 플레이어에 아웃라인을 그리는 이펙트
     /// </summary>
     public class PlayerOutlineEffect : MonoBehaviour
     {

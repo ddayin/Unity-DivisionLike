@@ -28,6 +28,9 @@ using UnityEngine;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 인트로 씬
+    /// </summary>
     public class IntroScene : MonoBehaviour
     {
         private void Awake()

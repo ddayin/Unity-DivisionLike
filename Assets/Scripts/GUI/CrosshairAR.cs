@@ -29,6 +29,9 @@ using UnityEngine.UI;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// AR 총의 crosshair
+    /// </summary>
     public class CrosshairAR : CrosshairHandler
     {
         public Image[] m_CrosshairImages;

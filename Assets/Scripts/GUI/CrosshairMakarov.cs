@@ -29,6 +29,9 @@ using UnityEngine.UI;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// Makarov 총의 crosshair
+    /// </summary>
     public class CrosshairMakarov : CrosshairHandler
     {
         private Image _image;

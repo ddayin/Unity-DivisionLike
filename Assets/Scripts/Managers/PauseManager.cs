@@ -36,6 +36,9 @@ using UnityEditor;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 일시 정지 관리자
+    /// </summary>
     public class PauseManager : MonoBehaviour
     {
         public AudioMixerSnapshot m_Paused;

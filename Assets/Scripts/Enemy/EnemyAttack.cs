@@ -31,6 +31,9 @@ using System.Collections;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 적 캐릭터의 공격
+    /// </summary>
     public class EnemyAttack : MonoBehaviour
     {
         public float m_TimeBetweenAttacks = 0.5f;     // The time in seconds between each attack.

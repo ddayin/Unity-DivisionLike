@@ -29,6 +29,9 @@ using UnityEngine;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 슈류탄 처리
+    /// </summary>
     public class GrenadeHandler : MonoBehaviour
     {
         public GameObject m_GrenadePrefab;

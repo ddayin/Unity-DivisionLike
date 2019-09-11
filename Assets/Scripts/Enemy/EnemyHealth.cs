@@ -32,6 +32,9 @@ using UnityEngine.UI;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 적 캐릭터의 HP
+    /// </summary>
     public class EnemyHealth : MonoBehaviour
     {
         public const int m_StartingHealth = 100;            // The amount of health the enemy starts the game with.

@@ -29,6 +29,9 @@ using UnityEngine;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 슈류탄
+    /// </summary>
     public class Grenade : MonoBehaviour
     {
         private Collider[] m_HitColliders;

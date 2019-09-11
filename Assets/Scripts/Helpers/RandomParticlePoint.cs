@@ -31,6 +31,9 @@ using System.Collections;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 랜덤한 시간으로 파티클을 재생한다.
+    /// </summary>
     public class RandomParticlePoint : MonoBehaviour
     {
         [Range( 0f, 1f )]

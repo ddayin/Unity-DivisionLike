@@ -32,6 +32,9 @@ using UnityEngine.UI;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 볼륨 조정
+    /// </summary>
     public class VolumeHandler : MonoBehaviour
     {
 

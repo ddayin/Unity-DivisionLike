@@ -34,6 +34,10 @@ namespace DivisionLike
 {
     [RequireComponent( typeof( Animator ) )]
     [RequireComponent( typeof( CharacterController ) )]
+
+    /// <summary>
+    /// 적 캐릭터의 움직임
+    /// </summary>
     public class SoldierMovement : MonoBehaviour
     {
         private Animator m_Animator;

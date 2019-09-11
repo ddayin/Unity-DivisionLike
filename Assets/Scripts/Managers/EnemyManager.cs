@@ -30,6 +30,9 @@ using UnityEngine;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 적 관리자
+    /// </summary>
     public class EnemyManager : MonoBehaviour
     {
         public GameObject m_Enemy;                // The enemy prefab to be spawned.

@@ -32,6 +32,9 @@ using System.Collections;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 점수 관리자
+    /// </summary>
     public class ScoreManager : MonoBehaviour
     {
         public static int m_Score;        // The player's score.

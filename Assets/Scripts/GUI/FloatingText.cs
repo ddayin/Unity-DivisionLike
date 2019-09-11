@@ -33,7 +33,7 @@ using UnityEngine.UI;
 namespace DivisionLike
 {
     /// <summary>
-    /// 
+    /// 텍스트
     /// </summary>
     public class FloatingText : MonoBehaviour
     {

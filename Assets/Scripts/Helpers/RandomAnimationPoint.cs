@@ -32,7 +32,7 @@ using System.Collections;
 namespace DivisionLike
 {
     /// <summary>
-    /// 
+    /// 랜덤한 시간으로 애니메이션을 재생한다.
     /// </summary>
     public class RandomAnimationPoint : MonoBehaviour
     {

@@ -32,6 +32,9 @@ using WanzyeeStudio;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 사운드 처리
+    /// </summary>
     public class SoundController : MonoBehaviour
     {
         public static SoundController instance

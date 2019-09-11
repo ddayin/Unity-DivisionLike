@@ -31,6 +31,9 @@ using System.Collections;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 무기
+    /// </summary>
     [RequireComponent( typeof( Collider ) )]
     [RequireComponent( typeof( Rigidbody ) )]
     public class Weapon : MonoBehaviour

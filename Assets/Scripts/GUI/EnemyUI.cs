@@ -29,6 +29,9 @@ using UnityEngine.UI;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 적 캐릭터의 UI
+    /// </summary>
     public class EnemyUI : MonoBehaviour
     {
         private Slider m_HealthSlider;

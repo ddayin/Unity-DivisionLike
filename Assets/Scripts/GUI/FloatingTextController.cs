@@ -33,7 +33,7 @@ using System.Collections;
 namespace DivisionLike
 {
     /// <summary>
-    /// 
+    /// 텍스트 처리
     /// </summary>
     public class FloatingTextController : MonoBehaviour
     {
