@@ -21,8 +21,11 @@
 - Target Platform : Windows PC
 
 # 스크린샷
-2020-01-15 skybox 추가
+2020-01-15 skybox 추가, 라이트 변경
 
 ![20200115_202903](https://user-images.githubusercontent.com/29808782/72430514-ef441680-37d5-11ea-8434-fbd563e20a2e.png)
 
 ![20200115_213747](https://user-images.githubusercontent.com/29808782/72434586-52867680-37df-11ea-9b0d-b8e781ac777c.png)
+
+![20200115_222552](https://user-images.githubusercontent.com/29808782/72437427-0ee33b00-37e6-11ea-8950-5e07abf98bfc.png)
+
