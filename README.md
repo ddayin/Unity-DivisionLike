@@ -1,6 +1,8 @@
-# DivisionLike
+# DivisionLike 개요
 유니티 엔진을 사용해 Tom Clancy's The Division과 같은 게임을 개발합니다.
 
+# 모작한 게임 Division 스크린샷
+![Tom Clancy's The Division™_20171112122230](https://user-images.githubusercontent.com/29808782/72430650-46e28200-37d6-11ea-8d93-8d0e4676b533.jpg)
 
 # 목표
 1. 평소 좋아하는 TPS 장르의 게임을 개발합니다.
