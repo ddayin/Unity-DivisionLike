@@ -6516,7 +6516,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 799094470}
     - target: {fileID: 224085113912833202, guid: a01456497ae12fb499716fb565841fb6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -10638,6 +10638,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000013617410114, guid: 8ec728fea85097b43ad9358333759bfa,
     type: 3}
   m_PrefabInstance: {fileID: 790847171}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &799094470 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4234755952056848, guid: 59e8e266ec83fd34b8885035b9213f52,
+    type: 3}
+  m_PrefabInstance: {fileID: 756365383}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &801425009
 PrefabInstance:
@@ -17424,6 +17430,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
+      objectReference: {fileID: 1408357994}
+    - target: {fileID: 223734110635590388, guid: 6628134f69a826649bbd42f691b029c0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224051848946775246, guid: 6628134f69a826649bbd42f691b029c0,
         type: 3}
@@ -17565,7 +17576,8 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114349209737007642, guid: 6628134f69a826649bbd42f691b029c0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6628134f69a826649bbd42f691b029c0, type: 3}
 --- !u!1001 &1397695001
 PrefabInstance:
