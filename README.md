@@ -8,15 +8,17 @@
 1. 평소 좋아하는 TPS 장르의 게임을 개발합니다.
 2. 포트폴리오
 
-# 개발 환경
-- OS : Windows 10
-- Engine : Unity 2019.2.4f1
-- Language : C#
-- IDE : Microsoft Visual Studio 2019
-- Target Platform : PC
+# 개발 PC 스펙 (하드웨어)
 - CPU : AMD Ryzen 5 2600 Six-Core Processor
 - RAM : 16GB
 - GPU : NVIDIA GeForce GTX 1060 3GB
+
+# 개발 환경
+- OS : Windows 10 64bit
+- Engine : Unity 2019.2.17f1
+- Language : C#
+- IDE : Microsoft Visual Studio 2019
+- Target Platform : Windows PC
 
 # 스크린샷
 2020-01-15 skybox 추가
