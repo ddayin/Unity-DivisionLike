@@ -20,6 +20,9 @@
 - IDE : Microsoft Visual Studio 2019
 - Target Platform : Windows PC
 
+# Trello 일정관리
+https://trello.com/b/sW1KvlRw
+
 # 스크린샷
 2020-01-15 skybox 추가, 라이트 변경
 
