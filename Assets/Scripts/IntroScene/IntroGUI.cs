@@ -31,33 +31,52 @@ using UnityEngine.SceneManagement;
 
 namespace DivisionLike
 {
+    /// <summary>
+    /// 인트로 화면 GUI
+    /// </summary>
     public class IntroGUI : MonoBehaviour
     {
         private Button m_PlayButton;
+        private GameObject m_LoadingScreen;
 
         #region MonoBehaviour
         private void Awake()
         {
             m_PlayButton = transform.Find( "Button_Play" ).GetComponent<Button>();
             m_PlayButton.onClick.AddListener( OnClickPlayButton );
+
+            m_LoadingScreen = transform.Find( "LoadingScreen" ).gameObject;
         }
 
-
-        void Start()
-        {
-
-        }
-
-
-        void Update()
-        {
-
-        }
         #endregion
 
         private void OnClickPlayButton()
         {
-            SceneManager.LoadScene( "PlayNew" );
+            m_LoadingScreen.SetActive( true );
+            StartCoroutine( LoadScene() );
+        }
+
+        IEnumerator LoadScene()
+        {
+            AsyncOperation operation = SceneManager.LoadSceneAsync( "PlayNew" );
+            operation.allowSceneActivation = false;
+
+            float timer = 0f;
+            while ( operation.isDone == false )
+            {
+                yield return null;
+                timer += Time.deltaTime;
+
+                if ( operation.progress < 0.9f )
+                {
+                    
+                }
+                else
+                {
+                    operation.allowSceneActivation = true;
+                    yield break;
+                }
+            }
         }
     }
 }
