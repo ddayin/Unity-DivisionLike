@@ -17728,7 +17728,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 799094470}
     - target: {fileID: 114936941238995890, guid: 667631648b698cd4da90347673b8a333,
         type: 3}
       propertyPath: m_CameraSettings.m_CamPositionOffsetLeft.x
@@ -17764,6 +17764,11 @@ PrefabInstance:
       propertyPath: m_CameraSettings.m_UICamera
       value: 
       objectReference: {fileID: 1408357994}
+    - target: {fileID: 114936941238995890, guid: 667631648b698cd4da90347673b8a333,
+        type: 3}
+      propertyPath: m_Shoulder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 667631648b698cd4da90347673b8a333, type: 3}
 --- !u!20 &1408357994 stripped
