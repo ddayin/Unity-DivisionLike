@@ -8042,6 +8042,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 580815117}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &591996144 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4568949691163028, guid: 59e8e266ec83fd34b8885035b9213f52,
+    type: 3}
+  m_PrefabInstance: {fileID: 756365383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &592627662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10250,6 +10256,11 @@ PrefabInstance:
       propertyPath: m_BloodImage
       value: 
       objectReference: {fileID: 365269092}
+    - target: {fileID: 3914619800472176215, guid: 59e8e266ec83fd34b8885035b9213f52,
+        type: 3}
+      propertyPath: m_SpineTransform
+      value: 
+      objectReference: {fileID: 591996144}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59e8e266ec83fd34b8885035b9213f52, type: 3}
 --- !u!1001 &769801980
@@ -10301,6 +10312,16 @@ PrefabInstance:
       propertyPath: m_WeaponSettings.shellEjectSpot
       value: 
       objectReference: {fileID: 69462283}
+    - target: {fileID: 114602481244817218, guid: ed965125ff6f3a44d84d71a0e4769abb,
+        type: 3}
+      propertyPath: m_WeaponSettings.bulletLayers.m_Bits
+      value: 32535
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602481244817218, guid: ed965125ff6f3a44d84d71a0e4769abb,
+        type: 3}
+      propertyPath: m_WeaponSettings.range
+      value: 9999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed965125ff6f3a44d84d71a0e4769abb, type: 3}
 --- !u!4 &769801981 stripped
@@ -17864,7 +17885,7 @@ PrefabInstance:
     - target: {fileID: 114936941238995890, guid: 667631648b698cd4da90347673b8a333,
         type: 3}
       propertyPath: m_Shoulder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 667631648b698cd4da90347673b8a333, type: 3}

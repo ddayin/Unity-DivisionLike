@@ -213,14 +213,10 @@ namespace DivisionLike
         /// </summary>
         private void RotateCamera()
         {
-            if ( m_Pivot == null )
-                return;
+            if ( m_Pivot == null ) return;
 
-            if ( Player.instance.m_WeaponHandler.m_IsReloading == true )
-            {
-                return;
-            }
-            
+            if ( Player.instance.m_WeaponHandler.m_IsReloading == true ) return;
+                        
             m_NewX += m_CameraSettings.m_MouseXSensitivity * Input.GetAxis( m_InputSettings.m_VerticalAxis );
             m_NewY += m_CameraSettings.m_MouseYSensitivity * Input.GetAxis( m_InputSettings.m_HorizontalAxis );
 
@@ -230,10 +226,8 @@ namespace DivisionLike
             }
 
             Vector3 eulerAngleAxis = new Vector3();
-            eulerAngleAxis.x = -m_NewY;
-            
+            eulerAngleAxis.x = -m_NewY;            
             eulerAngleAxis.y = m_NewX;
-            
 
             m_NewX = Mathf.Repeat( m_NewX, 360 );
             m_NewY = Mathf.Clamp( m_NewY, m_CameraSettings.m_MinAngle, m_CameraSettings.m_MaxAngle );

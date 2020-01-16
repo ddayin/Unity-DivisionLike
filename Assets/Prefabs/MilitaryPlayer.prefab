@@ -406,7 +406,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 0
   m_DebugAim: 0
-  m_SpineTransform: {fileID: 0}
+  m_SpineTransform: {fileID: 4568949691163028}
   m_IsAiming: 0
   m_IsFiring: 0
   m_IsSprinting: 0

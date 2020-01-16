@@ -281,11 +281,16 @@ namespace DivisionLike
             }
 
             // 적 캐릭터 제외
-            if ( Physics.Raycast( bSpawnPoint, dir, out m_Hit, Mathf.Infinity, m_WeaponSettings.bulletLayers ) )
+            if ( Physics.Raycast( bSpawnPoint, dir, out m_Hit, Mathf.Infinity, m_WeaponSettings.bulletLayers ) == true )
             {
                 m_WeaponSettings._bulletLine.SetPosition( 1, m_Hit.point );
 
                 HitEffects( m_Hit );
+            }
+            // 충돌체가 없고 하늘을 향해 쏘았을 때
+            else
+            {
+                m_WeaponSettings._bulletLine.SetPosition( 1, dir );
             }
 
             // 기름 통

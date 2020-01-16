@@ -38,8 +38,6 @@ namespace DivisionLike
         private void Awake()
         {
             m_Animator = GetComponent<Animator>();
-
-            m_Animator.runtimeAnimatorController = Resources.Load( "Player/IntroPlayerAni" ) as RuntimeAnimatorController;
         }
     }
 }
