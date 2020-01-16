@@ -29,3 +29,7 @@
 
 ![20200115_222552](https://user-images.githubusercontent.com/29808782/72437427-0ee33b00-37e6-11ea-8950-5e07abf98bfc.png)
 
+
+2020-01-16 인트로 씬 변경
+
+![20200116_195041](https://user-images.githubusercontent.com/29808782/72518858-8920c780-3899-11ea-98f7-5cb528dc3699.png)
