@@ -55,8 +55,6 @@ namespace DivisionLike
         #region MonoBehaviour
         void Awake()
         {
-            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;            
-
             m_HealthSlider[ 0 ] = transform.Find( "PlayerHUD/HealthUI/HealthSlider_0" ).GetComponent<Slider>();
             m_HealthSlider[ 1 ] = transform.Find( "PlayerHUD/HealthUI/HealthSlider_1" ).GetComponent<Slider>();
             m_HealthSlider[ 2 ] = transform.Find( "PlayerHUD/HealthUI/HealthSlider_2" ).GetComponent<Slider>();
@@ -81,8 +79,6 @@ namespace DivisionLike
         // Update is called once per frame
         void Update()
         {
-            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
-
             SetAmmoText();
         }
         #endregion

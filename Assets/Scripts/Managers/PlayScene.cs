@@ -35,7 +35,7 @@ namespace DivisionLike
     {
         private void Awake()
         {
-            SceneController.instance.m_CurrentScene = eSceneName.Play;
+            
         }
     }
 }

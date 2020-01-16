@@ -35,7 +35,7 @@ namespace DivisionLike
     {
         private void Awake()
         {
-            SceneController.instance.m_CurrentScene = eSceneName.Intro;
+            
         }
 
         private void Update()
@@ -56,7 +56,7 @@ namespace DivisionLike
 
             if ( Input.GetKeyDown( KeyCode.Space ) == true || Input.GetKeyDown( KeyCode.Return ) == true )
             {
-                SceneController.instance.LoadScene( eSceneName.Loading );
+                IntroGUI.instance.LoadPlayScene();
             }
         }
     }

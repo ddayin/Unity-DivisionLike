@@ -52,8 +52,6 @@ namespace DivisionLike
         #region MonoBeviour
         void Awake()
         {
-            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
-
             // Setting up the references.
             m_Animator = transform.GetComponent<Animator>();
             m_PlayerAudio = transform.GetComponent<AudioSource>();
@@ -66,8 +64,6 @@ namespace DivisionLike
 
         void Update()
         {
-            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
-
             UpdateDamageImage();
 
             // Reset the damaged flag.
@@ -214,7 +210,7 @@ namespace DivisionLike
         public void RestartLevel()
         {
             // Reload the level that is currently loaded.
-            SceneController.instance.LoadScene( eSceneName.Play );
+            
         }
     }
 }

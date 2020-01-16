@@ -27,6 +27,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using WanzyeeStudio;
 
 
 namespace DivisionLike
@@ -34,9 +35,10 @@ namespace DivisionLike
     /// <summary>
     /// 인트로 화면 GUI
     /// </summary>
-    public class IntroGUI : MonoBehaviour
+    public class IntroGUI : BaseSingleton<IntroGUI>
     {
         private Button m_PlayButton;
+        private Button m_QuitButton;
         private GameObject m_LoadingScreen;
 
         #region MonoBehaviour
@@ -45,6 +47,9 @@ namespace DivisionLike
             m_PlayButton = transform.Find( "Button_Play" ).GetComponent<Button>();
             m_PlayButton.onClick.AddListener( OnClickPlayButton );
 
+            m_QuitButton = transform.Find( "Button_Quit" ).GetComponent<Button>();
+            m_QuitButton.onClick.AddListener( OnClickQuitButton );
+
             m_LoadingScreen = transform.Find( "LoadingScreen" ).gameObject;
         }
 
@@ -52,13 +57,23 @@ namespace DivisionLike
 
         private void OnClickPlayButton()
         {
+            LoadPlayScene();
+        }
+
+        private void OnClickQuitButton()
+        {
+            Application.Quit();
+        }
+
+        public void LoadPlayScene()
+        {
             m_LoadingScreen.SetActive( true );
             StartCoroutine( LoadScene() );
         }
 
         IEnumerator LoadScene()
         {
-            AsyncOperation operation = SceneManager.LoadSceneAsync( "PlayNew" );
+            AsyncOperation operation = SceneManager.LoadSceneAsync( "Play" );
             operation.allowSceneActivation = false;
 
             float timer = 0f;

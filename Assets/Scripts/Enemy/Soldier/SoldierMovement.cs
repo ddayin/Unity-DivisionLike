@@ -69,17 +69,13 @@ namespace DivisionLike
         #region MonoBehaviour
         void Awake()
         {
-            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
-
             m_Animator = GetComponent<Animator>();
             m_CharacterController = GetComponent<CharacterController>();
         }
 
         // Update is called once per frame
-        void Update()
+        void Update()                                                               
         {
-            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
-
             ApplyGravity();
         }
         #endregion

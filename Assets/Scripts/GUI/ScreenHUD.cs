@@ -52,8 +52,6 @@ namespace DivisionLike
 
         void Awake()
         {
-            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
-
             m_LevelText = transform.Find( "LevelText" ).GetComponent<Text>();
             m_XpSlider = transform.Find( "ExpSlider" ).GetComponent<Slider>();
             m_AmmoSlider = transform.Find( "AmmoSlider" ).GetComponent<Slider>();

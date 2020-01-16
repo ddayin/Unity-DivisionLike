@@ -10145,7 +10145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4234755952056848, guid: 59e8e266ec83fd34b8885035b9213f52, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4234755952056848, guid: 59e8e266ec83fd34b8885035b9213f52, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16438,7 +16438,7 @@ Transform:
   m_Children:
   - {fileID: 1345155420}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1264626548
 PrefabInstance:
@@ -17728,7 +17728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4905648159829032, guid: 667631648b698cd4da90347673b8a333, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 20448527007917244, guid: 667631648b698cd4da90347673b8a333,
         type: 3}
@@ -23907,7 +23907,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1898445262}
-  - component: {fileID: 1898445261}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -23915,19 +23914,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1898445261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898445260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ed0591d42e3ffc499aab611ce36a6c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_CurrentScene: 2
 --- !u!4 &1898445262
 Transform:
   m_ObjectHideFlags: 0

@@ -51,7 +51,6 @@ namespace DivisionLike
 
         void Awake()
         {
-            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro ) return;
 
         }
 

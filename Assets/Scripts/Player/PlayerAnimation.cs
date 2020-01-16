@@ -39,16 +39,7 @@ namespace DivisionLike
         {
             m_Animator = GetComponent<Animator>();
 
-            if ( SceneController.instance.m_CurrentScene == eSceneName.Intro )
-            {
-                m_Animator.runtimeAnimatorController = Resources.Load( "Player/IntroPlayerAni" ) as RuntimeAnimatorController;
-            }
-            else
-            {
-
-            }
+            m_Animator.runtimeAnimatorController = Resources.Load( "Player/IntroPlayerAni" ) as RuntimeAnimatorController;
         }
-
-        
     }
 }
