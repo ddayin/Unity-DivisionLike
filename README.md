@@ -36,3 +36,8 @@ https://trello.com/b/sW1KvlRw
 2020-01-16 인트로 씬 변경
 
 ![20200116_195041](https://user-images.githubusercontent.com/29808782/72518858-8920c780-3899-11ea-98f7-5cb528dc3699.png)
+
+
+2020-01-16 총 발사와 관련된 버그 수정
+
+![20200116_221717](https://user-images.githubusercontent.com/29808782/72528278-048c7400-38ae-11ea-94aa-630f611152b4.png)
