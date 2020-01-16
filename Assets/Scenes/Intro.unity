@@ -198,7 +198,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1506484294}
     m_Modifications:
     - target: {fileID: 4974918076857478, guid: 7168c0190d7d71f49ac1cd677d6c5883, type: 3}
       propertyPath: m_LocalPosition.x
@@ -230,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4974918076857478, guid: 7168c0190d7d71f49ac1cd677d6c5883, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114978246670324854, guid: 7168c0190d7d71f49ac1cd677d6c5883,
         type: 3}
@@ -295,6 +295,11 @@ PrefabInstance:
     - target: {fileID: 199361527191781004, guid: 7168c0190d7d71f49ac1cd677d6c5883,
         type: 3}
       propertyPath: m_MaxParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199361527191781004, guid: 7168c0190d7d71f49ac1cd677d6c5883,
+        type: 3}
+      propertyPath: m_SortMode
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -544,6 +549,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &867448496 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4974918076857478, guid: 7168c0190d7d71f49ac1cd677d6c5883,
+    type: 3}
+  m_PrefabInstance: {fileID: 116402889}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &899828192
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,7 +975,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 32535
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1142,6 +1153,7 @@ Transform:
   m_Children:
   - {fileID: 1909867803}
   - {fileID: 1689835580}
+  - {fileID: 867448496}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
