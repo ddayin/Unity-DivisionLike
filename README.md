@@ -41,3 +41,7 @@ https://trello.com/b/sW1KvlRw
 2020-01-16 총 발사와 관련된 버그 수정
 
 ![20200116_221717](https://user-images.githubusercontent.com/29808782/72528278-048c7400-38ae-11ea-94aa-630f611152b4.png)
+
+2020-01-19 오일통 추가
+
+![20200119_151310](https://user-images.githubusercontent.com/29808782/72675895-54e21c80-3ace-11ea-89ac-0362ca552a79.png)
