@@ -215,7 +215,7 @@ namespace DivisionLike
         {
             if ( m_Pivot == null ) return;
 
-            if ( Player.instance.m_WeaponHandler.m_IsReloading == true ) return;
+            //if ( Player.instance.m_WeaponHandler.m_IsReloading == true ) return;
                         
             m_NewX += m_CameraSettings.m_MouseXSensitivity * Input.GetAxis( m_InputSettings.m_VerticalAxis );
             m_NewY += m_CameraSettings.m_MouseYSensitivity * Input.GetAxis( m_InputSettings.m_HorizontalAxis );
