@@ -49,3 +49,7 @@ https://trello.com/b/sW1KvlRw
 2020-01-20 적 캐릭터 추가
 
 ![20200120_225817](https://user-images.githubusercontent.com/29808782/72732114-69aad700-3bd8-11ea-8508-f138805d6256.png)
+
+![20200120_230852](https://user-images.githubusercontent.com/29808782/72732822-ef7b5200-3bd9-11ea-9a4b-6efde6f0d070.png)
+
+![20200120_231239](https://user-images.githubusercontent.com/29808782/72733049-687aa980-3bda-11ea-95f9-137097443d6a.png)
