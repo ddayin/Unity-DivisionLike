@@ -52,3 +52,4 @@ https://trello.com/b/sW1KvlRw
 
 ![20200120_230852](https://user-images.githubusercontent.com/29808782/72732822-ef7b5200-3bd9-11ea-9a4b-6efde6f0d070.png)
 
+![20200120_231239](https://user-images.githubusercontent.com/29808782/72733049-687aa980-3bda-11ea-95f9-137097443d6a.png)
