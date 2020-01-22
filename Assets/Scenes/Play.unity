@@ -10398,6 +10398,11 @@ PrefabInstance:
       propertyPath: m_SpineTransform
       value: 
       objectReference: {fileID: 591996144}
+    - target: {fileID: 7771508986974536492, guid: 59e8e266ec83fd34b8885035b9213f52,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59e8e266ec83fd34b8885035b9213f52, type: 3}
 --- !u!1001 &769801980

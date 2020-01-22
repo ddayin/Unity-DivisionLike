@@ -144,9 +144,7 @@ namespace DivisionLike
             m_EnableInput = enable;
         }
 
-        private float m_v = 0f;
-        private float m_h = 0f;
-
+        private Vector3 m_InputDirection = Vector3.zero;
         /// <summary>
         /// Handles character logic
         /// </summary>
@@ -154,14 +152,14 @@ namespace DivisionLike
         {
             if ( !m_CharacterMove )
                 return;
-
-            m_v = Input.GetAxis( m_InputSettings.m_VerticalAxis );
-            m_h = Input.GetAxis( m_InputSettings.m_HorizontalAxis );
-
+            
+            float v = Input.GetAxis( m_InputSettings.m_VerticalAxis );
+            float h = Input.GetAxis( m_InputSettings.m_HorizontalAxis );
+            
             // always walk when player is aiming
             if ( Player.instance.m_UserInput.m_IsAiming == true )
             {
-                m_CharacterMove.Animate( m_v * 0.5f, m_h * 0.5f );
+                m_CharacterMove.Animate( v * 0.5f, h * 0.5f );
             }
             else
             {
@@ -173,11 +171,11 @@ namespace DivisionLike
 
                 if ( m_IsSprinting == true )
                 {
-                    m_CharacterMove.Animate( m_v, m_h );
+                    m_CharacterMove.Animate( v, h );
                 }
                 else
                 {
-                    m_CharacterMove.Animate( m_v * 0.5f, m_h * 0.5f );
+                    m_CharacterMove.Animate( v * 0.5f, h * 0.5f );
                 }
             }
             

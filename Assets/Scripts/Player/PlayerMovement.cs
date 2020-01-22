@@ -87,10 +87,11 @@ namespace DivisionLike
             m_Gravity = m_PhysicsSettings.m_BaseGravity;
             m_IsResetGravity = false;
 
+            // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
+            // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
+            // as an acceleration (ms^-2)
             Vector3 gravityVector = new Vector3();
-
-            gravityVector.y -= m_Gravity;
-            
+            gravityVector.y -= m_Gravity;            
             m_CharacterController.Move( gravityVector * Time.deltaTime );
         }
 
