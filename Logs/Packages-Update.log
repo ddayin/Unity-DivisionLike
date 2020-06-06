@@ -74,3 +74,21 @@ Update Mode: updateDependencies
 The following packages were updated:
   com.unity.ide.vscode from version 1.1.0 to 1.1.3
   com.unity.postprocessing from version 2.1.2 to 2.1.6
+
+=== Fri Jun  5 13:33:09 2020
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.ads from version 2.0.8 to 3.4.5
+  com.unity.analytics from version 3.3.2 to 3.3.5
+  com.unity.ide.rider from version 1.1.0 to 1.1.4
+  com.unity.ide.vscode from version 1.1.3 to 1.2.0
+  com.unity.multiplayer-hlapi from version 1.0.2 to 1.0.4
+  com.unity.postprocessing from version 2.1.6 to 2.2.2
+  com.unity.test-framework from version 1.0.13 to 1.1.14
+  com.unity.timeline from version 1.1.0 to 1.2.6
+  com.unity.xr.legacyinputhelpers from version 2.0.2 to 2.1.3
+The following packages were removed:
+  com.unity.package-manager-ui@2.2.0
