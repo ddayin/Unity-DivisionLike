@@ -15,7 +15,7 @@
 
 # 개발 환경
 - OS : Windows 10 64bit
-- Engine : Unity 2019.2.17f1
+- Engine : Unity 2019.3.14f1
 - Language : C#
 - IDE : Microsoft Visual Studio 2019
 - Target Platform : Windows PC
