@@ -11,7 +11,7 @@
 # 개발 PC 스펙 (하드웨어)
 - CPU : AMD Ryzen 5 2600 Six-Core Processor
 - RAM : 16GB
-- GPU : NVIDIA GeForce GTX 1060 3GB
+- GPU : NVIDIA GeForce RTX 2070 8GB
 
 # 개발 환경
 - OS : Windows 10 64bit
