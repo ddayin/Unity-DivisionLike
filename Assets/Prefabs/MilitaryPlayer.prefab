@@ -174,8 +174,8 @@ MonoBehaviour:
     m_AimingBool: Aiming
   m_CurrentWeapon: {fileID: 0}
   m_WeaponsList:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 114602481244817218, guid: ed965125ff6f3a44d84d71a0e4769abb, type: 3}
+  - {fileID: 114272279691959126, guid: d0bb8554e084b9145bde7ebcdc944949, type: 3}
   m_MaxWeapons: 2
   m_IsReloading: 0
 --- !u!114 &114290077164167034
