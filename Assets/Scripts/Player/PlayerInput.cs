@@ -98,12 +98,14 @@ namespace DivisionLike
 
             m_TPSCamera = Camera.main;
             
-
-            SetupCrosshairs();
-
             // 마우스 커서 보이지 않도록 설정
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+        }
+
+        private void Start()
+        {
+            SetupCrosshairs();
         }
 
         // Update is called once per frame

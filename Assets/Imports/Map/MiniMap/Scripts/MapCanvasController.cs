@@ -5,6 +5,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using DivisionLike;
 
 [AddComponentMenu("MiniMap/Map canvas controller")]
 [RequireComponent(typeof(RectTransform))]
@@ -122,7 +123,8 @@ public class MapCanvasController : MonoBehaviour
 
         if (!playerTransform)
         {
-            Debug.LogError("You must specify the player transform");
+            playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+            //Debug.LogError("You must specify the player transform");
         }
 
         mapRect = GetComponent<RectTransform>();
