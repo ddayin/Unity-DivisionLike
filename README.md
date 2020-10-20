@@ -23,6 +23,10 @@
 # Trello 일정관리
 https://trello.com/b/sW1KvlRw
 
+# 주요 기능
+
+# 주요 클래스 설명
+
 # 스크린샷
 2020-01-15 skybox 추가, 라이트 변경
 
