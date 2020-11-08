@@ -126,8 +126,6 @@ namespace DivisionLike
             {
                 m_LoadingScreen.SetActive(false);
                 SceneManager.sceneLoaded -= LoadedSceneComplete;
-
-                SceneController.instance.LoadSceneAddictive(SceneName.HUD);
             }
         }
     }
