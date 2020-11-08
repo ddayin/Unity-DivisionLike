@@ -33,13 +33,8 @@ namespace DivisionLike
     /// <summary>
     /// 미니맵, 현재 경험치, 현재 레벨, 현재 장전된 총알 등을 포함한 UI 표시
     /// </summary>
-    public class ScreenHUD : MonoBehaviour
+    public class ScreenHUD : BaseSingleton<ScreenHUD>
     {
-        public static ScreenHUD instance
-        {
-            get { return Singleton<ScreenHUD>.instance; }
-        }
-
         private Text m_LevelText;               // 현재 레벨
         private Slider m_XpSlider;              // 현재 경험치
         private Slider m_AmmoSlider;            // 현재 장전되어 있는 총알 슬라이더
@@ -50,8 +45,10 @@ namespace DivisionLike
         private MinimapHit m_MinimapHit;
         private CircularHit m_CircularHit;
 
-        void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             m_LevelText = transform.Find( "LevelText" ).GetComponent<Text>();
             m_XpSlider = transform.Find( "ExpSlider" ).GetComponent<Slider>();
             m_AmmoSlider = transform.Find( "AmmoSlider" ).GetComponent<Slider>();
