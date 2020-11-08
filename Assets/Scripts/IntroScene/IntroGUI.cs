@@ -25,6 +25,7 @@ SOFTWARE.
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WanzyeeStudio;
 
@@ -89,6 +90,9 @@ namespace DivisionLike
         public void LoadPlayScene()
         {
             m_LoadingScreen.SetActive( true );
+
+            SceneManager.sceneLoaded += LoadedSceneComplete;
+
             StartCoroutine( LoadScene() );
         }
 
@@ -110,8 +114,20 @@ namespace DivisionLike
                 else
                 {
                     operation.allowSceneActivation = true;
+                    
                     yield break;
                 }
+            }
+        }
+
+        private void LoadedSceneComplete(Scene scene, LoadSceneMode loadSceneMode)
+        {
+            if (scene.name == SceneController.instance.CurrentScene.ToString())
+            {
+                m_LoadingScreen.SetActive(false);
+                SceneManager.sceneLoaded -= LoadedSceneComplete;
+
+                SceneController.instance.LoadSceneAddictive(SceneName.HUD);
             }
         }
     }

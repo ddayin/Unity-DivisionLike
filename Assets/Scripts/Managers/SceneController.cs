@@ -24,7 +24,12 @@ namespace DivisionLike
         /// <summary>
         /// 실제 인게임 플레이 화면
         /// </summary>
-        Play
+        Play,
+
+        /// <summary>
+        /// 인게임 플레이 화면의 GUI
+        /// </summary>
+        HUD
     }
 
     /// <summary>
@@ -72,7 +77,7 @@ namespace DivisionLike
         public void LoadScene(SceneName name)
         {
             m_CurrentSceneName = name;
-            SceneManager.LoadScene(m_CurrentSceneName.ToString());
+            SceneManager.LoadScene(m_CurrentSceneName.ToString(), LoadSceneMode.Single);
         }
 
         /// <summary>
@@ -84,6 +89,15 @@ namespace DivisionLike
         {
             m_CurrentSceneName = name;
             return SceneManager.LoadSceneAsync(m_CurrentSceneName.ToString());
+        }
+
+        /// <summary>
+        /// 불러온 씬이 이미 있는데 추가적으로 더 불러들이는 씬이 있다.
+        /// </summary>
+        /// <param name="name"></param>
+        public void LoadSceneAddictive(SceneName name)
+        {
+            SceneManager.LoadScene(name.ToString(), LoadSceneMode.Additive);
         }
     }
 }
