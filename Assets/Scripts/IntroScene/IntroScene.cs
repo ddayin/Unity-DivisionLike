@@ -43,15 +43,14 @@ namespace DivisionLike
             ProcessKeyInput();
         }
 
+        /// <summary>
+        /// 키 입력 처리
+        /// </summary>
         private void ProcessKeyInput()
         {
             if ( Input.GetKeyDown( KeyCode.Escape ) == true )
             {
-#if UNITY_EDITOR
-
-#else
                 Application.Quit();
-#endif
             }
 
             if ( Input.GetKeyDown( KeyCode.Space ) == true || Input.GetKeyDown( KeyCode.Return ) == true )
