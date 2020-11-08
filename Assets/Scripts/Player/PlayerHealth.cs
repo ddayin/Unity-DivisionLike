@@ -29,7 +29,6 @@ SOFTWARE.
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
 namespace DivisionLike
 {

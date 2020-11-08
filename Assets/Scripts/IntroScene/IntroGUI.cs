@@ -26,7 +26,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using WanzyeeStudio;
 
 
@@ -37,13 +36,26 @@ namespace DivisionLike
     /// </summary>
     public class IntroGUI : BaseSingleton<IntroGUI>
     {
+        /// <summary>
+        /// 게임 시작 버튼
+        /// </summary>
         private Button m_PlayButton;
+
+        /// <summary>
+        /// 게임 어플리케이션 종료 버튼
+        /// </summary>
         private Button m_QuitButton;
+
+        /// <summary>
+        /// 로딩 화면
+        /// </summary>
         private GameObject m_LoadingScreen;
 
         #region MonoBehaviour
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             m_PlayButton = transform.Find( "Button_Play" ).GetComponent<Button>();
             m_PlayButton.onClick.AddListener( OnClickPlayButton );
 
@@ -55,16 +67,25 @@ namespace DivisionLike
 
         #endregion
 
+        /// <summary>
+        /// 게임 시작 버튼을 누르면 게임이 시작된다.
+        /// </summary>
         private void OnClickPlayButton()
         {
             LoadPlayScene();
         }
 
+        /// <summary>
+        /// 종료 버튼을 클릭하면 게임 어플리케이션을 종료한다.
+        /// </summary>
         private void OnClickQuitButton()
         {
             Application.Quit();
         }
 
+        /// <summary>
+        /// 플레이 씬을 불러들인다.
+        /// </summary>
         public void LoadPlayScene()
         {
             m_LoadingScreen.SetActive( true );
@@ -73,7 +94,7 @@ namespace DivisionLike
 
         IEnumerator LoadScene()
         {
-            AsyncOperation operation = SceneManager.LoadSceneAsync( "Play" );
+            AsyncOperation operation = SceneController.instance.LoadSceneAsyn(SceneName.Play);
             operation.allowSceneActivation = false;
 
             float timer = 0f;
