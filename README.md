@@ -60,4 +60,4 @@ https://trello.com/b/sW1KvlRw
 
 2020-11-11 TPS 테스트 씬
 
-![20201111_224349](https://user-images.githubusercontent.com/29808782/98818829-6d616000-246f-11eb-9a9e-b304bc3f32b2.png)
+![20201111_230636](https://user-images.githubusercontent.com/29808782/98821212-97685180-2472-11eb-9e9d-25b633bdcae2.png)
