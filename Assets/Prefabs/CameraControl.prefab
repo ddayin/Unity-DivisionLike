@@ -51,9 +51,9 @@ MonoBehaviour:
     m_Bits: 512
   m_Shoulder: 0
   m_CameraSettings:
-    m_CamPositionOffsetLeft: {x: 0, y: 0, z: 0}
-    m_CamPositionOffsetRight: {x: 0, y: 0, z: 0}
-    m_UICamera: {fileID: 0}
+    m_CamPositionOffsetLeft: {x: -0.476, y: 0.691, z: -1.159}
+    m_CamPositionOffsetRight: {x: 0.476, y: 0.691, z: -1.159}
+    m_UICamera: {fileID: 20640846701817856}
     m_MouseXSensitivity: 5
     m_MouseYSensitivity: 5
     m_MinAngle: -30

@@ -125,6 +125,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &3534603
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1501084758933746, guid: 9437be881ad682348bd31aa228922027, type: 3}
+      propertyPath: m_Name
+      value: Military target
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720941400279188, guid: 9437be881ad682348bd31aa228922027, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720941400279188, guid: 9437be881ad682348bd31aa228922027, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720941400279188, guid: 9437be881ad682348bd31aa228922027, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720941400279188, guid: 9437be881ad682348bd31aa228922027, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720941400279188, guid: 9437be881ad682348bd31aa228922027, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.9132042
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720941400279188, guid: 9437be881ad682348bd31aa228922027, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.364
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720941400279188, guid: 9437be881ad682348bd31aa228922027, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720941400279188, guid: 9437be881ad682348bd31aa228922027, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720941400279188, guid: 9437be881ad682348bd31aa228922027, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720941400279188, guid: 9437be881ad682348bd31aa228922027, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720941400279188, guid: 9437be881ad682348bd31aa228922027, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720941400279188, guid: 9437be881ad682348bd31aa228922027, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720941400279188, guid: 9437be881ad682348bd31aa228922027, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720941400279188, guid: 9437be881ad682348bd31aa228922027, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9437be881ad682348bd31aa228922027, type: 3}
 --- !u!1001 &151219194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -138,7 +207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4905648159829032, guid: 667631648b698cd4da90347673b8a333, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4905648159829032, guid: 667631648b698cd4da90347673b8a333, type: 3}
       propertyPath: m_LocalPosition.x
@@ -180,8 +249,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114936941238995890, guid: 667631648b698cd4da90347673b8a333,
+        type: 3}
+      propertyPath: m_Target
+      value: 
+      objectReference: {fileID: 536913361}
+    - target: {fileID: 114936941238995890, guid: 667631648b698cd4da90347673b8a333,
+        type: 3}
+      propertyPath: m_CameraSettings.m_UICamera
+      value: 
+      objectReference: {fileID: 151219195}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 667631648b698cd4da90347673b8a333, type: 3}
+--- !u!20 &151219195 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20640846701817856, guid: 667631648b698cd4da90347673b8a333,
+    type: 3}
+  m_PrefabInstance: {fileID: 151219194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &511774706
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4234755952056848, guid: 59e8e266ec83fd34b8885035b9213f52, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4234755952056848, guid: 59e8e266ec83fd34b8885035b9213f52, type: 3}
       propertyPath: m_LocalPosition.x
@@ -430,6 +515,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59e8e266ec83fd34b8885035b9213f52, type: 3}
+--- !u!4 &536913361 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4234755952056848, guid: 59e8e266ec83fd34b8885035b9213f52,
+    type: 3}
+  m_PrefabInstance: {fileID: 536913360}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &549748738
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,7 +817,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1513906611}
-  - component: {fileID: 1513906612}
   m_Layer: 0
   m_Name: ScriptManager
   m_TagString: Untagged
@@ -748,18 +838,6 @@ Transform:
   m_Father: {fileID: 720199611}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1513906612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513906610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c0110f81ccc31a4290427302bef7209, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1666236131
 PrefabInstance:
   m_ObjectHideFlags: 0
