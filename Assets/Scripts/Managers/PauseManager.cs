@@ -41,9 +41,6 @@ namespace DivisionLike
     /// </summary>
     public class PauseManager : MonoBehaviour
     {
-        public AudioMixerSnapshot m_Paused;
-        public AudioMixerSnapshot m_Unpaused;
-
         private Canvas m_Canvas;
         private Button m_InstructionButton;
         private Image m_InstructionImage;
@@ -106,24 +103,6 @@ namespace DivisionLike
             }
 
             ShowMouseCursor( m_IsPaused );
-
-            Lowpass();
-
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        void Lowpass()
-        {
-            if ( m_IsPaused == true )
-            {
-                m_Paused.TransitionTo( .01f );
-            }
-            else if ( m_IsPaused == false )
-            {
-                m_Unpaused.TransitionTo( .01f );
-            }
         }
 
         /// <summary>
