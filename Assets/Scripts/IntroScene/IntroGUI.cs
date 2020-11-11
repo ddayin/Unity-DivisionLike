@@ -35,7 +35,7 @@ namespace DivisionLike
     /// <summary>
     /// 인트로 화면 GUI
     /// </summary>
-    public class IntroGUI : BaseSingleton<IntroGUI>
+    public class IntroGUI : MonoBehaviour
     {
         /// <summary>
         /// 게임 시작 버튼
@@ -53,10 +53,8 @@ namespace DivisionLike
         private GameObject m_LoadingScreen;
 
         #region MonoBehaviour
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
-
             m_PlayButton = transform.Find( "Button_Play" ).GetComponent<Button>();
             m_PlayButton.onClick.AddListener( OnClickPlayButton );
 
@@ -120,11 +118,15 @@ namespace DivisionLike
             }
         }
 
+        /// <summary>
+        /// 씬을 불러들이는 작업이 완료되면 처리할 작업들
+        /// </summary>
+        /// <param name="scene"></param>
+        /// <param name="loadSceneMode"></param>
         private void LoadedSceneComplete(Scene scene, LoadSceneMode loadSceneMode)
         {
             if (scene.name == SceneController.instance.CurrentScene.ToString())
             {
-                m_LoadingScreen.SetActive(false);
                 SceneManager.sceneLoaded -= LoadedSceneComplete;
             }
         }

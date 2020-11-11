@@ -33,6 +33,8 @@ namespace DivisionLike
     /// </summary>
     public class IntroScene : MonoBehaviour
     {
+        [SerializeField] private IntroGUI m_IntroGUI;
+
         private void Awake()
         {
             
@@ -55,7 +57,7 @@ namespace DivisionLike
 
             if ( Input.GetKeyDown( KeyCode.Space ) == true || Input.GetKeyDown( KeyCode.Return ) == true )
             {
-                IntroGUI.instance.LoadPlayScene();
+                m_IntroGUI.LoadPlayScene();
             }
         }
     }
