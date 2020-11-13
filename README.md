@@ -61,3 +61,7 @@ https://trello.com/b/sW1KvlRw
 2020-11-11 TPS 테스트 씬
 
 ![20201111_230636](https://user-images.githubusercontent.com/29808782/98821212-97685180-2472-11eb-9e9d-25b633bdcae2.png)
+
+2020-11-13 TPS 테스트 씬 조준/사격
+
+![20201114_000448](https://user-images.githubusercontent.com/29808782/99086611-1abdaa80-260d-11eb-8092-08781a027761.png)
