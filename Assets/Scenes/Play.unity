@@ -1235,12 +1235,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 69462280}
   m_PrefabAsset: {fileID: 0}
---- !u!120 &69462282 stripped
-LineRenderer:
-  m_CorrespondingSourceObject: {fileID: 120662363573181450, guid: d0bb8554e084b9145bde7ebcdc944949,
-    type: 3}
-  m_PrefabInstance: {fileID: 69462280}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &69462283 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 426358, guid: d0bb8554e084b9145bde7ebcdc944949,
@@ -10527,7 +10521,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_WeaponSettings._bulletLine
       value: 
-      objectReference: {fileID: 69462282}
+      objectReference: {fileID: 769801982}
     - target: {fileID: 114602481244817218, guid: ed965125ff6f3a44d84d71a0e4769abb,
         type: 3}
       propertyPath: m_WeaponSettings.shellEjectSpot
@@ -10543,6 +10537,12 @@ PrefabInstance:
 --- !u!4 &769801981 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4851204852203356, guid: ed965125ff6f3a44d84d71a0e4769abb,
+    type: 3}
+  m_PrefabInstance: {fileID: 769801980}
+  m_PrefabAsset: {fileID: 0}
+--- !u!120 &769801982 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 120506058577573124, guid: ed965125ff6f3a44d84d71a0e4769abb,
     type: 3}
   m_PrefabInstance: {fileID: 769801980}
   m_PrefabAsset: {fileID: 0}
