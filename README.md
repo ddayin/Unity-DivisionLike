@@ -1,4 +1,4 @@
-# DivisionLike 개요
+# DivisionLike Unity Project Summary
 유니티 엔진을 사용해 Tom Clancy's The Division과 같은 게임을 개발합니다.
 
 # 모작한 게임 Division 스크린샷
@@ -9,19 +9,16 @@
 2. 포트폴리오
 
 # 개발 PC 스펙 (하드웨어)
-- CPU : AMD Ryzen 5 2600 Six-Core Processor
-- RAM : 16GB
-- GPU : NVIDIA GeForce RTX 2070 8GB
+- CPU : AMD Ryzen 9 5900X 12-Core Processor
+- RAM : 32GB
+- GPU : NVIDIA GeForce RTX 3060 16GB
 
 # 개발 환경
-- OS : Windows 10 64bit
-- Engine : Unity 2019.3.14f1
+- OS : Windows 11 64bit
+- Engine : Unity 2022.1.6f1
 - Language : C#
-- IDE : Microsoft Visual Studio 2019
+- IDE : Jetbrains Rider 2022.1.2
 - Target Platform : Windows PC
-
-# Trello 일정관리
-https://trello.com/b/sW1KvlRw
 
 # 주요 기능
 
