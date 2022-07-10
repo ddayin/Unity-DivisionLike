@@ -3,10 +3,12 @@ develop a game like Tom Clancy's The Division by using Unity
 
 # Tom Clancy's The Division screenshot
 ![Tom Clancy's The Division™_20171112122230](https://user-images.githubusercontent.com/29808782/72430650-46e28200-37d6-11ea-8d93-8d0e4676b533.jpg)
+![The-Division-2-1200x900-cropped](https://user-images.githubusercontent.com/29808782/178140678-ba8bdbdd-3395-452f-8786-edd249ad4cf8.jpg)
 
-# Purpose
+# Project Purpose
 1. I like TPS(Third Person Shooter) games! So I want to make my own game like division
 2. personal portfolio
+3. to learn Unity & C#
 
 # Development PC Hardware Spec
 - CPU : AMD Ryzen 9 5900X 12-Core Processor
