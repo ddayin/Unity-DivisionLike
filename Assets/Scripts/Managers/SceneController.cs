@@ -47,8 +47,9 @@ namespace DivisionLike
             set { m_CurrentSceneName = value; }
         }
 
-        protected void Awake() {
+        private void Awake() {
             instance = this;
+            DontDestroyOnLoad(this);
         }
 
         private void Start()
