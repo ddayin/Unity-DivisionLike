@@ -8,7 +8,7 @@ develop a game like Tom Clancy's The Division by using Unity
 1. I like TPS(Third Person Shooter) games! So I want to make my own game like division
 2. personal portfolio
 
-# Development PC spec (hardware)
+# Development PC Hardware Spec
 - CPU : AMD Ryzen 9 5900X 12-Core Processor
 - RAM : 32GB
 - GPU : NVIDIA GeForce RTX 3060 16GB
