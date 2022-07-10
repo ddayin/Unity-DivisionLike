@@ -25,8 +25,6 @@ SOFTWARE.
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using WanzyeeStudio;
-
 
 namespace DivisionLike
 {
@@ -35,11 +33,8 @@ namespace DivisionLike
     /// </summary>
     public class EffectManager : MonoBehaviour
     {
-        public static EffectManager instance
-        {
-            get { return Singleton<EffectManager>.instance; }
-        }
-
+        public static EffectManager instance { get; private set; }
+        
         public GameObject[] m_ParticlePrefabs = new GameObject[ 8 ];
         private Transform m_ParticleParent;
 

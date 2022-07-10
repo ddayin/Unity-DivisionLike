@@ -28,7 +28,6 @@ SOFTWARE.
 
 using UnityEngine;
 using System.Collections;
-using WanzyeeStudio;
 
 namespace DivisionLike
 {
@@ -38,10 +37,7 @@ namespace DivisionLike
     [ExecuteInEditMode]     // 스크립트가 에디터모드에서 동작하도록 설정
     public class CameraControl : MonoBehaviour
     {
-        public static CameraControl instance
-        {
-            get { return Singleton<CameraControl>.instance; }
-        }
+        public static CameraControl instance { get; private set; }
 
         public Transform m_Target = null;               // 카메라가 쳐다볼 타겟
         public bool m_IsAutoTargetPlayer = true;        // 카메라가 플레이어를 자동으로 쳐다볼 타겟
@@ -112,8 +108,9 @@ namespace DivisionLike
         private bool m_IsZoomingMore = false;               // 더 확대를 하고 있는지
 
         #region MonoBehaviour
-        private void Awake()
-        {
+        private void Awake() {
+            instance = this;
+            
             m_MainCamera = Camera.main;
             m_Pivot = transform.GetChild( 0 );
         }

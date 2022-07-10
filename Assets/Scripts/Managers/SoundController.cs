@@ -29,7 +29,6 @@ SOFTWARE.
 using System;
 using UnityEngine;
 using System.Collections;
-using WanzyeeStudio;
 using Random = UnityEngine.Random;
 
 namespace DivisionLike

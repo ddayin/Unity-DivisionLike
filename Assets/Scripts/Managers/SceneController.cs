@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using WanzyeeStudio;
 
 namespace DivisionLike
 {
@@ -35,8 +34,10 @@ namespace DivisionLike
     /// <summary>
     /// 씬을 불러들이고 관리한다.
     /// </summary>
-    public class SceneController : BaseSingleton<SceneController>
+    public class SceneController : MonoBehaviour
     {
+        public static SceneController instance { get; private set; }
+        
         /// <summary>
         /// 현재 실행 중인 씬의 이름
         /// </summary>
@@ -48,11 +49,8 @@ namespace DivisionLike
             set { m_CurrentSceneName = value; }
         }
 
-        protected override void Awake()
-        {
-            base.Awake();
-
-
+        protected void Awake() {
+            instance = this;
         }
 
         private void Start()
