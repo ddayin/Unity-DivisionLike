@@ -22,8 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using WanzyeeStudio;
@@ -33,8 +35,10 @@ namespace DivisionLike
     /// <summary>
     /// 미니맵, 현재 경험치, 현재 레벨, 현재 장전된 총알 등을 포함한 UI 표시
     /// </summary>
-    public class ScreenHUD : BaseSingleton<ScreenHUD>
+    public class ScreenHUD : MonoBehaviour
     {
+        public static ScreenHUD instance { get; private set; }
+        
         private Text m_LevelText;               // 현재 레벨
         private Slider m_XpSlider;              // 현재 경험치
         private Slider m_AmmoSlider;            // 현재 장전되어 있는 총알 슬라이더
@@ -45,9 +49,9 @@ namespace DivisionLike
         private MinimapHit m_MinimapHit;
         private CircularHit m_CircularHit;
 
-        protected override void Awake()
-        {
-            base.Awake();
+        void Awake() {
+            instance = this;
+        
 
             m_LevelText = transform.Find( "LevelText" ).GetComponent<Text>();
             m_XpSlider = transform.Find( "ExpSlider" ).GetComponent<Slider>();
@@ -57,13 +61,15 @@ namespace DivisionLike
             m_CircularHit = transform.Find( "CircularHit" ).GetComponent<CircularHit>();
             m_MinimapHit = transform.Find( "MiniMap/MapInner/Hit" ).GetComponent<MinimapHit>();
             m_ReloadImage = transform.Find( "ReloadImage" ).GetComponent<Image>();
-            
+        }
+
+        private void Start() {
             SetLevelText();
             CalculateExpSlider( 0 );
             SetAmmoSlider();
             SetLoadingCircle( 0f );
         }
-        
+
         /// <summary>
         /// 레벨을 설정한다.
         /// </summary>

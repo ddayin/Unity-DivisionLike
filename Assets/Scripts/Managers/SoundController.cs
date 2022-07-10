@@ -26,9 +26,11 @@ SOFTWARE.
  * reference - https://www.youtube.com/watch?v=gN1BmP4ONSQ&list=PLfxIz_UlKk7IwrcF2zHixNtFmh0lznXow&t=4140s&index=4
  */
 
+using System;
 using UnityEngine;
 using System.Collections;
 using WanzyeeStudio;
+using Random = UnityEngine.Random;
 
 namespace DivisionLike
 {
@@ -37,11 +39,11 @@ namespace DivisionLike
     /// </summary>
     public class SoundController : MonoBehaviour
     {
-        public static SoundController instance
-        {
-            get { return Singleton<SoundController>.instance; }
-        }
+        public static SoundController instance { get; private set; }
 
+        private void Awake() {
+            instance = this;
+        }
 
         /// <summary>
         /// 해당 사운드를 재생한다.

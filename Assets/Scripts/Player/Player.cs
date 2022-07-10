@@ -35,11 +35,8 @@ namespace DivisionLike
     /// </summary>
     public class Player : MonoBehaviour
     {
-        public static Player instance
-        {
-            get { return Singleton<Player>.instance; }
-        }
-
+        public static Player instance { get; private set; }
+        
         [HideInInspector] public PlayerAnimation m_Animation;
         [HideInInspector] public PlayerStats m_Stats;
         [HideInInspector] public PlayerHealth m_Health;
@@ -48,8 +45,9 @@ namespace DivisionLike
         [HideInInspector] public WeaponHandler m_WeaponHandler;
         [HideInInspector] public PlayerOutlineEffect m_OutlineEffect;
 
-        void Awake()
-        {
+        void Awake() {
+            instance = this;
+            
             m_Animation = transform.GetComponent<PlayerAnimation>();
             m_Stats = transform.GetComponent<PlayerStats>();
             m_Health = transform.GetComponent<PlayerHealth>();

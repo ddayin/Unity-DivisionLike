@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,10 +36,7 @@ namespace DivisionLike
     /// </summary>
     public class PlayerHUD : MonoBehaviour
     {
-        public static PlayerHUD instance
-        {
-            get { return Singleton<PlayerHUD>.instance; }
-        }
+        public static PlayerHUD instance { get; private set; }
 
         private Slider[] m_HealthSlider = new Slider[ 3 ];
 
@@ -53,8 +51,9 @@ namespace DivisionLike
         private Weapon m_AnotherWeapon = null;
 
         #region MonoBehaviour
-        void Awake()
-        {
+        void Awake() {
+            instance = this;
+            
             m_HealthSlider[ 0 ] = transform.Find( "PlayerHUD/HealthUI/HealthSlider_0" ).GetComponent<Slider>();
             m_HealthSlider[ 1 ] = transform.Find( "PlayerHUD/HealthUI/HealthSlider_1" ).GetComponent<Slider>();
             m_HealthSlider[ 2 ] = transform.Find( "PlayerHUD/HealthUI/HealthSlider_2" ).GetComponent<Slider>();
@@ -65,8 +64,9 @@ namespace DivisionLike
 
             m_MedikitNumberText = transform.Find( "PlayerHUD/Medikit/NumberText" ).GetComponent<Text>();
             m_GrenadeNumberText = transform.Find( "PlayerHUD/Grenade/NumberText" ).GetComponent<Text>();
+        }
 
-
+        private void Start() {
             m_WeaponHandler = Player.instance.m_WeaponHandler;
 
             InitHealthSlider();
