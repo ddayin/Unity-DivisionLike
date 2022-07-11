@@ -6,8 +6,7 @@ public class Loading : MonoBehaviour
 {
     private RectTransform m_RectComponent;
     private Image m_ImageComp;
-    private bool m_IsUp;
-
+    
     public float m_RotateSpeed = 200f;
     public float m_OpenSpeed = .005f;
     public float m_CloseSpeed = .01f;
@@ -16,7 +15,6 @@ public class Loading : MonoBehaviour
     {
         m_RectComponent = GetComponent<RectTransform>();
         m_ImageComp = m_RectComponent.GetComponent<Image>();
-        m_IsUp = true;
     }
 
     public void RotateDegreeZ( float degree )

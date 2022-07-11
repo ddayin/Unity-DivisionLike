@@ -8,8 +8,7 @@ public class rotatetotate : MonoBehaviour {
 
     private RectTransform rectComponent;
     private Image imageComp;
-    private bool up = false;
-
+    
     public float rotateSpeed = 200f;
 
     // Use this for initialization

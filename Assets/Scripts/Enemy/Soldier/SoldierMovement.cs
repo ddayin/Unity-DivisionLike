@@ -35,7 +35,6 @@ namespace DivisionLike
 
         private float m_Forward;
         private float m_Strafe;
-        private bool m_IsResetGravity;
         private float m_Gravity;
 
         #region MonoBehaviour
@@ -58,8 +57,7 @@ namespace DivisionLike
         private void ApplyGravity()
         {
             m_Gravity = m_PhysicsSettings.m_BaseGravity;
-            m_IsResetGravity = false;
-
+            
             Vector3 gravityVector = new Vector3();
 
             gravityVector.y -= m_Gravity;

@@ -20,7 +20,7 @@ namespace DivisionLike
         private Text m_GrenadeNumberText;
 
         private WeaponHandler m_WeaponHandler;
-        private Weapon m_AnotherWeapon = null;
+        private Weapon.WeaponType anotherType = Weapon.WeaponType.Primary;
 
         #region MonoBehaviour
         void Awake() {
@@ -149,7 +149,6 @@ namespace DivisionLike
         /// </summary>
         public void SetAnotherWeapon()
         {
-            Weapon.WeaponType anotherType = Weapon.WeaponType.Primary;
             if ( m_WeaponHandler.m_CurrentWeapon.m_WeaponType == Weapon.WeaponType.Primary )
             {
                 anotherType = Weapon.WeaponType.Secondary;
