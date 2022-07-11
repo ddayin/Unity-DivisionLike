@@ -30,13 +30,13 @@ namespace DivisionLike
         #region MonoBehaviour
         private void Awake()
         {
-            m_PlayButton = transform.Find( "Button_Play" ).GetComponent<Button>();
+            m_PlayButton = transform.Find( "PanelMenu/Button_Play" ).GetComponent<Button>();
             m_PlayButton.onClick.AddListener( OnClickPlayButton );
 
-            m_QuitButton = transform.Find( "Button_Quit" ).GetComponent<Button>();
+            m_QuitButton = transform.Find("PanelMenu/Button_Quit").GetComponent<Button>();
             m_QuitButton.onClick.AddListener( OnClickQuitButton );
 
-            m_LoadingScreen = transform.Find( "LoadingScreen" ).gameObject;
+            m_LoadingScreen = transform.Find( "PanelMenu/LoadingScreen" ).gameObject;
         }
 
         #endregion
