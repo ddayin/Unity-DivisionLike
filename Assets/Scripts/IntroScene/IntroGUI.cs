@@ -36,7 +36,7 @@ namespace DivisionLike
             m_QuitButton = transform.Find( "PanelMenu/Button_Quit" ).GetComponent<Button>();
             m_QuitButton.onClick.AddListener( OnClickQuitButton );
 
-            m_LoadingScreen = transform.Find( "LoadingScreen" ).gameObject;
+            m_LoadingScreen = transform.Find( "LoadingScreen" ).gameObject; 
         }
 
         #endregion
