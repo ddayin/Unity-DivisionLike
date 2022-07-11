@@ -27,7 +27,7 @@ develop a game like Tom Clancy's The Division by using Unity
 # Explain about main classes
 
 # Project Schedule
-https://www.notion.so/ddayin/75a25ffdbf244ed6b589346ecfdc0b4d?v=7bd572af6c084748924ba16ad6f8bcf9
+https://trello.com/b/RqkQ5XkN/unity-divisionlike
 
 # Daily Log and Screenshots
 2020-01-15 added skybox, modified light
