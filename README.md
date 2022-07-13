@@ -29,6 +29,9 @@ develop a game like Tom Clancy's The Division by using Unity
 # Project Schedule
 https://trello.com/b/RqkQ5XkN/unity-divisionlike
 
+# Unity & C# Coding Convention
+https://avangarde-software.com/unity-coding-guidelines-basic-best-practices/
+
 # Daily Log and Screenshots
 2020-01-15 added skybox, modified light
 
