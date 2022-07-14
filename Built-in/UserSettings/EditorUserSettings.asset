@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!162 &1
+EditorUserSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 4
+  m_ConfigSettings:
+    RecentlyUsedSceneGuid-0:
+      value: 5408525e07540a0f0e59592611755a4445151c727e707e367a2d4567b3b0623b
+      flags: 0
+    RecentlyUsedSceneGuid-1:
+      value: 560651545404590a5856597349265c44104f4a792d7d246528794e61e6b6326f
+      flags: 0
+    RecentlyUsedSceneGuid-2:
+      value: 5004005604045c08595f5a7346225c4414154a79782b20627b7a4b67bab3643c
+      flags: 0
+    RecentlyUsedSceneGuid-3:
+      value: 53040d5651055e5a5f5a082115220d44464f1c7c7e2e7f312c7a4b6bbbb56c6a
+      flags: 0
+    RecentlyUsedSceneGuid-4:
+      value: 5554565e04020c0b54575c7b15770b44414e4b2f7d2e776928281f6bb2e23660
+      flags: 0
+    RecentlyUsedSceneGuid-5:
+      value: 5002570253535d020c0d0a7341260d444f164d732d2d71627b2f4d62e6e46d3b
+      flags: 0
+    RecentlyUsedSceneGuid-6:
+      value: 5206575001040d0f5b0b087611775c14474e1a287b2e71317f7a4c60bab63639
+      flags: 0
+    RecentlyUsedSceneGuid-7:
+      value: 5b0606045201085d555c5f2649200b44454f4b7c297823637b794935b7e5676e
+      flags: 0
+    RecentlyUsedSceneGuid-8:
+      value: 5655515552015d0d595d5e7b15720f44464f4c7c287e70352b2d1f65b6e4673d
+      flags: 0
+    RecentlyUsedSceneGuid-9:
+      value: 5708515557030b5f5f560e7148210f44454f1e73757820347a7e4567e7e1633e
+      flags: 0
+    RecentlyUsedScenePath-0:
+      value: 22424703114646680e0b0227036c6c0417101d150e2935392e1d0f32ebee3d36e5a923e7ee2e26
+      flags: 0
+    vcSharedLogLevel:
+      value: 0d5e400f0650
+      flags: 0
+  m_VCAutomaticAdd: 1
+  m_VCDebugCom: 0
+  m_VCDebugCmd: 0
+  m_VCDebugOut: 0
+  m_SemanticMergeMode: 2
+  m_DesiredImportWorkerCount: 6
+  m_StandbyImportWorkerCount: 2
+  m_IdleImportWorkerShutdownDelay: 60000
+  m_VCShowFailedCheckout: 1
+  m_VCOverwriteFailedCheckoutAssets: 1
+  m_VCProjectOverlayIcons: 1
+  m_VCHierarchyOverlayIcons: 1
+  m_VCOtherOverlayIcons: 1
+  m_VCAllowAsyncUpdate: 0
+  m_ArtifactGarbageCollection: 1

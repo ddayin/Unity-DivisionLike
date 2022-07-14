@@ -1,0 +1,8 @@
+This 3d model is released for free by Perlind Arts and is useable in both commercial and non commercial projects.
+
+HDR skyboxed used for renders are provided by HDRlabs
+http://www.hdrlabs.com/sibl/
+
+Assets used in rendering - scion, super sampling
+
+If you found this package useful please leave a rating/review and be sure to share with your friends :)
