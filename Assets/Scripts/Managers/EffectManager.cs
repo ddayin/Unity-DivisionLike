@@ -16,8 +16,8 @@ namespace DivisionLike
         private Dictionary<int, ParticleSystem> m_EffectDic = new Dictionary<int, ParticleSystem>();
         private int m_IndexDic = 0;
 
-        private void Awake()
-        {
+        private void Awake() {
+            instance = this;
             m_ParticleParent = transform.Find( "ParticleParent" );
         }
 
