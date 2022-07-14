@@ -17,7 +17,7 @@ develop a game like Tom Clancy's The Division by using Unity
 
 # Development Environment
 - OS : Windows 11 64bit
-- Engine : Unity 2022.1.6f1
+- Engine : Unity 2021.3.2f1 LTS
 - Language : C#
 - IDE : Jetbrains Rider 2022.1.2
 - Target Platform : Windows PC
