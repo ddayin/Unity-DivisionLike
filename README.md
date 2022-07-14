@@ -27,7 +27,7 @@ develop a game like Tom Clancy's The Division by using Unity
 # Explain about main classes
 
 # Project Schedule
-https://trello.com/b/RqkQ5XkN/unity-divisionlike
+https://www.notion.so/ddayin/Unity-DivisionLike-b2b7619b6c9c465eab350c73a07942d3
 
 # Unity & C# Coding Convention
 https://avangarde-software.com/unity-coding-guidelines-basic-best-practices/
