@@ -17,6 +17,11 @@ namespace DivisionLike
         /// </summary>
         private Button m_PlayButton;
 
+        private Button m_MultiPlayButton;
+        private Button m_TrainingButton;
+        private Button m_OptionButton;
+        private Button m_GithubButton;
+
         /// <summary>
         /// 게임 어플리케이션 종료 버튼
         /// </summary>
@@ -31,12 +36,21 @@ namespace DivisionLike
         private void Awake()
         {
             m_PlayButton = transform.Find( "PanelMenu/Button_SinglePlay" ).GetComponent<Button>();
-            m_PlayButton.onClick.AddListener( OnClickPlayButton );
+            m_MultiPlayButton = transform.Find("PanelMenu/Button_MultiPlay").GetComponent<Button>();
+            m_TrainingButton = transform.Find( "PanelMenu/Button_Training" ).GetComponent<Button>();
+            m_OptionButton = transform.Find( "PanelMenu/Button_Option" ).GetComponent<Button>();
+            m_GithubButton = transform.Find( "PanelMenu/Button_Github" ).GetComponent<Button>();
+            m_QuitButton = transform.Find("PanelMenu/Button_Quit").GetComponent<Button>();
 
-            m_QuitButton = transform.Find( "PanelMenu/Button_Quit" ).GetComponent<Button>();
+            m_PlayButton.onClick.AddListener( OnClickPlayButton );
+            m_MultiPlayButton.onClick.AddListener( OnClickMultiButton );
+            m_TrainingButton.onClick.AddListener( OnClickTrainingButton );
+            m_OptionButton.onClick.AddListener( OnClickOptionButton );
+            m_GithubButton.onClick.AddListener( OnClickGithubButton );
             m_QuitButton.onClick.AddListener( OnClickQuitButton );
 
-            m_LoadingScreen = transform.Find( "LoadingScreen" ).gameObject; 
+            m_LoadingScreen = GameObject.Find( "Canvas/LoadingScreen" ).gameObject; 
+            m_LoadingScreen.SetActive( false );
         }
 
         #endregion
@@ -47,6 +61,26 @@ namespace DivisionLike
         private void OnClickPlayButton()
         {
             LoadPlayScene();
+        }
+
+        private void OnClickMultiButton()
+        {
+
+        }
+
+        private void OnClickTrainingButton()
+        {
+            SceneController.instance.LoadScene( SceneName.Training );
+        }
+
+        private void OnClickOptionButton()
+        {
+
+        }
+
+        private void OnClickGithubButton()
+        {
+            Application.OpenURL("https://github.com/ddayin/Unity-DivisionLike");
         }
 
         /// <summary>

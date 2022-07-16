@@ -16,12 +16,17 @@ namespace DivisionLike
         /// <summary>
         /// 처음 인트로 화면
         /// </summary>
-        Intro = 0,
+        IntroHDRP = 0,
 
         /// <summary>
         /// 실제 인게임 플레이 화면
         /// </summary>
         Play,
+
+        /// <summary>
+        /// 사격 훈련장
+        /// </summary>
+        Training,
 
         /// <summary>
         /// 인게임 플레이 화면의 GUI

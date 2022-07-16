@@ -77,7 +77,7 @@ namespace DivisionLike
             m_Outline.enabled = true;
             Invoke( "DisableOutline", 1f );
 
-            // Play the hurt sound effect.
+            // PlayHDRP the hurt sound effect.
             m_EnemyAudio.Play();
 
             // Reduce the current health by the amount of damage sustained.
