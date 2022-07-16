@@ -73,4 +73,4 @@ https://avangarde-software.com/unity-coding-guidelines-basic-best-practices/
 
 2022-07-16 Intro Scene with HDRP
 
-![화면 캡처 2022-07-16 234040](https://user-images.githubusercontent.com/29808782/179359585-9d3d8c86-6fcd-4cd8-a66c-c9c79bbce950.png)
+![image](https://user-images.githubusercontent.com/29808782/179361895-6eb2fa32-b184-4663-8ada-3d7d098e19ee.png)
