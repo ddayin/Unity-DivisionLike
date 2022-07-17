@@ -149,7 +149,6 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &120506058577573124
 LineRenderer:
-  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -191,7 +190,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0.7857863, y: 0.27532095, z: 3.8389893}
-  - {x: 1.0914565, y: 0.024999999, z: 8.211511}
+  - {x: 11.274361, y: -0.070020646, z: 0.8697281}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.01
@@ -243,13 +242,10 @@ LineRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 0
-    textureScale: {x: 1, y: 1}
     shadowBias: 0
     generateLightingData: 0
-  m_MaskInteraction: 0
   m_UseWorldSpace: 1
   m_Loop: 0
-  m_ApplyActiveColorSpace: 0
 --- !u!1 &1295213377351908
 GameObject:
   m_ObjectHideFlags: 0
