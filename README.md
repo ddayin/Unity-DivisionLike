@@ -78,3 +78,7 @@ https://avangarde-software.com/unity-coding-guidelines-basic-best-practices/
 2022-07-17 Play Scene with HDRP
 
 ![image](https://user-images.githubusercontent.com/29808782/179385652-e2785209-799e-4859-b555-19d37dcd4c07.png)
+
+2022-07-17 Unity official Starter Assets
+
+![image](https://user-images.githubusercontent.com/29808782/179401592-50df744c-f286-46a2-b408-438c69cec234.png)
