@@ -33,7 +33,7 @@ namespace DivisionLike
 
             if ( Input.GetKeyDown( KeyCode.Space ) == true || Input.GetKeyDown( KeyCode.Return ) == true )
             {
-                m_IntroGUI.LoadPlayScene();
+                m_IntroGUI.LoadPlayScene(true);
             }
         }
     }

@@ -563,7 +563,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Single Play
+  m_Text: Single Paid
 --- !u!222 &458566588
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 223dd7afbef6c374480e3512f082cafb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IntroGUI: {fileID: 0}
+  m_IntroGUI: {fileID: 4457898257131639963}
 --- !u!4 &683277192
 Transform:
   m_ObjectHideFlags: 0
@@ -2452,7 +2452,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Single Play
+  m_Text: Single Free
 --- !u!222 &4457898257026813335
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3468,7 +3468,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: app Quit
+  m_Text: quit
 --- !u!1 &4457898258808297655
 GameObject:
   m_ObjectHideFlags: 0

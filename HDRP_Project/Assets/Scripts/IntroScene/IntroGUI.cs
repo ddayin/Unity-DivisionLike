@@ -59,12 +59,12 @@ namespace DivisionLike
         /// </summary>
         private void OnClickPlayFreeButton()
         {
-            LoadPlayScene();
+            LoadPlayScene(true);
         }
 
         private void OnClickPlayPaidButton()
         {
-            LoadPlayScene();
+            LoadPlayScene(false);
         }
 
         private void OnClickMultiButton()
@@ -98,18 +98,28 @@ namespace DivisionLike
         /// <summary>
         /// 플레이 씬을 불러들인다.
         /// </summary>
-        public void LoadPlayScene()
+        public void LoadPlayScene(bool isFreeAssets)
         {
             m_LoadingScreen.SetActive( true );
 
             SceneManager.sceneLoaded += LoadedSceneComplete;
 
-            StartCoroutine( LoadScene() );
+            StartCoroutine( LoadScene(isFreeAssets) );
         }
 
-        IEnumerator LoadScene()
+        IEnumerator LoadScene(bool isFreeAssets)
         {
-            AsyncOperation operation = SceneController.instance.LoadSceneAsyn(SceneName.PlayPaidAssets);
+            SceneName sceneName = SceneName.PlayPaidAssets;
+            if (isFreeAssets == true)
+            {
+                sceneName = SceneName.PlayFreeAssets;
+            } 
+            else if ( isFreeAssets == false )
+            {
+                sceneName = SceneName.PlayPaidAssets;
+            }
+
+            AsyncOperation operation = SceneController.instance.LoadSceneAsyn(sceneName);
             operation.allowSceneActivation = false;
 
             float timer = 0f;
