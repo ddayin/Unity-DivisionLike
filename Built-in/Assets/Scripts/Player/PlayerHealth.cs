@@ -96,7 +96,7 @@ namespace DivisionLike
             ScreenHUD.instance.RotateCircularHit( attackDirection );
             ScreenHUD.instance.RotateMinimapHit( attackDirection );
 
-            // PlayHDRP the hurt sound effect.
+            // PlayPaid the hurt sound effect.
             m_PlayerAudio.Play();
 
             // If the player has lost all it's health and the death flag hasn't been set yet...

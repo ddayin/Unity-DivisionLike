@@ -18,10 +18,12 @@ namespace DivisionLike
         /// </summary>
         IntroHDRP = 0,
 
+        PlayFreeAssets,
+
         /// <summary>
         /// 실제 인게임 플레이 화면
         /// </summary>
-        Play,
+        PlayPaidAssets,
 
         /// <summary>
         /// 사격 훈련장

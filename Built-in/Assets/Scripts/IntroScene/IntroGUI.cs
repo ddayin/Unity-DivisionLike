@@ -15,8 +15,8 @@ namespace DivisionLike
         /// <summary>
         /// 게임 시작 버튼
         /// </summary>
-        private Button m_PlayButton;
-
+        private Button m_PlayFreeButton;
+        private Button m_PlayPaidButton;
         private Button m_MultiPlayButton;
         private Button m_TrainingButton;
         private Button m_OptionButton;
@@ -35,14 +35,16 @@ namespace DivisionLike
         #region MonoBehaviour
         private void Awake()
         {
-            m_PlayButton = transform.Find( "PanelMenu/Button_SinglePlay" ).GetComponent<Button>();
+            m_PlayFreeButton = transform.Find( "PanelMenu/Button_SinglePlay_FreeAssets" ).GetComponent<Button>();
+            m_PlayPaidButton = transform.Find("PanelMenu/Button_SinglePlay_PaidAssets").GetComponent<Button>();
             m_MultiPlayButton = transform.Find("PanelMenu/Button_MultiPlay").GetComponent<Button>();
             m_TrainingButton = transform.Find( "PanelMenu/Button_Training" ).GetComponent<Button>();
             m_OptionButton = transform.Find( "PanelMenu/Button_Option" ).GetComponent<Button>();
             m_GithubButton = transform.Find( "PanelMenu/Button_Github" ).GetComponent<Button>();
             m_QuitButton = transform.Find("PanelMenu/Button_Quit").GetComponent<Button>();
 
-            m_PlayButton.onClick.AddListener( OnClickPlayButton );
+            m_PlayFreeButton.onClick.AddListener( OnClickPlayFreeButton );
+            m_PlayPaidButton.onClick.AddListener(OnClickPlayPaidButton);
             m_MultiPlayButton.onClick.AddListener( OnClickMultiButton );
             m_TrainingButton.onClick.AddListener( OnClickTrainingButton );
             m_OptionButton.onClick.AddListener( OnClickOptionButton );
@@ -58,7 +60,12 @@ namespace DivisionLike
         /// <summary>
         /// 게임 시작 버튼을 누르면 게임이 시작된다.
         /// </summary>
-        private void OnClickPlayButton()
+        private void OnClickPlayFreeButton()
+        {
+            LoadPlayScene();
+        }
+
+        private void OnClickPlayPaidButton()
         {
             LoadPlayScene();
         }
@@ -105,7 +112,7 @@ namespace DivisionLike
 
         IEnumerator LoadScene()
         {
-            AsyncOperation operation = SceneController.instance.LoadSceneAsyn(SceneName.Play);
+            AsyncOperation operation = SceneController.instance.LoadSceneAsyn(SceneName.PlayPaidAssets);
             operation.allowSceneActivation = false;
 
             float timer = 0f;
