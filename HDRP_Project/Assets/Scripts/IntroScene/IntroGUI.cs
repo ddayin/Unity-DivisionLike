@@ -30,7 +30,7 @@ namespace DivisionLike
         /// <summary>
         /// 로딩 화면
         /// </summary>
-        private GameObject m_LoadingScreen;
+        public GameObject m_LoadingScreen;
 
         #region MonoBehaviour
         private void Awake()
@@ -50,9 +50,6 @@ namespace DivisionLike
             m_OptionButton.onClick.AddListener( OnClickOptionButton );
             m_GithubButton.onClick.AddListener( OnClickGithubButton );
             m_QuitButton.onClick.AddListener( OnClickQuitButton );
-
-            m_LoadingScreen = GameObject.Find( "Canvas/LoadingScreen" ).gameObject; 
-            m_LoadingScreen.SetActive( false );
         }
 
         #endregion
