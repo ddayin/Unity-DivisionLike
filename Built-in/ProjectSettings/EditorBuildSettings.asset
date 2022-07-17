@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroHDRP.unity
     guid: 7b5ace1f58b0f0e4889c33aead492dc7
   - enabled: 1
+    path: Assets/PaidAssets/ReversedAssets/City Builder Urban/HDRP/Scenes/CityBuilderUrbanDemo.unity
+    guid: 9dd46b493c1396a42b3cf2aa11fde485
+  - enabled: 1
     path: Assets/Scenes/Training.unity
     guid: afe124a1136d6bb4fb53732b0a2cd1bf
   m_configObjects: {}
