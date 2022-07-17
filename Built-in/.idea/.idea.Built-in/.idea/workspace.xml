@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bb21381-54e0-4271-9e4f-08befdbff693" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/SceneController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/SceneController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Built-in/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Built-in/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayPaidAssets.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayPaidAssets.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +70,7 @@
       <updated>1657982675098</updated>
       <workItem from="1657982682171" duration="854000" />
       <workItem from="1658024779176" duration="633000" />
+      <workItem from="1658026792818" duration="1359000" />
     </task>
     <servers />
   </component>
