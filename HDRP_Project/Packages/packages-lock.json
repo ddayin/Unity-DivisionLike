@@ -169,6 +169,17 @@
         "com.unity.render-pipelines.core": "12.1.6"
       }
     },
+    "com.unity.render-pipelines.universal": {
+      "version": "12.1.6",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.mathematics": "1.2.1",
+        "com.unity.burst": "1.5.0",
+        "com.unity.render-pipelines.core": "12.1.6",
+        "com.unity.shadergraph": "12.1.6"
+      }
+    },
     "com.unity.searcher": {
       "version": "4.9.1",
       "depth": 2,
