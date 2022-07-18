@@ -582,6 +582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 683277192}
   - component: {fileID: 683277191}
+  - component: {fileID: 683277193}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -617,6 +618,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &683277193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683277190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12991fc8089c7584d9026c1cf1eb00a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ParentCanvas: {fileID: 931098337}
+  m_ParentCanvasUpper: {fileID: 931098337}
+  m_CommonPopupPrefab: {fileID: 7045157641807029436, guid: dff02cf80121f234ab5eb212f0f6ccfe,
+    type: 3}
+  m_ToastPopupPrefab: {fileID: 2026851627118458702, guid: ca8d85800a761ee4fa4846022f3d14d0,
+    type: 3}
 --- !u!1 &796691448
 GameObject:
   m_ObjectHideFlags: 0

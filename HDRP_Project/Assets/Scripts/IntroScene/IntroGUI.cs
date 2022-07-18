@@ -64,7 +64,19 @@ namespace DivisionLike
 
         private void OnClickPlayPaidButton()
         {
+            PopupManager.Instance.ShowCommonPopup( "Warning", "This scene contains paid assets only. You still want to enter?",
+                "Yes", "No", OnClickPaidYes, OnClickPaidNo );
+        }
+
+        private void OnClickPaidYes()
+        {
+            PopupManager.Instance.CloseCommonPopup();
             LoadPlayScene(false);
+        }
+
+        private void OnClickPaidNo()
+        {
+            PopupManager.Instance.CloseCommonPopup();
         }
 
         private void OnClickMultiButton()
