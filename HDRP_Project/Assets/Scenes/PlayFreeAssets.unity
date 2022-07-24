@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2157.7822, g: 2261.588, b: 3284, a: 1}
+  m_IndirectSpecularColor: {r: 2158.832, g: 2262.4883, b: 3284.7383, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1203,11 +1203,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -39
       objectReference: {fileID: 0}
-    - target: {fileID: 114272279691959126, guid: d0bb8554e084b9145bde7ebcdc944949,
-        type: 3}
-      propertyPath: m_WeaponSettings.bulletSpread
-      value: 0.01
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0bb8554e084b9145bde7ebcdc944949, type: 3}
 --- !u!4 &1306510567 stripped
@@ -1481,18 +1476,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4851204852203356, guid: ed965125ff6f3a44d84d71a0e4769abb, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 4851204852203356, guid: ed965125ff6f3a44d84d71a0e4769abb, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 4851204852203356, guid: ed965125ff6f3a44d84d71a0e4769abb, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 4851204852203356, guid: ed965125ff6f3a44d84d71a0e4769abb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.779
       objectReference: {fileID: 0}
@@ -1534,19 +1517,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114602481244817218, guid: ed965125ff6f3a44d84d71a0e4769abb,
         type: 3}
-      propertyPath: m_WeaponSettings.bulletSpread
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 114602481244817218, guid: ed965125ff6f3a44d84d71a0e4769abb,
-        type: 3}
       propertyPath: m_WeaponSettings.shellEjectSpot
       value: 
       objectReference: {fileID: 593432794}
-    - target: {fileID: 114602481244817218, guid: ed965125ff6f3a44d84d71a0e4769abb,
-        type: 3}
-      propertyPath: m_WeaponSettings.bulletLayers.m_Bits
-      value: 32535
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed965125ff6f3a44d84d71a0e4769abb, type: 3}
 --- !u!4 &1777852638 stripped

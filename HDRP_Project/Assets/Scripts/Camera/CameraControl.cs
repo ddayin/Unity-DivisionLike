@@ -20,7 +20,7 @@ namespace DivisionLike
             Right,
             Left
         }
-        public Shoulder m_Shoulder;                     // 왼쪽 어깨로 볼지, 아니면 오른쪽 어깨로 볼지 설정한다.
+        public Shoulder m_Shoulder;                     // 조준 시, 왼쪽 어깨로 볼지, 아니면 오른쪽 어깨로 볼지 설정한다.
 
         [System.Serializable]
         public class CameraSettings
