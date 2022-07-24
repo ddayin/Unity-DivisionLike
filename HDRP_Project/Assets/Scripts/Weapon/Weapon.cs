@@ -49,7 +49,7 @@ namespace DivisionLike
             [Header( "-Bullet Options-" )]
             public Transform bulletSpawn;
             public float damage = 40.0f;
-            public float bulletSpread = 5.0f;
+            public float bulletSpread = 0.01f;
             public float fireRate = 0.2f;
             public LayerMask bulletLayers;
             public float range = 200.0f;
