@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -32,6 +34,8 @@ namespace DivisionLike
         /// </summary>
         public GameObject m_LoadingScreen;
 
+        private string paidAssetsPath;
+
         #region MonoBehaviour
         private void Awake()
         {
@@ -50,6 +54,8 @@ namespace DivisionLike
             m_OptionButton.onClick.AddListener( OnClickOptionButton );
             m_GithubButton.onClick.AddListener( OnClickGithubButton );
             m_QuitButton.onClick.AddListener( OnClickQuitButton );
+
+            paidAssetsPath = Application.dataPath + "/PaidAssets";
         }
 
         #endregion
@@ -62,10 +68,24 @@ namespace DivisionLike
             LoadPlayScene(true);
         }
 
+        
         private void OnClickPlayPaidButton()
         {
-            PopupManager.Instance.ShowCommonPopup( "Warning", "This scene contains paid assets only. You still want to enter?",
-                "Yes", "No", OnClickPaidYes, OnClickPaidNo );
+            Debug.Log( paidAssetsPath );
+
+            if (IsDirectoryEmpty(paidAssetsPath) == false)
+            {
+                LoadPlayScene( false );
+            }
+            else
+            {
+                PopupManager.Instance.ShowToastPopup( "This scene contains paid assets only." );
+            }
+        }
+
+        private bool IsDirectoryEmpty(string path)
+        {
+            return !Directory.EnumerateFileSystemEntries(path).Any();
         }
 
         private void OnClickPaidYes()
