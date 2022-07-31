@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/IntroHDRP.unity
+    path: Assets/Scenes/Intro.unity
     guid: 7b5ace1f58b0f0e4889c33aead492dc7
   - enabled: 1
     path: Assets/Scenes/PlayFreeAssets.unity
