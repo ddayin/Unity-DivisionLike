@@ -10,6 +10,7 @@ develop a game like Tom Clancy's The Division by using Unity
 
 # Key Features
 - control player character
+- character animation
 - control weapons
 - spawn enemies
 - HUD to display information
