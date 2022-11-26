@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace HeadBobber {
+namespace DivisionLike {
   public class HeadBobber : MonoBehaviour {
     private float timer = 0.0f;
     float bobbingSpeed = 0.18f;
