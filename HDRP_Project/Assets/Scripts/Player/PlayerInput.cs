@@ -78,6 +78,7 @@ namespace DivisionLike {
     // Update is called once per frame
     void Update() {
       if (m_EnableInput == false) return;
+      if (PauseManager.Instance.m_IsPaused == true) return;
 
       CharacterLogic();
       CameraLookLogic();

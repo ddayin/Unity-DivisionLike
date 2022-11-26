@@ -8,6 +8,7 @@ namespace DivisionLike {
     float bobbingAmount = 0.02f;
 
     void Update() {
+      if (PauseManager.Instance.m_IsPaused == true) return;
       float waveslice = 0.0f;
       float horizontal = Input.GetAxis("Horizontal");
       float vertical = Input.GetAxis("Vertical");
