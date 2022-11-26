@@ -8,11 +8,18 @@ develop a game like Tom Clancy's The Division by using Unity
 2. personal portfolio & toy project
 3. to learn Unity & C#
 
+# Key Features
+- control player character
+- control weapons
+- spawn enemies
+- HUD to display information
+- support HDRP
+
 # Development Environment
 - OS : Windows 11 64bit
-- Engine : Unity 2021.3.2f1 LTS
+- Engine : Unity 2021.3.11f1 LTS
 - Language : C#
-- IDE : Jetbrains Rider 2022.1.2
+- IDE : Jetbrains Rider 2022.2.4
 - Target Platform : Windows PC
 
 # Project Notion Page For Details
