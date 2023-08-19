@@ -175,9 +175,9 @@
       }
     },
     "com.unity.render-pipelines.high-definition-config": {
-      "version": "14.0.8",
-      "depth": 1,
-      "source": "builtin",
+      "version": "file:com.unity.render-pipelines.high-definition-config",
+      "depth": 0,
+      "source": "embedded",
       "dependencies": {
         "com.unity.render-pipelines.core": "14.0.8"
       }
