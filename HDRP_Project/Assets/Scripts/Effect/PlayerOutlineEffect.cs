@@ -26,7 +26,8 @@ namespace DivisionLike {
       Invoke("Disable", time);
     }
 
-    public void Disable() {
+    public void Disable()
+    {
       SetEnable(false);
     }
   }
