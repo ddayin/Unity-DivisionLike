@@ -20,6 +20,12 @@ https://youtu.be/qlCFAl2lha8
 - HUD to display information
 - support HDRP
 
+# TO DO
+- enemy AI
+- add weapons
+- mini map
+- 
+
 # Development Environment
 - OS : Windows 11 64bit
 - Engine : Unity 2021.3.11f1 LTS
