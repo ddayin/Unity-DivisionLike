@@ -23,7 +23,7 @@ https://youtu.be/qlCFAl2lha8
 # TO DO
 - enemy AI
 - add weapons
-- mini map
+- improve mini map
 - 
 
 # Development Environment
@@ -32,6 +32,3 @@ https://youtu.be/qlCFAl2lha8
 - Language : C#
 - IDE : Jetbrains Rider 2022.2.4
 - Target Platform : Windows PC
-
-# Project Notion Page For Details
-https://www.notion.so/ddayin/Unity-DivisionLike-b2b7619b6c9c465eab350c73a07942d3
