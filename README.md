@@ -33,6 +33,8 @@ ver0.1.0 YOUTUBE play test
 - improve mini map
 - improve snow particle
 - improve background objects like building
+- add inventory system
+- add various weapons
 
 # PC Specification
 - OS : Windows 11 64bit
