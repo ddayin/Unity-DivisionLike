@@ -33,14 +33,14 @@ ver0.1.0 youtube play test
 - improve mini map
 - improve snow particle
 
-# PC Spec
+# PC Specification
 - OS : Windows 11 64bit
 - CPU : AMD Ryzen 9 5900X 12-Core
 - RAM : 32GB
 - SSD : Samsung SSD 870 QVO 1TB
 - GPU : NVIDIA GeForce RTX 3060
 
-# Development Environment
+# Development Tools (02/08/2024)
 - Engine : Unity 2023.2.61f1
 - Language : C#
 - IDE : Jetbrains Rider 2023.3.3
