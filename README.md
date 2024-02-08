@@ -47,3 +47,6 @@ ver0.1.0 YOUTUBE play test
 - Engine : Unity 2023.2.61f1
 - Language : C#
 - IDE : Jetbrains Rider 2023.3.3
+
+# Coding Convetion
+- 
