@@ -48,5 +48,5 @@ ver0.1.0 YOUTUBE play test
 - Language : C#
 - IDE : Jetbrains Rider 2023.3.3
 
-# Coding Convetion
+# Coding Convention
 - 
