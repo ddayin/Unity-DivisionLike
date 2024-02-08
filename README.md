@@ -4,7 +4,7 @@ develop a game like Tom Clancy's The Division by using Unity
 ![image](https://user-images.githubusercontent.com/29808782/179521804-14d527cf-0543-4ddd-bb8e-feed2149be53.png)
 
 
-ver0.1.0 youtube play test
+ver0.1.0 YOUTUBE play test
 [![Watch the video](https://imgur.com/4sLMOfm.png)](https://youtu.be/qlCFAl2lha8?si=E8AF8viYAfiRqchf)
 
 # Project Purpose
@@ -32,6 +32,7 @@ ver0.1.0 youtube play test
 - add weapons
 - improve mini map
 - improve snow particle
+- improve background objects like building
 
 # PC Specification
 - OS : Windows 11 64bit
