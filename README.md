@@ -4,7 +4,7 @@ develop a game like Tom Clancy's The Division by using Unity
 ![image](https://user-images.githubusercontent.com/29808782/179521804-14d527cf-0543-4ddd-bb8e-feed2149be53.png)
 
 
-ver0.1.0 play test
+ver0.1.0 youtube play test
 [![Watch the video](https://imgur.com/4sLMOfm.png)](https://youtu.be/qlCFAl2lha8?si=E8AF8viYAfiRqchf)
 
 # Project Purpose
@@ -14,7 +14,7 @@ ver0.1.0 play test
 
 # Key Features
 - control player character
-- character animation
+- player character animation
 - control weapons
 - spawn enemies
 - HUD to display information
@@ -31,11 +31,16 @@ ver0.1.0 play test
 - enemy AI
 - add weapons
 - improve mini map
-- 
+- improve snow particle
+
+# PC Spec
+- OS : Windows 11 64bit
+- CPU : AMD Ryzen 9 5900X 12-Core
+- RAM : 32GB
+- SSD : Samsung SSD 870 QVO 1TB
+- GPU : NVIDIA GeForce RTX 3060
 
 # Development Environment
-- OS : Windows 11 64bit
-- Engine : Unity 2021.3.11f1 LTS
+- Engine : Unity 2023.2.61f1
 - Language : C#
-- IDE : Jetbrains Rider 2022.2.4
-- Target Platform : Windows PC
+- IDE : Jetbrains Rider 2023.3.3
