@@ -52,6 +52,7 @@ ver0.1.0 YOUTUBE play test
 - Player.cs : 플레이어의 component들을 가지고 있다.
 - PlayerAnimation.cs : 플레이어의 애니메이션
 - PlayerFootstepSound.cs : 플레이어의 발자국 소리
+  - 바닥 텍스처 타입에 따라 다른 발소리 재생
 - PlayerHandleGrenade.cs : 수류탄 투척
 - PlayerHealth.cs : 플레이어의 HP
 - PlayerInput.cs : 플레이어 입력 처리
