@@ -48,5 +48,49 @@ ver0.1.0 YOUTUBE play test
 - Language : C#
 - IDE : Jetbrains Rider 2023.3.3
 
-# Coding Convention
+# Player Character
+- Player.cs
+- PlayerAnimation.cs
+- PlayerFootstepSound.cs
+- PlayerHandleGrenade.cs
+- PlayerHealth.cs
+- PlayerInput.cs
+- PlayerInventory.cs
+- PlayerMovement.cs
+- PlayerStats.cs
+
+# Weapons
+- Grenade.cs
+- GrenadeHandler.cs
+- Weapon.cs
+- WeaponHandler.cs
+
+# Enemy
+- EnemyAttack.cs
+- EnemyDropItem.cs
+- EnemyHealth.cs
+- EnemyInventory.cs
+- EnemyMovement.cs
+- EnemyStats.cs
+
+# GUI
+- AmmoBoxIcon.cs
+- CircularHit.cs
+- CommonPopup.cs
+- CrosshairAR.cs
+- CrosshairController.cs
+- CrosshairHandler.cs
+- CrosshairMakarov.cs
+- EnemyUI.cs
+- FloatingText.cs
+- FloatingTextController.cs
+- MinimapHit.cs
+- PlayerHUD.cs
+- screenHUD.cs
+- ToastPopup.cs
+
+# Effect
+- GrenadeCircleEffect.cs
+- ItemDropEffect.cs
+- PlayerOutlineEffect.cs
 - 
