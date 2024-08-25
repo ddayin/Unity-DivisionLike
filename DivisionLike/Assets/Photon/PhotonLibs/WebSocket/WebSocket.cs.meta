@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b1bad04f7805f764dba77f0d4518e0f0
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 267958
+  packageName: Photon Fusion
+  packageVersion: 2.0.2
+  assetPath: Assets/Photon/PhotonLibs/WebSocket/WebSocket.cs
+  uploadId: 686127
