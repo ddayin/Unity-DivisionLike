@@ -4,8 +4,11 @@ develop a game like Tom Clancy's The Division by using Unity
 ![image](https://user-images.githubusercontent.com/29808782/179521804-14d527cf-0543-4ddd-bb8e-feed2149be53.png)
 
 
-ver0.1.0 YOUTUBE play test. click below image to play!
-[![Watch the video](https://imgur.com/4sLMOfm.png)]([https://youtu.be/qlCFAl2lha8?si=E8AF8viYAfiRqchf])
+
+https://github.com/user-attachments/assets/cce652bf-2088-4db2-9cc6-4a7fbf413998
+
+
+
 
 # Project Purpose
 1. I like TPS(Third Person Shooter) games! So I want to make my own game like division
