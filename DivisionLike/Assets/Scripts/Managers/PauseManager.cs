@@ -32,7 +32,7 @@ namespace DivisionLike
             m_InstructionImage.enabled = false;
 
             m_InstructionButton.onClick.AddListener(ShowIntruction);
-            m_QuitButton.onClick.AddListener(Quit);
+            m_QuitButton.onClick.AddListener(ReturnToIntroScene);
             m_ResumeButton.onClick.AddListener(Resume);
         }
 
@@ -108,16 +108,10 @@ namespace DivisionLike
             }
         }
 
-        /// <summary>
-        /// 어플리케이션 종료
-        /// </summary>
-        public void Quit()
+        private void ReturnToIntroScene()
         {
-#if UNITY_EDITOR
-            EditorApplication.isPlaying = false;
-#else
-		    Application.Quit();
-#endif
+            Time.timeScale = 1;
+            SceneController.instance.LoadScene(SceneName.Intro);
         }
 
         /// <summary>

@@ -16,7 +16,7 @@ namespace DivisionLike
         /// <summary>
         /// 처음 인트로 화면
         /// </summary>
-        IntroHDRP = 0,
+        Intro = 0,
 
         /// <summary>
         /// 실제 인게임 플레이 화면 (무료 에셋 사용한 배경)
