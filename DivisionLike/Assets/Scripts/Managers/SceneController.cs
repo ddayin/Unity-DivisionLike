@@ -11,12 +11,12 @@ namespace DivisionLike
         /// <summary>
         /// 
         /// </summary>
-        None = -1,
+        //None = -1,
 
         /// <summary>
         /// 처음 인트로 화면
         /// </summary>
-        Intro = 0,
+        //Intro = 0,
 
         /// <summary>
         /// 실제 인게임 플레이 화면 (무료 에셋 사용한 배경)
@@ -26,17 +26,12 @@ namespace DivisionLike
         /// <summary>
         /// 실제 인게임 플레이 화면 (유료 에셋 사용한 배경)
         /// </summary>
-        PlayPaidAssets,
+        //PlayPaidAssets,
 
         /// <summary>
         /// 사격 훈련장
         /// </summary>
-        Training,
-
-        /// <summary>
-        /// 인게임 플레이 화면의 GUI
-        /// </summary>
-        HUD
+        //Training
     }
 
     /// <summary>
@@ -49,7 +44,8 @@ namespace DivisionLike
         /// <summary>
         /// 현재 실행 중인 씬의 이름
         /// </summary>
-        [SerializeField] private SceneName m_CurrentSceneName = SceneName.None;
+        //[SerializeField] private SceneName m_CurrentSceneName = SceneName.None;
+        [SerializeField] private SceneName m_CurrentSceneName = SceneName.PlayFreeAssets;
 
         public SceneName CurrentScene
         {

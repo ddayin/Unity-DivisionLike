@@ -114,7 +114,7 @@ namespace DivisionLike
         private void ReturnToIntroScene()
         {
             Time.timeScale = 1;
-            SceneController.instance.LoadScene(SceneName.Intro);
+            //SceneController.instance.LoadScene(SceneName.Intro);
         }
 
         /// <summary>

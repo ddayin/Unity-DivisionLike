@@ -107,7 +107,7 @@ namespace DivisionLike
 
         private void OnClickTrainingButton()
         {
-            SceneController.instance.LoadScene(SceneName.Training);
+            //SceneController.instance.LoadScene(SceneName.Training);
         }
 
         private void OnClickOptionButton()
@@ -141,7 +141,8 @@ namespace DivisionLike
 
         IEnumerator LoadScene(bool isFreeAssets)
         {
-            SceneName sceneName = SceneName.PlayPaidAssets;
+            /*SceneName sceneName = SceneName.PlayPaidAssets;
+            
             if (isFreeAssets == true)
             {
                 sceneName = SceneName.PlayFreeAssets;
@@ -170,6 +171,9 @@ namespace DivisionLike
                     yield break;
                 }
             }
+            */
+
+            yield break;
         }
 
         /// <summary>
