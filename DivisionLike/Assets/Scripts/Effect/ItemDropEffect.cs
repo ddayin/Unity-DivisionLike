@@ -32,7 +32,7 @@ namespace DivisionLike
             {
                 int ammo = Random.Range(1, 30);
 
-                Player.Instance.m_Inventory.ObtainAmmo(ammo);
+                Player.instance.m_Inventory.ObtainAmmo(ammo);
                 //Destroy( gameObject );
                 Lean.LeanPool.Despawn(gameObject);
             }

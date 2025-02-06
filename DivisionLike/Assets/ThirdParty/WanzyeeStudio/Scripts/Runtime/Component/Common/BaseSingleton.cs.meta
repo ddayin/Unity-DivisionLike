@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: c63c541487552b241807963c2c31964f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 54896
+  packageName: Singleton Liberation - Inherit from your own MonoBehaviour
+  packageVersion: 1.0.4
+  assetPath: Assets/WanzyeeStudio/Scripts/Runtime/Component/Common/BaseSingleton.cs
+  uploadId: 272726

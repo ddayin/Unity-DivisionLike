@@ -32,7 +32,7 @@ namespace DivisionLike
         void Update()
         {
             // If the enemy and the player have health left...
-            if (m_EnemyHealth.m_CurrentHealth > 0 && Player.Instance.m_Stats.m_CurrentHealth > 0)
+            if (m_EnemyHealth.m_CurrentHealth > 0 && Player.instance.m_Stats.m_CurrentHealth > 0)
             {
                 m_NavTimer += Time.deltaTime;
 

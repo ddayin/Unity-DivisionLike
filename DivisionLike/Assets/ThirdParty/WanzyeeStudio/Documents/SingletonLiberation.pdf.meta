@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a371bb16d101aaa428609551c799cb1c
+timeCreated: 1454510305
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 54896
+  packageName: Singleton Liberation - Inherit from your own MonoBehaviour
+  packageVersion: 1.0.4
+  assetPath: Assets/WanzyeeStudio/Documents/SingletonLiberation.pdf
+  uploadId: 272726

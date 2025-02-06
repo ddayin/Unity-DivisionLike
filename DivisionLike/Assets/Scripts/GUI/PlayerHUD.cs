@@ -42,7 +42,7 @@ namespace DivisionLike
 
         private void Start()
         {
-            m_WeaponHandler = Player.Instance.m_WeaponHandler;
+            m_WeaponHandler = Player.instance.m_WeaponHandler;
 
             InitHealthSlider();
             SetAnotherWeapon();
@@ -64,7 +64,7 @@ namespace DivisionLike
         /// </summary>
         private void InitHealthSlider()
         {
-            float toDivide = (float)Player.Instance.m_Stats.m_MaxHealth / 3f;
+            float toDivide = (float)Player.instance.m_Stats.m_MaxHealth / 3f;
 
             for (int i = 0; i < 3; i++)
             {
@@ -79,13 +79,13 @@ namespace DivisionLike
         /// <param name="health"></param>
         public void SetHealthSlider(int health)
         {
-            if (health == Player.Instance.m_Stats.m_MaxHealth)
+            if (health == Player.instance.m_Stats.m_MaxHealth)
             {
                 SetMaxHealthSlider();
                 return;
             }
 
-            float toDivide = (float)Player.Instance.m_Stats.m_MaxHealth / 3f;
+            float toDivide = (float)Player.instance.m_Stats.m_MaxHealth / 3f;
             float fDivided = (float)health / toDivide;
             int iDivided = (int)fDivided;
 
@@ -172,7 +172,7 @@ namespace DivisionLike
         /// </summary>
         public void SetMedikitText()
         {
-            m_MedikitNumberText.text = Player.Instance.m_Inventory.m_CurrentMedikit.ToString();
+            m_MedikitNumberText.text = Player.instance.m_Inventory.m_CurrentMedikit.ToString();
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace DivisionLike
         /// </summary>
         public void SetGrenadeText()
         {
-            m_GrenadeNumberText.text = Player.Instance.m_Inventory.m_CurrentGrenade.ToString();
+            m_GrenadeNumberText.text = Player.instance.m_Inventory.m_CurrentGrenade.ToString();
         }
     }
 }

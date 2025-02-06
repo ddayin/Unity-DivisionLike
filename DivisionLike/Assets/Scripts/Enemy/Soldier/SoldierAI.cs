@@ -102,7 +102,7 @@ namespace DivisionLike
         {
             if (m_NavMeshAgent == null) return;
 
-            m_NavMeshAgent.destination = Player.Instance.transform.position;
+            m_NavMeshAgent.destination = Player.instance.transform.position;
         }
 
         #region 총 발사
@@ -118,7 +118,7 @@ namespace DivisionLike
 
         private void FindTargetToFire()
         {
-            m_TargetToFire = Player.Instance.gameObject.transform;
+            m_TargetToFire = Player.instance.gameObject.transform;
         }
 
         private void FireWeapon()

@@ -81,7 +81,7 @@ namespace DivisionLike
             }
             else
             {
-                PopupManager.Instance.ShowToastPopup("This scene contains paid assets only.");
+                PopupManager.instance.ShowToastPopup("This scene contains paid assets only.");
             }
         }
 
@@ -92,13 +92,13 @@ namespace DivisionLike
 
         private void OnClickPaidYes()
         {
-            PopupManager.Instance.CloseCommonPopup();
+            PopupManager.instance.CloseCommonPopup();
             LoadPlayScene(false);
         }
 
         private void OnClickPaidNo()
         {
-            PopupManager.Instance.CloseCommonPopup();
+            PopupManager.instance.CloseCommonPopup();
         }
 
         private void OnClickMultiButton()

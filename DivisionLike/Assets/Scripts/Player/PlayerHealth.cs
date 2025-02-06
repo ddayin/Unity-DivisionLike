@@ -90,10 +90,10 @@ namespace DivisionLike
             EZCameraShake.CameraShaker.Instance.ShakeOnce(2f, 2f, 0.1f, 0.1f);
 
             // Reduce the current health by the damage amount.
-            Player.Instance.m_Stats.m_CurrentHealth -= amount;
+            Player.instance.m_Stats.m_CurrentHealth -= amount;
 
             // Set the health bar's value to the current health.           
-            PlayerHUD.instance.SetHealthSlider(Player.Instance.m_Stats.m_CurrentHealth);
+            PlayerHUD.instance.SetHealthSlider(Player.instance.m_Stats.m_CurrentHealth);
 
             ScreenHUD.instance.RotateCircularHit(attackDirection);
             ScreenHUD.instance.RotateMinimapHit(attackDirection);
@@ -102,7 +102,7 @@ namespace DivisionLike
             m_PlayerAudio.Play();
 
             // If the player has lost all it's health and the death flag hasn't been set yet...
-            if (Player.Instance.m_Stats.m_CurrentHealth <= 0 && m_IsDead == false)
+            if (Player.instance.m_Stats.m_CurrentHealth <= 0 && m_IsDead == false)
             {
                 // ... it should die.
                 Death();
@@ -114,13 +114,13 @@ namespace DivisionLike
         /// </summary>
         public void RecoverMax()
         {
-            Player.Instance.m_Stats.m_CurrentHealth = Player.Instance.m_Stats.m_MaxHealth;
+            Player.instance.m_Stats.m_CurrentHealth = Player.instance.m_Stats.m_MaxHealth;
 
             PlayerHUD.instance.SetMaxHealthSlider();
 
             PlayerHUD.instance.SetMedikitText();
 
-            Player.Instance.m_OutlineEffect.Enable(4f);
+            Player.instance.m_OutlineEffect.Enable(4f);
         }
 
         /// <summary>
@@ -128,18 +128,18 @@ namespace DivisionLike
         /// </summary>
         public void RecoverOneCell()
         {
-            float toDivide = (float)Player.Instance.m_Stats.m_MaxHealth / 3f;
-            float fDivided = (float)Player.Instance.m_Stats.m_CurrentHealth / toDivide;
+            float toDivide = (float)Player.instance.m_Stats.m_MaxHealth / 3f;
+            float fDivided = (float)Player.instance.m_Stats.m_CurrentHealth / toDivide;
             int iDivided = (int)fDivided;
 
-            Player.Instance.m_Stats.m_CurrentHealth = (int)toDivide * (iDivided + 1);
+            Player.instance.m_Stats.m_CurrentHealth = (int)toDivide * (iDivided + 1);
 
 
-            PlayerHUD.instance.SetHealthSlider(Player.Instance.m_Stats.m_CurrentHealth);
+            PlayerHUD.instance.SetHealthSlider(Player.instance.m_Stats.m_CurrentHealth);
 
             PlayerHUD.instance.SetMedikitText();
 
-            Player.Instance.m_OutlineEffect.Enable(4f);
+            Player.instance.m_OutlineEffect.Enable(4f);
         }
 
         /// <summary>
@@ -148,8 +148,8 @@ namespace DivisionLike
         /// <returns></returns>
         private int CalculateCurrentDivide()
         {
-            float toDivide = (float)Player.Instance.m_Stats.m_MaxHealth / 3f;
-            float fDivided = (float)Player.Instance.m_Stats.m_CurrentHealth / toDivide;
+            float toDivide = (float)Player.instance.m_Stats.m_MaxHealth / 3f;
+            float fDivided = (float)Player.instance.m_Stats.m_CurrentHealth / toDivide;
             return (int)fDivided;
         }
 

@@ -5,13 +5,14 @@ using UnityEngine.Audio;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+using WanzyeeStudio;
 
 namespace DivisionLike
 {
     /// <summary>
     /// 일시 정지 관리자
     /// </summary>
-    public class PauseManager : Singleton<PauseManager>
+    public class PauseManager : BaseSingleton<PauseManager>
     {
         private Canvas m_Canvas;
         private Button m_InstructionButton;
@@ -22,8 +23,10 @@ namespace DivisionLike
 
         public bool m_IsPaused = false;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             m_Canvas = GetComponent<Canvas>();
             m_InstructionButton = transform.Find("PausePanel/InstructionButton").GetComponent<Button>();
             m_QuitButton = transform.Find("PausePanel/QuitButton").GetComponent<Button>();

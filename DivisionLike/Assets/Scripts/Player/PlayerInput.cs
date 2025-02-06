@@ -85,7 +85,8 @@ namespace DivisionLike
         void Update()
         {
             if (m_EnableInput == false) return;
-            if (PauseManager.Instance.m_IsPaused == true) return;
+            if (PauseManager.instance == null) return;
+            if (PauseManager.instance.m_IsPaused == true) return;
 
             CharacterLogic();
             CameraLookLogic();
@@ -135,7 +136,7 @@ namespace DivisionLike
             float h = Input.GetAxis(m_InputSettings.m_HorizontalAxis);
 
             // always walk when player is aiming
-            if (Player.Instance.m_UserInput.m_IsAiming == true)
+            if (Player.instance.m_UserInput.m_IsAiming == true)
             {
                 m_CharacterMove.Animate(v * 0.5f, h * 0.5f);
             }
@@ -248,7 +249,7 @@ namespace DivisionLike
                     ToggleCrosshair(true, m_WeaponHandler.m_CurrentWeapon);
                     //PositionCrosshair( aimRay, weaponHandler.currentWeapon );
 
-                    if (Player.Instance.m_WeaponHandler.m_IsReloading == false)
+                    if (Player.instance.m_WeaponHandler.m_IsReloading == false)
                     {
                         HitCrosshair();
                     }
@@ -275,7 +276,7 @@ namespace DivisionLike
         /// </summary>
         private void GrenadeLogic()
         {
-            if (m_IsAiming == true || Player.Instance.m_Inventory.m_CurrentGrenade <= 0)
+            if (m_IsAiming == true || Player.instance.m_Inventory.m_CurrentGrenade <= 0)
             {
                 return;
             }
@@ -292,7 +293,7 @@ namespace DivisionLike
                 m_GrenadeHandler.CreateGrenade(m_WeaponHandler.m_UserSettings.m_RightHand.position,
                     m_WeaponHandler.m_UserSettings.m_RightHand.rotation);
 
-                Player.Instance.m_Inventory.m_CurrentGrenade--;
+                Player.instance.m_Inventory.m_CurrentGrenade--;
                 PlayerHUD.instance.SetGrenadeText();
             }
         }
@@ -323,13 +324,16 @@ namespace DivisionLike
                     if (prefab != null)
                     {
                         GameObject clone = (GameObject)Instantiate(prefab);
-                        if (ScreenHUD.instance.transform != null)
+                        if (ScreenHUD.instance != null)
                         {
-                            clone.transform.SetParent(ScreenHUD.instance.transform);
-                            clone.transform.localPosition = Vector3.zero;
+                            if (ScreenHUD.instance.transform != null)
+                            {
+                                clone.transform.SetParent(ScreenHUD.instance.transform);
+                                clone.transform.localPosition = Vector3.zero;
 
-                            m_CrosshairPrefabMap.Add(wep, clone);
-                            ToggleCrosshair(false, wep);
+                                m_CrosshairPrefabMap.Add(wep, clone);
+                                ToggleCrosshair(false, wep);
+                            }
                         }
                     }
                 }
@@ -477,7 +481,7 @@ namespace DivisionLike
             if (m_IsFiring == true)
             {
                 pivotT.Rotate(
-                    -Player.Instance.m_WeaponHandler.m_CurrentWeapon.m_WeaponSettings._goUpSpeed * Time.deltaTime, 0f,
+                    -Player.instance.m_WeaponHandler.m_CurrentWeapon.m_WeaponSettings._goUpSpeed * Time.deltaTime, 0f,
                     0f);
             }
             //Debug.Log( "pivotT.rotation = " + pivotT.rotation );

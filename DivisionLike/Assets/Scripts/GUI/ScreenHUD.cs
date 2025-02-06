@@ -48,7 +48,7 @@ namespace DivisionLike
         /// </summary>
         public void SetLevelText()
         {
-            m_LevelText.text = Player.Instance.m_Stats.m_CurrentLevel.ToString();
+            m_LevelText.text = Player.instance.m_Stats.m_CurrentLevel.ToString();
         }
 
         /// <summary>
@@ -57,12 +57,12 @@ namespace DivisionLike
         /// <param name="xpToAdd"></param>
         public void CalculateExpSlider(int xpToAdd)
         {
-            Player.Instance.m_Stats.m_CurrentXP += (ulong)xpToAdd;
-            Player.Instance.m_Stats.CheckLevel();
+            Player.instance.m_Stats.m_CurrentXP += (ulong)xpToAdd;
+            Player.instance.m_Stats.CheckLevel();
 
-            float normalizedXP = (float)(Player.Instance.m_Stats.m_CurrentXP) /
-                                 (float)(Player.Instance.m_Stats.m_XpRequire
-                                     [Player.Instance.m_Stats.m_CurrentLevel - 1]);
+            float normalizedXP = (float)(Player.instance.m_Stats.m_CurrentXP) /
+                                 (float)(Player.instance.m_Stats.m_XpRequire
+                                     [Player.instance.m_Stats.m_CurrentLevel - 1]);
 
             m_XpSlider.normalizedValue = normalizedXP;
         }
@@ -74,8 +74,8 @@ namespace DivisionLike
         /// </summary>
         public void SetAmmoSlider()
         {
-            float normalizedAmmo = (float)(Player.Instance.m_WeaponHandler.m_CurrentWeapon.m_Ammo.clipAmmo) /
-                                   (float)(Player.Instance.m_WeaponHandler.m_CurrentWeapon.m_Ammo.maxClipAmmo);
+            float normalizedAmmo = (float)(Player.instance.m_WeaponHandler.m_CurrentWeapon.m_Ammo.clipAmmo) /
+                                   (float)(Player.instance.m_WeaponHandler.m_CurrentWeapon.m_Ammo.maxClipAmmo);
             m_AmmoSlider.normalizedValue = normalizedAmmo;
 
             if (normalizedAmmo < 0.2f)

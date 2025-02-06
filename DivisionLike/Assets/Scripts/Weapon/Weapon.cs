@@ -213,7 +213,7 @@ namespace DivisionLike
                 if (enemyHealth != null)
                 {
                     // ... the enemy should take damage.
-                    enemyHealth.TakeDamage((int)Player.Instance.m_Stats.CalculateDamage(),
+                    enemyHealth.TakeDamage((int)Player.instance.m_Stats.CalculateDamage(),
                         colliders[0].transform.position);
                 }
 
@@ -279,7 +279,7 @@ namespace DivisionLike
                 OilBarrel barrel = m_Hit.collider.GetComponent<OilBarrel>();
                 if (barrel != null)
                 {
-                    barrel.TakeDamage((int)Player.Instance.m_Stats.CalculateDamage());
+                    barrel.TakeDamage((int)Player.instance.m_Stats.CalculateDamage());
                 }
             }
 
@@ -308,7 +308,7 @@ namespace DivisionLike
             if (enemyHealth != null)
             {
                 // ... the enemy should take damage.
-                enemyHealth.TakeDamage((int)Player.Instance.m_Stats.CalculateDamage(), m_RagdollHit.point);
+                enemyHealth.TakeDamage((int)Player.instance.m_Stats.CalculateDamage(), m_RagdollHit.point);
             }
 
             // bullet line effect

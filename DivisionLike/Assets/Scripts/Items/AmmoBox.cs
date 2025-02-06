@@ -88,10 +88,10 @@ namespace DivisionLike
                     ScreenHUD.instance.SetEnableLoadingCircle(false);
 
                     // full ammo
-                    for (int i = 0; i < Player.Instance.m_WeaponHandler.m_WeaponsList.Count; i++)
+                    for (int i = 0; i < Player.instance.m_WeaponHandler.m_WeaponsList.Count; i++)
                     {
-                        Player.Instance.m_WeaponHandler.m_WeaponsList[i].m_Ammo.carryingAmmo =
-                            Player.Instance.m_WeaponHandler.m_WeaponsList[i].m_Ammo.carryingMaxAmmo;
+                        Player.instance.m_WeaponHandler.m_WeaponsList[i].m_Ammo.carryingAmmo =
+                            Player.instance.m_WeaponHandler.m_WeaponsList[i].m_Ammo.carryingMaxAmmo;
                     }
 
                     m_State = AmmoBoxState.Emtpy;

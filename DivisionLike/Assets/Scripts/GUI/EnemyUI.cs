@@ -58,7 +58,7 @@ namespace DivisionLike
         /// </summary>
         private void ScaleIfClosed()
         {
-            float distance = Vector3.Distance(Player.Instance.transform.position, m_Parent.transform.position);
+            float distance = Vector3.Distance(Player.instance.transform.position, m_Parent.transform.position);
             //Debug.Log( "distance = " + distance );
             if (distance > 5f)
             {

@@ -40,7 +40,7 @@ namespace DivisionLike
         public bool ObtainAmmo(int amount)
         {
             // TODO: 총알 위를 밟고 지나가면 바닥에 떨어진 총알을 줍는다
-            Player.Instance.m_WeaponHandler.m_CurrentWeapon.m_Ammo.carryingAmmo += amount;
+            Player.instance.m_WeaponHandler.m_CurrentWeapon.m_Ammo.carryingAmmo += amount;
             return true;
         }
 

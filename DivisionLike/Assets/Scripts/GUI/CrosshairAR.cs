@@ -66,9 +66,9 @@ namespace DivisionLike
         /// <returns></returns>
         public float calculateCrossHair()
         {
-            float size = m_WalkSize * Player.Instance.m_WeaponHandler.m_CurrentWeapon.m_WeaponSettings.crossHairSize;
+            float size = m_WalkSize * Player.instance.m_WeaponHandler.m_CurrentWeapon.m_WeaponSettings.crossHairSize;
 
-            if (Player.Instance.m_UserInput.m_IsSprinting == true)
+            if (Player.instance.m_UserInput.m_IsSprinting == true)
             {
                 size *= 2;
             }

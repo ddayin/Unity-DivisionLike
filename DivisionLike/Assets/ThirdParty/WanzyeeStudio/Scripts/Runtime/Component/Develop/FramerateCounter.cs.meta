@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: b11fd6d343fafb244accad2a3d4e6c2e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 54896
+  packageName: Singleton Liberation - Inherit from your own MonoBehaviour
+  packageVersion: 1.0.4
+  assetPath: Assets/WanzyeeStudio/Scripts/Runtime/Component/Develop/FramerateCounter.cs
+  uploadId: 272726

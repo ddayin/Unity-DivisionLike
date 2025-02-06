@@ -112,7 +112,7 @@ namespace DivisionLike
             Zoom();
             ZoomMore();
 
-            if (Player.Instance.m_UserInput.m_IsAiming == true)
+            if (Player.instance.m_UserInput.m_IsAiming == true)
             {
                 if (Input.GetButtonDown(m_InputSettings.m_SwitchShoulderButton))
                 {
@@ -189,9 +189,9 @@ namespace DivisionLike
             m_NewX += m_CameraSettings.m_MouseXSensitivity * Input.GetAxis(m_InputSettings.m_VerticalAxis);
             m_NewY += m_CameraSettings.m_MouseYSensitivity * Input.GetAxis(m_InputSettings.m_HorizontalAxis);
 
-            if (Player.Instance.m_UserInput.m_IsFiring == true)
+            if (Player.instance.m_UserInput.m_IsFiring == true)
             {
-                m_NewY = m_NewY + Player.Instance.m_WeaponHandler.m_CurrentWeapon.m_WeaponSettings._goUpSpeed *
+                m_NewY = m_NewY + Player.instance.m_WeaponHandler.m_CurrentWeapon.m_WeaponSettings._goUpSpeed *
                     Time.deltaTime;
             }
 

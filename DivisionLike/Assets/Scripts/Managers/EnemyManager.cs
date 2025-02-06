@@ -35,7 +35,7 @@ namespace DivisionLike
         void Spawn()
         {
             // If the player has no health left...
-            if (Player.Instance.m_Stats.m_CurrentHealth <= 0f)
+            if (Player.instance.m_Stats.m_CurrentHealth <= 0f)
             {
                 // ... exit the function.
                 return;

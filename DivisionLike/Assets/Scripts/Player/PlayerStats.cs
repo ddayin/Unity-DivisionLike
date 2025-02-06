@@ -100,7 +100,7 @@ namespace DivisionLike
         /// <returns></returns>
         public float CalculateDamage()
         {
-            float damage = Player.Instance.m_WeaponHandler.m_CurrentWeapon.m_WeaponSettings.damage;
+            float damage = Player.instance.m_WeaponHandler.m_CurrentWeapon.m_WeaponSettings.damage;
             float result = Random.Range(0f, 100f);
             if (result < m_CriticalHitRate)
             {
