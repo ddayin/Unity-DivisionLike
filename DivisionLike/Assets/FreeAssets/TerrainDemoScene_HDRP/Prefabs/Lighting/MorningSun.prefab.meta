@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d52abfc05749c4eeb92e7e9896a576c8
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Lighting/MorningSun.prefab
+  uploadId: 727864

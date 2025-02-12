@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f514be6126461c64eab6f02358f894f3
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Terrain/TerrainHigh.prefab
+  uploadId: 727864

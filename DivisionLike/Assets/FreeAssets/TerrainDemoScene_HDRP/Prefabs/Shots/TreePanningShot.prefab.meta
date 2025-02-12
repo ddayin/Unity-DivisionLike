@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bbdac3f1c1cbe8c42a6770126147d794
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Shots/TreePanningShot.prefab
+  uploadId: 727864

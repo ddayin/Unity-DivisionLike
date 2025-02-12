@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a5cad9e358345494daade076bc2e6855
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Notes/Layers.txt
+  uploadId: 727864

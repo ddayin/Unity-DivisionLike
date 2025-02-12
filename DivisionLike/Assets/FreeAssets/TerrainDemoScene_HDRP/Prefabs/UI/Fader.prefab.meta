@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 1bba1089884f54c28a3beed5b4192e68
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/UI/Fader.prefab
+  uploadId: 727864

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c589a3eaae9e93d4a9f61a62726c6972
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Trees/Pines/Pine_C/Materials/Pine_C.mat
+  uploadId: 727864

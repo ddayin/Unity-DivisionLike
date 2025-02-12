@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2f9d2984488477d498e8d5c61756f557
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4300000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Details/Models/Fern_B.asset
+  uploadId: 727864

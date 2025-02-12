@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c70e5c3129f55481ebb09ab8bdf48e66
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Screenshots/ScreenshotSatellite.prefab
+  uploadId: 727864

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b47483c1fe9f22546bca092055b64778
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Lighting/LakeReflectionProbes.prefab
+  uploadId: 727864

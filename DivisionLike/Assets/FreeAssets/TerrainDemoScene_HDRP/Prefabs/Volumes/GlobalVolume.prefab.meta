@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 930ec9e5bd4e2794ebb443cff6b18f5d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Volumes/GlobalVolume.prefab
+  uploadId: 727864

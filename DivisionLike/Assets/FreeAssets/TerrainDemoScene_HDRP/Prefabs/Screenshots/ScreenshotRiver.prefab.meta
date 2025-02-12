@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a1682eeed83f9413eb83c9c415ba313c
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Screenshots/ScreenshotRiver.prefab
+  uploadId: 727864

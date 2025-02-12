@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1d2ed9cc10dda1245b29dcdf4fa052bf
+timeCreated: 1496692502
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Details/Materials/Bush_Red.mat
+  uploadId: 727864

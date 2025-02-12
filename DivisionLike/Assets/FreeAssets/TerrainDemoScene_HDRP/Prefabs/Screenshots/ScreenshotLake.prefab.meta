@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c252ed57d9dde4b8099d6f769793150b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Screenshots/ScreenshotLake.prefab
+  uploadId: 727864

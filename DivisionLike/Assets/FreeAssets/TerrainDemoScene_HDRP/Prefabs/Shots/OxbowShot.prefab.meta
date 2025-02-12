@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a0e93c0dd1c8f414d9b3df8d239794ce
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Shots/OxbowShot.prefab
+  uploadId: 727864

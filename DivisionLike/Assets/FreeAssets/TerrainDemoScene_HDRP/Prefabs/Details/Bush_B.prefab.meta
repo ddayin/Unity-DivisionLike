@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b273de0d6e5818a4cb3195ce4f376ccb
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Details/Bush_B.prefab
+  uploadId: 727864

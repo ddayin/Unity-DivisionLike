@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4014ab7164a02e549a630f1b9cf4f875
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Notes/Stamps.txt
+  uploadId: 727864

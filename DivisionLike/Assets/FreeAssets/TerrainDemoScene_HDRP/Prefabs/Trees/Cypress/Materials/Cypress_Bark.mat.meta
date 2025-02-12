@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f995df3418732fb4ea23b356c02e25fd
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Trees/Cypress/Materials/Cypress_Bark.mat
+  uploadId: 727864

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a2029280105924846a670f39916907de
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/LocalFog/ValleyLocalFog.prefab
+  uploadId: 727864

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 34776a9356ed54141bf7fed4fded28a0
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Trees/Pines/Pine_B/Pine_B.prefab
+  uploadId: 727864

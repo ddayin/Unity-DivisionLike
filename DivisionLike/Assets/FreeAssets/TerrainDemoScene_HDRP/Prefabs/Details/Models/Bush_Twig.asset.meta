@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e9eae922c4f3be043ab536ba7bf7706d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4300000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Details/Models/Bush_Twig.asset
+  uploadId: 727864

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6f7ea54ec2ba844b7a8be17ae2cc0fbe
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Screenshots/ScreenshotHillside.prefab
+  uploadId: 727864

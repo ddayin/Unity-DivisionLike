@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 8067cb133919b42a3b9dac88315a0c4e
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Bookmarks/Bookmarks.prefab
+  uploadId: 727864

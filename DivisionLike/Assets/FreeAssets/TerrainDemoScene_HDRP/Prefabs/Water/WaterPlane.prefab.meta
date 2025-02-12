@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f0702830c1970764693293a91df9e61c
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Water/WaterPlane.prefab
+  uploadId: 727864

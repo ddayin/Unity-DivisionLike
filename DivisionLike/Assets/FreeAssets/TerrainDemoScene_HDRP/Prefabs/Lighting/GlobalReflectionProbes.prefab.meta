@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 047d05b007fe673408954aea465b4b30
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Lighting/GlobalReflectionProbes.prefab
+  uploadId: 727864

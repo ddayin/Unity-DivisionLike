@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 176a42107ce66c44aa74a67424591597
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Details/BushDry_A.prefab
+  uploadId: 727864

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f011986bc36690b4d934f2708930e3a1
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Terrain/TerrainProxy.prefab
+  uploadId: 727864

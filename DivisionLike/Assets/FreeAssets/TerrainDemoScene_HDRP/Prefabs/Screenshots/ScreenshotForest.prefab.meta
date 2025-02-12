@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 66f5d0844b8b44e14bdd7ca1a120ed3c
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Screenshots/ScreenshotForest.prefab
+  uploadId: 727864

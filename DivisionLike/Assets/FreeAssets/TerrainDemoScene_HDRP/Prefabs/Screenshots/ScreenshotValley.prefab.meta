@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: aec379a5d399a4f2cbf24b0b32175d67
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Screenshots/ScreenshotValley.prefab
+  uploadId: 727864

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ec4c06a182765544895a679bdb5c4bcb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Prefabs/Trees/Conifer/Materials/Conifer_Bark.mat
+  uploadId: 727864
