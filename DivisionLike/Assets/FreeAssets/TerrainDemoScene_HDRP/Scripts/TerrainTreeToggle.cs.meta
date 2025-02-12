@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 2604d658e60cd9948ae5544d939ad153
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Scripts/TerrainTreeToggle.cs
+  uploadId: 727864

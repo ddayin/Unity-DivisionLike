@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 78322c7f82657514ebe48203160e3f39
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 213198
+  packageName: Unity Terrain - HDRP Demo Scene
+  packageVersion: 1.0.3
+  assetPath: Assets/TerrainDemoScene_HDRP/Settings/DiffusionProfiles/Foliage.asset
+  uploadId: 727864
